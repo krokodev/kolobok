@@ -1,8 +1,7 @@
 ﻿// Kolobok (c) 2015 Krokodev
 // Kolobok.Tests
-// Core_Tests.cs
+// Components_Tests.cs
 
-using Kolobok.Base;
 using Kolobok.Core.Items;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -12,7 +11,7 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public class Core_Tests : CoreBaseTests
+    public partial class Components_Tests : CoreBaseTests
     {
         [Test]
         public void Rational_can_think()
@@ -44,17 +43,10 @@ namespace Kolobok.Tests
             AssertThat.Has_rational_and_social_components( a );
         }
 
-        [Test]
+        [Test, ExpectedException( typeof( KolobokException ) )]
         public void Non_unique_components_cause_exception()
         {
-            var catched = false;
-            try {
-                Factory.CreateAgent< IRational, IRational >();
-            }
-            catch( KolobokException ) {
-                catched = true;
-            }
-            Assert.That( catched );
+            Factory.CreateAgent< IRational, IRational >();
         }
 
         [Test]

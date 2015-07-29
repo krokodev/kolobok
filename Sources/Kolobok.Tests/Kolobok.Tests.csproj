@@ -49,9 +49,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Utils\AssertThat.cs" />
-    <Compile Include="Base\CoreBaseTests.cs" />
-    <Compile Include="Tests\Core_Tests.cs" />
+    <Compile Include="Tests\Components_Tests.Asserts.cs" />
+    <Compile Include="Utils\CoreBaseTests.cs" />
+    <Compile Include="Tests\Components_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

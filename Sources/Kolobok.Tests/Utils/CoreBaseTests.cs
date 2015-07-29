@@ -6,7 +6,7 @@ using Kolobok.Core.Factory;
 using Kolobok.Core.Types;
 using NUnit.Framework;
 
-namespace Kolobok.Base
+namespace Kolobok.Utils
 {
     [TestFixture]
     public class CoreBaseTests
