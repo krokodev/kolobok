@@ -15,13 +15,6 @@ namespace Kolobok.Tests
     public class Components_Tests : CoreBaseTests
     {
         [Test]
-        public void Rational_can_think()
-        {
-            IRational r = new Rational();
-            r.Think();
-        }
-
-        [Test]
         public void Rational_is_a_component()
         {
             IRational r = new Rational();
@@ -49,8 +42,5 @@ namespace Kolobok.Tests
         {
             Factory.CreateAgent< IRational, IRational >();
         }
-
-        [Test]
-        public void Agent_has_several_components() {}
     }
 }
