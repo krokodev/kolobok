@@ -2,6 +2,7 @@
 // Kolobok.Core
 // Rational.cs
 
+using System;
 using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Items
@@ -11,6 +12,10 @@ namespace Kolobok.Core.Items
         #region IRational
 
         void IRational.Think() {}
+        public void Believes( Action< IWorld > belief )
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

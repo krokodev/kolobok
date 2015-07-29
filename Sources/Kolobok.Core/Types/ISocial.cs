@@ -2,7 +2,11 @@
 // Kolobok.Core
 // ISocial.cs
 
+using System;
+
 namespace Kolobok.Core.Types
 {
-    public interface ISocial {}
+    public interface ISocial {
+        T Replies<T>( Func< IWorld, object > p0 );
+    }
 }

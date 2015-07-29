@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Items\Agent.cs" />
+    <Compile Include="Types\IComposition.cs" />
+    <Compile Include="Types\IReflective.cs" />
+    <Compile Include="Types\ISentient.cs" />
+    <Compile Include="Types\IWorld.cs" />
     <Compile Include="Utils\CollectionExtensions.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Types\IAgent.cs" />

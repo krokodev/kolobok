@@ -2,7 +2,7 @@
 // Kolobok.Tests
 // Social_Tests.cs
 
-using System;
+using System.Linq;
 using Kolobok.Core.Types;
 using Kolobok.Utils;
 using NUnit.Framework;
@@ -15,44 +15,61 @@ namespace Kolobok.Tests
         [Test]
         public void Wise_agent_can_solve_color_of_its_hat_during_conversation()
         {
-            var a1 = Factory.CreateAgent< IRational, ISocial, IReflective, IMaterial >();
-            var a2 = Factory.CreateAgent< IRational, ISocial, IReflective, IMaterial >();
+            const Hat.Colors aColor = Hat.Colors.White;
+            const Hat.Colors bColor = Hat.Colors.Black;
 
-            a1.As< IMaterial >().Has( new Hat() );
-            a2.As< IMaterial >().Has( new Hat() );
+            var w = Factory.CreateAgent< IWorld >();
+            var a = Factory.CreateAgent< IRational, ISocial, IReflective, IComposition >();
+            var b = Factory.CreateAgent< IRational, ISocial, IReflective, IComposition >();
 
-            a1.As< IMaterial >().Get< Hat >().Color = Hat.Colors.Black;
-            a2.As< IMaterial >().Get< Hat >().Color = Hat.Colors.White;
+            w.As< IWorld >().Add( a, b );
 
-            //a1.As< IRational >().Believes( ... );
+            a.As< IComposition >().Add( new Hat() );
+            b.As< IComposition >().Add( new Hat() );
+
+            a.As< IComposition >().Has< Hat >().Color = aColor;
+            b.As< IComposition >().Has< Hat >().Color = bColor;
+
+            a.As< IRational >().Believes( world => world.Agent( a ).As< IComposition >().Has< Hat >().Color = Hat.Colors.Unknown );
+            a.As< IRational >().Believes( world => world.Agent( b ).As< IComposition >().Has< Hat >().Color = bColor );
+
+            b.As< IRational >().Believes( world => world.Agent( b ).As< IComposition >().Has< Hat >().Color = Hat.Colors.Unknown );
+            b.As< IRational >().Believes( world => world.Agent( a ).As< IComposition >().Has< Hat >().Color = aColor );
+
+            Assert.That(
+                a.As< ISocial >()
+                    .Replies< Hat.Colors >( world =>
+                        world.Agent( a ).As< IComposition >().Has< Hat >().Color
+                    )
+                    == Hat.Colors.Unknown
+                );
+
+            // Some iterations
+            foreach( var i in Enumerable.Range( 0, 10 ) ) {
+                a.As< IRational >().Think();
+                b.As< IRational >().Think();
+
+                // a ask b about b's hat color
+                a.As< IRational >().Believes( aWorld =>
+                    aWorld.Agent( b ).As< IRational >().Believes( bWorld =>
+                        bWorld.Agent( b ).As< IComposition >().Has< Hat >().Color
+                            = b.As< ISocial >()
+                                .Replies< Hat.Colors >( world =>
+                                    world.Agent( b ).As< IComposition >().Has< Hat >().Color
+                                )
+                        )
+                    );
+
+                // ...
+            }
+
+            Assert.That(
+                a.As< ISocial >()
+                    .Replies< Hat.Colors >( world =>
+                        world.Agent( a ).As< IComposition >().Has< Hat >().Color
+                    )
+                    == Hat.Colors.Black
+                );
         }
     }
-
-    public class Hat : IMaterial
-    {
-        public void Has( IMaterial part )
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Get<T>()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Color { get; set; }
-
-        public enum Colors {
-            Black,
-            White
-        }
-    }
-
-    public interface IMaterial
-    {
-        void Has( IMaterial part );
-        T Get<T>();
-    }
-
-    public interface IReflective {}
 }
