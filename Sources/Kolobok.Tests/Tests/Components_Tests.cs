@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public class Components_Tests : CoreBaseTests
+    public class Components_Tests : BaseTests
     {
         [Test]
         public void Rational_is_a_component()

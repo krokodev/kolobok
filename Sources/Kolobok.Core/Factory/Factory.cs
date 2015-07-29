@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Kolobok.Core.Items;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -51,12 +50,6 @@ namespace Kolobok.Core.Factory
 
         #region Routines
 
-        private static Agent doCreateAgent( IEnumerable< Type > componentTypes )
-        {
-            var components = componentTypes.Select( doCreateComponent );
-            return new Agent( components.ToArray() );
-        }
-
         private static IComponent doCreateComponent( Type componentType )
         {
             return ComponentConstructors[ componentType ]();
@@ -77,12 +70,13 @@ namespace Kolobok.Core.Factory
         #endregion
 
 
-        #region Fields
+        #region Static Fields
 
-        private static readonly Dictionary< Type, Func< IComponent > > ComponentConstructors = new Dictionary< Type, Func< IComponent > > {
-            { typeof( IRational ), () => new Rational() },
-            { typeof( ISocial ), () => new Social() },
-        };
+        private static readonly Dictionary< Type, Func< IComponent > >
+            ComponentConstructors = new Dictionary< Type, Func< IComponent > > {
+                { typeof( IRational ), () => new Rational() },
+                { typeof( ISocial ), () => new Social() },
+            };
 
         #endregion
     }

@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace Kolobok.Utils
 {
     [TestFixture]
-    public class CoreBaseTests
+    public class BaseTests
     {
         [SetUp]
         public void Init()

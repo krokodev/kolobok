@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public class Rational_Tests : CoreBaseTests
+    public class Rational_Tests : BaseTests
     {
         [Test]
         public void Rational_can_think()
