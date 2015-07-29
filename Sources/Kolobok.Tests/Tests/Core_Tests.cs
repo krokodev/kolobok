@@ -2,7 +2,11 @@
 // Kolobok.Tests
 // Core_Tests.cs
 
-using Kolobok.Core;
+using Kolobok.Base;
+using Kolobok.Core.Items;
+using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
+using Kolobok.Utils;
 using NUnit.Framework;
 
 namespace Kolobok.Tests
@@ -21,7 +25,7 @@ namespace Kolobok.Tests
         public void Rational_is_a_component()
         {
             IRational r = new Rational();
-            Assert.IsInstanceOf< IComponent >( r );
+            AssertThat.Is_component( r );
         }
 
         [Test]
@@ -30,8 +34,14 @@ namespace Kolobok.Tests
             var r = Factory.CreateComponent< IRational >();
             var s = Factory.CreateComponent< ISocial >();
             var a = Factory.CreateAgent( r, s );
-            Assert.IsNotNull( a.GetComponent< IRational >() );
-            Assert.IsNotNull( a.GetComponent< ISocial >() );
+            AssertThat.Has_rational_and_social_components( a );
+        }
+
+        [Test]
+        public void Factory_conveniently_creates_composite_agent()
+        {
+            var a = Factory.CreateAgent< IRational, ISocial >();
+            AssertThat.Has_rational_and_social_components( a );
         }
 
         [Test]
@@ -39,23 +49,12 @@ namespace Kolobok.Tests
         {
             var catched = false;
             try {
-                Factory.CreateAgent(
-                    Factory.CreateComponent< IRational >(),
-                    Factory.CreateComponent< IRational >()
-                    );
+                Factory.CreateAgent< IRational, IRational >();
             }
-            catch( KolobokException e ) {
+            catch( KolobokException ) {
                 catched = true;
             }
             Assert.That( catched );
-        }
-
-        [Test]
-        public void Factory_creates_composite_agent_in_convenient_manner()
-        {
-            IFactory factory = new Factory();
-
-            //            var a = factory.CreateAgent<IRational,ISocial>();
         }
 
         [Test]

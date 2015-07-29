@@ -2,7 +2,7 @@
 // Kolobok.Core
 // IComponent.cs
 
-namespace Kolobok.Core
+namespace Kolobok.Core.Types
 {
     public interface IComponent {}
 }

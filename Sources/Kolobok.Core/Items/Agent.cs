@@ -2,12 +2,12 @@
 // Kolobok.Core
 // Agent.cs
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using MoreLinq;
+using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
 
-namespace Kolobok.Core
+namespace Kolobok.Core.Items
 {
     internal class Agent : IAgent
     {
@@ -15,7 +15,7 @@ namespace Kolobok.Core
 
         IComponent IAgent.GetComponent<T>()
         {
-            return _components.OfType<T>().FirstOrDefault() as IComponent;
+            return _components.OfType< T >().FirstOrDefault() as IComponent;
         }
 
         #endregion

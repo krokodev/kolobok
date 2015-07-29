@@ -2,9 +2,10 @@
 // Kolobok.Core
 // IAgent.cs
 
-namespace Kolobok.Core
+namespace Kolobok.Core.Types
 {
-    public interface IAgent {
+    public interface IAgent
+    {
         IComponent GetComponent<T>();
     }
 }

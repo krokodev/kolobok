@@ -1,11 +1,11 @@
 // Kolobok (c) 2015 Krokodev
 // Kolobok.Core
-// EnumerableUniquenessExtensions.cs
+// CollectionExtensions.cs
 
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Kolobok.Core
+namespace Kolobok.Core.Utils
 {
     internal static class CollectionExtensions
     {

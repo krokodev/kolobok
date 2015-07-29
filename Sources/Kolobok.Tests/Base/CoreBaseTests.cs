@@ -2,10 +2,11 @@
 // Kolobok.Tests
 // CoreBaseTests.cs
 
-using Kolobok.Core;
+using Kolobok.Core.Factory;
+using Kolobok.Core.Types;
 using NUnit.Framework;
 
-namespace Kolobok.Tests
+namespace Kolobok.Base
 {
     [TestFixture]
     public class CoreBaseTests

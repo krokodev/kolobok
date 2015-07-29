@@ -2,7 +2,7 @@
 // Kolobok.Core
 // IRational.cs
 
-namespace Kolobok.Core
+namespace Kolobok.Core.Types
 {
     public interface IRational
     {

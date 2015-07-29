@@ -2,7 +2,9 @@
 // Kolobok.Core
 // Social.cs
 
-namespace Kolobok.Core
+using Kolobok.Core.Types;
+
+namespace Kolobok.Core.Items
 {
     internal class Social : ISocial, IComponent {}
 }

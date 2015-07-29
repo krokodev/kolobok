@@ -2,7 +2,9 @@
 // Kolobok.Core
 // Rational.cs
 
-namespace Kolobok.Core
+using Kolobok.Core.Types;
+
+namespace Kolobok.Core.Items
 {
     public class Rational : IRational, IComponent
     {
