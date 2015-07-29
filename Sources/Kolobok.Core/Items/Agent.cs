@@ -21,6 +21,7 @@ namespace Kolobok.Core.Items
 
         T IAgent.GetComponent<T>()
         {
+            AssertComponentExists<T>();
             return _components.OfType< T >().FirstOrDefault();
         }
 
@@ -32,7 +33,7 @@ namespace Kolobok.Core.Items
         IAgent IAgent.Clone()
         {
             return new Agent {
-                _components = _components.Select( c=>c.Clone() ).ToList(),
+                _components = _components.Select( c => c.Clone() ).ToList(),
                 _id = new Guid( _id.ToString() )
             };
         }
@@ -67,6 +68,14 @@ namespace Kolobok.Core.Items
 
 
         #region Asserts
+
+        private void AssertComponentExists<T>()
+        {
+            if( _components.Any( c => c is T) ) {
+                return;
+            }
+            throw new KolobokException( "Unknown components '{0}'", typeof(T).Name );
+        }
 
         private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
         {
