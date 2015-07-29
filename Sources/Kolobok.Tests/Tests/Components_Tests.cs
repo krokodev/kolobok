@@ -2,6 +2,7 @@
 // Kolobok.Tests
 // Components_Tests.cs
 
+using Kolobok.Asserts;
 using Kolobok.Core.Items;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -11,7 +12,7 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public partial class Components_Tests : CoreBaseTests
+    public class Components_Tests : CoreBaseTests
     {
         [Test]
         public void Rational_can_think()
@@ -24,7 +25,7 @@ namespace Kolobok.Tests
         public void Rational_is_a_component()
         {
             IRational r = new Rational();
-            AssertThat.Is_component( r );
+            ComponentsAssertThat.Is_component( r );
         }
 
         [Test]
@@ -33,14 +34,14 @@ namespace Kolobok.Tests
             var r = Factory.CreateComponent< IRational >();
             var s = Factory.CreateComponent< ISocial >();
             var a = Factory.CreateAgent( r, s );
-            AssertThat.Has_rational_and_social_components( a );
+            ComponentsAssertThat.Has_rational_and_social_components( a );
         }
 
         [Test]
         public void Factory_conveniently_creates_composite_agent()
         {
             var a = Factory.CreateAgent< IRational, ISocial >();
-            AssertThat.Has_rational_and_social_components( a );
+            ComponentsAssertThat.Has_rational_and_social_components( a );
         }
 
         [Test, ExpectedException( typeof( KolobokException ) )]

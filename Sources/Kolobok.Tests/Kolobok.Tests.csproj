@@ -49,7 +49,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests\Components_Tests.Asserts.cs" />
+    <Compile Include="Asserts\ComponentsAssertThat.cs" />
     <Compile Include="Utils\CoreBaseTests.cs" />
     <Compile Include="Tests\Components_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +63,7 @@
       <Name>Kolobok.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

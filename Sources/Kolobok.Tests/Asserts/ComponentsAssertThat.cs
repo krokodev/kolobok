@@ -5,11 +5,9 @@
 using Kolobok.Core.Types;
 using NUnit.Framework;
 
-namespace Kolobok.Tests
+namespace Kolobok.Asserts
 {
-    public partial class Components_Tests
-    {
-        public class AssertThat
+        public class ComponentsAssertThat
         {
             public static void Is_component( IRational rational )
             {
@@ -22,5 +20,4 @@ namespace Kolobok.Tests
                 Assert.IsNotNull( agent.GetComponent< ISocial >() );
             }
         }
-    }
 }
