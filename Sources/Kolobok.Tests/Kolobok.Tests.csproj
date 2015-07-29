@@ -52,6 +52,7 @@
     <Compile Include="Asserts\RationalsAssertThat.cs" />
     <Compile Include="Asserts\ComponentsAssertThat.cs" />
     <Compile Include="Stuff\Hat.cs" />
+    <Compile Include="Stuff\IHat.cs" />
     <Compile Include="Tests\Social_Tests.cs" />
     <Compile Include="Tests\Rational_Tests.cs" />
     <Compile Include="Utils\BaseTests.cs" />

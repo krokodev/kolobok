@@ -15,7 +15,7 @@ namespace Kolobok.Core.Items
 
         void IRational.Think()
         {
-            _beliefs.ForEach( b => b( _present ) );
+            _beliefs.ForEach( belief => belief.Invoke( _present ) );
         }
 
         public void Believes( Action< IWorld > belief )

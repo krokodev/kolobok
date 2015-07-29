@@ -1,28 +1,35 @@
-﻿using System;
+﻿// Kolobok (c) 2015 Krokodev
+// Kolobok.Tests
+// Hat.cs
+
 using Kolobok.Core.Types;
 
 namespace Kolobok.Stuff
 {
-    public class Hat : IComposition
+    public class Hat : IProperty, IHat
     {
-        public Colors Color { get; set; }
+        #region IHat
 
-        public enum Colors
+        public IHat IHat
         {
-            Unknown,
-            Black,
-            White,
-            Red
+            get { return this; }
         }
 
-        public void Has( IComposition part )
-        {
-            throw new NotImplementedException();
-        }
+        Colors IColored.Color { get; set; }
 
-        public T Get<T>()
+        #endregion
+
+
+
+        #region IProperty
+
+        IProperty IProperty.Clone()
         {
-            throw new NotImplementedException();
+            var hat = new Hat();
+            hat.IHat.Color = IHat.Color;
+            return hat;
         }
     }
+
+    #endregion
 }

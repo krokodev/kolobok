@@ -2,6 +2,7 @@
 // Kolobok.Core
 // World.cs
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Kolobok.Core.Types;
@@ -17,14 +18,14 @@ namespace Kolobok.Core.Items
             get { return this; }
         }
 
-        IAgent IWorld.Agent( IAgent agent )
+        IAgent IWorld.GetAgent( Guid id  )
         {
-            return _agents.First( a => a.Id == agent.Id );
+            return _agents.First( a => a.Id == id );
         }
 
         void IWorld.Contains( params IAgent[] agents )
         {
-            _agents.AddRange( agents.Select( a => a.Clone() ) );
+            _agents.AddRange( agents );
         }
 
         IWorld IWorld.Clone()

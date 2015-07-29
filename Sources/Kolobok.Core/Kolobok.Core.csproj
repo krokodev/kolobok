@@ -42,9 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Types\Colors.cs" />
+    <Compile Include="Types\IColored.cs" />
+    <Compile Include="Types\IProperty.cs" />
+    <Compile Include="Items\Owner.cs" />
     <Compile Include="Items\World.cs" />
     <Compile Include="Items\Agent.cs" />
-    <Compile Include="Types\IComposition.cs" />
+    <Compile Include="Types\IOwner.cs" />
     <Compile Include="Types\IReflective.cs" />
     <Compile Include="Types\ISentient.cs" />
     <Compile Include="Types\IWorld.cs" />
