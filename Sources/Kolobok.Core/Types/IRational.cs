@@ -10,5 +10,6 @@ namespace Kolobok.Core.Types
     {
         void Think();
         void Believes( Action< IWorld > belief );
+        IWorld Present { get; }
     }
 }

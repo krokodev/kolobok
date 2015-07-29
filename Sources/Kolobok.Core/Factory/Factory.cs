@@ -106,6 +106,7 @@ namespace Kolobok.Core.Factory
             ComponentConstructors = new Dictionary< Type, Func< IComponent > > {
                 { typeof( IRational ), () => new Rational() },
                 { typeof( ISocial ), () => new Social() },
+                { typeof( IWorld ), () => new World() },
             };
 
         #endregion

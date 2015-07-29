@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items\World.cs" />
     <Compile Include="Items\Agent.cs" />
     <Compile Include="Types\IComposition.cs" />
     <Compile Include="Types\IReflective.cs" />

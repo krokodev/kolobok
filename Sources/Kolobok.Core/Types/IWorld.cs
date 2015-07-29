@@ -6,6 +6,7 @@ namespace Kolobok.Core.Types
 {
     public interface IWorld {
         IAgent Agent( IAgent a );
-        void Add( params IAgent[] agents);
+        void Contains( params IAgent[] agents);
+        IWorld Clone();
     }
 }

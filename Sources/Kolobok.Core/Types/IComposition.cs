@@ -1,8 +1,8 @@
-﻿namespace Kolobok.Tests
+﻿namespace Kolobok.Core.Types
 {
     public interface IComposition
     {
-        void Add( IComposition part );
-        T Has<T>();
+        void Has( IComposition part );
+        T Get<T>();
     }
 }

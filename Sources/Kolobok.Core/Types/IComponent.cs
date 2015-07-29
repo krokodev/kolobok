@@ -4,5 +4,7 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IComponent {}
+    public interface IComponent {
+        IComponent Clone();
+    }
 }

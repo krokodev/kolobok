@@ -1,0 +1,61 @@
+// Kolobok (c) 2015 Krokodev
+// Kolobok.Core
+// World.cs
+
+using System.Collections.Generic;
+using System.Linq;
+using Kolobok.Core.Types;
+
+namespace Kolobok.Core.Items
+{
+    internal class World : IWorld, IComponent
+    {
+        #region IWorld
+
+        private IWorld IWorld
+        {
+            get { return this; }
+        }
+
+        IAgent IWorld.Agent( IAgent agent )
+        {
+            return _agents.First( a => a.Id == agent.Id );
+        }
+
+        void IWorld.Contains( params IAgent[] agents )
+        {
+            _agents.AddRange( agents.Select( a => a.Clone() ) );
+        }
+
+        IWorld IWorld.Clone()
+        {
+            return new World {
+                _agents = _agents.Select( a => a.Clone() ).ToList()
+            };
+        }
+
+        #endregion
+
+
+        #region IComponent
+
+        private IComponent IComponent
+        {
+            get { return this; }
+        }
+
+        IComponent IComponent.Clone()
+        {
+            return IWorld.Clone() as IComponent;
+        }
+
+        #endregion
+
+
+        #region Fields
+
+        private List< IAgent > _agents = new List< IAgent >();
+
+        #endregion
+    }
+}

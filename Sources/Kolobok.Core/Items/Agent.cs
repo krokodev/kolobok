@@ -2,6 +2,7 @@
 // Kolobok.Core
 // Agent.cs
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Kolobok.Core.Types;
@@ -17,14 +18,28 @@ namespace Kolobok.Core.Items
         {
             get { return this; }
         }
+
         T IAgent.GetComponent<T>()
         {
             return _components.OfType< T >().FirstOrDefault();
         }
 
-        public T As<T>()
+        T IAgent.As<T>()
         {
             return IAgent.GetComponent< T >();
+        }
+
+        IAgent IAgent.Clone()
+        {
+            return new Agent {
+                _components = _components.Select( c=>c.Clone() ).ToList(),
+                _id = new Guid( _id.ToString() )
+            };
+        }
+
+        Guid IAgent.Id
+        {
+            get { return _id; }
         }
 
         #endregion
@@ -66,6 +81,7 @@ namespace Kolobok.Core.Items
         #region Fields
 
         private List< IComponent > _components;
+        private Guid _id = Guid.NewGuid();
 
         #endregion
     }

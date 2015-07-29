@@ -2,7 +2,7 @@
 // Kolobok.Tests
 // IReflective.cs
 
-namespace Kolobok.Tests
+namespace Kolobok.Core.Types
 {
     public interface IReflective {}
 }

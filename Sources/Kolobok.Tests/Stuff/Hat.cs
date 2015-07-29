@@ -1,6 +1,7 @@
 ﻿using System;
+using Kolobok.Core.Types;
 
-namespace Kolobok.Tests
+namespace Kolobok.Stuff
 {
     public class Hat : IComposition
     {
@@ -8,17 +9,18 @@ namespace Kolobok.Tests
 
         public enum Colors
         {
+            Unknown,
             Black,
             White,
-            Unknown
+            Red
         }
 
-        public void Add( IComposition part )
+        public void Has( IComposition part )
         {
             throw new NotImplementedException();
         }
 
-        public T Has<T>()
+        public T Get<T>()
         {
             throw new NotImplementedException();
         }

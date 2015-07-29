@@ -12,5 +12,10 @@ namespace Kolobok.Core.Items
         {
             throw new NotImplementedException();
         }
+
+        public IComponent Clone()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
