@@ -8,6 +8,9 @@ namespace Kolobok.Core.Types
     {
         IAgent CreateAgent<T1>();
         IAgent CreateAgent<T1, T2>();
+        IAgent CreateAgent<T1, T2, T3>();
+        IAgent CreateAgent<T1, T2, T3, T4>();
+        IAgent CreateAgent<T1, T2, T3, T4, T5>();
         IAgent CreateAgent( params IComponent[] components );
         IComponent CreateComponent<T>();
     }

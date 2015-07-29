@@ -26,11 +26,41 @@ namespace Kolobok.Core.Factory
                 );
         }
 
-        public IAgent CreateAgent<T1, T2>()
+        IAgent IFactory.CreateAgent<T1, T2>()
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >(),
                 IFactory.CreateComponent< T2 >()
+                );
+        }
+
+        IAgent IFactory.CreateAgent<T1, T2, T3>()
+        {
+            return IFactory.CreateAgent(
+                IFactory.CreateComponent< T1 >(),
+                IFactory.CreateComponent< T2 >(),
+                IFactory.CreateComponent< T3 >()
+                );
+        }
+
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4>()
+        {
+            return IFactory.CreateAgent(
+                IFactory.CreateComponent< T1 >(),
+                IFactory.CreateComponent< T2 >(),
+                IFactory.CreateComponent< T3 >(),
+                IFactory.CreateComponent< T4 >()
+                );
+        }
+
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5>()
+        {
+            return IFactory.CreateAgent(
+                IFactory.CreateComponent< T1 >(),
+                IFactory.CreateComponent< T2 >(),
+                IFactory.CreateComponent< T3 >(),
+                IFactory.CreateComponent< T4 >(),
+                IFactory.CreateComponent< T5 >()
                 );
         }
 

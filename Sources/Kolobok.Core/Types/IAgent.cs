@@ -7,5 +7,6 @@ namespace Kolobok.Core.Types
     public interface IAgent
     {
         T GetComponent<T>();
+        T As<T>();
     }
 }

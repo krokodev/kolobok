@@ -13,9 +13,18 @@ namespace Kolobok.Core.Items
     {
         #region IAgent
 
+        private IAgent IAgent
+        {
+            get { return this; }
+        }
         T IAgent.GetComponent<T>()
         {
             return _components.OfType< T >().FirstOrDefault();
+        }
+
+        public T As<T>()
+        {
+            return IAgent.GetComponent< T >();
         }
 
         #endregion
