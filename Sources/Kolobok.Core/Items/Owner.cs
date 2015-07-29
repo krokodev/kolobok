@@ -25,7 +25,7 @@ namespace Kolobok.Core.Items
 
         #region IOwner
 
-        void IOwner.Set( IProperty property )
+        void IOwner.Has( IProperty property )
         {
             _properties.Add( property );
         }

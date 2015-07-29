@@ -18,9 +18,9 @@ namespace Kolobok.Core.Items
             get { return this; }
         }
 
-        IAgent IWorld.GetAgent( Guid id  )
+        IAgent IWorld.Agent( IAgent agent )
         {
-            return _agents.First( a => a.Id == id );
+            return _agents.First( a => a.Id == agent.Id );
         }
 
         void IWorld.Contains( params IAgent[] agents )

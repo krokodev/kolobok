@@ -2,7 +2,7 @@
 {
     public interface IOwner
     {
-        void Set( IProperty property );
+        void Has( IProperty property );
         T Get<T>();
     }
 }

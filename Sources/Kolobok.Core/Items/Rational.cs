@@ -15,7 +15,7 @@ namespace Kolobok.Core.Items
 
         void IRational.Think()
         {
-            _beliefs.ForEach( belief => belief.Invoke( _present ) );
+            _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 
         public void Believes( Action< IWorld > belief )
@@ -23,9 +23,9 @@ namespace Kolobok.Core.Items
             _beliefs.Add( belief );
         }
 
-        public IWorld Present
+        public IWorld Imaginary
         {
-            get { return _present; }
+            get { return _presentImage; }
         }
 
         #endregion
@@ -37,7 +37,7 @@ namespace Kolobok.Core.Items
         {
             return new Rational {
                 _beliefs = _beliefs.ToList(),
-                _present = _present.Clone()
+                _presentImage = _presentImage.Clone()
             };
         }
 
@@ -47,7 +47,7 @@ namespace Kolobok.Core.Items
         #region Fields
 
         private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
-        private IWorld _present = new World();
+        private IWorld _presentImage = new World();
 
         #endregion
     }

@@ -7,7 +7,7 @@ using System;
 namespace Kolobok.Core.Types
 {
     public interface IWorld {
-        IAgent GetAgent( Guid id );
+        IAgent Agent( IAgent agent );
         void Contains( params IAgent[] agents);
         IWorld Clone();
     }

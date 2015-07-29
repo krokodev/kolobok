@@ -26,24 +26,24 @@ namespace Kolobok.Tests
 
             w.As< IWorld >().Contains( a, b );
 
-            a.As< IOwner >().Set( new Hat() );
-            b.As< IOwner >().Set( new Hat() );
+            a.As< IOwner >().Has( new Hat() );
+            b.As< IOwner >().Has( new Hat() );
 
-            a.As< IOwner >().Get< Hat >().IHat.Color = aColor;
-            b.As< IOwner >().Get< Hat >().IHat.Color = bColor;
+            a.As< IOwner >().Get< IHat >().Color = aColor;
+            b.As< IOwner >().Get< IHat >().Color = bColor;
 
             a.As< IRational >().Believes( world => world.Contains( a, b ) );
-            a.As< IRational >().Believes( world => world.GetAgent( a.Id ).As< IOwner >().Get< Hat >().IHat.Color = Colors.Unknown );
-            a.As< IRational >().Believes( world => world.GetAgent( b.Id ).As< IOwner >().Get< Hat >().IHat.Color = bColor );
+            a.As< IRational >().Believes( world => world.Agent( a ).As< IOwner >().Get< IHat >().Color = Colors.Unknown );
+            a.As< IRational >().Believes( world => world.Agent( b ).As< IOwner >().Get< IHat >().Color = bColor );
 
             b.As< IRational >().Believes( world => world.Contains( a, b ) );
-            b.As< IRational >().Believes( world => world.GetAgent( b.Id ).As< IOwner >().Get< Hat >().IHat.Color = Colors.Unknown );
-            b.As< IRational >().Believes( world => world.GetAgent( a.Id ).As< IOwner >().Get< Hat >().IHat.Color = aColor );
+            b.As< IRational >().Believes( world => world.Agent( b ).As< IOwner >().Get< IHat >().Color = Colors.Unknown );
+            b.As< IRational >().Believes( world => world.Agent( a ).As< IOwner >().Get< IHat >().Color = aColor );
 
             Assert.That(
                 a.As< ISocial >()
                     .Replies< Colors >( world =>
-                        world.GetAgent( a.Id ).As< IOwner >().Get< Hat >().IHat.Color
+                        world.Agent( a ).As< IOwner >().Get< IHat >().Color
                     )
                     == Colors.Unknown
                 );
@@ -55,11 +55,11 @@ namespace Kolobok.Tests
 
                 // a ask b about b's hat color
                 a.As< IRational >().Believes( aWorld =>
-                    aWorld.GetAgent( b.Id ).As< IRational >().Believes( bWorld =>
-                        bWorld.GetAgent( b.Id ).As< IOwner >().Get< Hat >().IHat.Color
+                    aWorld.Agent( b ).As< IRational >().Believes( bWorld =>
+                        bWorld.Agent( b ).As< IOwner >().Get< IHat >().Color
                             = b.As< ISocial >()
                                 .Replies< Colors >( world =>
-                                    world.GetAgent( b.Id ).As< IOwner >().Get< Hat >().IHat.Color
+                                    world.Agent( b ).As< IOwner >().Get< IHat >().Color
                                 )
                         )
                     );
@@ -70,7 +70,7 @@ namespace Kolobok.Tests
             Assert.That(
                 a.As< ISocial >()
                     .Replies< Colors >( world =>
-                        world.GetAgent( a.Id ).As< IOwner >().Get< Hat >().IHat.Color
+                        world.Agent( a ).As< IOwner >().Get< IHat >().Color
                     )
                     == Colors.Black
                 );
