@@ -61,9 +61,7 @@ namespace Kolobok.Tests
 
             a.As< IRational >().Think();
 
-            var aColor = a.As< IRational >().Present.GetAgent( a.Id ).As< IOwner >().Get< IHat >().Color;
-
-            Assert.AreEqual( Colors.Red, aColor );
+            Assert.AreEqual( Colors.Red, a.As< IRational >().Present.GetAgent( a.Id ).As< IOwner >().Get< IHat >().Color);
         }
     }
 }
