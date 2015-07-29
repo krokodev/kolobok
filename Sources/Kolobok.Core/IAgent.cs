@@ -4,5 +4,7 @@
 
 namespace Kolobok.Core
 {
-    public interface IAgent {}
+    public interface IAgent {
+        IComponent GetComponent<T>();
+    }
 }

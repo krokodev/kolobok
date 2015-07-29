@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public class Core_Tests
+    public class Core_Tests : CoreBaseTests
     {
         [Test]
         public void Rational_can_think()
@@ -27,10 +27,27 @@ namespace Kolobok.Tests
         [Test]
         public void Factory_creates_composite_agent()
         {
-            IFactory factory = new Factory();
-            var r = factory.CreateComponent< IRational >();
-            var s = factory.CreateComponent< ISocial >();
-            var a = factory.CreateAgent( r, s );
+            var r = Factory.CreateComponent< IRational >();
+            var s = Factory.CreateComponent< ISocial >();
+            var a = Factory.CreateAgent( r, s );
+            Assert.IsNotNull( a.GetComponent< IRational >() );
+            Assert.IsNotNull( a.GetComponent< ISocial >() );
+        }
+
+        [Test]
+        public void Non_unique_components_cause_exception()
+        {
+            var catched = false;
+            try {
+                Factory.CreateAgent(
+                    Factory.CreateComponent< IRational >(),
+                    Factory.CreateComponent< IRational >()
+                    );
+            }
+            catch( KolobokException e ) {
+                catched = true;
+            }
+            Assert.That( catched );
         }
 
         [Test]

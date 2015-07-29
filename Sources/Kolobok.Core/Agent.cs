@@ -2,13 +2,61 @@
 // Kolobok.Core
 // Agent.cs
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using MoreLinq;
+
 namespace Kolobok.Core
 {
     internal class Agent : IAgent
     {
+        #region IAgent
+
+        IComponent IAgent.GetComponent<T>()
+        {
+            return _components.OfType<T>().FirstOrDefault() as IComponent;
+        }
+
+        #endregion
+
+
         #region Ctor
 
-        public Agent( params IComponent[] components ) {}
+        public Agent( params IComponent[] components )
+        {
+            AssertComponentsAreUnique( components );
+            RegisterComponents( components );
+        }
+
+        #endregion
+
+
+        #region Routines
+
+        private void RegisterComponents( IEnumerable< IComponent > components )
+        {
+            _components = components.ToList();
+        }
+
+        #endregion
+
+
+        #region Asserts
+
+        private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
+        {
+            if( !components.Select( c => c.GetType() ).IsUnique() ) {
+                throw new KolobokException( "Components are not unique" );
+            }
+        }
+
+        #endregion
+
+
+        #region Fields
+
+        private List< IComponent > _components;
 
         #endregion
     }

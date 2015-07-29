@@ -14,7 +14,7 @@ namespace Kolobok.Core
 
         IAgent IFactory.CreateAgent( params IComponent[] components )
         {
-            return new Agent( components.ToArray() );
+            return new Agent( components );
         }
 
         IComponent IFactory.CreateComponent<T>()
