@@ -52,7 +52,7 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void If_ask_about_unknown_then_answer_would_be_invalid()
+        public void Bob_does_not_know_question_theme_so_answer_is_invalid()
         {
             var alice = Factory.CreateAgent< ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
