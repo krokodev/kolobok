@@ -9,9 +9,9 @@ using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
 
-namespace Kolobok.Core.Items
+namespace Kolobok.Core.Enteties
 {
-    internal class Agent : IAgent
+    internal class Agent : IAgent, IComposition
     {
         #region IAgent
 
@@ -20,15 +20,9 @@ namespace Kolobok.Core.Items
             get { return this; }
         }
 
-        T IAgent.GetComponent<T>()
-        {
-            AssertComponentExists<T>();
-            return _components.OfType< T >().FirstOrDefault();
-        }
-
         T IAgent.As<T>()
         {
-            return IAgent.GetComponent< T >();
+            return IComposition.GetComponent< T >();
         }
 
         IAgent IAgent.Clone()
@@ -40,6 +34,22 @@ namespace Kolobok.Core.Items
         }
 
         IWorld IAgent.World { get; set; }
+
+        #endregion
+
+
+        #region IComposition
+
+        private IComposition IComposition
+        {
+            get { return this; }
+        }
+
+        T IComposition.GetComponent<T>(bool nullable)
+        {
+            AssertComponentExists< T >(ignore:nullable);
+            return _components.OfType< T >().FirstOrDefault();
+        }
 
         #endregion
 
@@ -60,6 +70,7 @@ namespace Kolobok.Core.Items
         {
             AssertComponentsAreUnique( components );
             RegisterComponents( components );
+            InitComponents();
         }
 
         #endregion
@@ -72,17 +83,25 @@ namespace Kolobok.Core.Items
             _components = components.ToList();
         }
 
+        private void InitComponents()
+        {
+            _components.ForEach( c => c.Init( this ) );
+        }
+
         #endregion
 
 
         #region Asserts
 
-        private void AssertComponentExists<T>()
+        private void AssertComponentExists<T>(bool ignore=false)
         {
-            if( _components.Any( c => c is T) ) {
+            if( ignore ) {
                 return;
             }
-            throw new KolobokException( "Unknown components '{0}'", typeof(T).Name );
+            if( _components.Any( c => c is T ) ) {
+                return;
+            }
+            throw new KolobokException( "Unknown components '{0}'", typeof( T ).Name );
         }
 
         private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
@@ -94,6 +113,7 @@ namespace Kolobok.Core.Items
 
         #endregion
 
+
         #region Overrides
 
         public override string ToString()
@@ -101,7 +121,13 @@ namespace Kolobok.Core.Items
             return IAgent.Id.ToString();
         }
 
+        public T GetComponent<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
 
         #region Fields
 

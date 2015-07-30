@@ -14,10 +14,10 @@ namespace Kolobok.Asserts
                 Assert.IsInstanceOf< IComponent >( rational );
             }
 
-            public static void Has_rational_and_social_components( IAgent agent )
+            public static void Has_rational_and_social_components( IComposition composition )
             {
-                Assert.IsNotNull( agent.GetComponent< IRational >() );
-                Assert.IsNotNull( agent.GetComponent< ISocial >() );
+                Assert.IsNotNull( composition.GetComponent< IRational >() );
+                Assert.IsNotNull( composition.GetComponent< ISocial >() );
             }
         }
 }

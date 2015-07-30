@@ -4,9 +4,8 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IAgent : IIdentifiable
+    public interface IAgent: IIdentifiable
     {
-        T GetComponent<T>();
         T As<T>();
         IAgent Clone();
         IWorld World { get; set; }

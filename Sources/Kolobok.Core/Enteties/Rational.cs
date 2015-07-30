@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Items
+namespace Kolobok.Core.Enteties
 {
     public class Rational : IRational, IComponent
     {
@@ -32,6 +32,10 @@ namespace Kolobok.Core.Items
 
 
         #region IComponent
+
+        void IComponent.Init( IComposition composition )
+        {
+        }
 
         IComponent IComponent.Clone()
         {

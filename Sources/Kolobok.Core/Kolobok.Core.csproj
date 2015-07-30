@@ -43,15 +43,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Diagnostics\Assert.cs" />
+    <Compile Include="Enteties\Answer.cs" />
+    <Compile Include="Enteties\AnswerResult.cs" />
+    <Compile Include="Enteties\Question.cs" />
+    <Compile Include="Diagnostics\KolobokUnknownAgentException.cs" />
     <Compile Include="Types\Colors.cs" />
+    <Compile Include="Types\IAnswer.cs" />
+    <Compile Include="Types\IAnswerResult.cs" />
     <Compile Include="Types\IAspect.cs" />
     <Compile Include="Types\IColored.cs" />
+    <Compile Include="Types\IComposition.cs" />
     <Compile Include="Types\IIdentifiable.cs" />
     <Compile Include="Types\IProperty.cs" />
-    <Compile Include="Items\Owner.cs" />
-    <Compile Include="Items\World.cs" />
-    <Compile Include="Items\Agent.cs" />
+    <Compile Include="Enteties\Owner.cs" />
+    <Compile Include="Enteties\World.cs" />
+    <Compile Include="Enteties\Agent.cs" />
     <Compile Include="Types\IOwner.cs" />
+    <Compile Include="Types\IQuestion.cs" />
     <Compile Include="Types\IReflective.cs" />
     <Compile Include="Types\ISentient.cs" />
     <Compile Include="Types\IWorld.cs" />
@@ -64,8 +72,8 @@
     <Compile Include="Types\ISocial.cs" />
     <Compile Include="Diagnostics\KolobokException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Items\Rational.cs" />
-    <Compile Include="Items\Social.cs" />
+    <Compile Include="Enteties\Rational.cs" />
+    <Compile Include="Enteties\Social.cs" />
     <Compile Include="Diagnostics\KolobokVerificationException.cs" />
   </ItemGroup>
   <ItemGroup>

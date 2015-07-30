@@ -7,11 +7,15 @@ using System.Linq;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Items
+namespace Kolobok.Core.Enteties
 {
     internal class Owner : IOwner, IComponent
     {
         #region IComponent
+
+        void IComponent.Init( IComposition composition )
+        {
+        }
 
         IComponent IComponent.Clone()
         {

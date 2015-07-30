@@ -10,7 +10,7 @@ namespace Kolobok.Asserts
     {
         public static void Rational_can_think( IAgent agent )
         {
-            var r = agent.GetComponent< IRational >();
+            var r = agent.As< IRational >();
             r.Think();
         }
     }

@@ -9,7 +9,7 @@ using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using MoreLinq;
 
-namespace Kolobok.Core.Items
+namespace Kolobok.Core.Enteties
 {
     internal class World : IWorld, IComponent
     {
@@ -22,7 +22,12 @@ namespace Kolobok.Core.Items
 
         IAgent IWorld.Agent( IAgent agent )
         {
-            return _agents.First( a => a.Id == agent.Id );
+            try {
+                return _agents.First( a => a.Id == agent.Id );
+            }
+            catch {
+                throw new KolobokUnknownAgentException( "World {0} does not contain agent {1}", IWorld.Id, agent.Id );
+            }
         }
 
         void IWorld.Contains( params IAgent[] agents )
@@ -46,6 +51,8 @@ namespace Kolobok.Core.Items
         {
             get { return this; }
         }
+
+        void IComponent.Init( IComposition composition ) {}
 
         IComponent IComponent.Clone()
         {

@@ -4,9 +4,8 @@
 
 using Kolobok.Asserts;
 using Kolobok.Core.Diagnostics;
-using Kolobok.Core.Items;
+using Kolobok.Core.Enteties;
 using Kolobok.Core.Types;
-using Kolobok.Core.Utils;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -28,14 +27,14 @@ namespace Kolobok.Tests
             var r = Factory.CreateComponent< IRational >();
             var s = Factory.CreateComponent< ISocial >();
             var a = Factory.CreateAgent( r, s );
-            ComponentsAssertThat.Has_rational_and_social_components( a );
+            ComponentsAssertThat.Has_rational_and_social_components( a as IComposition );
         }
 
         [Test]
         public void Factory_conveniently_creates_composite_agent()
         {
             var a = Factory.CreateAgent< IRational, ISocial >();
-            ComponentsAssertThat.Has_rational_and_social_components( a );
+            ComponentsAssertThat.Has_rational_and_social_components( a as IComposition );
         }
 
         [Test, ExpectedException( typeof( KolobokException ) )]

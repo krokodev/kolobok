@@ -6,7 +6,7 @@ namespace Kolobok.Core.Types
 {
     public enum Colors
     {
-        Unknown,
+        Unknown=0,
         Black,
         White,
         Red
