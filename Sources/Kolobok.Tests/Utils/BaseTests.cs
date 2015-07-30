@@ -9,7 +9,6 @@ using NUnit.Framework;
 
 namespace Kolobok.Utils
 {
-    [TestFixture]
     public class BaseTests
     {
         #region Init
@@ -29,12 +28,12 @@ namespace Kolobok.Utils
 
         protected static void Log( object arg )
         {
-            Console.WriteLine( arg.ToString() );
+            Console.WriteLine( arg );
         }
 
         protected static void Log( string format, params object[] args )
         {
-            Console.WriteLine( string.Format( format, args ) );
+            Console.WriteLine( format, args );
         }
 
         #endregion

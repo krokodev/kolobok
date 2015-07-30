@@ -2,11 +2,9 @@
 // Kolobok.Core
 // IWorld.cs
 
-using System;
-
 namespace Kolobok.Core.Types
 {
-    public interface IWorld {
+    public interface IWorld: IIdentifiable {
         IAgent Agent( IAgent agent );
         void Contains( params IAgent[] agents);
         IWorld Clone();

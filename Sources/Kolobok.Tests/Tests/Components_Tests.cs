@@ -3,6 +3,7 @@
 // Components_Tests.cs
 
 using Kolobok.Asserts;
+using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Items;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;

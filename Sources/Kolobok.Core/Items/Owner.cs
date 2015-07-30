@@ -2,9 +2,9 @@
 // Kolobok.Core
 // Owner.cs
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Items
@@ -16,7 +16,7 @@ namespace Kolobok.Core.Items
         IComponent IComponent.Clone()
         {
             return new Owner {
-                _properties = _properties.Select( p=>p.Clone() ).ToList()
+                _properties = _properties.Select( p => p.Clone() ).ToList()
             };
         }
 
@@ -25,14 +25,17 @@ namespace Kolobok.Core.Items
 
         #region IOwner
 
+        IOwner IOwner { get { return this; } }
         void IOwner.Has( IProperty property )
         {
+            Assert.That( property.Owner == null, "Property already belongs to other owner");
             _properties.Add( property );
+            property.Owner = this;
         }
 
-        T IOwner.Get<T>()
+        T IOwner.GetFirst<T>()
         {
-            return _properties.OfType<T>().First();
+            return _properties.OfType< T >().First();
         }
 
         #endregion

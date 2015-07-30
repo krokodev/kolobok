@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Kolobok.Core.Utils
+namespace Kolobok.Core.Diagnostics
 {
     public class KolobokException : Exception
     {

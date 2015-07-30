@@ -44,11 +44,31 @@ namespace Kolobok.Core.Items
         #endregion
 
 
+        #region IAspect
+
+        void IAspect.Verify()
+        {
+            VerifyPresent();
+        }
+
+        #endregion
+
         #region Fields
 
         private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
         private IWorld _presentImage = new World();
 
         #endregion
+
+
+        #region Verification
+
+        private void VerifyPresent()
+        {
+            // ...
+        }
+
+        #endregion
+
     }
 }

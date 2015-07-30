@@ -29,6 +29,8 @@ namespace Kolobok.Stuff
             hat.IHat.Color = IHat.Color;
             return hat;
         }
+
+        IOwner IProperty.Owner { get; set; }
     }
 
     #endregion

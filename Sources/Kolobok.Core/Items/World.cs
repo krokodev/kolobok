@@ -5,7 +5,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
+using MoreLinq;
 
 namespace Kolobok.Core.Items
 {
@@ -25,7 +27,7 @@ namespace Kolobok.Core.Items
 
         void IWorld.Contains( params IAgent[] agents )
         {
-            _agents.AddRange( agents );
+            agents.ForEach( AddAgent );
         }
 
         IWorld IWorld.Clone()
@@ -53,9 +55,43 @@ namespace Kolobok.Core.Items
         #endregion
 
 
+        #region IIdentifiable
+
+        Guid IIdentifiable.Id
+        {
+            get { return _id; }
+        }
+
+        #endregion
+
+
         #region Fields
 
         private List< IAgent > _agents = new List< IAgent >();
+        private Guid _id = Guid.NewGuid();
+
+        #endregion
+
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return IWorld.Id.ToString();
+        }
+
+        #endregion
+
+
+        #region Routines
+
+        private void AddAgent( IAgent agent )
+        {
+            Assert.That( agent.World == null, "Agent [{0}] already belongs World [{1}]", agent, agent.World );
+
+            _agents.Add( agent );
+            agent.World = this;
+        }
 
         #endregion
     }

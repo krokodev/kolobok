@@ -3,6 +3,6 @@
     public interface IOwner
     {
         void Has( IProperty property );
-        T Get<T>();
+        T GetFirst<T>();
     }
 }

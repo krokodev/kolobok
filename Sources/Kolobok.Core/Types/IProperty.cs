@@ -4,7 +4,9 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IProperty {
+    public interface IProperty
+    {
         IProperty Clone();
+        IOwner Owner { get; set; }
     }
 }

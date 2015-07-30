@@ -3,7 +3,9 @@
 // Rational_Tests.cs
 
 using Kolobok.Asserts;
+using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
 using Kolobok.Stuff;
 using Kolobok.Utils;
 using NUnit.Framework;
@@ -33,7 +35,7 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void Imaginared_agent_is_not_real()
+        public void Imaginared_agent_is_not_the_same_as_the_real()
         {
             var agent = Factory.CreateAgent< IRational >();
             var subj = Factory.CreateAgent();
@@ -51,32 +53,24 @@ namespace Kolobok.Tests
             var agent = Factory.CreateAgent< IRational, IOwner >();
 
             agent.As< IRational >().Believes( world => {
-                world.Contains( agent.Clone() );
-                world.Agent( agent ).As< IOwner >().Has( new Hat() );
-                world.Agent( agent ).As< IOwner >().Get< IHat >().Color = Colors.Red;
+                var subj = agent.Clone();
+                world.Contains( subj );
+                subj.As< IOwner >().Has( new Hat() );
+                subj.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IRational >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IOwner >().Get< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IOwner >().GetFirst< IHat >().Color );
         }
 
         [Test]
-        public void Agents_beliefs_in_simple_notation()
+        public void Rational_is_verifiable()
         {
-            var a = Factory.CreateAgent< IRational, IOwner >();
+            var agent = Factory.CreateAgent< IRational >();
 
-            /*
-            a.Believes( world => {
-                world.Include( a );
-                world.Agent( a ).Has( new Hat() );
-                world.Agent( a )< IHat >().Color = Colors.Red;
-            } );
-
-            a.As< IRational >().Think();
-
-            Assert.AreEqual( Colors.Red, a.As< IRational >().Present.GetAgent( a.Id ).As< IOwner >().Get< IHat >().Color);
-*/
+            agent.As< IRational >().Verify();
         }
+
     }
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
 
@@ -38,7 +39,14 @@ namespace Kolobok.Core.Items
             };
         }
 
-        Guid IAgent.Id
+        IWorld IAgent.World { get; set; }
+
+        #endregion
+
+
+        #region IIdentifiable
+
+        Guid IIdentifiable.Id
         {
             get { return _id; }
         }
@@ -86,6 +94,14 @@ namespace Kolobok.Core.Items
 
         #endregion
 
+        #region Overrides
+
+        public override string ToString()
+        {
+            return IAgent.Id.ToString();
+        }
+
+        #endregion
 
         #region Fields
 

@@ -2,15 +2,13 @@
 // Kolobok.Core
 // IAgent.cs
 
-using System;
-
 namespace Kolobok.Core.Types
 {
-    public interface IAgent
+    public interface IAgent : IIdentifiable
     {
         T GetComponent<T>();
         T As<T>();
         IAgent Clone();
-        Guid Id { get; }
+        IWorld World { get; set; }
     }
 }
