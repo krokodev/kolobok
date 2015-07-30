@@ -90,7 +90,7 @@ namespace Kolobok.Tests
 
 
         [Test]
-        public void Bob_answers_according_his_beliefees()
+        public void Bob_answers_according_his_beliefes()
         {
             var alice = Factory.CreateAgent< IOwner, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
