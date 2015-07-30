@@ -4,9 +4,11 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IWorld: IIdentifiable {
+    public interface IWorld : IAspect, IIdentifiable, IResearchable
+    {
         IAgent Agent( IAgent agent );
-        void Contains( params IAgent[] agents);
+        void Add( params IAgent[] agents );
         IWorld Clone();
+        bool Contains( IAgent agent );
     }
 }

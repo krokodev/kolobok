@@ -74,20 +74,17 @@ namespace Kolobok.Tests
             alice.As< IOwner >().Has( new Hat() );
             alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As<IRational>().Believes( world => {
-                world.Contains( alice );
-            } );
-            bob.As<IRational>().Think();
+            bob.As< IRational >().Believes( world => { world.Add( alice ); } );
+            bob.As< IRational >().Think();
 
             var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
             Log( answer.Result.Value );
 
-            Assert.AreEqual( Colors.Red , answer.Result.Value);
+            Assert.AreEqual( Colors.Red, answer.Result.Value );
             Assert.IsTrue( answer.Result.IsVaild );
         }
-
 
         [Test]
         public void Bob_answers_according_his_beliefes()
@@ -98,21 +95,20 @@ namespace Kolobok.Tests
             alice.As< IOwner >().Has( new Hat() );
             alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As<IRational>().Believes( world => {
+            bob.As< IRational >().Believes( world => {
                 var alicaImage = alice.Clone();
-                world.Contains( alicaImage );
+                world.Add( alicaImage );
                 alicaImage.As< IOwner >().Has( new Hat() );
                 alicaImage.As< IOwner >().GetFirst< IHat >().Color = Colors.Black;
             } );
-            bob.As<IRational>().Think();
+            bob.As< IRational >().Think();
 
             var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
             Log( answer.Result.Value );
 
-            Assert.AreEqual( Colors.Black, answer.Result.Value);
+            Assert.AreEqual( Colors.Black, answer.Result.Value );
         }
-
     }
 }

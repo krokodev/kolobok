@@ -33,9 +33,7 @@ namespace Kolobok.Core.Enteties
 
         #region IComponent
 
-        void IComponent.Init( IComposition composition )
-        {
-        }
+        void IComponent.Init( IComposition composition ) {}
 
         IComponent IComponent.Clone()
         {
@@ -52,10 +50,11 @@ namespace Kolobok.Core.Enteties
 
         void IAspect.Verify()
         {
-            VerifyPresent();
+            _presentImage.Verify();
         }
 
         #endregion
+
 
         #region Fields
 
@@ -63,16 +62,5 @@ namespace Kolobok.Core.Enteties
         private IWorld _presentImage = new World();
 
         #endregion
-
-
-        #region Verification
-
-        private void VerifyPresent()
-        {
-            // ...
-        }
-
-        #endregion
-
     }
 }

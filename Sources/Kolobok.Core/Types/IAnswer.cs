@@ -8,6 +8,6 @@ namespace Kolobok.Core.Types
     {
         IQuestion< T > Question { get; set; }
         ISocial Respondent { get; set; }
-        IAnswerResult<T> Result { get; set; }
+        IAnswerResult< T > Result { get; set; }
     }
 }

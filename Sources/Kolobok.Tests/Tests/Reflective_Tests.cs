@@ -1,10 +1,7 @@
 ﻿// Kolobok (c) 2015 Krokodev
 // Kolobok.Tests
-// Social_Tests.cs
+// Reflective_Tests.cs
 
-using System.Linq;
-using Kolobok.Core.Types;
-using Kolobok.Stuff;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -17,7 +14,7 @@ namespace Kolobok.Tests
         [Test]
         public void Wise_agent_can_solve_color_of_its_hat_during_conversation()
         {
-/*            const Colors aColor = Colors.White;
+            /*            const Colors aColor = Colors.White;
             const Colors bColor = Colors.Black;
 
             var w = Factory.CreateAgent< IWorld >();

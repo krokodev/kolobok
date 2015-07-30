@@ -5,8 +5,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
 using MoreLinq;
 
 namespace Kolobok.Core.Enteties
@@ -30,7 +32,7 @@ namespace Kolobok.Core.Enteties
             }
         }
 
-        void IWorld.Contains( params IAgent[] agents )
+        void IWorld.Add( params IAgent[] agents )
         {
             agents.ForEach( AddAgent );
         }
@@ -40,6 +42,11 @@ namespace Kolobok.Core.Enteties
             return new World {
                 _agents = _agents.Select( a => a.Clone() ).ToList()
             };
+        }
+
+        bool IWorld.Contains( IAgent agent )
+        {
+            return _agents.Any( a => a.Id == agent.Id );
         }
 
         #endregion
@@ -72,10 +79,35 @@ namespace Kolobok.Core.Enteties
         #endregion
 
 
+        #region IResearchable
+
+        string IResearchable.GetDump()
+        {
+            var sb = new StringBuilder();
+            _agents.ForEach( a => {
+                sb.AppendFormat( "agent {0}", a.Id );
+                sb.Append( "\n" );
+            } );
+            return sb.ToString();
+        }
+
+        #endregion
+
+
+        #region IAspect
+
+        void IAspect.Verify()
+        {
+            Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IWorld.Id );
+        }
+
+        #endregion
+
+
         #region Fields
 
         private List< IAgent > _agents = new List< IAgent >();
-        private Guid _id = Guid.NewGuid();
+        private readonly Guid _id = Guid.NewGuid();
 
         #endregion
 
@@ -94,7 +126,8 @@ namespace Kolobok.Core.Enteties
 
         private void AddAgent( IAgent agent )
         {
-            Assert.That( agent.World == null, "Agent [{0}] already belongs World [{1}]", agent, agent.World );
+            Assert.That( agent.World == null, "Agent [{0}] already belongs to the World [{1}]", agent, agent.World );
+            Assert.That( !IWorld.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IWorld );
 
             _agents.Add( agent );
             agent.World = this;

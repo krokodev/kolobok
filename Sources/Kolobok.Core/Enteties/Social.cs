@@ -3,7 +3,6 @@
 // Social.cs
 
 using System;
-using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Enteties

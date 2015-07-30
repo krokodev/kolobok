@@ -6,9 +6,10 @@ using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Enteties
 {
-    internal struct Answer<T> : IAnswer<T> {
+    internal struct Answer<T> : IAnswer< T >
+    {
         public IQuestion< T > Question { get; set; }
         public ISocial Respondent { get; set; }
-        public IAnswerResult<T> Result { get; set; }
+        public IAnswerResult< T > Result { get; set; }
     }
 }

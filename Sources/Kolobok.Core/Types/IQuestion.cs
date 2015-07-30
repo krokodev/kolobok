@@ -6,7 +6,8 @@ using System;
 
 namespace Kolobok.Core.Types
 {
-    public interface IQuestion<T> {
+    public interface IQuestion<T>
+    {
         ISocial Querist { get; set; }
         Func< IWorld, T > Essense { get; set; }
     }

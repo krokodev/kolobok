@@ -1,6 +1,6 @@
 ﻿// Kolobok (c) 2015 Krokodev
 // Kolobok.Tests
-// CoreBaseTests.cs
+// BaseTests.cs
 
 using System;
 using Kolobok.Core.Factory;
@@ -19,8 +19,8 @@ namespace Kolobok.Utils
             Factory = new Factory();
         }
 
-
         #endregion
+
 
         #region Protected Utils
 

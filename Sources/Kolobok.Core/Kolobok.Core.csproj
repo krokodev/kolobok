@@ -61,6 +61,7 @@
     <Compile Include="Types\IOwner.cs" />
     <Compile Include="Types\IQuestion.cs" />
     <Compile Include="Types\IReflective.cs" />
+    <Compile Include="Types\IResearchable.cs" />
     <Compile Include="Types\ISentient.cs" />
     <Compile Include="Types\IWorld.cs" />
     <Compile Include="Utils\CollectionExtensions.cs" />

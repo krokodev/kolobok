@@ -1,4 +1,8 @@
-﻿namespace Kolobok.Core.Types
+﻿// Kolobok (c) 2015 Krokodev
+// Kolobok.Core
+// IOwner.cs
+
+namespace Kolobok.Core.Types
 {
     public interface IOwner
     {

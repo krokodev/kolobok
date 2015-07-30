@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -27,13 +28,14 @@ namespace Kolobok.Core.Enteties
 
         IAgent IAgent.Clone()
         {
-            return new Agent {
+            return new Agent( IAgent.Name ) {
                 _components = _components.Select( c => c.Clone() ).ToList(),
-                _id = new Guid( _id.ToString() )
+                _id = new Guid( _id.ToString() ),
             };
         }
 
         IWorld IAgent.World { get; set; }
+        string IAgent.Name { get; set; }
 
         #endregion
 
@@ -45,9 +47,9 @@ namespace Kolobok.Core.Enteties
             get { return this; }
         }
 
-        T IComposition.GetComponent<T>(bool nullable)
+        T IComposition.GetComponent<T>( bool nullable )
         {
-            AssertComponentExists< T >(ignore:nullable);
+            AssertComponentExists< T >( ignore : nullable );
             return _components.OfType< T >().FirstOrDefault();
         }
 
@@ -73,6 +75,12 @@ namespace Kolobok.Core.Enteties
             InitComponents();
         }
 
+        public Agent( string name, params IComponent[] components )
+            : this( components )
+        {
+            IAgent.Name = name;
+        }
+
         #endregion
 
 
@@ -93,7 +101,7 @@ namespace Kolobok.Core.Enteties
 
         #region Asserts
 
-        private void AssertComponentExists<T>(bool ignore=false)
+        private void AssertComponentExists<T>( bool ignore = false )
         {
             if( ignore ) {
                 return;
@@ -106,7 +114,7 @@ namespace Kolobok.Core.Enteties
 
         private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
         {
-            if( !components.Select( c => c.GetType() ).IsUnique() ) {
+            if( !components.Select( c => c.GetType() ).AreUnique() ) {
                 throw new KolobokException( "Components are not unique" );
             }
         }
@@ -118,12 +126,12 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            return IAgent.Id.ToString();
-        }
-
-        public T GetComponent<T>()
-        {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            if( !string.IsNullOrEmpty( IAgent.Name ) ) {
+                sb.AppendFormat( "{0} ", IAgent.Name );
+            }
+            sb.Append( IAgent.Id );
+            return sb.ToString();
         }
 
         #endregion

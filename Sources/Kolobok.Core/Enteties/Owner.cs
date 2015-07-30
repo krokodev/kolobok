@@ -13,9 +13,7 @@ namespace Kolobok.Core.Enteties
     {
         #region IComponent
 
-        void IComponent.Init( IComposition composition )
-        {
-        }
+        void IComponent.Init( IComposition composition ) {}
 
         IComponent IComponent.Clone()
         {
@@ -29,10 +27,14 @@ namespace Kolobok.Core.Enteties
 
         #region IOwner
 
-        IOwner IOwner { get { return this; } }
+        private IOwner IOwner
+        {
+            get { return this; }
+        }
+
         void IOwner.Has( IProperty property )
         {
-            Assert.That( property.Owner == null, "Property already belongs to other owner");
+            Assert.That( property.Owner == null, "Property already belongs to other owner" );
             _properties.Add( property );
             property.Owner = this;
         }

@@ -1,11 +1,8 @@
 // Kolobok (c) 2015 Krokodev
-// Kolobok.Tests
+// Kolobok.Core
 // ISentient.cs
-
-using System;
 
 namespace Kolobok.Core.Types
 {
-    public interface ISentient {
-    }
+    public interface ISentient {}
 }

@@ -1,5 +1,5 @@
 // Kolobok (c) 2015 Krokodev
-// Kolobok.Tests
+// Kolobok.Core
 // IReflective.cs
 
 namespace Kolobok.Core.Types

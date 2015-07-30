@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Enteties;
 using Kolobok.Core.Types;
-using Kolobok.Core.Utils;
 
 namespace Kolobok.Core.Factory
 {
@@ -20,14 +19,14 @@ namespace Kolobok.Core.Factory
             get { return this; }
         }
 
-        IAgent IFactory.CreateAgent<T1>()
+        IAgent IFactory.CreateAgent<T1>( string name )
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >()
                 );
         }
 
-        IAgent IFactory.CreateAgent<T1, T2>()
+        IAgent IFactory.CreateAgent<T1, T2>( string name )
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >(),
@@ -35,7 +34,7 @@ namespace Kolobok.Core.Factory
                 );
         }
 
-        IAgent IFactory.CreateAgent<T1, T2, T3>()
+        IAgent IFactory.CreateAgent<T1, T2, T3>( string name )
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >(),
@@ -44,7 +43,7 @@ namespace Kolobok.Core.Factory
                 );
         }
 
-        IAgent IFactory.CreateAgent<T1, T2, T3, T4>()
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4>( string name )
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >(),
@@ -54,7 +53,7 @@ namespace Kolobok.Core.Factory
                 );
         }
 
-        IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5>()
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5>( string name )
         {
             return IFactory.CreateAgent(
                 IFactory.CreateComponent< T1 >(),
@@ -67,7 +66,12 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent( params IComponent[] components )
         {
-            return new Agent( components );
+            return IFactory.CreateAgent( "", components );
+        }
+
+        IAgent IFactory.CreateAgent( string name, params IComponent[] components )
+        {
+            return new Agent( name, components );
         }
 
         IComponent IFactory.CreateComponent<T>()

@@ -6,8 +6,9 @@ using System;
 
 namespace Kolobok.Core.Types
 {
-    public interface ISocial {
-        IQuestion<T> Ask<T>( Func< IWorld, T > theme );
-        IAnswer<T> Reply<T>( IQuestion< T > question );
+    public interface ISocial
+    {
+        IQuestion< T > Ask<T>( Func< IWorld, T > theme );
+        IAnswer< T > Reply<T>( IQuestion< T > question );
     }
 }

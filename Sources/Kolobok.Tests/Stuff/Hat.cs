@@ -20,7 +20,6 @@ namespace Kolobok.Stuff
         #endregion
 
 
-
         #region IProperty
 
         IProperty IProperty.Clone()

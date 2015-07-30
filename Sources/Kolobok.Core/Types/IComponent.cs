@@ -4,8 +4,9 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IComponent {
-        void Init(IComposition composition);
+    public interface IComponent
+    {
+        void Init( IComposition composition );
         IComponent Clone();
     }
 }

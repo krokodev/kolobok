@@ -6,6 +6,6 @@ namespace Kolobok.Core.Types
 {
     public interface IComposition
     {
-        T GetComponent<T>(bool nullable=false);
+        T GetComponent<T>( bool nullable = false );
     }
 }
