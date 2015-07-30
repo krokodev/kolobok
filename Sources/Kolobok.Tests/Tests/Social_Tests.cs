@@ -66,7 +66,7 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void Alice_answers_about_Bobs_hat_color()
+        public void Bob_answers_about_Alicas_hat_color()
         {
             var alice = Factory.CreateAgent< IOwner, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
@@ -82,10 +82,37 @@ namespace Kolobok.Tests
             var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
-            Log( answer.Result.Exception );
+            Log( answer.Result.Value );
 
             Assert.AreEqual( Colors.Red , answer.Result.Value);
             Assert.IsTrue( answer.Result.IsVaild );
         }
+
+
+        [Test]
+        public void Bob_answers_according_his_beliefees()
+        {
+            var alice = Factory.CreateAgent< IOwner, ISocial >();
+            var bob = Factory.CreateAgent< ISocial, IRational >();
+
+            alice.As< IOwner >().Has( new Hat() );
+            alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+
+            bob.As<IRational>().Believes( world => {
+                var alicaImage = alice.Clone();
+                world.Contains( alicaImage );
+                alicaImage.As< IOwner >().Has( new Hat() );
+                alicaImage.As< IOwner >().GetFirst< IHat >().Color = Colors.Black;
+            } );
+            bob.As<IRational>().Think();
+
+            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            var answer = bob.As< ISocial >().Reply< Colors >( question );
+
+            Log( answer.Result.Value );
+
+            Assert.AreEqual( Colors.Black, answer.Result.Value);
+        }
+
     }
 }
