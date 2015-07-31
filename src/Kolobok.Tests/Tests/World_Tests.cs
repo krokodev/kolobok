@@ -196,7 +196,8 @@ namespace Kolobok.Tests
                 universe.As< IWorld >()
                     .Agent( alice ).As< IRational >().Imaginary
                     .Agent( bob ).As< IRational >().Imaginary
-                    .Agent( alice ).As< IRational >().Imaginary;
+                    .Agent( alice ).As< IRational >().Imaginary
+                    ;
 
             // FullName: Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary
             // Name: Alice|3.Imaginary
