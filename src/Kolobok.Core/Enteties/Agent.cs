@@ -109,7 +109,7 @@ namespace Kolobok.Core.Enteties
         public Agent( string name, params IComponent[] components )
             : this( components )
         {
-            IAgent.Name = name ?? Constants.Agents.Names.Default;
+            IAgent.Name = name;
         }
 
         #endregion

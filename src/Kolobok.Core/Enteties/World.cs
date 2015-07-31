@@ -177,7 +177,7 @@ namespace Kolobok.Core.Enteties
             if( _holder != null && _holder.HasName() ) {
                 return _holder.Name;
             }
-            if( _composition != null && _composition is IAgent && ( _composition as IAgent ).HasName() ) {
+            if( _composition is IAgent && ( _composition as IAgent ).HasName() ) {
                 return ( _composition as IAgent ).Name;
             }
             return Constants.Worlds.Names.Default;
