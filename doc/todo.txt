@@ -12,6 +12,7 @@ Todo
 
 Done
 ~~~~
++ many tests
 + ren sources to src
 + aspects
 + tests

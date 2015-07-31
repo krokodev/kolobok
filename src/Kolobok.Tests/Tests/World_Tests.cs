@@ -209,6 +209,26 @@ namespace Kolobok.Tests
         }
 
         [Test]
+        public void World_has_superior()
+        {
+            var universe = Factory.CreateAgent< IWorld >();
+            var alice = Factory.CreateAgent< IRational >();
+            var bob = Factory.CreateAgent< IRational >();
+
+            universe.As< IWorld >().Add( alice );
+            alice.As< IRational >().Imaginary.Add( bob );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
+
+            var world = universe.As< IWorld >();
+            var aimg = alice.As< IRational >().Imaginary;
+            var bimg = bob.As< IRational >().Imaginary;
+
+            Assert.AreEqual( null, world.Superior );
+            Assert.AreEqual( world, aimg.Superior );
+            Assert.AreEqual( aimg, bimg.Superior );
+        }
+
+        [Test]
         public void Worlds_full_name_describes_its_hierarchy()
         {
             var universe = Factory.CreateAgent< IWorld >( "Universe" );
@@ -230,6 +250,13 @@ namespace Kolobok.Tests
 
             Log( uabaWorld.FullName );
 
-            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );        }
+            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );        
+        }
+
+        [Test]
+        public void World_dump_contains_info_about_agents_attributes()
+        {
+            
+        }
     }
 }
