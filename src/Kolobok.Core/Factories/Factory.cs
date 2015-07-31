@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 using Kolobok.Core.Diagnostics;
-using Kolobok.Core.Enteties;
+using Kolobok.Core.Implementations;
 using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Factories
@@ -137,7 +137,7 @@ namespace Kolobok.Core.Factories
                 { typeof( IRational ), () => new Rational() },
                 { typeof( ISocial ), () => new Social() },
                 { typeof( IWorld ), () => new World() },
-                { typeof( IOwner ), () => new Owner() },
+                { typeof( IEntity ), () => new Entity() },
             };
 
         #endregion

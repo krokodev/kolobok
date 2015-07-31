@@ -12,7 +12,7 @@ using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
 using MoreLinq;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     internal class World : IWorld, IComponent
     {

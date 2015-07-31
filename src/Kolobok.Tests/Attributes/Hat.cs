@@ -4,9 +4,9 @@
 
 using Kolobok.Core.Types;
 
-namespace Kolobok.Stuff
+namespace Kolobok.Attributes
 {
-    public class Hat : IProperty, IHat
+    public class Hat : IAttribute, IHat
     {
         #region IHat
 
@@ -22,14 +22,14 @@ namespace Kolobok.Stuff
 
         #region IProperty
 
-        IProperty IProperty.Clone()
+        IAttribute IAttribute.Clone()
         {
             var hat = new Hat();
             hat.IHat.Color = IHat.Color;
             return hat;
         }
 
-        IOwner IProperty.Owner { get; set; }
+        IEntity IAttribute.Entity { get; set; }
     }
 
     #endregion

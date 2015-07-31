@@ -3,8 +3,8 @@
 // Rational_Tests.cs
 
 using Kolobok.Asserts;
+using Kolobok.Attributes;
 using Kolobok.Core.Types;
-using Kolobok.Stuff;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -48,18 +48,18 @@ namespace Kolobok.Tests
         [Test]
         public void Agent_believes_that_its_hat_is_red()
         {
-            var agent = Factory.CreateAgent< IRational, IOwner >();
+            var agent = Factory.CreateAgent< IRational, IEntity >();
 
             agent.As< IRational >().Believes( world => {
                 var subj = agent.Clone();
                 world.Add( subj );
-                subj.As< IOwner >().Add( new Hat() );
-                subj.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+                subj.As< IEntity >().Add( new Hat() );
+                subj.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IRational >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IOwner >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IEntity >().GetFirst< IHat >().Color );
         }
 
         [Test]
@@ -73,13 +73,13 @@ namespace Kolobok.Tests
         [Test]
         public void Alice_thinks_a_lot()
         {
-            var alice = Factory.CreateAgent< IRational, IOwner >( "Alice" );
+            var alice = Factory.CreateAgent< IRational, IEntity >( "Alice" );
 
             alice.As< IRational >().Believes( world => {
                 var herself = alice.Clone();
                 world.Add( herself );
-                herself.As< IOwner >().Add( new Hat() );
-                herself.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+                herself.As< IEntity >().Add( new Hat() );
+                herself.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IRational >().Think();
@@ -91,7 +91,7 @@ namespace Kolobok.Tests
 
             alice.As< IRational >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
         }
 
         [Test]

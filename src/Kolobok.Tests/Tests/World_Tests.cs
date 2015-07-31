@@ -2,6 +2,7 @@
 // Kolobok.Tests
 // World_Tests.cs
 
+using Kolobok.Attributes;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
@@ -65,7 +66,7 @@ namespace Kolobok.Tests
         [Test]
         public void Imaginary_agent_has_the_same_id()
         {
-            var alice = Factory.CreateAgent< IRational, IOwner >();
+            var alice = Factory.CreateAgent< IRational, IEntity >();
             alice.As< IRational >().Believes( world => world.Add( alice.Clone() ) );
             alice.As< IRational >().Think();
             Log( alice );
@@ -77,7 +78,7 @@ namespace Kolobok.Tests
         public void Imaginary_agent_has_the_same_name()
         {
             const string name = "Alice";
-            var alice = Factory.CreateAgent< IRational, IOwner >( name );
+            var alice = Factory.CreateAgent< IRational, IEntity >( name );
             alice.As< IRational >().Believes( world => world.Add( alice.Clone() ) );
             alice.As< IRational >().Think();
             Log( alice.Name );
@@ -250,13 +251,24 @@ namespace Kolobok.Tests
 
             Log( uabaWorld.FullName );
 
-            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );        
+            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );
         }
 
+        [Ignore]
         [Test]
         public void World_dump_contains_info_about_agents_attributes()
         {
-            
+            var universe = Factory.CreateAgent< IWorld >();
+            var alice = Factory.CreateAgent< IRational, IEntity >();
+            var bob = Factory.CreateAgent< IRational, IEntity >();
+
+            universe.As< IWorld >().Add( alice );
+            alice.As< IRational >().Imaginary.Add( bob );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
+
+            var aHat = alice.As< IEntity >().Add< Hat >();
+            var bHat = bob.As< IEntity >().Add< Hat >();
+            bob.As< IEntity >().Add( new Hat() );
         }
     }
 }

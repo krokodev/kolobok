@@ -4,7 +4,7 @@
 
 using Kolobok.Core.Types;
 
-namespace Kolobok.Stuff
+namespace Kolobok.Attributes
 {
     public interface IHat : IColored {}
 }

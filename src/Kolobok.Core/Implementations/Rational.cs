@@ -8,7 +8,7 @@ using System.Linq;
 using Kolobok.Core.Common;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     public class Rational : IRational, IComponent
     {

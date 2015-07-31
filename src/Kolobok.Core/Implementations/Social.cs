@@ -5,7 +5,7 @@
 using System;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     internal class Social : ISocial, IComponent
     {

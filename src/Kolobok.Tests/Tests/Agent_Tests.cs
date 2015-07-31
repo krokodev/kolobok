@@ -17,7 +17,7 @@ namespace Kolobok.Tests
         public void Agent_has_default_name()
         {
             var agent1 = Factory.CreateAgent();
-            var agent2 = Factory.CreateAgent< IRational, IOwner >();
+            var agent2 = Factory.CreateAgent< IRational, IEntity >();
             Log( agent1 );
             Log( agent2 );
             Assert.AreEqual( Constants.Agents.Names.Default, agent1.Name );
@@ -142,7 +142,7 @@ namespace Kolobok.Tests
             world.As< IWorld >().Add( clone );
 
             Log( clone.FullName );
-            Log( clone.As< IRational >().Imaginary.FamilyName);
+            Log( clone.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
             Assert.AreEqual( 0, clone.Depth );

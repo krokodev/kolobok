@@ -8,7 +8,7 @@ using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     internal abstract class Composition : IComposition
     {

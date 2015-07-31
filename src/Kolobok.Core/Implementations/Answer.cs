@@ -4,7 +4,7 @@
 
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     internal struct Answer<T> : IAnswer< T >
     {

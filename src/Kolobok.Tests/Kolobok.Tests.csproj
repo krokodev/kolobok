@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="Asserts\RationalsAssertThat.cs" />
     <Compile Include="Asserts\ComponentsAssertThat.cs" />
-    <Compile Include="Stuff\Hat.cs" />
-    <Compile Include="Stuff\IHat.cs" />
+    <Compile Include="Attributes\Hat.cs" />
+    <Compile Include="Attributes\IHat.cs" />
     <Compile Include="Tests\Owner_Tests.cs" />
     <Compile Include="Tests\Agent_Tests.cs" />
     <Compile Include="Tests\Depth_Tests.cs" />

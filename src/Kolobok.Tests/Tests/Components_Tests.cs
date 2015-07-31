@@ -4,7 +4,7 @@
 
 using Kolobok.Asserts;
 using Kolobok.Core.Diagnostics;
-using Kolobok.Core.Enteties;
+using Kolobok.Core.Implementations;
 using Kolobok.Core.Types;
 using Kolobok.Utils;
 using NUnit.Framework;

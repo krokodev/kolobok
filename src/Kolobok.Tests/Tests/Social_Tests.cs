@@ -2,8 +2,8 @@
 // Kolobok.Tests
 // Social_Tests.cs
 
+using Kolobok.Attributes;
 using Kolobok.Core.Types;
-using Kolobok.Stuff;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -15,8 +15,8 @@ namespace Kolobok.Tests
         [Test]
         public void Social_can_query_question()
         {
-            var alice = Factory.CreateAgent< IOwner, ISocial >();
-            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            var alice = Factory.CreateAgent< IEntity, ISocial >();
+            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
 
             Assert.AreEqual( alice.As< ISocial >(), question.Querist );
             Assert.NotNull( question.Querist );
@@ -25,9 +25,9 @@ namespace Kolobok.Tests
         [Test]
         public void Social_can_reply_answer()
         {
-            var alice = Factory.CreateAgent< IOwner, ISocial >();
-            var bob = Factory.CreateAgent< IOwner, ISocial >();
-            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            var alice = Factory.CreateAgent< IEntity, ISocial >();
+            var bob = Factory.CreateAgent< IEntity, ISocial >();
+            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
             Assert.AreEqual( answer.Question, question );
@@ -68,16 +68,16 @@ namespace Kolobok.Tests
         [Test]
         public void Bob_answers_about_Alicas_hat_color()
         {
-            var alice = Factory.CreateAgent< IOwner, ISocial >();
+            var alice = Factory.CreateAgent< IEntity, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
 
-            alice.As< IOwner >().Add( new Hat() );
-            alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+            alice.As< IEntity >().Add( new Hat() );
+            alice.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
 
             bob.As< IRational >().Believes( world => { world.Add( alice ); } );
             bob.As< IRational >().Think();
 
-            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
             Log( answer.Result.Value );
@@ -89,21 +89,21 @@ namespace Kolobok.Tests
         [Test]
         public void Bob_answers_according_his_beliefes()
         {
-            var alice = Factory.CreateAgent< IOwner, ISocial >();
+            var alice = Factory.CreateAgent< IEntity, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
 
-            alice.As< IOwner >().Add( new Hat() );
-            alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+            alice.As< IEntity >().Add( new Hat() );
+            alice.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
 
             bob.As< IRational >().Believes( world => {
                 var alicaImage = alice.Clone();
                 world.Add( alicaImage );
-                alicaImage.As< IOwner >().Add( new Hat() );
-                alicaImage.As< IOwner >().GetFirst< IHat >().Color = Colors.Black;
+                alicaImage.As< IEntity >().Add( new Hat() );
+                alicaImage.As< IEntity >().GetFirst< IHat >().Color = Colors.Black;
             } );
             bob.As< IRational >().Think();
 
-            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+            var question = alice.As< ISocial >().Ask< Colors >( world => world.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
             var answer = bob.As< ISocial >().Reply< Colors >( question );
 
             Log( answer.Result.Value );

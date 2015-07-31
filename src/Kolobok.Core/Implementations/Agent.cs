@@ -7,7 +7,7 @@ using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Enteties
+namespace Kolobok.Core.Implementations
 {
     internal class Agent : Composition, IAgent
     {
