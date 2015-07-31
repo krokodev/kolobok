@@ -67,6 +67,14 @@ namespace Kolobok.Tests
             agent.Reality = newWorld;
         }
 
+        [Test, ExpectedException( typeof( KolobokException ) )]
+        public void Agent_reality_can_not_be_assigned_to_the_arbitrary_world()
+        {
+            var agent = Factory.CreateAgent< IRational >();
+            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            agent.Reality = world;
+        }
+
         [Ignore]
         [Test]
         public void Cloned_agent_has_now_world() {}

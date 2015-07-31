@@ -39,7 +39,8 @@ namespace Kolobok.Core.Enteties
             get { return _reality; }
             set
             {
-                Assert.That( _reality == null, "Can't move agent {0} to another reality", this );
+                Debug.Assert.That( _reality == null, "Agent '{0}' can not be moved to new reality '{1}'", this, value );
+                Debug.Assert.That( value.Contains( this ), "Reality '{0}' should contain agent '{1}'", value , this);
                 _reality = value;
             }
         }

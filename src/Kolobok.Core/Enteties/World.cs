@@ -113,7 +113,7 @@ namespace Kolobok.Core.Enteties
 
         void IAspect.Verify()
         {
-            Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IWorld.Id );
+            Debug.Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IWorld.Id );
         }
 
         #endregion
@@ -154,8 +154,8 @@ namespace Kolobok.Core.Enteties
 
         private void AddAgent( IAgent agent )
         {
-            Assert.That( agent.Reality == null, "Agent [{0}] already belongs to the World [{1}]", agent, agent.Reality );
-            Assert.That( !IWorld.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IWorld );
+            Debug.Assert.That( agent.Reality == null, "Agent [{0}] already belongs to the World [{1}]", agent, agent.Reality );
+            Debug.Assert.That( !IWorld.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IWorld );
 
             _agents.Add( agent );
             agent.Reality = this;

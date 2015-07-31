@@ -10,7 +10,7 @@ namespace Kolobok.Core.Common
         {
             public static class Names
             {
-                public const string Default = "Anonymous world";
+                public const string Default = "World";
                 public const string Imaginary = "Imaginary";
             }
         }
@@ -19,7 +19,7 @@ namespace Kolobok.Core.Common
 
         public static class Agents
         {
-            public const string DefaultName = "Anonymous agent";
+            public const string DefaultName = "Agent";
         }
     }
 }

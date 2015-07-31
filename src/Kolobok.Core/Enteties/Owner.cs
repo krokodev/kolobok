@@ -34,7 +34,7 @@ namespace Kolobok.Core.Enteties
 
         void IOwner.Has( IProperty property )
         {
-            Assert.That( property.Owner == null, "Property already belongs to other owner" );
+            Debug.Assert.That( property.Owner == null, "Property already belongs to other owner" );
             _properties.Add( property );
             property.Owner = this;
         }
