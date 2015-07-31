@@ -97,7 +97,7 @@ namespace Kolobok.Tests
         [Test]
         public void World_has_its_composition_name()
         {
-            var world = Factory.CreateAgent< IWorld >("Universe").As< IWorld >();
+            var world = Factory.CreateAgent< IWorld >( "Universe" ).As< IWorld >();
             Log( world.GetName() );
             Assert.AreEqual( "Universe", world.GetName() );
         }
@@ -124,21 +124,19 @@ namespace Kolobok.Tests
             Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), bob.GetDepth() );
         }
 
-        [Ignore]
         [Test]
-        public void Agents_Imaginary_world_has_proper_name()
+        public void Agents_Imaginary_world_has_proper_family_name()
         {
+            var bworld = Factory.CreateAgent< IRational >( "Bob" ).As< IRational >().Imaginary;
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var aworld = alice.As< IRational >().Imaginary;
-            Log( aworld.GetName() );
-            Assert.AreEqual(
-                string.Format(
-                    "{0}|{1}.{2}",
-                    alice.Name,
-                    alice.GetDepth(),
-                    Constants.Worlds.Names.Imaginary
-                    ),
-                aworld.GetName() );
+            bworld.Add( alice );
+
+            Log( bworld.GetFamilyName() );
+            Log( aworld.GetFamilyName() );
+
+            Assert.AreEqual( "Alice'1.Imaginary", aworld.GetFamilyName() );
+            Assert.AreEqual( "Bob'0.Imaginary", bworld.GetFamilyName() );
         }
 
         [Ignore]

@@ -10,7 +10,8 @@ namespace Kolobok.Core.Common
         {
             public static class Names
             {
-                public const string Template = "{0}.{1}";
+                public const string FullTemplate = "{0}.{1}";
+                public const string FamilyTemplate = "{0}'{1}.{2}";
                 public const string Default = "Some world";
                 public const string Imaginary = "Imaginary";
             }
@@ -25,7 +26,7 @@ namespace Kolobok.Core.Common
         {
             public static class Names
             {
-                public const string Template = "{0}[{1}]";
+                public const string FullTemplate = "{0}[{1}]";
                 public const string Default = "Agent";
             }
         }

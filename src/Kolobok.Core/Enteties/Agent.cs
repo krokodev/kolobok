@@ -60,7 +60,7 @@ namespace Kolobok.Core.Enteties
         {
             return _reality == null
                 ? IAgent.Name
-                : string.Format( Constants.Agents.Names.Template, _reality.GetFullName(), IAgent.Name );
+                : string.Format( Constants.Agents.Names.FullTemplate, _reality.GetFullName(), IAgent.Name );
         }
 
         bool IAgent.HasName()

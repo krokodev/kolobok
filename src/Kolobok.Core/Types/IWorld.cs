@@ -11,8 +11,9 @@ namespace Kolobok.Core.Types
         IWorld Clone();
         bool Contains( IAgent agent );
         void Clear();
-        string GetName();
         uint GetDepth();
+        string GetName();
         string GetFullName();
+        string GetFamilyName();
     }
 }

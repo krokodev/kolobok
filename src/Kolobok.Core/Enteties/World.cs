@@ -70,7 +70,13 @@ namespace Kolobok.Core.Enteties
         {
             return _holder == null
                 ? IWorld.GetName()
-                : string.Format( Constants.Worlds.Names.Template, _holder.GetFullName(), IWorld.GetName() );
+                : string.Format( Constants.Worlds.Names.FullTemplate, _holder.GetFullName(), IWorld.GetName() );
+        }
+
+        public string GetFamilyName()
+        {
+            Debug.Assert.That( _holder != null );
+            return string.Format( Constants.Worlds.Names.FamilyTemplate, _holder.Name, _holder.GetDepth(), IWorld.GetName() );
         }
 
         #endregion
@@ -182,7 +188,6 @@ namespace Kolobok.Core.Enteties
             }
             return Constants.Worlds.Names.Default;
         }
-
 
         #endregion
     }
