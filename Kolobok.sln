@@ -3,14 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolobok.Core", "Sources\Kolobok.Core\Kolobok.Core.csproj", "{ECC82973-7E15-4B24-85C8-A1508BE2AAFA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{57FE23D3-4DAB-4D3B-8648-7FC132E197A2}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolobok.Tests", "Sources\Kolobok.Tests\Kolobok.Tests.csproj", "{19EB97EB-D5E8-4C4F-99A4-5B454F7DAEA0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{6B7D0DF3-D92E-49D9-BD4B-71EECD1009DB}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{6B7D0DF3
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "-", "-", "{84570F36-A44E-4828-8BEA-946929E0215E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolobok.Core", "src\Kolobok.Core\Kolobok.Core.csproj", "{ECC82973-7E15-4B24-85C8-A1508BE2AAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolobok.Tests", "src\Kolobok.Tests\Kolobok.Tests.csproj", "{19EB97EB-D5E8-4C4F-99A4-5B454F7DAEA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
