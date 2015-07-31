@@ -51,16 +51,19 @@ namespace Kolobok.Core.Enteties
             set { _name = value; }
         }
 
-        uint IAgent.GetDepth()
+        uint IAgent.Depth
         {
-            return _reality == null ? Constants.Depth.Basic : _reality.GetDepth();
+            get { return _reality == null ? Constants.Depth.Basic : _reality.Depth; }
         }
 
-        string IAgent.GetFullName()
+        string IAgent.FullName
         {
-            return _reality == null
-                ? IAgent.Name
-                : string.Format( Constants.Agents.Names.FullTemplate, _reality.GetFullName(), IAgent.Name );
+            get
+            {
+                return _reality == null
+                    ? IAgent.Name
+                    : string.Format( Constants.Agents.Names.FullTemplate, _reality.FullName, IAgent.Name );
+            }
         }
 
         bool IAgent.HasName()

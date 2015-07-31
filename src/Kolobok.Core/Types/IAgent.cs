@@ -10,8 +10,8 @@ namespace Kolobok.Core.Types
         IAgent Clone();
         IWorld Reality { get; set; }
         string Name { get; set; }
-        uint GetDepth();
-        string GetFullName();
+        uint Depth { get; }
+        string FullName {get; }
         bool HasName();
     }
 }

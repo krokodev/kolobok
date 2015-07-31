@@ -17,14 +17,14 @@ namespace Kolobok.Tests
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
             Log( world );
-            Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName() );
+            Assert.AreEqual( Constants.Worlds.Names.Default, world.Name );
         }
 
         [Test]
         public void World_has_depth()
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            Assert.AreEqual( Constants.Depth.Basic, world.GetDepth() );
+            Assert.AreEqual( Constants.Depth.Basic, world.Depth );
         }
 
         [Test]
@@ -37,16 +37,16 @@ namespace Kolobok.Tests
             matrix.As< IRational >().Imaginary.Add( alice );
             matrix.As< IRational >().Imaginary.Add( bob );
 
-            Assert.AreEqual( matrix.GetDepth() + 1, matrix.As< IRational >().Imaginary.GetDepth() );
-            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), alice.GetDepth() );
-            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), bob.GetDepth() );
+            Assert.AreEqual( matrix.Depth + 1, matrix.As< IRational >().Imaginary.Depth );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, alice.Depth );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, bob.Depth );
         }
 
         [Test]
         public void Agent_has_depth()
         {
             var agent = Factory.CreateAgent< IRational >();
-            Assert.AreEqual( Constants.Depth.Basic, agent.GetDepth() );
+            Assert.AreEqual( Constants.Depth.Basic, agent.Depth );
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace Kolobok.Tests
         {
             var agent = Factory.CreateAgent< IRational >();
             var iworld = agent.As< IRational >().Imaginary;
-            Assert.AreEqual( agent.GetDepth() + 1, iworld.GetDepth() );
+            Assert.AreEqual( agent.Depth + 1, iworld.Depth );
         }
 
         [Test]
@@ -63,8 +63,8 @@ namespace Kolobok.Tests
             var matrix = Factory.CreateAgent< IRational >( "Matrix" );
             var agent = Factory.CreateAgent();
             matrix.As< IRational >().Imaginary.Add( agent );
-            Assert.AreEqual( 1, agent.GetDepth() );
-            Assert.AreEqual( Constants.Depth.Basic, agent.Clone().GetDepth() );
+            Assert.AreEqual( 1, agent.Depth );
+            Assert.AreEqual( Constants.Depth.Basic, agent.Clone().Depth );
         }
 
         [Test]
@@ -74,24 +74,24 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent< IRational >( "Bob" );
             var charly = Factory.CreateAgent< IRational >( "Charly" );
-            
+
             universe.As< IRational >().Imaginary.Add( alice );
             alice.As< IRational >().Imaginary.Add( bob );
             bob.As< IRational >().Imaginary.Add( charly );
-            
-            Log( universe.GetFullName() );
-            Log( alice.GetFullName() );
-            Log( bob.GetFullName() );
-            Log( charly.GetFullName() );
 
-            Assert.AreEqual( 0, universe.GetDepth());
-            Assert.AreEqual( 1, alice.GetDepth());
-            Assert.AreEqual( 2, bob.GetDepth());
-            Assert.AreEqual( 3, charly.GetDepth());
+            Log( universe.FullName );
+            Log( alice.FullName );
+            Log( bob.FullName );
+            Log( charly.FullName );
 
-            Assert.AreEqual( 1, universe.As< IRational >().Imaginary.Agent( alice ).GetDepth());
-            Assert.AreEqual( 2, alice.As<IRational>().Imaginary.GetDepth());
-            Assert.AreEqual( 2, universe.As< IRational >().Imaginary.Agent( alice ).As<IRational>().Imaginary.GetDepth());
+            Assert.AreEqual( 0, universe.Depth );
+            Assert.AreEqual( 1, alice.Depth );
+            Assert.AreEqual( 2, bob.Depth );
+            Assert.AreEqual( 3, charly.Depth );
+
+            Assert.AreEqual( 1, universe.As< IRational >().Imaginary.Agent( alice ).Depth );
+            Assert.AreEqual( 2, alice.As< IRational >().Imaginary.Depth );
+            Assert.AreEqual( 2, universe.As< IRational >().Imaginary.Agent( alice ).As< IRational >().Imaginary.Depth );
         }
 
         [Test]
@@ -101,29 +101,29 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent< IRational >( "Bob" );
             var charly = Factory.CreateAgent< IRational >( "Charly" );
-            
+
             universe.As< IRational >().Imaginary.Add( alice );
             alice.As< IRational >().Imaginary.Add( bob );
-            
-            bob.As< IRational >().Believes( iworld=>iworld.Add( charly.Clone() ) );
+
+            bob.As< IRational >().Believes( iworld => iworld.Add( charly.Clone() ) );
             bob.As< IRational >().Think();
 
             var bcharly = bob.As< IRational >().Imaginary.Agent( charly );
             bcharly.Name = "bCharly";
 
-            Log( universe.GetFullName() );
-            Log( alice.GetFullName() );
-            Log( bob.GetFullName() );
-            Log( charly.GetFullName() );
-            Log( bcharly.GetFullName() );
-            Log( bob.As<IRational>().Imaginary.GetFamilyName() );
-            Log( bcharly.As<IRational>().Imaginary.GetFamilyName() );
+            Log( universe.FullName );
+            Log( alice.FullName );
+            Log( bob.FullName );
+            Log( charly.FullName );
+            Log( bcharly.FullName );
+            Log( bob.As< IRational >().Imaginary.FamilyName );
+            Log( bcharly.As< IRational >().Imaginary.FamilyName );
 
-            Assert.AreEqual( 0, universe.GetDepth());
-            Assert.AreEqual( 1, alice.GetDepth());
-            Assert.AreEqual( 2, bob.GetDepth());
-            Assert.AreEqual( 0, charly.GetDepth());
-            Assert.AreEqual( 3, bcharly.GetDepth());
+            Assert.AreEqual( 0, universe.Depth );
+            Assert.AreEqual( 1, alice.Depth );
+            Assert.AreEqual( 2, bob.Depth );
+            Assert.AreEqual( 0, charly.Depth );
+            Assert.AreEqual( 3, bcharly.Depth );
         }
 
         [Test]
@@ -140,32 +140,32 @@ namespace Kolobok.Tests
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
 
             Log( universe.As< IWorld >()
-                .Agent( alice ).GetFullName()
+                .Agent( alice ).FullName
                 );
             Log( universe.As< IWorld >()
                 .Agent( alice ).As< IRational >().Imaginary
-                .Agent( bob ).GetFullName()
+                .Agent( bob ).FullName
                 );
             Log( universe.As< IWorld >()
                 .Agent( alice ).As< IRational >().Imaginary
                 .Agent( bob ).As< IRational >().Imaginary
-                .Agent( alice ).GetFullName()
+                .Agent( alice ).FullName
                 );
 
             Assert.AreEqual( 0,
                 universe.As< IWorld >()
-                    .Agent( alice ).GetDepth()
+                    .Agent( alice ).Depth
                 );
             Assert.AreEqual( 1,
                 universe.As< IWorld >()
                     .Agent( alice ).As< IRational >().Imaginary
-                    .Agent( bob ).GetDepth()
+                    .Agent( bob ).Depth
                 );
             Assert.AreEqual( 2,
                 universe.As< IWorld >()
                     .Agent( alice ).As< IRational >().Imaginary
                     .Agent( bob ).As< IRational >().Imaginary
-                    .Agent( alice ).GetDepth()
+                    .Agent( alice ).Depth
                 );
         }
     }

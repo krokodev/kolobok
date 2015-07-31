@@ -55,37 +55,48 @@ namespace Kolobok.Core.Enteties
             _agents.Clear();
         }
 
-        string IWorld.GetName()
+        string IWorld.Name
         {
-            return _name ?? GetDefaultName();
+            get { return _name ?? GetDefaultName(); }
         }
 
-        uint IWorld.GetDepth()
+        uint IWorld.Depth
         {
-            return _holder == null ? Constants.Depth.Basic : _holder.GetDepth() + 1;
+            get { return _holder == null ? Constants.Depth.Basic : _holder.Depth + 1; }
         }
 
-        string IWorld.GetFullName()
+        string IWorld.FullName
         {
-            return _holder == null
-                ? IWorld.GetName()
-                : string.Format( Constants.Worlds.Names.FullTemplate, _holder.GetFullName(), IWorld.GetName() );
+            get
+            {
+                return _holder == null
+                    ? IWorld.Name
+                    : string.Format( Constants.Worlds.Names.FullTemplate, _holder.FullName, IWorld.Name );
+            }
         }
 
-        string IWorld.GetFamilyName()
+        string IWorld.FamilyName
         {
-            Debug.Assert.That( _holder != null, "World has no holder" );
-            System.Diagnostics.Debug.Assert( _holder != null );
-            return string.Format(
-                Constants.Worlds.Names.FamilyTemplate,
-                _holder.Name,
-                _holder.GetDepth(),
-                IWorld.GetName() );
+            get
+            {
+                Debug.Assert.That( _holder != null, "World has no holder" );
+                System.Diagnostics.Debug.Assert( _holder != null );
+                return string.Format(
+                    Constants.Worlds.Names.FamilyTemplate,
+                    _holder.Name,
+                    _holder.Depth,
+                    IWorld.Name );
+            }
         }
 
-        IAgent IWorld.GetHolder()
+        IAgent IWorld.Holder
         {
-            return _holder;
+            get { return _holder; }
+        }
+
+        IWorld IWorld.Superior
+        {
+            get { return _holder == null ? null : _holder.Reality; }
         }
 
         #endregion
@@ -159,7 +170,7 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            return string.Format( "{0} {{{1}}}", IWorld.GetName(), IWorld.Id );
+            return string.Format( "{0} {{{1}}}", IWorld.Name, IWorld.Id );
         }
 
         #endregion

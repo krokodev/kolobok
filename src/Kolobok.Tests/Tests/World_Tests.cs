@@ -58,8 +58,8 @@ namespace Kolobok.Tests
         {
             var w1 = Factory.CreateAgent< IRational >().As< IRational >().Imaginary;
             var w2 = w1.Clone();
-            Log( "{0}\n{1}", w1.GetName(), w2.GetName() );
-            Assert.AreEqual( w1.GetName(), w2.GetName() );
+            Log( "{0}\n{1}", w1.Name, w2.Name );
+            Assert.AreEqual( w1.Name, w2.Name );
         }
 
         [Test]
@@ -90,23 +90,23 @@ namespace Kolobok.Tests
         public void World_has_default_name()
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            Log( world.GetName() );
-            Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName() );
+            Log( world.Name );
+            Assert.AreEqual( Constants.Worlds.Names.Default, world.Name );
         }
 
         [Test]
         public void World_has_its_composition_name()
         {
             var world = Factory.CreateAgent< IWorld >( "Universe" ).As< IWorld >();
-            Log( world.GetName() );
-            Assert.AreEqual( "Universe", world.GetName() );
+            Log( world.Name );
+            Assert.AreEqual( "Universe", world.Name );
         }
 
         [Test]
         public void World_has_depth()
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            Assert.AreEqual( Constants.Depth.Basic, world.GetDepth() );
+            Assert.AreEqual( Constants.Depth.Basic, world.Depth );
         }
 
         [Test]
@@ -119,9 +119,9 @@ namespace Kolobok.Tests
             matrix.As< IRational >().Imaginary.Add( alice );
             matrix.As< IRational >().Imaginary.Add( bob );
 
-            Assert.AreEqual( matrix.GetDepth() + 1, matrix.As< IRational >().Imaginary.GetDepth() );
-            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), alice.GetDepth() );
-            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), bob.GetDepth() );
+            Assert.AreEqual( matrix.Depth + 1, matrix.As< IRational >().Imaginary.Depth );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, alice.Depth );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, bob.Depth );
         }
 
         [Test]
@@ -132,11 +132,11 @@ namespace Kolobok.Tests
             var aworld = alice.As< IRational >().Imaginary;
             bworld.Add( alice );
 
-            Log( bworld.GetFamilyName() );
-            Log( aworld.GetFamilyName() );
+            Log( bworld.FamilyName );
+            Log( aworld.FamilyName );
 
-            Assert.AreEqual( "Alice'1.Img", aworld.GetFamilyName() );
-            Assert.AreEqual( "Bob'0.Img", bworld.GetFamilyName() );
+            Assert.AreEqual( "Alice'1.Img", aworld.FamilyName );
+            Assert.AreEqual( "Bob'0.Img", bworld.FamilyName );
         }
 
         [Test]
@@ -150,10 +150,10 @@ namespace Kolobok.Tests
             alice.As< IRational >().Imaginary.Add( bob );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
 
-            Assert.IsNull( universe.As< IWorld >().GetHolder() );
-            Assert.AreEqual( "Alice", universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.GetHolder().Name );
+            Assert.IsNull( universe.As< IWorld >().Holder );
+            Assert.AreEqual( "Alice", universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.Holder.Name );
             Assert.AreEqual( "Bob",
-                universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.GetHolder().Name );
+                universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Holder.Name );
         }
 
         [Test]
@@ -162,8 +162,8 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var clone = alice.Clone();
 
-            Assert.NotNull( alice.As< IRational >().Imaginary.GetHolder() );
-            Assert.NotNull( clone.As< IRational >().Imaginary.GetHolder() );
+            Assert.NotNull( alice.As< IRational >().Imaginary.Holder );
+            Assert.NotNull( clone.As< IRational >().Imaginary.Holder );
         }
 
         [Test]
@@ -175,11 +175,10 @@ namespace Kolobok.Tests
             alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
             alice.As< IRational >().Think();
 
-            Assert.NotNull( alice.As< IRational >().Imaginary.GetHolder() );
-            Assert.NotNull( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.GetHolder() );
+            Assert.NotNull( alice.As< IRational >().Imaginary.Holder );
+            Assert.NotNull( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Holder );
         }
 
-        [Ignore]
         [Test]
         public void Thinked_out_worlds_family_name_represents_its_position_in_hierarchy()
         {
@@ -198,14 +197,13 @@ namespace Kolobok.Tests
                     .Agent( alice ).As< IRational >().Imaginary
                     .Agent( bob ).As< IRational >().Imaginary
                     .Agent( alice ).As< IRational >().Imaginary
-                    ;
+                ;
 
-            // FullName: Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary
-            // Name: Alice|3.Imaginary
-            Log( uabaWorld );
-            Log( uabaWorld.GetFamilyName() );
+            Log( uabaWorld.FamilyName );
+            Log( uabaWorld.FullName );
+            Log( uabaWorld.Superior.FullName );
 
-            Assert.AreEqual( "Alice'3.Img", uabaWorld.GetFamilyName() );
+            Assert.AreEqual( "Alice'2.Img", uabaWorld.FamilyName );
         }
 
         [Test]

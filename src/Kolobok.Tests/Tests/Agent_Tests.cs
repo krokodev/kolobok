@@ -79,13 +79,13 @@ namespace Kolobok.Tests
             universe.As< IWorld >().Add( alice );
             alice.As< IRational >().Imaginary.Add( bob );
 
-            Log( universe.GetFullName() );
-            Log( alice.GetFullName() );
-            Log( bob.GetFullName() );
+            Log( universe.FullName );
+            Log( alice.FullName );
+            Log( bob.FullName );
 
-            Assert.AreEqual( "Universe", universe.GetFullName() );
-            Assert.AreEqual( "Universe[Alice]", alice.GetFullName() );
-            Assert.AreEqual( "Universe[Alice].Img[Bob]", bob.GetFullName() );
+            Assert.AreEqual( "Universe", universe.FullName );
+            Assert.AreEqual( "Universe[Alice]", alice.FullName );
+            Assert.AreEqual( "Universe[Alice].Img[Bob]", bob.FullName );
         }
 
         [Test]
@@ -94,11 +94,11 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             alice.Name = "New Alice";
 
-            Log( alice.GetFullName() );
-            Log( alice.As< IRational >().Imaginary.GetFamilyName() );
+            Log( alice.FullName );
+            Log( alice.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "New Alice", alice.Name );
-            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.GetHolder().Name );
+            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.Holder.Name );
         }
 
         [Test]
@@ -109,12 +109,12 @@ namespace Kolobok.Tests
             clone.Name = "Clone";
 
             Log( clone );
-            Log( clone.As< IRational >().Imaginary.GetHolder() );
+            Log( clone.As< IRational >().Imaginary.Holder );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( clone, clone.As< IRational >().Imaginary.GetHolder() );
+            Assert.AreEqual( clone, clone.As< IRational >().Imaginary.Holder );
         }
-        
+
         [Test]
         public void Cloned_agent_imaginary_has_proper_holder_name()
         {
@@ -123,11 +123,11 @@ namespace Kolobok.Tests
 
             clone.Name = "Clone";
 
-            Log( clone.GetFullName() );
-            Log( clone.As< IRational >().Imaginary.GetFamilyName() );
+            Log( clone.FullName );
+            Log( clone.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( "Clone", clone.As< IRational >().Imaginary.GetHolder().Name );
+            Assert.AreEqual( "Clone", clone.As< IRational >().Imaginary.Holder.Name );
         }
 
         [Test]
@@ -141,12 +141,12 @@ namespace Kolobok.Tests
 
             world.As< IWorld >().Add( clone );
 
-            Log( clone.GetFullName() );
-            Log( clone.As< IRational >().Imaginary.GetFamilyName() );
+            Log( clone.FullName );
+            Log( clone.As< IRational >().Imaginary.FamilyName);
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( 0, clone.GetDepth() );
-            Assert.AreEqual( "Clone'0.Img", clone.As< IRational >().Imaginary.GetFamilyName() );
+            Assert.AreEqual( 0, clone.Depth );
+            Assert.AreEqual( "Clone'0.Img", clone.As< IRational >().Imaginary.FamilyName );
         }
 
         [Test]
@@ -161,12 +161,12 @@ namespace Kolobok.Tests
             var bcharly = bob.As< IRational >().Imaginary.Agent( charly );
             bcharly.Name = "bCharly";
 
-            Log( bcharly.GetFullName() );
-            Log( bcharly.As< IRational >().Imaginary.GetFamilyName() );
+            Log( bcharly.FullName );
+            Log( bcharly.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "bCharly", bcharly.Name );
-            Assert.AreEqual( 1, bcharly.GetDepth() );
-            Assert.AreEqual( "bCharly'1.Img", bcharly.As< IRational >().Imaginary.GetFamilyName() );
+            Assert.AreEqual( 1, bcharly.Depth );
+            Assert.AreEqual( "bCharly'1.Img", bcharly.As< IRational >().Imaginary.FamilyName );
         }
     }
 }

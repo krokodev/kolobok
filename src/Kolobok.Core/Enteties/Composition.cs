@@ -34,6 +34,7 @@ namespace Kolobok.Core.Enteties
         {
             Components.ForEach( c => c.Init( this ) );
         }
+
         protected List< IComponent > CloneComponents()
         {
             return Components.Select( CloneComponent ).ToList();
