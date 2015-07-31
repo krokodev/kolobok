@@ -40,12 +40,16 @@ namespace Kolobok.Core.Enteties
             set
             {
                 Debug.Assert.That( _reality == null, "Agent '{0}' can not be moved to new reality '{1}'", this, value );
-                Debug.Assert.That( value.Contains( this ), "Reality '{0}' should contain agent '{1}'", value , this);
+                Debug.Assert.That( value.Contains( this ), "Reality '{0}' should contain agent '{1}'", value, this );
                 _reality = value;
             }
         }
 
-        string IAgent.Name { get; set; }
+        string IAgent.Name
+        {
+            get { return _name ?? Constants.Agents.Names.Default; }
+            set { _name = value; }
+        }
 
         uint IAgent.GetDepth()
         {
@@ -54,9 +58,14 @@ namespace Kolobok.Core.Enteties
 
         string IAgent.GetFullName()
         {
-            return _reality == null 
+            return _reality == null
                 ? IAgent.Name
-                : string.Format(Constants.Agents.Names.Template, _reality.GetFullName(), IAgent.Name);
+                : string.Format( Constants.Agents.Names.Template, _reality.GetFullName(), IAgent.Name );
+        }
+
+        bool IAgent.HasName()
+        {
+            return _name != null;
         }
 
         #endregion
@@ -159,6 +168,7 @@ namespace Kolobok.Core.Enteties
         private List< IComponent > _components;
         private Guid _id = Guid.NewGuid();
         private IWorld _reality;
+        private string _name;
 
         #endregion
     }

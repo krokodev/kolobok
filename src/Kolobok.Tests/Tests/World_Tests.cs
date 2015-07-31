@@ -90,8 +90,16 @@ namespace Kolobok.Tests
         public void World_has_default_name()
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            Log( world );
+            Log( world.GetName() );
             Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName() );
+        }
+
+        [Test]
+        public void World_has_its_composition_name()
+        {
+            var world = Factory.CreateAgent< IWorld >("Universe").As< IWorld >();
+            Log( world.GetName() );
+            Assert.AreEqual( "Universe", world.GetName() );
         }
 
         [Test]

@@ -42,7 +42,7 @@ namespace Kolobok.Core.Enteties
         {
             return new World {
                 _agents = _agents.Select( a => a.Clone() ).ToList(),
-                _name = ( string ) _name.Clone()
+                _name = _name
             };
         }
 
@@ -51,14 +51,14 @@ namespace Kolobok.Core.Enteties
             return _agents.Any( a => a.Id == agent.Id );
         }
 
-        public void Clear()
+        void IWorld.Clear()
         {
             _agents.Clear();
         }
 
         string IWorld.GetName()
         {
-            return _name;
+            return _name ?? GetDefaultName();
         }
 
         uint IWorld.GetDepth()
@@ -68,9 +68,9 @@ namespace Kolobok.Core.Enteties
 
         string IWorld.GetFullName()
         {
-            return _holder == null 
+            return _holder == null
                 ? IWorld.GetName()
-                : string.Format(Constants.Worlds.Names.Template, _holder.GetFullName(), IWorld.GetName());
+                : string.Format( Constants.Worlds.Names.Template, _holder.GetFullName(), IWorld.GetName() );
         }
 
         #endregion
@@ -83,7 +83,10 @@ namespace Kolobok.Core.Enteties
             get { return this; }
         }
 
-        void IComponent.Init( IComposition composition ) {}
+        void IComponent.Init( IComposition composition )
+        {
+            _composition = composition;
+        }
 
         IComponent IComponent.Clone()
         {
@@ -131,7 +134,7 @@ namespace Kolobok.Core.Enteties
         public World( IAgent holder = null, string name = null )
         {
             _holder = holder;
-            _name = name ?? Constants.Worlds.Names.Default;
+            _name = name;
         }
 
         #endregion
@@ -152,7 +155,8 @@ namespace Kolobok.Core.Enteties
         private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
         private string _name;
-        private IAgent _holder;
+        private readonly IAgent _holder;
+        private IComposition _composition;
 
         #endregion
 
@@ -167,6 +171,18 @@ namespace Kolobok.Core.Enteties
             _agents.Add( agent );
             agent.Reality = this;
         }
+
+        private string GetDefaultName()
+        {
+            if( _holder != null && _holder.HasName() ) {
+                return _holder.Name;
+            }
+            if( _composition != null && _composition is IAgent && ( _composition as IAgent ).HasName() ) {
+                return ( _composition as IAgent ).Name;
+            }
+            return Constants.Worlds.Names.Default;
+        }
+
 
         #endregion
     }

@@ -12,5 +12,6 @@ namespace Kolobok.Core.Types
         string Name { get; set; }
         uint GetDepth();
         string GetFullName();
+        bool HasName();
     }
 }

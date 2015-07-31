@@ -84,6 +84,8 @@ namespace Kolobok.Tests
             Log( bob.GetFullName() );
 
             Assert.AreEqual( "Universe", universe.GetFullName() );
+            Assert.AreEqual( "Universe[Alice]", alice.GetFullName() );
+            Assert.AreEqual( "Universe[Alice].Imaginary[Bob]", bob.GetFullName() );
         }
     }
 }
