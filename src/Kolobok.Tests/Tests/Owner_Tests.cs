@@ -20,15 +20,15 @@ namespace Kolobok.Tests
             var bob = Factory.CreateAgent< IOwner >().As< IOwner >();
             var hat = new Hat();
 
-            alice.Has( hat );
-            bob.Has( hat );
+            alice.Add( hat );
+            bob.Add( hat );
         }
 
         [Test]
         public void Cloned_owners_have_different_properties()
         {
             var agent = Factory.CreateAgent< IOwner >();
-            agent.As< IOwner >().Has( new Hat() );
+            agent.As< IOwner >().Add( new Hat() );
             var clone = agent.Clone();
             var aHat = agent.As< IOwner >().GetFirst< Hat >();
             var cHat = clone.As< IOwner >().GetFirst< Hat >();

@@ -6,7 +6,7 @@ namespace Kolobok.Core.Types
 {
     public interface IOwner
     {
-        void Has( IProperty property );
+        void Add( IProperty property );
         T GetFirst<T>();
     }
 }

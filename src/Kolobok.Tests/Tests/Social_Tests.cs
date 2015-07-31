@@ -71,7 +71,7 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IOwner, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
 
-            alice.As< IOwner >().Has( new Hat() );
+            alice.As< IOwner >().Add( new Hat() );
             alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
 
             bob.As< IRational >().Believes( world => { world.Add( alice ); } );
@@ -92,13 +92,13 @@ namespace Kolobok.Tests
             var alice = Factory.CreateAgent< IOwner, ISocial >();
             var bob = Factory.CreateAgent< ISocial, IRational >();
 
-            alice.As< IOwner >().Has( new Hat() );
+            alice.As< IOwner >().Add( new Hat() );
             alice.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
 
             bob.As< IRational >().Believes( world => {
                 var alicaImage = alice.Clone();
                 world.Add( alicaImage );
-                alicaImage.As< IOwner >().Has( new Hat() );
+                alicaImage.As< IOwner >().Add( new Hat() );
                 alicaImage.As< IOwner >().GetFirst< IHat >().Color = Colors.Black;
             } );
             bob.As< IRational >().Think();

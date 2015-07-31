@@ -202,6 +202,8 @@ namespace Kolobok.Tests
             Log( uabaWorld.FamilyName );
             Log( uabaWorld.FullName );
             Log( uabaWorld.Superior.FullName );
+            Log( uabaWorld.Superior.Superior.FullName );
+            Log( uabaWorld.Superior.Superior.Superior.FullName );
 
             Assert.AreEqual( "Alice'2.Img", uabaWorld.FamilyName );
         }
@@ -209,7 +211,25 @@ namespace Kolobok.Tests
         [Test]
         public void Worlds_full_name_describes_its_hierarchy()
         {
-            Assert.Ignore();
-        }
+            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            universe.As< IWorld >().Add( alice );
+            alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
+            alice.As< IRational >().Think();
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Add( alice.Clone() ) );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
+
+            var uabaWorld =
+                universe.As< IWorld >()
+                    .Agent( alice ).As< IRational >().Imaginary
+                    .Agent( bob ).As< IRational >().Imaginary
+                    .Agent( alice ).As< IRational >().Imaginary
+                ;
+
+            Log( uabaWorld.FullName );
+
+            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );        }
     }
 }

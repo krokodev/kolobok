@@ -53,7 +53,7 @@ namespace Kolobok.Tests
             agent.As< IRational >().Believes( world => {
                 var subj = agent.Clone();
                 world.Add( subj );
-                subj.As< IOwner >().Has( new Hat() );
+                subj.As< IOwner >().Add( new Hat() );
                 subj.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
@@ -78,7 +78,7 @@ namespace Kolobok.Tests
             alice.As< IRational >().Believes( world => {
                 var herself = alice.Clone();
                 world.Add( herself );
-                herself.As< IOwner >().Has( new Hat() );
+                herself.As< IOwner >().Add( new Hat() );
                 herself.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
