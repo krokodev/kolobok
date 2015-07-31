@@ -11,5 +11,6 @@ namespace Kolobok.Core.Types
         IWorld Reality { get; set; }
         string Name { get; set; }
         uint GetDepth();
+        string GetFullName();
     }
 }

@@ -13,5 +13,6 @@ namespace Kolobok.Core.Types
         void Clear();
         string GetName();
         uint GetDepth();
+        string GetFullName();
     }
 }

@@ -10,16 +10,24 @@ namespace Kolobok.Core.Common
         {
             public static class Names
             {
+                public const string Template = "{0}.{1}";
                 public const string Default = "World";
                 public const string Imaginary = "Imaginary";
             }
         }
 
-        public const uint BasicDepth = 0;
+        public static class Depth
+        {
+            public const uint Basic = 0;
+        }
 
         public static class Agents
         {
-            public const string DefaultName = "Agent";
+            public static class Names
+            {
+                public const string Template = "{0}.{1}";
+                public const string Default = "Agent";
+            }
         }
     }
 }

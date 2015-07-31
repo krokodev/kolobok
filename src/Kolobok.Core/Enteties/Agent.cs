@@ -49,7 +49,14 @@ namespace Kolobok.Core.Enteties
 
         uint IAgent.GetDepth()
         {
-            return _reality == null ? Constants.BasicDepth : _reality.GetDepth();
+            return _reality == null ? Constants.Depth.Basic : _reality.GetDepth();
+        }
+
+        string IAgent.GetFullName()
+        {
+            return _reality == null 
+                ? IAgent.Name
+                : string.Format(Constants.Agents.Names.Template, _reality.GetFullName(), IAgent.Name);
         }
 
         #endregion
@@ -93,7 +100,7 @@ namespace Kolobok.Core.Enteties
         public Agent( string name, params IComponent[] components )
             : this( components )
         {
-            IAgent.Name = name ?? Constants.Agents.DefaultName;
+            IAgent.Name = name ?? Constants.Agents.Names.Default;
         }
 
         #endregion
@@ -152,7 +159,6 @@ namespace Kolobok.Core.Enteties
         private List< IComponent > _components;
         private Guid _id = Guid.NewGuid();
         private IWorld _reality;
-        private IWorld _reality1;
 
         #endregion
     }

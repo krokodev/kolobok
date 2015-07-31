@@ -63,7 +63,14 @@ namespace Kolobok.Core.Enteties
 
         uint IWorld.GetDepth()
         {
-            return _holder == null ? Constants.BasicDepth : _holder.GetDepth() + 1;
+            return _holder == null ? Constants.Depth.Basic : _holder.GetDepth() + 1;
+        }
+
+        string IWorld.GetFullName()
+        {
+            return _holder == null 
+                ? IWorld.GetName()
+                : string.Format(Constants.Worlds.Names.Template, _holder.GetFullName(), IWorld.GetName());
         }
 
         #endregion

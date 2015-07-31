@@ -91,14 +91,29 @@ namespace Kolobok.Tests
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
             Log( world );
-            Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName());
+            Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName() );
         }
 
         [Test]
         public void World_has_depth()
         {
             var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            Assert.AreEqual( Constants.BasicDepth, world.GetDepth() );
+            Assert.AreEqual( Constants.Depth.Basic, world.GetDepth() );
+        }
+
+        [Test]
+        public void World_agents_have_the_same_depts()
+        {
+            var matrix = Factory.CreateAgent< IRational >( "Matrix" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            matrix.As< IRational >().Imaginary.Add( alice );
+            matrix.As< IRational >().Imaginary.Add( bob );
+
+            Assert.AreEqual( matrix.GetDepth() + 1, matrix.As< IRational >().Imaginary.GetDepth() );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), alice.GetDepth() );
+            Assert.AreEqual( matrix.As< IRational >().Imaginary.GetDepth(), bob.GetDepth() );
         }
 
         [Ignore]
@@ -142,7 +157,7 @@ namespace Kolobok.Tests
             // Name: Alice|3.Imaginary
             Log( uabaWorld );
 
-            Assert.AreNotEqual( Constants.Worlds.Names.Default, uabaWorld.GetName());
+            Assert.AreNotEqual( Constants.Worlds.Names.Default, uabaWorld.GetName() );
             Assert.AreEqual( "Alice|3.Imaginary", uabaWorld.GetName() );
         }
 
