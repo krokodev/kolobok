@@ -3,7 +3,7 @@
 // BaseTests.cs
 
 using System;
-using Kolobok.Core.Factory;
+using Kolobok.Core.Factories;
 using Kolobok.Core.Types;
 using NUnit.Framework;
 
@@ -26,10 +26,11 @@ namespace Kolobok.Utils
 
         protected IFactory Factory { get; set; }
 
-        protected static void Log( string  str )
+        protected static void Log( string str )
         {
             Console.WriteLine( str );
         }
+
         protected static void Log( object obj )
         {
             Console.WriteLine( obj.ToString() );

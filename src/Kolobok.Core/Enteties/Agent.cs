@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
@@ -35,8 +34,22 @@ namespace Kolobok.Core.Enteties
             };
         }
 
-        IWorld IAgent.World { get; set; }
+        IWorld IAgent.Reality
+        {
+            get { return _reality; }
+            set
+            {
+                Assert.That( _reality == null, "Can't move agent {0} to another reality", this );
+                _reality = value;
+            }
+        }
+
         string IAgent.Name { get; set; }
+
+        uint IAgent.GetDepth()
+        {
+            return _reality == null ? Constants.BasicDepth : _reality.GetDepth();
+        }
 
         #endregion
 
@@ -79,7 +92,7 @@ namespace Kolobok.Core.Enteties
         public Agent( string name, params IComponent[] components )
             : this( components )
         {
-            IAgent.Name = name?? Constants.Agents.DefaultName;
+            IAgent.Name = name ?? Constants.Agents.DefaultName;
         }
 
         #endregion
@@ -127,7 +140,7 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            return string.Format("{0} {{{1}}}", IAgent.Name, IAgent.Id);
+            return string.Format( "{0} {{{1}}}", IAgent.Name, IAgent.Id );
         }
 
         #endregion
@@ -137,6 +150,8 @@ namespace Kolobok.Core.Enteties
 
         private List< IComponent > _components;
         private Guid _id = Guid.NewGuid();
+        private IWorld _reality;
+        private IWorld _reality1;
 
         #endregion
     }

@@ -54,6 +54,15 @@ namespace Kolobok.Tests
         }
 
         [Test]
+        public void Cloned_worlds_have_the_same_name()
+        {
+            var w1 = Factory.CreateAgent< IRational >().As< IRational >().Imaginary;
+            var w2 = w1.Clone();
+            Log( "{0}\n{1}", w1.GetName(), w2.GetName() );
+            Assert.AreEqual( w1.GetName(), w2.GetName() );
+        }
+
+        [Test]
         public void Imaginary_agent_has_the_same_id()
         {
             var alice = Factory.CreateAgent< IRational, IOwner >();
@@ -73,23 +82,74 @@ namespace Kolobok.Tests
             alice.As< IRational >().Think();
             Log( alice.Name );
             Log( alice.As< IRational >().Imaginary.Agent( alice ).Name );
-            Assert.AreEqual( name, alice.Name);
+            Assert.AreEqual( name, alice.Name );
             Assert.AreEqual( alice.Name, alice.As< IRational >().Imaginary.Agent( alice ).Name );
         }
 
         [Test]
         public void World_has_default_name()
         {
-            var world = Factory.CreateAgent<IWorld>().As<IWorld>();
+            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
             Log( world );
-            Assert.AreEqual( world.Name, Constants.Worlds.DefaultName );
+            Assert.AreEqual( Constants.Worlds.Names.Default, world.GetName());
         }
 
         [Test]
-        public void Worlds_name_represents_its_position_in_hierarchy()
+        public void World_has_depth()
         {
-            Assert.Ignore("Not implemented");
+            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            Assert.AreEqual( Constants.BasicDepth, world.GetDepth() );
         }
 
+        [Ignore]
+        [Test]
+        public void Agents_Imaginary_world_has_proper_name()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var aworld = alice.As< IRational >().Imaginary;
+            Log( aworld.GetName() );
+            Assert.AreEqual(
+                string.Format(
+                    "{0}|{1}.{2}",
+                    alice.Name,
+                    alice.GetDepth(),
+                    Constants.Worlds.Names.Imaginary
+                    ),
+                aworld.GetName() );
+        }
+
+        [Ignore]
+        [Test]
+        public void Worlds_name_represents_its_position_in_hierarchy()
+        {
+            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            universe.As< IWorld >().Add( alice );
+            alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
+            alice.As< IRational >().Think();
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Add( alice.Clone() ) );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
+
+            var uabaWorld =
+                universe.As< IWorld >()
+                    .Agent( alice ).As< IRational >().Imaginary
+                    .Agent( bob ).As< IRational >().Imaginary
+                    .Agent( alice ).As< IRational >().Imaginary;
+
+            // FullName: Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary
+            // Name: Alice|3.Imaginary
+            Log( uabaWorld );
+
+            Assert.AreNotEqual( Constants.Worlds.Names.Default, uabaWorld.GetName());
+            Assert.AreEqual( "Alice|3.Imaginary", uabaWorld.GetName() );
+        }
+
+        [Test]
+        public void Worlds_full_name_describes_its_hierarchy()
+        {
+            Assert.Ignore();
+        }
     }
 }

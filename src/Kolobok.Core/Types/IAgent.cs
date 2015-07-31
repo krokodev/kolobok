@@ -8,7 +8,8 @@ namespace Kolobok.Core.Types
     {
         T As<T>();
         IAgent Clone();
-        IWorld World { get; set; }
+        IWorld Reality { get; set; }
         string Name { get; set; }
+        uint GetDepth();
     }
 }

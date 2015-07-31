@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kolobok.Core.Common;
 using Kolobok.Core.Types;
 
 namespace Kolobok.Core.Enteties
@@ -34,7 +35,10 @@ namespace Kolobok.Core.Enteties
 
         #region IComponent
 
-        void IComponent.Init( IComposition composition ) {}
+        void IComponent.Init( IComposition composition )
+        {
+            _presentImage = new World( ( IAgent ) composition, Constants.Worlds.Names.Imaginary );
+        }
 
         IComponent IComponent.Clone()
         {
@@ -60,7 +64,7 @@ namespace Kolobok.Core.Enteties
         #region Fields
 
         private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
-        private IWorld _presentImage = new World();
+        private IWorld _presentImage;
 
         #endregion
     }

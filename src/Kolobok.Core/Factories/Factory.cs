@@ -8,7 +8,7 @@ using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Enteties;
 using Kolobok.Core.Types;
 
-namespace Kolobok.Core.Factory
+namespace Kolobok.Core.Factories
 {
     public class Factory : IFactory
     {
@@ -63,7 +63,8 @@ namespace Kolobok.Core.Factory
                 IFactory.CreateComponent< T5 >()
                 );
         }
-    IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5, T6>( string name )
+
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5, T6>( string name )
         {
             return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),
@@ -74,7 +75,8 @@ namespace Kolobok.Core.Factory
                 IFactory.CreateComponent< T6 >()
                 );
         }
-    IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5, T6, T7>( string name )
+
+        IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5, T6, T7>( string name )
         {
             return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),

@@ -69,11 +69,11 @@ namespace Kolobok.Tests
 
             agent.As< IRational >().Verify();
         }
-        
+
         [Test]
         public void Alice_thinks_a_lot()
         {
-            var alice = Factory.CreateAgent< IRational, IOwner >("Alice");
+            var alice = Factory.CreateAgent< IRational, IOwner >( "Alice" );
 
             alice.As< IRational >().Believes( world => {
                 var herself = alice.Clone();
@@ -92,6 +92,32 @@ namespace Kolobok.Tests
             alice.As< IRational >().Verify();
 
             Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IOwner >().GetFirst< IHat >().Color );
+        }
+
+        [Test]
+        public void Alice_imaginates_Bob()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            alice.As< IRational >().Believes( world => world.Add( bob.Clone() ) );
+            alice.As< IRational >().Think();
+
+            Assert.That( alice.As< IRational >().Imaginary.Contains( bob ) );
+        }
+
+        [Test]
+        public void Alice_imaginates_Bob_which_imaginates_Alice()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            alice.As< IRational >().Believes( world => world.Add( bob.Clone() ) );
+            alice.As< IRational >().Think();
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( world => world.Add( alice.Clone() ) );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
+
+            Assert.That( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Contains( alice ) );
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Kolobok.Core.Enteties
                 return _agents.First( a => a.Id == agent.Id );
             }
             catch {
-                throw new KolobokUnknownAgentException( "World {0} does not contain agent {1}", IWorld.Id, agent.Id );
+                throw new KolobokUnknownAgentException( "World {0} does not contain agent {1}", IWorld, agent );
             }
         }
 
@@ -41,7 +41,8 @@ namespace Kolobok.Core.Enteties
         IWorld IWorld.Clone()
         {
             return new World {
-                _agents = _agents.Select( a => a.Clone() ).ToList()
+                _agents = _agents.Select( a => a.Clone() ).ToList(),
+                _name = ( string ) _name.Clone()
             };
         }
 
@@ -55,10 +56,14 @@ namespace Kolobok.Core.Enteties
             _agents.Clear();
         }
 
-        string IWorld.Name
+        string IWorld.GetName()
         {
-            get { return _name; }
-            set { _name = value; }
+            return _name;
+        }
+
+        uint IWorld.GetDepth()
+        {
+            return _holder == null ? Constants.BasicDepth : _holder.GetDepth() + 1;
         }
 
         #endregion
@@ -97,9 +102,7 @@ namespace Kolobok.Core.Enteties
         {
             var sb = new StringBuilder();
             sb.AppendFormat( "{0}\n", this );
-            _agents.ForEach( a => {
-                sb.AppendFormat( "  {0}\n", a );
-            } );
+            _agents.ForEach( a => { sb.AppendFormat( "  {0}\n", a ); } );
             return sb.ToString();
         }
 
@@ -116,11 +119,13 @@ namespace Kolobok.Core.Enteties
         #endregion
 
 
-        #region Fields
+        #region Ctor
 
-        private List< IAgent > _agents = new List< IAgent >();
-        private readonly Guid _id = Guid.NewGuid();
-        private string _name = Constants.Worlds.DefaultName;
+        public World( IAgent holder = null, string name = null )
+        {
+            _holder = holder;
+            _name = name ?? Constants.Worlds.Names.Default;
+        }
 
         #endregion
 
@@ -129,8 +134,18 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            return string.Format("{0} {{{1}}}", IWorld.Name, IWorld.Id);
+            return string.Format( "{0} {{{1}}}", IWorld.GetName(), IWorld.Id );
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private List< IAgent > _agents = new List< IAgent >();
+        private readonly Guid _id = Guid.NewGuid();
+        private string _name;
+        private IAgent _holder;
 
         #endregion
 
@@ -139,11 +154,11 @@ namespace Kolobok.Core.Enteties
 
         private void AddAgent( IAgent agent )
         {
-            Assert.That( agent.World == null, "Agent [{0}] already belongs to the World [{1}]", agent, agent.World );
+            Assert.That( agent.Reality == null, "Agent [{0}] already belongs to the World [{1}]", agent, agent.Reality );
             Assert.That( !IWorld.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IWorld );
 
             _agents.Add( agent );
-            agent.World = this;
+            agent.Reality = this;
         }
 
         #endregion
