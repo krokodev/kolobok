@@ -86,7 +86,7 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void World_name_represent_its_position_in_hierarchy()
+        public void Worlds_name_represents_its_position_in_hierarchy()
         {
             Assert.Ignore("Not implemented");
         }

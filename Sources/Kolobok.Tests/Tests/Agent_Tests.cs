@@ -3,6 +3,7 @@
 // Agent_Tests.cs
 
 using Kolobok.Core.Common;
+using Kolobok.Core.Types;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -14,9 +15,12 @@ namespace Kolobok.Tests
         [Test]
         public void Agent_has_default_name()
         {
-            var agent = Factory.CreateAgent();
-            Log( agent );
-            Assert.AreEqual( Constants.Agents.DefaultName, agent.Name );
+            var agent1 = Factory.CreateAgent();
+            var agent2 = Factory.CreateAgent<IRational, IOwner>();
+            Log( agent1 );
+            Log( agent2 );
+            Assert.AreEqual( Constants.Agents.DefaultName, agent1.Name );
+            Assert.AreEqual( Constants.Agents.DefaultName, agent2.Name );
         }
 
         [Test]
