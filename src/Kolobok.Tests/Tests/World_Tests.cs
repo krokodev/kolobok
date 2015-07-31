@@ -139,9 +139,48 @@ namespace Kolobok.Tests
             Assert.AreEqual( "Bob'0.Imaginary", bworld.GetFamilyName() );
         }
 
-        [Ignore]
         [Test]
-        public void Worlds_name_represents_its_position_in_hierarchy()
+        public void Imaginary_worlds_have_holders()
+        {
+            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            universe.As< IWorld >().Add( alice );
+            alice.As< IRational >().Imaginary.Add( bob );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
+
+            Assert.IsNull( universe.As< IWorld >().GetHolder() );
+            Assert.AreEqual( "Alice", universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.GetHolder().Name );
+            Assert.AreEqual( "Bob",
+                universe.As< IWorld >().Agent( alice ).As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.GetHolder().Name );
+        }
+
+        [Test]
+        public void Cloned_agents_Imaginary_has_holder()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var clone = alice.Clone();
+
+            Assert.NotNull( alice.As< IRational >().Imaginary.GetHolder() );
+            Assert.NotNull( clone.As< IRational >().Imaginary.GetHolder() );
+        }
+
+        [Test]
+        public void Imaginary_thinked_out_worlds_have_holders()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+
+            alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
+            alice.As< IRational >().Think();
+
+            Assert.NotNull( alice.As< IRational >().Imaginary.GetHolder() );
+            Assert.NotNull( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.GetHolder() );
+        }
+
+        [Test]
+        public void Worlds_family_name_represents_its_position_in_hierarchy()
         {
             var universe = Factory.CreateAgent< IWorld >( "Universe" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );
@@ -162,9 +201,9 @@ namespace Kolobok.Tests
             // FullName: Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary
             // Name: Alice|3.Imaginary
             Log( uabaWorld );
+            Log( uabaWorld.GetFamilyName() );
 
-            Assert.AreNotEqual( Constants.Worlds.Names.Default, uabaWorld.GetName() );
-            Assert.AreEqual( "Alice|3.Imaginary", uabaWorld.GetName() );
+            Assert.AreEqual( "Alice'3.Imaginary", uabaWorld.GetFamilyName() );
         }
 
         [Test]

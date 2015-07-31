@@ -38,11 +38,10 @@ namespace Kolobok.Core.Enteties
             agents.ForEach( AddAgent );
         }
 
-        IWorld IWorld.Clone()
+        IWorld IWorld.Clone( IAgent holder )
         {
-            return new World {
-                _agents = _agents.Select( a => a.Clone() ).ToList(),
-                _name = _name
+            return new World( holder, _name ) {
+                _agents = _agents.Select( a => a.Clone() ).ToList()
             };
         }
 
@@ -73,10 +72,19 @@ namespace Kolobok.Core.Enteties
                 : string.Format( Constants.Worlds.Names.FullTemplate, _holder.GetFullName(), IWorld.GetName() );
         }
 
-        public string GetFamilyName()
+        string IWorld.GetFamilyName()
         {
-            Debug.Assert.That( _holder != null );
-            return string.Format( Constants.Worlds.Names.FamilyTemplate, _holder.Name, _holder.GetDepth(), IWorld.GetName() );
+            Debug.Assert.That( _holder != null, "World has no holder" );
+            return string.Format(
+                Constants.Worlds.Names.FamilyTemplate,
+                _holder.Name,
+                _holder.GetDepth(),
+                IWorld.GetName() );
+        }
+
+        IAgent IWorld.GetHolder()
+        {
+            return _holder;
         }
 
         #endregion
@@ -96,7 +104,7 @@ namespace Kolobok.Core.Enteties
 
         IComponent IComponent.Clone()
         {
-            return IWorld.Clone() as IComponent;
+            return ( IComponent ) IWorld.Clone( ( IAgent ) _composition );
         }
 
         #endregion

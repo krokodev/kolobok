@@ -30,7 +30,7 @@ namespace Kolobok.Core.Enteties
         {
             return new Agent( IAgent.Name ) {
                 _components = _components.Select( c => c.Clone() ).ToList(),
-                _id = new Guid( _id.ToString() ),
+                _id = new Guid( _id.ToString() )
             };
         }
 
