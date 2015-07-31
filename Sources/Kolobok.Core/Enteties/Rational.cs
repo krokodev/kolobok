@@ -15,6 +15,7 @@ namespace Kolobok.Core.Enteties
 
         void IRational.Think()
         {
+            _presentImage.Clear();
             _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 

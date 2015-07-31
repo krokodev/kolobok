@@ -10,5 +10,6 @@ namespace Kolobok.Core.Types
         void Add( params IAgent[] agents );
         IWorld Clone();
         bool Contains( IAgent agent );
+        void Clear();
     }
 }

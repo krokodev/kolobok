@@ -49,6 +49,11 @@ namespace Kolobok.Core.Enteties
             return _agents.Any( a => a.Id == agent.Id );
         }
 
+        public void Clear()
+        {
+            _agents.Clear();
+        }
+
         #endregion
 
 
