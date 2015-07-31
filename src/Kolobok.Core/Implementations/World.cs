@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
@@ -79,8 +78,9 @@ namespace Kolobok.Core.Implementations
         {
             get
             {
-                Debug.Assert.That( _holder != null, "World has no holder" );
-                System.Diagnostics.Debug.Assert( _holder != null );
+                if( _holder == null ) {
+                    return IWorld.Name;
+                }
                 return string.Format(
                     Constants.Worlds.Names.FamilyTemplate,
                     _holder.Name,
@@ -134,13 +134,14 @@ namespace Kolobok.Core.Implementations
 
         #region IResearchable
 
-        string IResearchable.GetDump()
+        string IResearchable.GetDump( int level )
         {
-            var sb = new StringBuilder();
-            sb.AppendFormat( "{0}: {1}", typeof( World ).Name, IWorld.Name );
-            sb.AppendLine();
-            _agents.ForEach( a => sb.AppendLine( a.GetDump() ) );
-            return sb.ToString();
+            var wr = new OutlineWriter( level );
+            wr.Line( "{0} <{1}>", IWorld.FamilyName, typeof( World ).Name );
+            //wr.Line( "{");
+            _agents.ForEach( a => wr.Append( a.GetDump( wr.Level+1 ) ) );
+            //wr.Line( "}");
+            return wr.ToString();
         }
 
         #endregion

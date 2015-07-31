@@ -47,6 +47,7 @@
     <Compile Include="Implementations\Composition.cs" />
     <Compile Include="Implementations\Answer.cs" />
     <Compile Include="Implementations\AnswerResult.cs" />
+    <Compile Include="Utils\OutlineWriter.cs" />
     <Compile Include="Implementations\Question.cs" />
     <Compile Include="Diagnostics\KolobokUnknownAgentException.cs" />
     <Compile Include="Types\Colors.cs" />

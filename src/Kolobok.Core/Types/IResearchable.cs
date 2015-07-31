@@ -6,6 +6,6 @@ namespace Kolobok.Core.Types
 {
     public interface IResearchable
     {
-        string GetDump();
+        string GetDump( int level = 0 );
     }
 }

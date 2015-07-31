@@ -18,10 +18,15 @@ namespace Kolobok.Tests
             var universe = Factory.CreateAgent< IWorld >( "Universe" );
             var alice = Factory.CreateAgent< IRational, IEntity >( "Alice" );
             var bob = Factory.CreateAgent< IRational, IEntity >( "Bob" );
+            var charly = Factory.CreateAgent< IRational, IEntity >( "Charly" );
 
             universe.As< IWorld >().Add( alice );
-            alice.As< IRational >().Imaginary.Add( bob );
+            universe.As< IWorld >().Add( bob );
+            alice.As< IRational >().Imaginary.Add( bob.Clone() );
+            alice.As< IRational >().Imaginary.Add( charly.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( bob.Clone() );
+            universe.As< IWorld >().Add( charly );
 
             IHat aHat = alice.As< IEntity >().Add< Hat >();
             IHat bHat = bob.As< IEntity >().Add< Hat >();
@@ -33,10 +38,12 @@ namespace Kolobok.Tests
 
             Log( dump );
 
-            Assert.Ignore();
             Assert.That( dump.Contains( "Universe" ) );
             Assert.That( dump.Contains( "Alice" ) );
             Assert.That( dump.Contains( "Bob" ) );
+            Assert.That( dump.Contains( "Charly" ) );
+
+            Assert.Ignore();
             Assert.That( dump.Contains( "Hat" ) );
             Assert.That( dump.Contains( "Red" ) );
             Assert.That( dump.Contains( "Black" ) );

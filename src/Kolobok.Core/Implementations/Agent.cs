@@ -4,10 +4,10 @@
 
 using System;
 using System.Linq;
-using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
 using MoreLinq;
 
 namespace Kolobok.Core.Implementations
@@ -113,13 +113,14 @@ namespace Kolobok.Core.Implementations
 
         #region IResearchable
 
-        string IResearchable.GetDump()
+        string IResearchable.GetDump( int level )
         {
-            var sb = new StringBuilder();
-            sb.AppendFormat("{0}: {1}", typeof(Agent).Name, IAgent.Name );
-            sb.AppendLine();
-            Components.OfType< IResearchable >().ForEach( c => sb.AppendLine( c.GetDump() ));
-            return sb.ToString();
+            var wr = new OutlineWriter( level );
+            wr.Line( "{0} <{1}>", IAgent.Name , typeof( Agent ).Name);
+            //wr.Line( "{");
+            Components.OfType< IResearchable >().ForEach( c => wr.Append( c.GetDump( wr.Level+1) ) );
+            //wr.Line( "}");
+            return wr.ToString();
         }
 
         #endregion

@@ -5,9 +5,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Types;
+using Kolobok.Core.Utils;
 
 namespace Kolobok.Core.Implementations
 {
@@ -74,12 +74,14 @@ namespace Kolobok.Core.Implementations
 
         #region IResearchable
 
-        string IResearchable.GetDump()
+        string IResearchable.GetDump( int level )
         {
-            var sb = new StringBuilder();
-            sb.AppendLine( typeof( IRational ).Name );
-            sb.AppendLine( _presentImage.GetDump() );
-            return sb.ToString();
+            var wr = new OutlineWriter( level );
+            wr.Line( "<{0}>", typeof( Rational ).Name );
+            //wr.Line( "{");
+            wr.Append( _presentImage.GetDump( wr.Level + 1 ) );
+            //wr.Line( "}");
+            return wr.ToString();
         }
 
         #endregion
