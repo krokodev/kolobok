@@ -37,15 +37,15 @@ namespace Kolobok.Core.Enteties
 
         void IComponent.Init( IComposition composition )
         {
-            _agentComposition = ( IAgent ) composition;
-            _presentImage = new World( _agentComposition, Constants.Worlds.Names.Imaginary );
+            _composition = composition;
+            _presentImage = new World( ( IAgent ) _composition, Constants.Worlds.Names.Imaginary );
         }
 
         IComponent IComponent.Clone()
         {
-            return  new Rational {
+            return new Rational {
                 _beliefs = _beliefs.ToList(),
-                _presentImage = _presentImage.Clone( _agentComposition )
+                _presentImage = _presentImage.Clone()
             };
         }
 
@@ -66,7 +66,7 @@ namespace Kolobok.Core.Enteties
 
         private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
         private IWorld _presentImage;
-        private IAgent _agentComposition;
+        private IComposition _composition;
 
         #endregion
     }

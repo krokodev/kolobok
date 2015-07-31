@@ -3,16 +3,13 @@
 // Agent.cs
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
-using Kolobok.Core.Utils;
 
 namespace Kolobok.Core.Enteties
 {
-    internal class Agent : IAgent, IComposition
+    internal class Agent : Composition, IAgent
     {
         #region IAgent
 
@@ -28,10 +25,13 @@ namespace Kolobok.Core.Enteties
 
         IAgent IAgent.Clone()
         {
-            return new Agent( IAgent.Name ) {
-                _components = _components.Select( c => c.Clone() ).ToList(),
-                _id = new Guid( _id.ToString() )
+            var clone = new Agent {
+                Components = CloneComponents(),
+                _id = _id,
+                _name = _name
             };
+            clone.InitComponents();
+            return clone;
         }
 
         IWorld IAgent.Reality
@@ -71,22 +71,6 @@ namespace Kolobok.Core.Enteties
         #endregion
 
 
-        #region IComposition
-
-        private IComposition IComposition
-        {
-            get { return this; }
-        }
-
-        T IComposition.GetComponent<T>( bool nullable )
-        {
-            AssertComponentExists< T >( ignore : nullable );
-            return _components.OfType< T >().FirstOrDefault();
-        }
-
-        #endregion
-
-
         #region IIdentifiable
 
         Guid IIdentifiable.Id
@@ -100,54 +84,12 @@ namespace Kolobok.Core.Enteties
         #region Ctor
 
         public Agent( params IComponent[] components )
-        {
-            AssertComponentsAreUnique( components );
-            RegisterComponents( components );
-            InitComponents();
-        }
+            : base( components ) {}
 
         public Agent( string name, params IComponent[] components )
             : this( components )
         {
             IAgent.Name = name;
-        }
-
-        #endregion
-
-
-        #region Routines
-
-        private void RegisterComponents( IEnumerable< IComponent > components )
-        {
-            _components = components.ToList();
-        }
-
-        private void InitComponents()
-        {
-            _components.ForEach( c => c.Init( this ) );
-        }
-
-        #endregion
-
-
-        #region Asserts
-
-        private void AssertComponentExists<T>( bool ignore = false )
-        {
-            if( ignore ) {
-                return;
-            }
-            if( _components.Any( c => c is T ) ) {
-                return;
-            }
-            throw new KolobokException( "Unknown components '{0}'", typeof( T ).Name );
-        }
-
-        private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
-        {
-            if( !components.Select( c => c.GetType() ).AreUnique() ) {
-                throw new KolobokException( "Components are not unique" );
-            }
         }
 
         #endregion
@@ -165,7 +107,6 @@ namespace Kolobok.Core.Enteties
 
         #region Fields
 
-        private List< IComponent > _components;
         private Guid _id = Guid.NewGuid();
         private IWorld _reality;
         private string _name;

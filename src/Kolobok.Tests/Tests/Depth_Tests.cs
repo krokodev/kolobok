@@ -95,7 +95,39 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void Thinked_out_agents_have_proper_depth()
+        public void Thinked_out_agent_has_proper_depth()
+        {
+            var universe = Factory.CreateAgent< IRational >( "Universe" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+            var charly = Factory.CreateAgent< IRational >( "Charly" );
+            
+            universe.As< IRational >().Imaginary.Add( alice );
+            alice.As< IRational >().Imaginary.Add( bob );
+            
+            bob.As< IRational >().Believes( iworld=>iworld.Add( charly.Clone() ) );
+            bob.As< IRational >().Think();
+
+            var bcharly = bob.As< IRational >().Imaginary.Agent( charly );
+            bcharly.Name = "bCharly";
+
+            Log( universe.GetFullName() );
+            Log( alice.GetFullName() );
+            Log( bob.GetFullName() );
+            Log( charly.GetFullName() );
+            Log( bcharly.GetFullName() );
+            Log( bob.As<IRational>().Imaginary.GetFamilyName() );
+            Log( bcharly.As<IRational>().Imaginary.GetFamilyName() );
+
+            Assert.AreEqual( 0, universe.GetDepth());
+            Assert.AreEqual( 1, alice.GetDepth());
+            Assert.AreEqual( 2, bob.GetDepth());
+            Assert.AreEqual( 0, charly.GetDepth());
+            Assert.AreEqual( 3, bcharly.GetDepth());
+        }
+
+        [Test]
+        public void Deeply_thinked_out_agents_have_proper_depth()
         {
             var universe = Factory.CreateAgent< IWorld >( "Universe" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );

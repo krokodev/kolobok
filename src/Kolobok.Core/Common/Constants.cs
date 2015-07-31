@@ -13,7 +13,7 @@ namespace Kolobok.Core.Common
                 public const string FullTemplate = "{0}.{1}";
                 public const string FamilyTemplate = "{0}'{1}.{2}";
                 public const string Default = "Some world";
-                public const string Imaginary = "Imaginary";
+                public const string Imaginary = "Img";
             }
         }
 

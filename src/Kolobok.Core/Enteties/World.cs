@@ -75,6 +75,7 @@ namespace Kolobok.Core.Enteties
         string IWorld.GetFamilyName()
         {
             Debug.Assert.That( _holder != null, "World has no holder" );
+            System.Diagnostics.Debug.Assert( _holder != null );
             return string.Format(
                 Constants.Worlds.Names.FamilyTemplate,
                 _holder.Name,
@@ -104,7 +105,7 @@ namespace Kolobok.Core.Enteties
 
         IComponent IComponent.Clone()
         {
-            return ( IComponent ) IWorld.Clone( ( IAgent ) _composition );
+            return ( IComponent ) IWorld.Clone();
         }
 
         #endregion

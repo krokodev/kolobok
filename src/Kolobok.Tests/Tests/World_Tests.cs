@@ -135,8 +135,8 @@ namespace Kolobok.Tests
             Log( bworld.GetFamilyName() );
             Log( aworld.GetFamilyName() );
 
-            Assert.AreEqual( "Alice'1.Imaginary", aworld.GetFamilyName() );
-            Assert.AreEqual( "Bob'0.Imaginary", bworld.GetFamilyName() );
+            Assert.AreEqual( "Alice'1.Img", aworld.GetFamilyName() );
+            Assert.AreEqual( "Bob'0.Img", bworld.GetFamilyName() );
         }
 
         [Test]
@@ -179,8 +179,9 @@ namespace Kolobok.Tests
             Assert.NotNull( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.GetHolder() );
         }
 
+        [Ignore]
         [Test]
-        public void Worlds_family_name_represents_its_position_in_hierarchy()
+        public void Thinked_out_worlds_family_name_represents_its_position_in_hierarchy()
         {
             var universe = Factory.CreateAgent< IWorld >( "Universe" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );
@@ -204,7 +205,7 @@ namespace Kolobok.Tests
             Log( uabaWorld );
             Log( uabaWorld.GetFamilyName() );
 
-            Assert.AreEqual( "Alice'3.Imaginary", uabaWorld.GetFamilyName() );
+            Assert.AreEqual( "Alice'3.Img", uabaWorld.GetFamilyName() );
         }
 
         [Test]

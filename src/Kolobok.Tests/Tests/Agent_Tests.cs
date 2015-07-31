@@ -78,14 +78,95 @@ namespace Kolobok.Tests
             var bob = Factory.CreateAgent( "Bob" );
             universe.As< IWorld >().Add( alice );
             alice.As< IRational >().Imaginary.Add( bob );
-            
+
             Log( universe.GetFullName() );
             Log( alice.GetFullName() );
             Log( bob.GetFullName() );
 
             Assert.AreEqual( "Universe", universe.GetFullName() );
             Assert.AreEqual( "Universe[Alice]", alice.GetFullName() );
-            Assert.AreEqual( "Universe[Alice].Imaginary[Bob]", bob.GetFullName() );
+            Assert.AreEqual( "Universe[Alice].Img[Bob]", bob.GetFullName() );
+        }
+
+        [Test]
+        public void If_agent_chahge_name_then_imaginary_has_proper_holder_name()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            alice.Name = "New Alice";
+
+            Log( alice.GetFullName() );
+            Log( alice.As< IRational >().Imaginary.GetFamilyName() );
+
+            Assert.AreEqual( "New Alice", alice.Name );
+            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.GetHolder().Name );
+        }
+
+        [Test]
+        public void Cloned_agent_imaginary_has_proper_holder()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var clone = alice.Clone();
+            clone.Name = "Clone";
+
+            Log( clone );
+            Log( clone.As< IRational >().Imaginary.GetHolder() );
+
+            Assert.AreEqual( "Clone", clone.Name );
+            Assert.AreEqual( clone, clone.As< IRational >().Imaginary.GetHolder() );
+        }
+        
+        [Test]
+        public void Cloned_agent_imaginary_has_proper_holder_name()
+        {
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var clone = alice.Clone();
+
+            clone.Name = "Clone";
+
+            Log( clone.GetFullName() );
+            Log( clone.As< IRational >().Imaginary.GetFamilyName() );
+
+            Assert.AreEqual( "Clone", clone.Name );
+            Assert.AreEqual( "Clone", clone.As< IRational >().Imaginary.GetHolder().Name );
+        }
+
+        [Test]
+        public void Cloned_and_inserted_agent_imaginary_has_proper_family_name()
+        {
+            var world = Factory.CreateAgent< IWorld >( "World" );
+            var alice = Factory.CreateAgent< IRational >( "Alice" );
+
+            var clone = alice.Clone(); //world.As< IWorld >().Agent( alice );
+            clone.Name = "Clone";
+
+            world.As< IWorld >().Add( clone );
+
+            Log( clone.GetFullName() );
+            Log( clone.As< IRational >().Imaginary.GetFamilyName() );
+
+            Assert.AreEqual( "Clone", clone.Name );
+            Assert.AreEqual( 0, clone.GetDepth() );
+            Assert.AreEqual( "Clone'0.Img", clone.As< IRational >().Imaginary.GetFamilyName() );
+        }
+
+        [Test]
+        public void Thinked_out_cloned_agent_imaginary_has_proper_family_name()
+        {
+            var bob = Factory.CreateAgent< IRational >( "Bob" );
+            var charly = Factory.CreateAgent< IRational >( "Charly" );
+
+            bob.As< IRational >().Believes( iworld => iworld.Add( charly.Clone() ) );
+            bob.As< IRational >().Think();
+
+            var bcharly = bob.As< IRational >().Imaginary.Agent( charly );
+            bcharly.Name = "bCharly";
+
+            Log( bcharly.GetFullName() );
+            Log( bcharly.As< IRational >().Imaginary.GetFamilyName() );
+
+            Assert.AreEqual( "bCharly", bcharly.Name );
+            Assert.AreEqual( 1, bcharly.GetDepth() );
+            Assert.AreEqual( "bCharly'1.Img", bcharly.As< IRational >().Imaginary.GetFamilyName() );
         }
     }
 }
