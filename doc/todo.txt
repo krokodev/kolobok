@@ -1,0 +1,30 @@
+=====================
+Todo list
+=====================
+
+Todo
+~~~~
+- ren sources to src
+- create and dump complex world with alice, bob, hats and their beliefs
+- IAttribute instead of Propety/Owner
+- Use Name as attribute 
+- form out beliefs in the class IBelief
+
+Done
+~~~~
++ aspects
++ tests
++ framework
+05/08/2015
+
+Later
+~~~~~
+- IBelief.TrustRate
+- IReflective -- is able to make think its agents in its subworlds
+
+Canceled
+~~~~~~~~
+x 
+
+
+[EOF]

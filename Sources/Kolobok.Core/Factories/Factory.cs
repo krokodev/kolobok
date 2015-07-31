@@ -21,14 +21,14 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent<T1>( string name )
         {
-            return IFactory.CreateAgent(
+            return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >()
                 );
         }
 
         IAgent IFactory.CreateAgent<T1, T2>( string name )
         {
-            return IFactory.CreateAgent(
+            return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),
                 IFactory.CreateComponent< T2 >()
                 );
@@ -36,7 +36,7 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent<T1, T2, T3>( string name )
         {
-            return IFactory.CreateAgent(
+            return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),
                 IFactory.CreateComponent< T2 >(),
                 IFactory.CreateComponent< T3 >()
@@ -45,7 +45,7 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent<T1, T2, T3, T4>( string name )
         {
-            return IFactory.CreateAgent(
+            return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),
                 IFactory.CreateComponent< T2 >(),
                 IFactory.CreateComponent< T3 >(),
@@ -55,7 +55,7 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent<T1, T2, T3, T4, T5>( string name )
         {
-            return IFactory.CreateAgent(
+            return IFactory.CreateAgent( name,
                 IFactory.CreateComponent< T1 >(),
                 IFactory.CreateComponent< T2 >(),
                 IFactory.CreateComponent< T3 >(),
@@ -66,7 +66,7 @@ namespace Kolobok.Core.Factory
 
         IAgent IFactory.CreateAgent( params IComponent[] components )
         {
-            return IFactory.CreateAgent( "", components );
+            return IFactory.CreateAgent( null, components );
         }
 
         IAgent IFactory.CreateAgent( string name, params IComponent[] components )

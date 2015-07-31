@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -54,6 +55,12 @@ namespace Kolobok.Core.Enteties
             _agents.Clear();
         }
 
+        string IWorld.Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
         #endregion
 
 
@@ -89,9 +96,9 @@ namespace Kolobok.Core.Enteties
         string IResearchable.GetDump()
         {
             var sb = new StringBuilder();
+            sb.AppendFormat( "{0}\n", this );
             _agents.ForEach( a => {
-                sb.AppendFormat( "agent {0}", a.Id );
-                sb.Append( "\n" );
+                sb.AppendFormat( "  {0}\n", a );
             } );
             return sb.ToString();
         }
@@ -113,6 +120,7 @@ namespace Kolobok.Core.Enteties
 
         private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
+        private string _name = Constants.Worlds.DefaultName;
 
         #endregion
 
@@ -121,7 +129,7 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            return IWorld.Id.ToString();
+            return string.Format("{0} {{{1}}}", IWorld.Name, IWorld.Id);
         }
 
         #endregion

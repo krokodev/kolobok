@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
 using Kolobok.Core.Utils;
@@ -78,7 +79,7 @@ namespace Kolobok.Core.Enteties
         public Agent( string name, params IComponent[] components )
             : this( components )
         {
-            IAgent.Name = name;
+            IAgent.Name = name?? Constants.Agents.DefaultName;
         }
 
         #endregion
@@ -126,12 +127,7 @@ namespace Kolobok.Core.Enteties
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            if( !string.IsNullOrEmpty( IAgent.Name ) ) {
-                sb.AppendFormat( "{0} ", IAgent.Name );
-            }
-            sb.Append( IAgent.Id );
-            return sb.ToString();
+            return string.Format("{0} {{{1}}}", IAgent.Name, IAgent.Id);
         }
 
         #endregion

@@ -26,9 +26,13 @@ namespace Kolobok.Utils
 
         protected IFactory Factory { get; set; }
 
-        protected static void Log( object arg )
+        protected static void Log( string  str )
         {
-            Console.WriteLine( arg );
+            Console.WriteLine( str );
+        }
+        protected static void Log( object obj )
+        {
+            Console.WriteLine( obj.ToString() );
         }
 
         protected static void Log( string format, params object[] args )

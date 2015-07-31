@@ -14,8 +14,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolobok.Tests", "Sources\Ko
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{6B7D0DF3-D92E-49D9-BD4B-71EECD1009DB}"
 	ProjectSection(SolutionItems) = preProject
-		..\Crimenuts\Documents\links.txt = ..\Crimenuts\Documents\links.txt
+		doc\links.txt = doc\links.txt
+		readme.md = readme.md
+		doc\todo.txt = doc\todo.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "-", "-", "{84570F36-A44E-4828-8BEA-946929E0215E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57FE23D3-4DAB-4D3B-8648-7FC132E197A2} = {84570F36-A44E-4828-8BEA-946929E0215E}
 	EndGlobalSection
 EndGlobal

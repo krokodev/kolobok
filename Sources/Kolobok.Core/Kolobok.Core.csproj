@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Diagnostics\Assert.cs" />
     <Compile Include="Enteties\Answer.cs" />
     <Compile Include="Enteties\AnswerResult.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Types\ISentient.cs" />
     <Compile Include="Types\IWorld.cs" />
     <Compile Include="Utils\CollectionExtensions.cs" />
-    <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Factories\Factory.cs" />
     <Compile Include="Types\IAgent.cs" />
     <Compile Include="Types\IComponent.cs" />
     <Compile Include="Types\IFactory.cs" />

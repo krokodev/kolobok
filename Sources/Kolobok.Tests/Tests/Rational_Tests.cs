@@ -71,15 +71,15 @@ namespace Kolobok.Tests
         }
         
         [Test]
-        public void Alice_thins_a_lot()
+        public void Alice_thinks_a_lot()
         {
-            var alice = Factory.CreateAgent< IRational, IOwner >();
+            var alice = Factory.CreateAgent< IRational, IOwner >("Alice");
 
             alice.As< IRational >().Believes( world => {
-                var subj = alice.Clone();
-                world.Add( subj );
-                subj.As< IOwner >().Has( new Hat() );
-                subj.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
+                var herself = alice.Clone();
+                world.Add( herself );
+                herself.As< IOwner >().Has( new Hat() );
+                herself.As< IOwner >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IRational >().Think();

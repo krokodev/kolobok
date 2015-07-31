@@ -2,6 +2,7 @@
 // Kolobok.Tests
 // Agent_Tests.cs
 
+using Kolobok.Core.Common;
 using Kolobok.Utils;
 using NUnit.Framework;
 
@@ -11,7 +12,15 @@ namespace Kolobok.Tests
     public class Agent_Tests : BaseTests
     {
         [Test]
-        public void Cloned_agents_have_the_same_id()
+        public void Agent_has_default_name()
+        {
+            var agent = Factory.CreateAgent();
+            Log( agent );
+            Assert.AreEqual( Constants.Agents.DefaultName, agent.Name );
+        }
+
+        [Test]
+        public void Cloned_agents_have_the_same_ids()
         {
             var a1 = Factory.CreateAgent();
             var a2 = a1.Clone();
