@@ -8,6 +8,7 @@ Todo
 - Use Name as attribute 
 - form out beliefs in the class IBelief
 - IWorld.Project -- make agent projection
+- IReflective -- see later
 
 Done
 ~~~~
