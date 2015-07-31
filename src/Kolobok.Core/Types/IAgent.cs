@@ -4,7 +4,7 @@
 
 namespace Kolobok.Core.Types
 {
-    public interface IAgent : IIdentifiable
+    public interface IAgent : IIdentifiable, IResearchable
     {
         T As<T>();
         IAgent Clone();

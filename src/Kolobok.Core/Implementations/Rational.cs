@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Types;
 
@@ -67,6 +68,19 @@ namespace Kolobok.Core.Implementations
         private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
         private IWorld _presentImage;
         private IComposition _composition;
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.GetDump()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine( typeof( IRational ).Name );
+            sb.AppendLine( _presentImage.GetDump() );
+            return sb.ToString();
+        }
 
         #endregion
     }

@@ -11,10 +11,10 @@ using NUnit.Framework;
 namespace Kolobok.Tests
 {
     [TestFixture]
-    public class Owner_Tests : BaseTests
+    public class Attributes_Tests : BaseTests
     {
         [Test, ExpectedException( typeof( KolobokException ) )]
-        public void Owner_cant_have_others_stuff()
+        public void Entety_cant_have_others_attribute()
         {
             var alice = Factory.CreateAgent< IEntity >().As< IEntity >();
             var bob = Factory.CreateAgent< IEntity >().As< IEntity >();
@@ -25,7 +25,7 @@ namespace Kolobok.Tests
         }
 
         [Test]
-        public void Cloned_owners_have_different_properties()
+        public void Cloned_enteties_have_different_attributes()
         {
             var agent = Factory.CreateAgent< IEntity >();
             agent.As< IEntity >().Add( new Hat() );

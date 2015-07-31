@@ -3,9 +3,12 @@
 // Agent.cs
 
 using System;
+using System.Linq;
+using System.Text;
 using Kolobok.Core.Common;
 using Kolobok.Core.Diagnostics;
 using Kolobok.Core.Types;
+using MoreLinq;
 
 namespace Kolobok.Core.Implementations
 {
@@ -103,6 +106,20 @@ namespace Kolobok.Core.Implementations
         public override string ToString()
         {
             return string.Format( "{0} {{{1}}}", IAgent.Name, IAgent.Id );
+        }
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.GetDump()
+        {
+            var sb = new StringBuilder();
+            sb.AppendFormat("{0}: {1}", typeof(Agent).Name, IAgent.Name );
+            sb.AppendLine();
+            Components.OfType< IResearchable >().ForEach( c => sb.AppendLine( c.GetDump() ));
+            return sb.ToString();
         }
 
         #endregion

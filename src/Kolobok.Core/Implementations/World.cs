@@ -137,8 +137,9 @@ namespace Kolobok.Core.Implementations
         string IResearchable.GetDump()
         {
             var sb = new StringBuilder();
-            sb.AppendFormat( "{0}\n", this );
-            _agents.ForEach( a => { sb.AppendFormat( "  {0}\n", a ); } );
+            sb.AppendFormat( "{0}: {1}", typeof( World ).Name, IWorld.Name );
+            sb.AppendLine();
+            _agents.ForEach( a => sb.AppendLine( a.GetDump() ) );
             return sb.ToString();
         }
 

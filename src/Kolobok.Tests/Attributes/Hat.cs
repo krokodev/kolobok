@@ -10,7 +10,7 @@ namespace Kolobok.Attributes
     {
         #region IHat
 
-        private IHat IHat
+        public IHat IHat
         {
             get { return this; }
         }

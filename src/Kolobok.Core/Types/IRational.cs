@@ -6,7 +6,7 @@ using System;
 
 namespace Kolobok.Core.Types
 {
-    public interface IRational : IAspect
+    public interface IRational : IAspect, IResearchable
     {
         void Think();
         void Believes( Action< IWorld > belief );

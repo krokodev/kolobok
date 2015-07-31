@@ -53,7 +53,8 @@
     <Compile Include="Asserts\ComponentsAssertThat.cs" />
     <Compile Include="Attributes\Hat.cs" />
     <Compile Include="Attributes\IHat.cs" />
-    <Compile Include="Tests\Owner_Tests.cs" />
+    <Compile Include="Tests\Dump_Tests.cs" />
+    <Compile Include="Tests\Attributes_Tests.cs" />
     <Compile Include="Tests\Agent_Tests.cs" />
     <Compile Include="Tests\Depth_Tests.cs" />
     <Compile Include="Tests\World_Tests.cs" />

@@ -253,22 +253,5 @@ namespace Kolobok.Tests
 
             Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );
         }
-
-        [Ignore]
-        [Test]
-        public void World_dump_contains_info_about_agents_attributes()
-        {
-            var universe = Factory.CreateAgent< IWorld >();
-            var alice = Factory.CreateAgent< IRational, IEntity >();
-            var bob = Factory.CreateAgent< IRational, IEntity >();
-
-            universe.As< IWorld >().Add( alice );
-            alice.As< IRational >().Imaginary.Add( bob );
-            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
-
-            var aHat = alice.As< IEntity >().Add< Hat >();
-            var bHat = bob.As< IEntity >().Add< Hat >();
-            bob.As< IEntity >().Add( new Hat() );
-        }
     }
 }
