@@ -3,6 +3,9 @@
 // Hat.cs
 
 using Robotango.Core.Types;
+using Robotango.Core.Types.Attributes;
+using Robotango.Core.Types.Common;
+using Robotango.Core.Types.Skills;
 
 namespace Robotango.Tests.Stuff
 {

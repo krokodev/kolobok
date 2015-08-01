@@ -5,6 +5,7 @@
 using NUnit.Framework;
 using Robotango.Core.Common;
 using Robotango.Core.Types;
+using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases

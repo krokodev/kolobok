@@ -4,6 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Core.Types;
+using Robotango.Core.Types.Attributes;
+using Robotango.Core.Types.Skills;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;
 
@@ -28,8 +30,8 @@ namespace Robotango.Tests.Cases
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( bob.Clone() );
 
-            alice.As< IEntity >().Add< Hat >().IHat.Color=Colors.Red;
-            bob.As< IEntity >().Add< Hat >().IHat.Color=Colors.Black;
+            alice.As< IEntity >().Add< Hat >().IHat.Color = Colors.Red;
+            bob.As< IEntity >().Add< Hat >().IHat.Color = Colors.Black;
 
             var dump = universe.GetDump();
 

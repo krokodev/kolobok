@@ -44,45 +44,46 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Diagnostics\Assert.cs" />
-    <Compile Include="Implementations\Composition.cs" />
-    <Compile Include="Implementations\Answer.cs" />
-    <Compile Include="Implementations\AnswerResult.cs" />
+    <Compile Include="Implements\Compositions\Composition.cs" />
+    <Compile Include="Implements\Communications\Answer.cs" />
+    <Compile Include="Implements\Communications\AnswerResult.cs" />
     <Compile Include="Utils\OutlineWriter.cs" />
-    <Compile Include="Implementations\Question.cs" />
+    <Compile Include="Implements\Communications\Question.cs" />
     <Compile Include="Diagnostics\UnknownAgentException.cs" />
-    <Compile Include="Types\Colors.cs" />
-    <Compile Include="Types\IAnswer.cs" />
-    <Compile Include="Types\IAnswerResult.cs" />
-    <Compile Include="Types\ISkill.cs" />
-    <Compile Include="Types\IColored.cs" />
-    <Compile Include="Types\IComposition.cs" />
-    <Compile Include="Types\IIdentifiable.cs" />
-    <Compile Include="Types\IAttribute.cs" />
-    <Compile Include="Implementations\Entity.cs" />
-    <Compile Include="Implementations\World.cs" />
-    <Compile Include="Implementations\Agent.cs" />
-    <Compile Include="Types\IEntity.cs" />
-    <Compile Include="Types\IQuestion.cs" />
-    <Compile Include="Types\IReflective.cs" />
-    <Compile Include="Types\IResearchable.cs" />
-    <Compile Include="Types\ISentient.cs" />
-    <Compile Include="Types\IWorld.cs" />
+    <Compile Include="Types\Attributes\Colors.cs" />
+    <Compile Include="Types\Communications\IAnswer.cs" />
+    <Compile Include="Types\Communications\IAnswerResult.cs" />
+    <Compile Include="Types\Skills\ISkill.cs" />
+    <Compile Include="Types\Attributes\IColored.cs" />
+    <Compile Include="Types\Compositions\IComposition.cs" />
+    <Compile Include="Types\Common\IIdentifiable.cs" />
+    <Compile Include="Types\Common\IAttribute.cs" />
+    <Compile Include="Implements\Skills\Entity.cs" />
+    <Compile Include="Implements\Skills\World.cs" />
+    <Compile Include="Implements\Agents\Agent.cs" />
+    <Compile Include="Types\Skills\IEntity.cs" />
+    <Compile Include="Types\Communications\IQuestion.cs" />
+    <Compile Include="Types\Skills\IReflective.cs" />
+    <Compile Include="Types\Skills\IResearchable.cs" />
+    <Compile Include="Types\Skills\ISentient.cs" />
+    <Compile Include="Types\Skills\IWorld.cs" />
     <Compile Include="Utils\CollectionExtensions.cs" />
     <Compile Include="Factories\Factory.cs" />
-    <Compile Include="Types\IAgent.cs" />
-    <Compile Include="Types\IComponent.cs" />
-    <Compile Include="Types\IFactory.cs" />
-    <Compile Include="Types\IRational.cs" />
-    <Compile Include="Types\ISocial.cs" />
+    <Compile Include="Types\Agents\IAgent.cs" />
+    <Compile Include="Types\Compositions\IComponent.cs" />
+    <Compile Include="Types\Systems\IFactory.cs" />
+    <Compile Include="Types\Skills\IRational.cs" />
+    <Compile Include="Types\Skills\ISocial.cs" />
     <Compile Include="Diagnostics\RobotangoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implementations\Rational.cs" />
-    <Compile Include="Implementations\Social.cs" />
+    <Compile Include="Implements\Skills\Rational.cs" />
+    <Compile Include="Implements\Skills\Social.cs" />
     <Compile Include="Diagnostics\VerificationException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,8 +5,13 @@
 using System;
 using System.Collections.Generic;
 using Robotango.Core.Diagnostics;
-using Robotango.Core.Implementations;
+using Robotango.Core.Implements.Agents;
+using Robotango.Core.Implements.Skills;
 using Robotango.Core.Types;
+using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Compositions;
+using Robotango.Core.Types.Skills;
+using Robotango.Core.Types.Systems;
 
 namespace Robotango.Core.Factories
 {

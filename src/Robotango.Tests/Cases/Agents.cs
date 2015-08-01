@@ -6,6 +6,8 @@ using NUnit.Framework;
 using Robotango.Core.Common;
 using Robotango.Core.Diagnostics;
 using Robotango.Core.Types;
+using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases
@@ -98,7 +100,7 @@ namespace Robotango.Tests.Cases
             Log( alice.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "New Alice", alice.Name );
-            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.Holder.Name);
+            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.Holder.Name );
         }
 
         [Test]
@@ -127,7 +129,7 @@ namespace Robotango.Tests.Cases
             Log( clone.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( "Clone", (( IAgent ) clone.As< IRational >().Imaginary.Holder).Name );
+            Assert.AreEqual( "Clone", ( ( IAgent ) clone.As< IRational >().Imaginary.Holder ).Name );
         }
 
         [Test]

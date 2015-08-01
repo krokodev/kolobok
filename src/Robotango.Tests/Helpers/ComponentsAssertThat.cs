@@ -4,6 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Core.Types;
+using Robotango.Core.Types.Compositions;
+using Robotango.Core.Types.Skills;
 
 namespace Robotango.Tests.Helpers
 {
