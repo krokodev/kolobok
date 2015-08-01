@@ -3,7 +3,7 @@
 // Attributes.cs
 
 using NUnit.Framework;
-using Robotango.Common.Implements.Diagnostics;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;
@@ -13,7 +13,7 @@ namespace Robotango.Tests.Cases
     [TestFixture]
     public class Attributes : BaseCase
     {
-        [Test, ExpectedException( typeof( RobotangoException ) )]
+        [Test, ExpectedException( typeof( AssertException ) )]
         public void Entety_cant_have_others_attribute()
         {
             var alice = Factory.CreateAgent< IVirtual >().As< IVirtual >();

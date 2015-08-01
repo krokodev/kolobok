@@ -43,30 +43,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="System\Settings.cs" />
-    <Compile Include="Implements\Communications\Answer.cs" />
-    <Compile Include="Implements\Communications\AnswerResult.cs" />
-    <Compile Include="Implements\Communications\Question.cs" />
-    <Compile Include="Types\Communications\IAnswer.cs" />
-    <Compile Include="Types\Communications\IRespondent.cs" />
-    <Compile Include="Types\Communications\IAnswerResult.cs" />
-    <Compile Include="Implements\Abilities\Virtual.cs" />
-    <Compile Include="Implements\Agents\Reality.cs" />
-    <Compile Include="Implements\Agents\Agent.cs" />
+    <Compile Include="Implements\Domain\Communications\Answer.cs" />
+    <Compile Include="Implements\Domain\Communications\AnswerResult.cs" />
+    <Compile Include="Implements\Domain\Communications\Question.cs" />
+    <Compile Include="Types\Domain\Attributes\IAttribute.cs" />
+    <Compile Include="Types\Domain\Attributes\IAttributeHolder.cs" />
+    <Compile Include="Types\Domain\Communications\IAnswer.cs" />
+    <Compile Include="Types\Domain\Communications\IRespondent.cs" />
+    <Compile Include="Types\Domain\Communications\IAnswerResult.cs" />
+    <Compile Include="Implements\Agency\Abilities\Virtual.cs" />
+    <Compile Include="Implements\Agency\Reality.cs" />
+    <Compile Include="Implements\Agency\Agent.cs" />
     <Compile Include="Types\Agency\Abilities\IVirtual.cs" />
-    <Compile Include="Types\Communications\IQuerist.cs" />
-    <Compile Include="Types\Communications\IQuestion.cs" />
+    <Compile Include="Types\Domain\Communications\IQuerist.cs" />
+    <Compile Include="Types\Domain\Communications\IQuestion.cs" />
     <Compile Include="Types\Agency\Abilities\IReflective.cs" />
     <Compile Include="Types\Agency\Abilities\ISentient.cs" />
     <Compile Include="Types\Agency\IReality.cs" />
     <Compile Include="System\Factory.cs" />
     <Compile Include="Types\Agency\IAgent.cs" />
     <Compile Include="Types\Agency\IAbility.cs" />
-    <Compile Include="Types\System\IFactory.cs" />
+    <Compile Include="System\IFactory.cs" />
     <Compile Include="Types\Agency\Abilities\IRational.cs" />
     <Compile Include="Types\Agency\Abilities\ICommunicative.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implements\Abilities\Rational.cs" />
-    <Compile Include="Implements\Abilities\Communicative.cs" />
+    <Compile Include="Implements\Agency\Abilities\Rational.cs" />
+    <Compile Include="Implements\Agency\Abilities\Communicative.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

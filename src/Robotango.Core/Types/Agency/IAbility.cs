@@ -2,7 +2,7 @@
 // Robotango.Core
 // IAbility.cs
 
-using Robotango.Common.Types.Compositions;
+using Robotango.Common.Domain.Types.Compositions;
 
 namespace Robotango.Core.Types.Agency
 {

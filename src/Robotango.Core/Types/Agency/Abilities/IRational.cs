@@ -3,7 +3,7 @@
 // IRational.cs
 
 using System;
-using Robotango.Common.Types.Properties;
+using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Types.Agency.Abilities
 {

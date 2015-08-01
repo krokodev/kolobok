@@ -3,9 +3,9 @@
 // Components.cs
 
 using NUnit.Framework;
-using Robotango.Common.Implements.Diagnostics;
-using Robotango.Common.Types.Compositions;
-using Robotango.Core.Implements.Abilities;
+using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Implements.Agency.Abilities;
 using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Helpers;
 using Robotango.Tests.Utils;
@@ -38,7 +38,7 @@ namespace Robotango.Tests.Cases
             ComponentsAssertThat.Has_rational_and_social_components( a as IComposite );
         }
 
-        [Test, ExpectedException( typeof( RobotangoException ) )]
+        [Test, ExpectedException( typeof( AssertException ) )]
         public void Non_unique_components_cause_exception()
         {
             Factory.CreateAgent< IRational, IRational >();

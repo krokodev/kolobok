@@ -2,7 +2,7 @@
 // Robotango.Core
 // IReality.cs
 
-using Robotango.Common.Types.Properties;
+using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Types.Agency
 {

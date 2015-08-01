@@ -2,7 +2,7 @@
 // Robotango.Tests
 // IHat.cs
 
-using Robotango.Common.Types.Properties;
+using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Tests.Stuff
 {

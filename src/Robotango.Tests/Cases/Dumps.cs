@@ -3,7 +3,7 @@
 // Dumps.cs
 
 using NUnit.Framework;
-using Robotango.Common.Types.Enums;
+using Robotango.Common.Domain.Types.Enums;
 using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;

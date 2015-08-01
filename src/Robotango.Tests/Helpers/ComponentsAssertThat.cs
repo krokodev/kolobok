@@ -3,7 +3,7 @@
 // ComponentsAssertThat.cs
 
 using NUnit.Framework;
-using Robotango.Common.Types.Compositions;
+using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Agency.Abilities;
 

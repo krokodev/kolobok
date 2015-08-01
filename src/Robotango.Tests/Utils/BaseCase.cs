@@ -5,7 +5,6 @@
 using System;
 using NUnit.Framework;
 using Robotango.Core.System;
-using Robotango.Core.Types.System;
 
 namespace Robotango.Tests.Utils
 {

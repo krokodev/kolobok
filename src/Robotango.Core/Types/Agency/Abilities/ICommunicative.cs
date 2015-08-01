@@ -3,7 +3,7 @@
 // ICommunicative.cs
 
 using System;
-using Robotango.Core.Types.Communications;
+using Robotango.Core.Types.Domain.Communications;
 
 namespace Robotango.Core.Types.Agency.Abilities
 {

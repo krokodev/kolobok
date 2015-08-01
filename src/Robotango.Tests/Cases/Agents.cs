@@ -3,7 +3,7 @@
 // Agents.cs
 
 using NUnit.Framework;
-using Robotango.Common.Implements.Diagnostics;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.System;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Agency.Abilities;
@@ -43,7 +43,7 @@ namespace Robotango.Tests.Cases
             Assert.AreEqual( a1.Name, a2.Name );
         }
 
-        [Test, ExpectedException( typeof( RobotangoException ) )]
+        [Test, ExpectedException( typeof( AssertException ) )]
         public void Agent_can_not_be_moved_to_another_reality()
         {
             var agent = Factory.CreateAgent< IRational >();
@@ -53,7 +53,7 @@ namespace Robotango.Tests.Cases
             agent.Reality = newWorld;
         }
 
-        [Test, ExpectedException( typeof( RobotangoException ) )]
+        [Test, ExpectedException( typeof( AssertException ) )]
         public void Agent_reality_can_not_be_assigned_to_the_arbitrary_world()
         {
             var agent = Factory.CreateAgent< IRational >();

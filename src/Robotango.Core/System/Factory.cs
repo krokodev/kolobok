@@ -5,12 +5,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Robotango.Common.Implements.Diagnostics;
-using Robotango.Core.Implements.Abilities;
-using Robotango.Core.Implements.Agents;
+using Robotango.Common.Utils.Diagnostics.Debug;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Implements.Agency;
+using Robotango.Core.Implements.Agency.Abilities;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Agency.Abilities;
-using Robotango.Core.Types.System;
 
 namespace Robotango.Core.System
 {
@@ -133,7 +133,7 @@ namespace Robotango.Core.System
         private static void AssertComponentIsRegisrtered( Type componentType )
         {
             if( !ComponentConstructors.ContainsKey( componentType ) ) {
-                throw new RobotangoException( "Unexcpected type '{0}'", componentType.Name );
+                throw new AssertException( "Unexcpected type '{0}'", componentType.Name );
             }
         }
 

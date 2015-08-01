@@ -2,7 +2,7 @@
 // Robotango.Core
 // IVirtual.cs
 
-using Robotango.Common.Types.Attributes;
+using Robotango.Core.Types.Domain.Attributes;
 
 namespace Robotango.Core.Types.Agency.Abilities
 {
