@@ -14,7 +14,7 @@ namespace Robotango.Core.Diagnostics
             {
                 if( !cond ) {
                     Log( comment, args );
-                    throw new KolobokException( comment, args );
+                    throw new RobotangoException( comment, args );
                 }
             }
         }

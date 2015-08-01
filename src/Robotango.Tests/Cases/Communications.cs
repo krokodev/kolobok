@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Communication.cs
+// Communications.cs
 
 using NUnit.Framework;
 using Robotango.Core.Types;
@@ -10,7 +10,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Communication : BaseTests
+    public class Communications : BaseCase
     {
         [Test]
         public void Social_can_query_question()

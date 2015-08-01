@@ -4,6 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Diagnostics;
+using Robotango.Core.Implementations;
 using Robotango.Core.Types;
 using Robotango.Tests.Helpers;
 using Robotango.Tests.Utils;
@@ -11,7 +12,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Components : BaseTests
+    public class Components : BaseCase
     {
         [Test]
         public void Rational_is_a_component()
@@ -36,7 +37,7 @@ namespace Robotango.Tests.Cases
             ComponentsAssertThat.Has_rational_and_social_components( a as IComposition );
         }
 
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Non_unique_components_cause_exception()
         {
             Factory.CreateAgent< IRational, IRational >();

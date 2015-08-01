@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Depth.cs
+// Depths.cs
 
 using NUnit.Framework;
 using Robotango.Core.Common;
@@ -10,7 +10,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Depth : BaseTests
+    public class Depths : BaseCase
     {
         [Test]
         public void World_has_default_name()

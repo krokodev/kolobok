@@ -11,9 +11,9 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Attributes : BaseTests
+    public class Attributes : BaseCase
     {
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Entety_cant_have_others_attribute()
         {
             var alice = Factory.CreateAgent< IEntity >().As< IEntity >();

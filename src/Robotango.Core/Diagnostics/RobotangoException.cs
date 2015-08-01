@@ -1,14 +1,14 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// KolobokException.cs
+// RobotangoException.cs
 
 using System;
 
 namespace Robotango.Core.Diagnostics
 {
-    public class KolobokException : Exception
+    public class RobotangoException : Exception
     {
-        public KolobokException( string format, params object[] args )
+        public RobotangoException( string format, params object[] args )
             : base( string.Format( format, args ) ) {}
     }
 }

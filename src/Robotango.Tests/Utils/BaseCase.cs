@@ -1,6 +1,6 @@
-﻿// Robotango (c) 2015 Krokodev
+// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// BaseTests.cs
+// BaseCase.cs
 
 using System;
 using NUnit.Framework;
@@ -9,7 +9,7 @@ using Robotango.Core.Types;
 
 namespace Robotango.Tests.Utils
 {
-    public class BaseTests
+    public class BaseCase
     {
         #region Init
 

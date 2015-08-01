@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Rational.cs
+// Rationals.cs
 
 using NUnit.Framework;
 using Robotango.Core.Types;
@@ -11,7 +11,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Rational : BaseTests
+    public class Rationals : BaseCase
     {
         [Test]
         public void Rational_can_think()

@@ -65,13 +65,13 @@ namespace Robotango.Core.Implementations
             if( Components.Any( c => c is T ) ) {
                 return;
             }
-            throw new KolobokException( "Unknown components '{0}'", typeof( T ).Name );
+            throw new RobotangoException( "Unknown components '{0}'", typeof( T ).Name );
         }
 
         private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
         {
             if( !components.Select( c => c.GetType() ).AreUnique() ) {
-                throw new KolobokException( "Components are not unique" );
+                throw new RobotangoException( "Components are not unique" );
             }
         }
 

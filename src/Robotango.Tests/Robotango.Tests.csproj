@@ -53,15 +53,15 @@
     <Compile Include="Helpers\ComponentsAssertThat.cs" />
     <Compile Include="Stuff\Hat.cs" />
     <Compile Include="Stuff\IHat.cs" />
-    <Compile Include="Cases\Dump.cs" />
+    <Compile Include="Cases\Dumps.cs" />
     <Compile Include="Cases\Attributes.cs" />
-    <Compile Include="Cases\Agent.cs" />
-    <Compile Include="Cases\Depth.cs" />
-    <Compile Include="Cases\World.cs" />
-    <Compile Include="Cases\Reflective.cs" />
-    <Compile Include="Cases\Rational.cs" />
-    <Compile Include="Cases\Communication.cs" />
-    <Compile Include="Utils\BaseTests.cs" />
+    <Compile Include="Cases\Agents.cs" />
+    <Compile Include="Cases\Depths.cs" />
+    <Compile Include="Cases\Worlds.cs" />
+    <Compile Include="Cases\Reflectives.cs" />
+    <Compile Include="Cases\Rationals.cs" />
+    <Compile Include="Cases\Communications.cs" />
+    <Compile Include="Utils\BaseCase.cs" />
     <Compile Include="Cases\Components.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

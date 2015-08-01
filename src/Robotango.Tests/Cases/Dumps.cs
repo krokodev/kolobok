@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Dump.cs
+// Dumps.cs
 
 using NUnit.Framework;
 using Robotango.Core.Types;
@@ -10,7 +10,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Dumps : BaseTests
+    public class Dumps : BaseCase
     {
         [Test]
         public void Dump_contains_info_about_agents_attributes()

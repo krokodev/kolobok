@@ -28,7 +28,7 @@ namespace Robotango.Core.Implementations
                 return _agents.First( a => a.Id == agent.Id );
             }
             catch {
-                throw new KolobokUnknownAgentException( "World {0} does not contain agent {1}", IWorld, agent );
+                throw new UnknownAgentException( "World {0} does not contain agent {1}", IWorld, agent );
             }
         }
 

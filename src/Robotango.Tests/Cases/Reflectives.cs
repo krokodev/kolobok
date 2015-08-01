@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Reflective.cs
+// Reflectives.cs
 
 using NUnit.Framework;
 using Robotango.Tests.Utils;
@@ -9,7 +9,7 @@ namespace Robotango.Tests.Cases
 {
     [Ignore]
     [TestFixture]
-    public class Reflective : BaseTests
+    public class Reflectives : BaseCase
     {
         [Test]
         public void Wise_agent_can_solve_color_of_its_hat_during_conversation()

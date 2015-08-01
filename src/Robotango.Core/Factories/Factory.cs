@@ -123,7 +123,7 @@ namespace Robotango.Core.Factories
         private static void AssertComponentIsRegisrtered( Type componentType )
         {
             if( !ComponentConstructors.ContainsKey( componentType ) ) {
-                throw new KolobokException( "Unexcpected type '{0}'", componentType.Name );
+                throw new RobotangoException( "Unexcpected type '{0}'", componentType.Name );
             }
         }
 

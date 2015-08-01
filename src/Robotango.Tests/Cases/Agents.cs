@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Agent.cs
+// Agents.cs
 
 using NUnit.Framework;
 using Robotango.Core.Common;
@@ -11,7 +11,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Agent : BaseTests
+    public class Agents : BaseCase
     {
         [Test]
         public void Agent_has_default_name()
@@ -42,7 +42,7 @@ namespace Robotango.Tests.Cases
             Assert.AreEqual( a1.Name, a2.Name );
         }
 
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Agent_can_not_be_moved_to_another_reality()
         {
             var agent = Factory.CreateAgent< IRational >();
@@ -52,7 +52,7 @@ namespace Robotango.Tests.Cases
             agent.Reality = newWorld;
         }
 
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Agent_reality_can_not_be_assigned_to_the_arbitrary_world()
         {
             var agent = Factory.CreateAgent< IRational >();

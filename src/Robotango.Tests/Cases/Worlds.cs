@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// World.cs
+// Worlds.cs
 
 using NUnit.Framework;
 using Robotango.Core.Common;
@@ -11,9 +11,9 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class World : BaseTests
+    public class World : BaseCase
     {
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Agent_belongs_only_one_world()
         {
             var agent = Factory.CreateAgent< IRational >();
@@ -24,7 +24,7 @@ namespace Robotango.Tests.Cases
             image.Add( agent );
         }
 
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void World_contains_each_agent_only_once()
         {
             var agent = Factory.CreateAgent< IRational >();
@@ -34,7 +34,7 @@ namespace Robotango.Tests.Cases
             world.As< IWorld >().Add( agent );
         }
 
-        [Test, ExpectedException( typeof( KolobokException ) )]
+        [Test, ExpectedException( typeof( RobotangoException ) )]
         public void World_contains_only_unique_agents()
         {
             var agent = Factory.CreateAgent< IRational >();
