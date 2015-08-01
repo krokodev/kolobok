@@ -5,8 +5,8 @@
 using NUnit.Framework;
 using Robotango.Common.Implements.Diagnostics;
 using Robotango.Common.Types.Compositions;
-using Robotango.Core.Domain.Abilities;
-using Robotango.Core.Types.Domain.Abilities;
+using Robotango.Core.Implements.Abilities;
+using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Helpers;
 using Robotango.Tests.Utils;
 

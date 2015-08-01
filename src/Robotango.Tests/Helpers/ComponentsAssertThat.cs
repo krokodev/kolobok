@@ -4,8 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Common.Types.Compositions;
-using Robotango.Core.Types.Domain.Abilities;
-using Robotango.Core.Types.Domain.Agency;
+using Robotango.Core.Types.Agency;
+using Robotango.Core.Types.Agency.Abilities;
 
 namespace Robotango.Tests.Helpers
 {

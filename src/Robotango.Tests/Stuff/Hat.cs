@@ -2,8 +2,9 @@
 // Robotango.Tests
 // Hat.cs
 
+using Robotango.Common.Types.Enums;
+using Robotango.Common.Types.Properties;
 using Robotango.Core.Types.Attributes;
-using Robotango.Core.Types.Domain.Abilities;
 
 namespace Robotango.Tests.Stuff
 {
@@ -30,7 +31,7 @@ namespace Robotango.Tests.Stuff
             return hat;
         }
 
-        IVirtual IAttribute.Virtual { get; set; }
+        IAttributeHolder IAttribute.Holder { get; set; }
     }
 
     #endregion

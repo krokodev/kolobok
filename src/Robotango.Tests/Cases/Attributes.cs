@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Common.Implements.Diagnostics;
-using Robotango.Core.Types.Domain.Abilities;
+using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;
 

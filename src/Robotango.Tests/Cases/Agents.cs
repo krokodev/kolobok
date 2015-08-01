@@ -4,9 +4,9 @@
 
 using NUnit.Framework;
 using Robotango.Common.Implements.Diagnostics;
-using Robotango.Core.Domain.System;
-using Robotango.Core.Types.Domain.Abilities;
-using Robotango.Core.Types.Domain.Agency;
+using Robotango.Core.System;
+using Robotango.Core.Types.Agency;
+using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases

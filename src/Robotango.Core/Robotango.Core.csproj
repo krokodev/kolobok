@@ -42,32 +42,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\System\Settings.cs" />
-    <Compile Include="Domain\Communications\Answer.cs" />
-    <Compile Include="Domain\Communications\AnswerResult.cs" />
-    <Compile Include="Domain\Communications\Question.cs" />
-    <Compile Include="Types\Attributes\Colors.cs" />
-    <Compile Include="Types\Domain\Communications\IAnswer.cs" />
-    <Compile Include="Types\Domain\Communications\IAnswerResult.cs" />
-    <Compile Include="Types\Attributes\IColored.cs" />
-    <Compile Include="Types\Attributes\IAttribute.cs" />
-    <Compile Include="Domain\Abilities\Virtual.cs" />
-    <Compile Include="Domain\Agents\Reality.cs" />
-    <Compile Include="Domain\Agents\Agent.cs" />
-    <Compile Include="Types\Domain\Abilities\IVirtual.cs" />
-    <Compile Include="Types\Domain\Communications\IQuestion.cs" />
-    <Compile Include="Types\Domain\Abilities\IReflective.cs" />
-    <Compile Include="Types\Domain\Abilities\ISentient.cs" />
-    <Compile Include="Types\Domain\Agency\IReality.cs" />
-    <Compile Include="Domain\System\Factory.cs" />
-    <Compile Include="Types\Domain\Agency\IAgent.cs" />
-    <Compile Include="Types\Domain\Agency\IAbility.cs" />
-    <Compile Include="Types\Factories\IFactory.cs" />
-    <Compile Include="Types\Domain\Abilities\IRational.cs" />
-    <Compile Include="Types\Domain\Abilities\ICommunicative.cs" />
+    <Compile Include="System\Settings.cs" />
+    <Compile Include="Implements\Communications\Answer.cs" />
+    <Compile Include="Implements\Communications\AnswerResult.cs" />
+    <Compile Include="Implements\Communications\Question.cs" />
+    <Compile Include="Types\Communications\IAnswer.cs" />
+    <Compile Include="Types\Communications\IAnswerResult.cs" />
+    <Compile Include="Implements\Abilities\Virtual.cs" />
+    <Compile Include="Implements\Agents\Reality.cs" />
+    <Compile Include="Implements\Agents\Agent.cs" />
+    <Compile Include="Types\Agency\Abilities\IVirtual.cs" />
+    <Compile Include="Types\Communications\IQuestion.cs" />
+    <Compile Include="Types\Agency\Abilities\IReflective.cs" />
+    <Compile Include="Types\Agency\Abilities\ISentient.cs" />
+    <Compile Include="Types\Agency\IReality.cs" />
+    <Compile Include="System\Factory.cs" />
+    <Compile Include="Types\Agency\IAgent.cs" />
+    <Compile Include="Types\Agency\IAbility.cs" />
+    <Compile Include="Types\System\IFactory.cs" />
+    <Compile Include="Types\Agency\Abilities\IRational.cs" />
+    <Compile Include="Types\Agency\Abilities\ICommunicative.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\Abilities\Rational.cs" />
-    <Compile Include="Domain\Abilities\Communicative.cs" />
+    <Compile Include="Implements\Abilities\Rational.cs" />
+    <Compile Include="Implements\Abilities\Communicative.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -78,6 +75,7 @@
       <Name>Robotango.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

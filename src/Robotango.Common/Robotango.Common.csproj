@@ -47,8 +47,12 @@
     <Compile Include="Implements\Extensions\CollectionExtensions.cs" />
     <Compile Include="Implements\Tools\OutlineWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Attributes\IAttribute.cs" />
+    <Compile Include="Types\Attributes\IAttributeHolder.cs" />
     <Compile Include="Types\Compositions\IComponent.cs" />
     <Compile Include="Types\Compositions\IComposite.cs" />
+    <Compile Include="Types\Enums\Colors.cs" />
+    <Compile Include="Types\Properties\IColored.cs" />
     <Compile Include="Types\Properties\IIdentifiable.cs" />
     <Compile Include="Types\Properties\IResearchable.cs" />
     <Compile Include="Types\Properties\IVerifiable.cs" />

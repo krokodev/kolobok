@@ -3,8 +3,8 @@
 // Depths.cs
 
 using NUnit.Framework;
-using Robotango.Core.Domain.System;
-using Robotango.Core.Types.Domain.Abilities;
+using Robotango.Core.System;
+using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases
