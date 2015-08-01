@@ -87,6 +87,19 @@ namespace Robotango.Core.Implementations
         #endregion
 
 
+        #region IResearchable
+
+        string IResearchable.GetDump( int level )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line( "{0} <{1}>", IAgent.Name, typeof( Agent ).Name );
+            Components.OfType< IResearchable >().ForEach( c => wr.Append( c.GetDump( wr.Level + 1 ) ) );
+            return wr.ToString();
+        }
+
+        #endregion
+
+
         #region Ctor
 
         public Agent( params IComponent[] components )
@@ -106,23 +119,6 @@ namespace Robotango.Core.Implementations
         public override string ToString()
         {
             return string.Format( "{0} {{{1}}}", IAgent.Name, IAgent.Id );
-        }
-
-        #endregion
-
-
-        #region IResearchable
-
-        string IResearchable.GetDump( int level )
-        {
-            var wr = new OutlineWriter( level );
-            wr.Line( "{0} <{1}>", IAgent.Name, typeof( Agent ).Name );
-
-            //wr.Line( "{");
-            Components.OfType< IResearchable >().ForEach( c => wr.Append( c.GetDump( wr.Level + 1 ) ) );
-
-            //wr.Line( "}");
-            return wr.ToString();
         }
 
         #endregion

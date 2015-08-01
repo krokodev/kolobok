@@ -4,7 +4,7 @@
 
 namespace Robotango.Core.Types
 {
-    public interface IWorld : IAspect, IIdentifiable, IResearchable
+    public interface IWorld : ISkill, IIdentifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
         void Add( params IAgent[] agents );

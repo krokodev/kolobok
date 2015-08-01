@@ -22,17 +22,14 @@ namespace Robotango.Tests.Cases
 
             universe.As< IWorld >().Add( alice );
             universe.As< IWorld >().Add( bob );
+            universe.As< IWorld >().Add( charly );
             alice.As< IRational >().Imaginary.Add( bob.Clone() );
             alice.As< IRational >().Imaginary.Add( charly.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( bob.Clone() );
-            universe.As< IWorld >().Add( charly );
 
-            IHat aHat = alice.As< IEntity >().Add< Hat >();
-            IHat bHat = bob.As< IEntity >().Add< Hat >();
-
-            aHat.Color = Colors.Red;
-            bHat.Color = Colors.Black;
+            alice.As< IEntity >().Add< Hat >().IHat.Color=Colors.Red;
+            bob.As< IEntity >().Add< Hat >().IHat.Color=Colors.Black;
 
             var dump = universe.GetDump();
 

@@ -73,7 +73,6 @@ namespace Robotango.Core.Implementations
                     : string.Format( Constants.Worlds.Names.FullTemplate, _holder.FullName, IWorld.Name );
             }
         }
-
         string IWorld.FamilyName
         {
             get
@@ -100,7 +99,7 @@ namespace Robotango.Core.Implementations
         }
 
         #endregion
-
+       
 
         #region IComponent
 
@@ -138,11 +137,7 @@ namespace Robotango.Core.Implementations
         {
             var wr = new OutlineWriter( level );
             wr.Line( "{0} <{1}>", IWorld.FamilyName, typeof( World ).Name );
-
-            //wr.Line( "{");
             _agents.ForEach( a => wr.Append( a.GetDump( wr.Level + 1 ) ) );
-
-            //wr.Line( "}");
             return wr.ToString();
         }
 
@@ -151,7 +146,7 @@ namespace Robotango.Core.Implementations
 
         #region IAspect
 
-        void IAspect.Verify()
+        void ISkill.Verify()
         {
             Debug.Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IWorld.Id );
         }

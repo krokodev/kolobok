@@ -11,7 +11,7 @@ using Robotango.Tests.Utils;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class World : BaseCase
+    public class Worlds : BaseCase
     {
         [Test, ExpectedException( typeof( RobotangoException ) )]
         public void Agent_belongs_only_one_world()

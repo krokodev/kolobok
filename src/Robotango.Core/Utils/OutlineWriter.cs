@@ -12,7 +12,7 @@ namespace Robotango.Core.Utils
         private readonly StringBuilder _sb;
         private int _level;
 
-        public OutlineWriter( int level, int n = 3 )
+        public OutlineWriter( int level, int n = 2 )
         {
             _sb = new StringBuilder();
             Width = n;

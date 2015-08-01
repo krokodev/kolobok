@@ -98,7 +98,7 @@ namespace Robotango.Tests.Cases
             Log( alice.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "New Alice", alice.Name );
-            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.Holder.Name );
+            Assert.AreEqual( "New Alice", alice.As< IRational >().Imaginary.Holder.Name);
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace Robotango.Tests.Cases
             Log( clone.As< IRational >().Imaginary.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( "Clone", clone.As< IRational >().Imaginary.Holder.Name );
+            Assert.AreEqual( "Clone", (( IAgent ) clone.As< IRational >().Imaginary.Holder).Name );
         }
 
         [Test]

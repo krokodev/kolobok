@@ -55,7 +55,7 @@ namespace Robotango.Core.Implementations
 
         #region IAspect
 
-        void IAspect.Verify()
+        void ISkill.Verify()
         {
             _presentImage.Verify();
         }
@@ -78,11 +78,7 @@ namespace Robotango.Core.Implementations
         {
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Rational ).Name );
-
-            //wr.Line( "{");
             wr.Append( _presentImage.GetDump( wr.Level + 1 ) );
-
-            //wr.Line( "}");
             return wr.ToString();
         }
 

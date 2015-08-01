@@ -6,7 +6,7 @@ using System;
 
 namespace Robotango.Core.Types
 {
-    public interface IRational : IAspect, IResearchable
+    public interface IRational : ISkill, IResearchable
     {
         void Think();
         void Believes( Action< IWorld > belief );

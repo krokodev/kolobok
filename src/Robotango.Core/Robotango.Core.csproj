@@ -53,7 +53,7 @@
     <Compile Include="Types\Colors.cs" />
     <Compile Include="Types\IAnswer.cs" />
     <Compile Include="Types\IAnswerResult.cs" />
-    <Compile Include="Types\IAspect.cs" />
+    <Compile Include="Types\ISkill.cs" />
     <Compile Include="Types\IColored.cs" />
     <Compile Include="Types\IComposition.cs" />
     <Compile Include="Types\IIdentifiable.cs" />

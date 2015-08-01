@@ -4,7 +4,7 @@
 
 namespace Robotango.Core.Types
 {
-    public interface IAspect
+    public interface ISkill
     {
         void Verify();
     }

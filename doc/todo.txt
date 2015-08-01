@@ -4,7 +4,6 @@ Todo list
 
 Todo
 ~~~~
-- ren Robotango
 - finish dump test
 - see ipad
 - create and dump complex world with alice, bob, hats and their beliefs
@@ -15,6 +14,7 @@ Todo
 
 Done
 ~~~~
++ ren Robotango
 + Use IAttribute instead of Propety/Owner
 + many tests
 + ren sources to src
