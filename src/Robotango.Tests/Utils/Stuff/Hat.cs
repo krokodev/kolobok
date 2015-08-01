@@ -4,11 +4,12 @@
 
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Implements.Domain.Attributes;
 using Robotango.Core.Types.Domain.Attributes;
 
 namespace Robotango.Tests.Utils.Stuff
 {
-    public class Hat : IAttribute, IHat
+    public class Hat : Attribute< Hat >, IHat
     {
         #region IHat
 
@@ -22,17 +23,20 @@ namespace Robotango.Tests.Utils.Stuff
         #endregion
 
 
-        #region IProperty
+        #region Attribute
 
-        IAttribute IAttribute.Clone()
+        protected override string GetContent()
+        {
+            return string.Format( "Color:{0}", IHat.Color );
+        }
+
+        protected override IAttribute Clone()
         {
             var hat = new Hat();
             hat.IHat.Color = IHat.Color;
             return hat;
         }
 
-        IAttributeHolder IAttribute.Holder { get; set; }
+        #endregion
     }
-
-    #endregion
 }

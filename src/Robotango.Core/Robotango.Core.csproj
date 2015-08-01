@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\Domain\Attributes\Attribute.cs" />
     <Compile Include="System\Settings.cs" />
     <Compile Include="Implements\Domain\Communications\Answer.cs" />
     <Compile Include="Implements\Domain\Communications\AnswerResult.cs" />

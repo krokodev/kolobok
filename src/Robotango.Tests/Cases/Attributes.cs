@@ -3,6 +3,7 @@
 // Attributes.cs
 
 using NUnit.Framework;
+using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
@@ -22,6 +23,19 @@ namespace Robotango.Tests.Cases
 
             alice.Add( hat );
             bob.Add( hat );
+        }
+
+        [Test]
+        public void Cloned_agent_has_the_same_attribute_value()
+        {
+            var alice = Factory.CreateAgent< IVirtual >();
+            alice.As< IVirtual >().Add<Hat>().IHat.Color = Colors.Red;
+            var clone = alice.Clone();
+
+            IHat aHat = alice.As< IVirtual >().GetFirst< Hat >();
+            IHat cHat = clone.As< IVirtual >().GetFirst< Hat >();
+
+            Assert.AreEqual( aHat.Color, cHat.Color );
         }
 
         [Test]

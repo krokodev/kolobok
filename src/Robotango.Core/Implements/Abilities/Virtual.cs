@@ -5,7 +5,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
+using Robotango.Common.Utils.Tools;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Domain.Attributes;
 
@@ -29,6 +31,7 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IAttributeHolder
 
+        IAttributeHolder IAttributeHolder { get { return this; } }
         void IAttributeHolder.Add( IAttribute attribute )
         {
             Debug.Assert.That( attribute.Holder == null, "Attribute already belongs to other entity" );
@@ -38,11 +41,14 @@ namespace Robotango.Core.Implements.Abilities
 
         T IAttributeHolder.Add<T>()
         {
-            return new T();
+            var a = new T();
+            IAttributeHolder.Add( a );
+            return a;
         }
 
         T IAttributeHolder.GetFirst<T>()
         {
+            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' not found", typeof(T).Name );
             return _attributes.OfType< T >().First();
         }
 
@@ -52,6 +58,19 @@ namespace Robotango.Core.Implements.Abilities
         #region Fields
 
         private List< IAttribute > _attributes = new List< IAttribute >();
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.GetDump( int level )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line( "<{0}>", typeof( Virtual ).Name );
+            _attributes.ForEach( a => wr.Append( a.GetDump( wr.Level + 1 ) ) );
+            return wr.ToString();
+        }
 
         #endregion
     }

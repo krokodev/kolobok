@@ -41,7 +41,6 @@ namespace Robotango.Tests.Cases
             Assert.That( dump.Contains( "Bob" ) );
             Assert.That( dump.Contains( "Charly" ) );
 
-            Assert.Ignore();
             Assert.That( dump.Contains( "Hat" ) );
             Assert.That( dump.Contains( "Red" ) );
             Assert.That( dump.Contains( "Black" ) );

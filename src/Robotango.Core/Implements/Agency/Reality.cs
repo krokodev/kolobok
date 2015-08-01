@@ -138,6 +138,16 @@ namespace Robotango.Core.Implements.Agency
         #endregion
 
 
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format( "{0} {{{1}}}", IReality.Name, IReality.Id );
+        }
+
+        #endregion
+
+
         #region Ctor
 
         public Reality( string name = null )
@@ -149,16 +159,6 @@ namespace Robotango.Core.Implements.Agency
             : this( name )
         {
             _holder = holder;
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        public override string ToString()
-        {
-            return string.Format( "{0} {{{1}}}", IReality.Name, IReality.Id );
         }
 
         #endregion

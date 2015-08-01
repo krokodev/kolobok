@@ -6,7 +6,7 @@ using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Types.Agency
 {
-    public interface IReality : IVerifiable, IIdentifiable, IResearchable
+    public interface IReality : IIdentifiable, IVerifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
         void Add( params IAgent[] agents );
