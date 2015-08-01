@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Common;
 using Robotango.Core.Diagnostics;
 using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
 
@@ -18,10 +19,10 @@ namespace Robotango.Tests.Cases
         public void Agent_belongs_only_one_world()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IReality >();
+            var world = Factory.CreateReality();
             var image = agent.As< IRational >().Imaginary;
 
-            world.As< IReality >().Add( agent );
+            world.Add( agent );
             image.Add( agent );
         }
 
@@ -29,20 +30,20 @@ namespace Robotango.Tests.Cases
         public void World_contains_each_agent_only_once()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IReality >();
+            var world = Factory.CreateReality();
 
-            world.As< IReality >().Add( agent );
-            world.As< IReality >().Add( agent );
+            world.Add( agent );
+            world.Add( agent );
         }
 
         [Test, ExpectedException( typeof( RobotangoException ) )]
         public void World_contains_only_unique_agents()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IReality >();
+            var world = Factory.CreateReality();
 
-            world.As< IReality >().Add( agent.Clone() );
-            world.As< IReality >().Add( agent.Clone() );
+            world.Add( agent.Clone() );
+            world.Add( agent.Clone() );
         }
 
         [Test]

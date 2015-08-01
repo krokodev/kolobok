@@ -6,6 +6,7 @@ using System;
 using Robotango.Core.Implements.Communications;
 using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Communications;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
 

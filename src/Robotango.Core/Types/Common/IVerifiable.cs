@@ -2,9 +2,9 @@
 // Robotango.Core
 // ISkill.cs
 
-namespace Robotango.Core.Types.Skills
+namespace Robotango.Core.Types.Common
 {
-    public interface ISkill
+    public interface IVerifiable
     {
         void Verify();
     }

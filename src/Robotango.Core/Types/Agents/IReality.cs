@@ -7,7 +7,7 @@ using Robotango.Core.Types.Skills;
 
 namespace Robotango.Core.Types.Agents
 {
-    public interface IReality : ISkill, IIdentifiable, IResearchable
+    public interface IReality : IVerifiable, IIdentifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
         void Add( params IAgent[] agents );

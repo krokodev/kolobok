@@ -3,10 +3,11 @@
 // IEntity.cs
 
 using Robotango.Core.Types.Common;
+using Robotango.Core.Types.Compositions;
 
 namespace Robotango.Core.Types.Skills
 {
-    public interface IEntity
+    public interface IEntity : IComponent
     {
         void Add( IAttribute attribute );
         T Add<T>() where T : IAttribute, new();

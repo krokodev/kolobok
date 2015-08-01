@@ -3,6 +3,7 @@
 // ComponentsAssertThat.cs
 
 using NUnit.Framework;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
 

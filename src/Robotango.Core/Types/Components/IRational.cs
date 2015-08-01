@@ -4,10 +4,13 @@
 
 using System;
 using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Common;
+using Robotango.Core.Types.Compositions;
+using Robotango.Core.Types.Skills;
 
-namespace Robotango.Core.Types.Skills
+namespace Robotango.Core.Types.Components
 {
-    public interface IRational : ISkill, IResearchable
+    public interface IRational : IComponent, IVerifiable, IResearchable
     {
         void Think();
         void Believes( Action< IReality > belief );

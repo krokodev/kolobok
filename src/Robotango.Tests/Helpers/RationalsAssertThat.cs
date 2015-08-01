@@ -3,6 +3,7 @@
 // RationalsAssertThat.cs
 
 using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 
 namespace Robotango.Tests.Helpers

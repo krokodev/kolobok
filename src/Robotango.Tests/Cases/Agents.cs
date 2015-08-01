@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Common;
 using Robotango.Core.Diagnostics;
 using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
 
@@ -47,8 +48,8 @@ namespace Robotango.Tests.Cases
         public void Agent_can_not_be_moved_to_another_reality()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IReality >().As< IReality >();
-            var newWorld = Factory.CreateAgent< IReality >().As< IReality >();
+            var world = Factory.CreateReality();
+            var newWorld = Factory.CreateReality ();
             world.Add( agent );
             agent.Reality = newWorld;
         }
@@ -57,7 +58,7 @@ namespace Robotango.Tests.Cases
         public void Agent_reality_can_not_be_assigned_to_the_arbitrary_world()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IReality >().As< IReality >();
+            var world = Factory.CreateReality();
             agent.Reality = world;
         }
 

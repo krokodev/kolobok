@@ -4,6 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Types.Attributes;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Helpers;
 using Robotango.Tests.Stuff;

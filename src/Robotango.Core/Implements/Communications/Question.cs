@@ -5,6 +5,7 @@
 using System;
 using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Communications;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 
 namespace Robotango.Core.Implements.Communications

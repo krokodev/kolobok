@@ -129,7 +129,7 @@ namespace Robotango.Core.Implements.Agents
 
         #region IAspect
 
-        void ISkill.Verify()
+        void IVerifiable.Verify()
         {
             Debug.Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IReality.Id );
         }

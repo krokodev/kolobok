@@ -2,6 +2,7 @@
 // Robotango.Core
 // IAnswer.cs
 
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Skills;
 
 namespace Robotango.Core.Types.Communications

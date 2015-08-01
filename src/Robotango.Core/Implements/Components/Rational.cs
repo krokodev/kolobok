@@ -8,6 +8,8 @@ using System.Linq;
 using Robotango.Core.Common;
 using Robotango.Core.Implements.Agents;
 using Robotango.Core.Types.Agents;
+using Robotango.Core.Types.Common;
+using Robotango.Core.Types.Components;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
 using Robotango.Core.Utils;
@@ -58,7 +60,7 @@ namespace Robotango.Core.Implements.Skills
 
         #region IAspect
 
-        void ISkill.Verify()
+        void IVerifiable.Verify()
         {
             _presentImage.Verify();
         }
