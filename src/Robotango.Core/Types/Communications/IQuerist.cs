@@ -2,7 +2,14 @@
 // Robotango.Core
 // IQuerist.cs
 
+using System;
+using Robotango.Core.Types.Agency;
+
 namespace Robotango.Core.Types.Communications
 {
-    public interface IQuerist {}
+    public interface IQuerist
+    {
+        IQuestion< T > Ask<T>( Func< IReality, T > theme );
+        
+    }
 }

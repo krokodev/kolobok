@@ -1,5 +1,5 @@
 ﻿// Robotango (c) 2015 Krokodev
-// Robotango.Core
+// Robotango.Common
 // IColored.cs
 
 using Robotango.Common.Types.Enums;

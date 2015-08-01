@@ -1,8 +1,12 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IAnswerRespondent.cs
+// IRespondent.cs
 
 namespace Robotango.Core.Types.Communications
 {
-    public interface IRespondent {}
+    public interface IRespondent
+    {
+        IAnswer< T > Reply<T>( IQuestion< T > question );
+       
+    }
 }

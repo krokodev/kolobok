@@ -6,7 +6,5 @@ using Robotango.Common.Types.Attributes;
 
 namespace Robotango.Core.Types.Agency.Abilities
 {
-    public interface IVirtual : IAbility, IAttributeHolder
-    {
-    }
+    public interface IVirtual : IAbility, IAttributeHolder {}
 }

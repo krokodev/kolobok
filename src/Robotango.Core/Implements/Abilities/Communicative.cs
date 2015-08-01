@@ -28,9 +28,9 @@ namespace Robotango.Core.Implements.Abilities
         #endregion
 
 
-        #region ISocial
+        #region IQuerist
 
-        IQuestion< T > ICommunicative.Ask<T>( Func< IReality, T > theme )
+        IQuestion< T > IQuerist.Ask<T>( Func< IReality, T > theme )
         {
             return new Question< T > {
                 Querist = this,
@@ -38,7 +38,12 @@ namespace Robotango.Core.Implements.Abilities
             };
         }
 
-        IAnswer< T > ICommunicative.Reply<T>( IQuestion< T > question )
+        #endregion
+
+
+        #region IRespondent
+
+        IAnswer< T > IRespondent.Reply<T>( IQuestion< T > question )
         {
             return new Answer< T > {
                 Question = question,

@@ -2,8 +2,6 @@
 // Robotango.Core
 // IAnswer.cs
 
-using Robotango.Core.Types.Agency.Abilities;
-
 namespace Robotango.Core.Types.Communications
 {
     public interface IAnswer<T>

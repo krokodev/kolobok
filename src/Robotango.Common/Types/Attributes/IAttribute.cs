@@ -1,5 +1,5 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Core
+// Robotango.Common
 // IAttribute.cs
 
 namespace Robotango.Common.Types.Attributes
