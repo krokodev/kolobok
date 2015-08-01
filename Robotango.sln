@@ -5,7 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{6B7D0DF3-D92E-49D9-BD4B-71EECD1009DB}"
 	ProjectSection(SolutionItems) = preProject
-		doc\links.txt = doc\links.txt
 		readme.md = readme.md
 		doc\todo.txt = doc\todo.txt
 	EndProjectSection
