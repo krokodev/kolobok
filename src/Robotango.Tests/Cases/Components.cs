@@ -7,8 +7,8 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Implements.Agency.Abilities;
 using Robotango.Core.Types.Agency.Abilities;
-using Robotango.Tests.Helpers;
-using Robotango.Tests.Utils;
+using Robotango.Tests.Utils.Bases;
+using Robotango.Tests.Utils.Helpers;
 
 namespace Robotango.Tests.Cases
 {

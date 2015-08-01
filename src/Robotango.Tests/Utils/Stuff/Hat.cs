@@ -6,7 +6,7 @@ using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Types.Domain.Attributes;
 
-namespace Robotango.Tests.Stuff
+namespace Robotango.Tests.Utils.Stuff
 {
     public class Hat : IAttribute, IHat
     {

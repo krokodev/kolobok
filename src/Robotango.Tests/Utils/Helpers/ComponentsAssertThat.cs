@@ -7,7 +7,7 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Agency.Abilities;
 
-namespace Robotango.Tests.Helpers
+namespace Robotango.Tests.Utils.Helpers
 {
     public class ComponentsAssertThat
     {

@@ -5,9 +5,9 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Core.Types.Agency.Abilities;
-using Robotango.Tests.Helpers;
-using Robotango.Tests.Stuff;
-using Robotango.Tests.Utils;
+using Robotango.Tests.Utils.Bases;
+using Robotango.Tests.Utils.Helpers;
+using Robotango.Tests.Utils.Stuff;
 
 namespace Robotango.Tests.Cases
 {

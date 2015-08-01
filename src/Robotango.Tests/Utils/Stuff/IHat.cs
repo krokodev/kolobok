@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 
-namespace Robotango.Tests.Stuff
+namespace Robotango.Tests.Utils.Stuff
 {
     public interface IHat : IColored {}
 }

@@ -6,9 +6,9 @@ using System;
 using NUnit.Framework;
 using Robotango.Core.System;
 
-namespace Robotango.Tests.Utils
+namespace Robotango.Tests.Utils.Bases
 {
-    public class BaseCase
+    public abstract class BaseCase
     {
         #region Init
 
