@@ -2,7 +2,9 @@
 // Robotango.Core
 // ISentient.cs
 
-namespace Robotango.Core.Types.Agency.Abilities
+using Robotango.Core.Types.Agency;
+
+namespace Robotango.Core.Types.Abilities
 {
     public interface ISentient : IAbility {}
 }

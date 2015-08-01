@@ -2,10 +2,10 @@
 // Robotango.Core
 // ICommunicative.cs
 
-using System;
+using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Domain.Communications;
 
-namespace Robotango.Core.Types.Agency.Abilities
+namespace Robotango.Core.Types.Abilities
 {
     public interface ICommunicative : IAbility, IRespondent, IQuerist
     {

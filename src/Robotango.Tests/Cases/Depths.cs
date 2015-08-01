@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.System;
-using Robotango.Core.Types.Agency.Abilities;
+using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases

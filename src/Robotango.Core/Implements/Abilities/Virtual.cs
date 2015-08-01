@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Diagnostics.Debug;
-using Robotango.Core.Types.Agency.Abilities;
+using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Domain.Attributes;
 
-namespace Robotango.Core.Implements.Agency.Abilities
+namespace Robotango.Core.Implements.Abilities
 {
     internal class Virtual : IVirtual
     {

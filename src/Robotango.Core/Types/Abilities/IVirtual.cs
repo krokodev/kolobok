@@ -2,9 +2,10 @@
 // Robotango.Core
 // IVirtual.cs
 
+using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Domain.Attributes;
 
-namespace Robotango.Core.Types.Agency.Abilities
+namespace Robotango.Core.Types.Abilities
 {
     public interface IVirtual : IAbility, IAttributeHolder {}
 }

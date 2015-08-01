@@ -5,11 +5,11 @@
 using System;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Implements.Domain.Communications;
+using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Agency.Abilities;
 using Robotango.Core.Types.Domain.Communications;
 
-namespace Robotango.Core.Implements.Agency.Abilities
+namespace Robotango.Core.Implements.Abilities
 {
     internal class Communicative : ICommunicative
     {

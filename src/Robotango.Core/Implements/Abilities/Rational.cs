@@ -8,11 +8,12 @@ using System.Linq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.Implements.Agency;
 using Robotango.Core.System;
+using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Agency.Abilities;
 
-namespace Robotango.Core.Implements.Agency.Abilities
+namespace Robotango.Core.Implements.Abilities
 {
     public class Rational : IRational
     {
@@ -24,12 +25,12 @@ namespace Robotango.Core.Implements.Agency.Abilities
             _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 
-        public void Believes( Action< IReality > belief )
+        void IRational.Believes( Action< IReality > belief )
         {
             _beliefs.Add( belief );
         }
 
-        public IReality Imaginary
+        IReality IRational.Imaginary
         {
             get { return _presentImage; }
         }
@@ -56,21 +57,12 @@ namespace Robotango.Core.Implements.Agency.Abilities
         #endregion
 
 
-        #region IAspect
+        #region IVerifiable
 
         void IVerifiable.Verify()
         {
             _presentImage.Verify();
         }
-
-        #endregion
-
-
-        #region Fields
-
-        private List< Action< IReality > > _beliefs = new List< Action< IReality > >();
-        private IReality _presentImage;
-        private IComposite _composite;
 
         #endregion
 
@@ -84,6 +76,15 @@ namespace Robotango.Core.Implements.Agency.Abilities
             wr.Append( _presentImage.GetDump( wr.Level + 1 ) );
             return wr.ToString();
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private List< Action< IReality > > _beliefs = new List< Action< IReality > >();
+        private IReality _presentImage;
+        private IComposite _composite;
 
         #endregion
     }

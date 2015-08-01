@@ -4,8 +4,9 @@
 
 using System;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Types.Agency;
 
-namespace Robotango.Core.Types.Agency.Abilities
+namespace Robotango.Core.Types.Abilities
 {
     public interface IRational : IAbility, IVerifiable, IResearchable
     {

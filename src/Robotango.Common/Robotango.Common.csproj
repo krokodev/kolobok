@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Implements\Compositions\Composition.cs" />
+    <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
     <Compile Include="Utils\Diagnostics\Debug\Debug.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\AssertException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\AbstractException.cs" />

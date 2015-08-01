@@ -2,7 +2,9 @@
 // Robotango.Core
 // IReflective.cs
 
-namespace Robotango.Core.Types.Agency.Abilities
+using Robotango.Core.Types.Agency;
+
+namespace Robotango.Core.Types.Abilities
 {
     public interface IReflective : IAbility {}
 }
