@@ -4,6 +4,9 @@ Todo list
 
 Todo
 ~~~~
+- ren Robotango
+- finish dump test
+- see ipad
 - create and dump complex world with alice, bob, hats and their beliefs
 - Use Name as attribute 
 - form out beliefs in the class IBelief
