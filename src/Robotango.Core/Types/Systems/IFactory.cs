@@ -19,5 +19,6 @@ namespace Robotango.Core.Types.Systems
         IAgent CreateAgent( params IComponent[] components );
         IAgent CreateAgent( string name, params IComponent[] components );
         IComponent CreateComponent<T>();
+        IReality CreateReality( string name = null );
     }
 }

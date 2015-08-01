@@ -3,7 +3,6 @@
 // Communications.cs
 
 using NUnit.Framework;
-using Robotango.Core.Types;
 using Robotango.Core.Types.Attributes;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Stuff;

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Robotango.Core.Common;
+using Robotango.Core.Implements.Agents;
 using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
@@ -23,12 +24,12 @@ namespace Robotango.Core.Implements.Skills
             _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 
-        public void Believes( Action< IWorld > belief )
+        public void Believes( Action< IReality > belief )
         {
             _beliefs.Add( belief );
         }
 
-        public IWorld Imaginary
+        public IReality Imaginary
         {
             get { return _presentImage; }
         }
@@ -41,7 +42,7 @@ namespace Robotango.Core.Implements.Skills
         void IComponent.Init( IComposition composition )
         {
             _composition = composition;
-            _presentImage = new World( ( IAgent ) _composition, Constants.Worlds.Names.Imaginary );
+            _presentImage = new Reality( ( IAgent ) _composition, Constants.Worlds.Names.Imaginary );
         }
 
         IComponent IComponent.Clone()
@@ -67,8 +68,8 @@ namespace Robotango.Core.Implements.Skills
 
         #region Fields
 
-        private List< Action< IWorld > > _beliefs = new List< Action< IWorld > >();
-        private IWorld _presentImage;
+        private List< Action< IReality > > _beliefs = new List< Action< IReality > >();
+        private IReality _presentImage;
         private IComposition _composition;
 
         #endregion

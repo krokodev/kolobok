@@ -2,7 +2,6 @@
 // Robotango.Tests
 // IHat.cs
 
-using Robotango.Core.Types;
 using Robotango.Core.Types.Attributes;
 
 namespace Robotango.Tests.Stuff

@@ -3,7 +3,6 @@
 // Dumps.cs
 
 using NUnit.Framework;
-using Robotango.Core.Types;
 using Robotango.Core.Types.Attributes;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Stuff;
@@ -17,14 +16,14 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Dump_contains_info_about_agents_attributes()
         {
-            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var universe = Factory.CreateReality( "Universe" );
             var alice = Factory.CreateAgent< IRational, IEntity >( "Alice" );
             var bob = Factory.CreateAgent< IRational, IEntity >( "Bob" );
             var charly = Factory.CreateAgent< IRational, IEntity >( "Charly" );
 
-            universe.As< IWorld >().Add( alice );
-            universe.As< IWorld >().Add( bob );
-            universe.As< IWorld >().Add( charly );
+            universe.Add( alice );
+            universe.Add( bob );
+            universe.Add( charly );
             alice.As< IRational >().Imaginary.Add( bob.Clone() );
             alice.As< IRational >().Imaginary.Add( charly.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );

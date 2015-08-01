@@ -5,7 +5,6 @@
 using NUnit.Framework;
 using Robotango.Core.Common;
 using Robotango.Core.Diagnostics;
-using Robotango.Core.Types;
 using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
@@ -48,8 +47,8 @@ namespace Robotango.Tests.Cases
         public void Agent_can_not_be_moved_to_another_reality()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
-            var newWorld = Factory.CreateAgent< IWorld >().As< IWorld >();
+            var world = Factory.CreateAgent< IReality >().As< IReality >();
+            var newWorld = Factory.CreateAgent< IReality >().As< IReality >();
             world.Add( agent );
             agent.Reality = newWorld;
         }
@@ -58,7 +57,7 @@ namespace Robotango.Tests.Cases
         public void Agent_reality_can_not_be_assigned_to_the_arbitrary_world()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            var world = Factory.CreateAgent< IReality >().As< IReality >();
             agent.Reality = world;
         }
 
@@ -66,7 +65,7 @@ namespace Robotango.Tests.Cases
         public void Cloned_agent_has_no_reality()
         {
             var agent = Factory.CreateAgent< IRational >();
-            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            var world = Factory.CreateReality();
             world.Add( agent );
             Assert.AreEqual( world, agent.Reality );
             Assert.AreEqual( null, agent.Clone().Reality );
@@ -75,10 +74,10 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Agents_full_name_describes_its_hierarchy()
         {
-            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var universe = Factory.CreateReality( "Universe" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent( "Bob" );
-            universe.As< IWorld >().Add( alice );
+            universe.Add( alice );
             alice.As< IRational >().Imaginary.Add( bob );
 
             Log( universe.FullName );
@@ -135,13 +134,13 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Cloned_and_inserted_agent_imaginary_has_proper_family_name()
         {
-            var world = Factory.CreateAgent< IWorld >( "World" );
+            var world = Factory.CreateReality( "World" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );
 
-            var clone = alice.Clone(); //world.As< IWorld >().Agent( alice );
+            var clone = alice.Clone();
             clone.Name = "Clone";
 
-            world.As< IWorld >().Add( clone );
+            world.Add( clone );
 
             Log( clone.FullName );
             Log( clone.As< IRational >().Imaginary.FamilyName );

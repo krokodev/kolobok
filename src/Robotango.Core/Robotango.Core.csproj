@@ -59,14 +59,14 @@
     <Compile Include="Types\Common\IIdentifiable.cs" />
     <Compile Include="Types\Common\IAttribute.cs" />
     <Compile Include="Implements\Skills\Entity.cs" />
-    <Compile Include="Implements\Skills\World.cs" />
+    <Compile Include="Implements\Agents\Reality.cs" />
     <Compile Include="Implements\Agents\Agent.cs" />
     <Compile Include="Types\Skills\IEntity.cs" />
     <Compile Include="Types\Communications\IQuestion.cs" />
     <Compile Include="Types\Skills\IReflective.cs" />
     <Compile Include="Types\Skills\IResearchable.cs" />
     <Compile Include="Types\Skills\ISentient.cs" />
-    <Compile Include="Types\Skills\IWorld.cs" />
+    <Compile Include="Types\Agents\IReality.cs" />
     <Compile Include="Utils\CollectionExtensions.cs" />
     <Compile Include="Factories\Factory.cs" />
     <Compile Include="Types\Agents\IAgent.cs" />

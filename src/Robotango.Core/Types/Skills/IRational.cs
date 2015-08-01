@@ -3,13 +3,14 @@
 // IRational.cs
 
 using System;
+using Robotango.Core.Types.Agents;
 
 namespace Robotango.Core.Types.Skills
 {
     public interface IRational : ISkill, IResearchable
     {
         void Think();
-        void Believes( Action< IWorld > belief );
-        IWorld Imaginary { get; }
+        void Believes( Action< IReality > belief );
+        IReality Imaginary { get; }
     }
 }

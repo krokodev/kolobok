@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Robotango.Core.Diagnostics;
 using Robotango.Core.Implements.Agents;
 using Robotango.Core.Implements.Skills;
-using Robotango.Core.Types;
 using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
@@ -110,6 +109,11 @@ namespace Robotango.Core.Factories
             return doCreateComponent( typeof( T ) );
         }
 
+        IReality IFactory.CreateReality( string name )
+        {
+            return new Reality( name );
+        }
+
         #endregion
 
 
@@ -141,7 +145,6 @@ namespace Robotango.Core.Factories
             ComponentConstructors = new Dictionary< Type, Func< IComponent > > {
                 { typeof( IRational ), () => new Rational() },
                 { typeof( ISocial ), () => new Social() },
-                { typeof( IWorld ), () => new World() },
                 { typeof( IEntity ), () => new Entity() },
             };
 

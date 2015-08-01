@@ -41,7 +41,7 @@ namespace Robotango.Core.Implements.Agents
             return clone;
         }
 
-        IWorld IAgent.Reality
+        IReality IAgent.Reality
         {
             get { return _reality; }
             set
@@ -131,7 +131,7 @@ namespace Robotango.Core.Implements.Agents
         #region Fields
 
         private Guid _id = Guid.NewGuid();
-        private IWorld _reality;
+        private IReality _reality;
         private string _name;
 
         #endregion

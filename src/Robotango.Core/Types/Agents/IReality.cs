@@ -1,17 +1,17 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IWorld.cs
+// IReality.cs
 
-using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Common;
+using Robotango.Core.Types.Skills;
 
-namespace Robotango.Core.Types.Skills
+namespace Robotango.Core.Types.Agents
 {
-    public interface IWorld : ISkill, IIdentifiable, IResearchable
+    public interface IReality : ISkill, IIdentifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
         void Add( params IAgent[] agents );
-        IWorld Clone( IAgent holder = null );
+        IReality Clone( IAgent holder = null );
         bool Contains( IAgent agent );
         void Clear();
         uint Depth { get; }
@@ -19,6 +19,6 @@ namespace Robotango.Core.Types.Skills
         string FullName { get; }
         string FamilyName { get; }
         IAgent Holder { get; }
-        IWorld Superior { get; }
+        IReality Superior { get; }
     }
 }

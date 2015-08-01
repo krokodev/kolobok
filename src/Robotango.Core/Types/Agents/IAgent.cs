@@ -11,7 +11,7 @@ namespace Robotango.Core.Types.Agents
     {
         T As<T>();
         IAgent Clone();
-        IWorld Reality { get; set; }
+        IReality Reality { get; set; }
         string Name { get; set; }
         uint Depth { get; }
         string FullName { get; }

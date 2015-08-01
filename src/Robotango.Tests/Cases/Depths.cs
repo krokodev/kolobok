@@ -4,7 +4,6 @@
 
 using NUnit.Framework;
 using Robotango.Core.Common;
-using Robotango.Core.Types;
 using Robotango.Core.Types.Skills;
 using Robotango.Tests.Utils;
 
@@ -16,7 +15,7 @@ namespace Robotango.Tests.Cases
         [Test]
         public void World_has_default_name()
         {
-            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            var world = Factory.CreateReality();
             Log( world );
             Assert.AreEqual( Constants.Worlds.Names.Default, world.Name );
         }
@@ -24,7 +23,7 @@ namespace Robotango.Tests.Cases
         [Test]
         public void World_has_depth()
         {
-            var world = Factory.CreateAgent< IWorld >().As< IWorld >();
+            var world = Factory.CreateReality();
             Assert.AreEqual( Constants.Depth.Basic, world.Depth );
         }
 
@@ -130,40 +129,40 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Deeply_thinked_out_agents_have_proper_depth()
         {
-            var universe = Factory.CreateAgent< IWorld >( "Universe" );
+            var universe = Factory.CreateReality( "Universe" );
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent< IRational >( "Bob" );
 
-            universe.As< IWorld >().Add( alice );
+            universe.Add( alice );
             alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
             alice.As< IRational >().Think();
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Add( alice.Clone() ) );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
 
-            Log( universe.As< IWorld >()
+            Log( universe
                 .Agent( alice ).FullName
                 );
-            Log( universe.As< IWorld >()
+            Log( universe
                 .Agent( alice ).As< IRational >().Imaginary
                 .Agent( bob ).FullName
                 );
-            Log( universe.As< IWorld >()
+            Log( universe
                 .Agent( alice ).As< IRational >().Imaginary
                 .Agent( bob ).As< IRational >().Imaginary
                 .Agent( alice ).FullName
                 );
 
             Assert.AreEqual( 0,
-                universe.As< IWorld >()
+                universe
                     .Agent( alice ).Depth
                 );
             Assert.AreEqual( 1,
-                universe.As< IWorld >()
+                universe
                     .Agent( alice ).As< IRational >().Imaginary
                     .Agent( bob ).Depth
                 );
             Assert.AreEqual( 2,
-                universe.As< IWorld >()
+                universe
                     .Agent( alice ).As< IRational >().Imaginary
                     .Agent( bob ).As< IRational >().Imaginary
                     .Agent( alice ).Depth

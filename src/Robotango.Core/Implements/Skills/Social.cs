@@ -4,6 +4,7 @@
 
 using System;
 using Robotango.Core.Implements.Communications;
+using Robotango.Core.Types.Agents;
 using Robotango.Core.Types.Communications;
 using Robotango.Core.Types.Compositions;
 using Robotango.Core.Types.Skills;
@@ -29,7 +30,7 @@ namespace Robotango.Core.Implements.Skills
 
         #region ISocial
 
-        IQuestion< T > ISocial.Ask<T>( Func< IWorld, T > theme )
+        IQuestion< T > ISocial.Ask<T>( Func< IReality, T > theme )
         {
             return new Question< T > {
                 Querist = this,
@@ -73,7 +74,7 @@ namespace Robotango.Core.Implements.Skills
             return result;
         }
 
-        private IWorld GetWorldForAnswer()
+        private IReality GetWorldForAnswer()
         {
             return IRational == null ? null : IRational.Imaginary;
         }
