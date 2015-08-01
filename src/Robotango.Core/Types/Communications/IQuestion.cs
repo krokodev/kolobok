@@ -10,7 +10,7 @@ namespace Robotango.Core.Types.Communications
 {
     public interface IQuestion<T>
     {
-        ICommunicative Querist { get; set; }
+        IQuerist Querist { get; set; }
         Func< IReality, T > Essense { get; set; }
     }
 }

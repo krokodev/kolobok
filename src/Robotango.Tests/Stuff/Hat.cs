@@ -2,9 +2,9 @@
 // Robotango.Tests
 // Hat.cs
 
+using Robotango.Common.Types.Attributes;
 using Robotango.Common.Types.Enums;
 using Robotango.Common.Types.Properties;
-using Robotango.Core.Types.Attributes;
 
 namespace Robotango.Tests.Stuff
 {

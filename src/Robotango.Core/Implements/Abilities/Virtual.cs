@@ -5,9 +5,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Robotango.Common.Implements.Diagnostics;
+using Robotango.Common.Types.Attributes;
 using Robotango.Common.Types.Compositions;
 using Robotango.Core.Types.Agency.Abilities;
-using Robotango.Core.Types.Attributes;
 
 namespace Robotango.Core.Implements.Abilities
 {
@@ -27,21 +27,21 @@ namespace Robotango.Core.Implements.Abilities
         #endregion
 
 
-        #region IOwner
+        #region IAttributeHolder
 
-        void IVirtual.Add( IAttribute attribute )
+        void IAttributeHolder.Add( IAttribute attribute )
         {
             Debug.Assert.That( attribute.Holder == null, "Attribute already belongs to other entity" );
             _attributes.Add( attribute );
             attribute.Holder = this;
         }
 
-        T IVirtual.Add<T>()
+        T IAttributeHolder.Add<T>()
         {
             return new T();
         }
 
-        T IVirtual.GetFirst<T>()
+        T IAttributeHolder.GetFirst<T>()
         {
             return _attributes.OfType< T >().First();
         }

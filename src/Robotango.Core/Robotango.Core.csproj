@@ -47,11 +47,13 @@
     <Compile Include="Implements\Communications\AnswerResult.cs" />
     <Compile Include="Implements\Communications\Question.cs" />
     <Compile Include="Types\Communications\IAnswer.cs" />
+    <Compile Include="Types\Communications\IRespondent.cs" />
     <Compile Include="Types\Communications\IAnswerResult.cs" />
     <Compile Include="Implements\Abilities\Virtual.cs" />
     <Compile Include="Implements\Agents\Reality.cs" />
     <Compile Include="Implements\Agents\Agent.cs" />
     <Compile Include="Types\Agency\Abilities\IVirtual.cs" />
+    <Compile Include="Types\Communications\IQuerist.cs" />
     <Compile Include="Types\Communications\IQuestion.cs" />
     <Compile Include="Types\Agency\Abilities\IReflective.cs" />
     <Compile Include="Types\Agency\Abilities\ISentient.cs" />

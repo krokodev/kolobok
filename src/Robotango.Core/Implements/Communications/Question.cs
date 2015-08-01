@@ -11,7 +11,7 @@ namespace Robotango.Core.Implements.Communications
 {
     internal struct Question<T> : IQuestion< T >
     {
-        public ICommunicative Querist { get; set; }
+        public IQuerist Querist { get; set; }
         public Func< IReality, T > Essense { get; set; }
     }
 }

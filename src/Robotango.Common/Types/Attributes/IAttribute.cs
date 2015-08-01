@@ -2,7 +2,7 @@
 // Robotango.Core
 // IAttribute.cs
 
-namespace Robotango.Core.Types.Attributes
+namespace Robotango.Common.Types.Attributes
 {
     public interface IAttribute
     {

@@ -1,8 +1,13 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Core
+// Robotango.Common
 // IAttributeHolder.cs
 
-namespace Robotango.Core.Types.Attributes
+namespace Robotango.Common.Types.Attributes
 {
-    public interface IAttributeHolder {}
+    public interface IAttributeHolder
+    {
+        void Add( IAttribute attribute );
+        T Add<T>() where T : IAttribute, new();
+        T GetFirst<T>();
+    }
 }
