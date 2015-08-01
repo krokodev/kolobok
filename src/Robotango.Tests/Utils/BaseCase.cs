@@ -4,8 +4,8 @@
 
 using System;
 using NUnit.Framework;
-using Robotango.Core.Factories;
-using Robotango.Core.Types.Systems;
+using Robotango.Core.Domain.System;
+using Robotango.Core.Types.Factories;
 
 namespace Robotango.Tests.Utils
 {

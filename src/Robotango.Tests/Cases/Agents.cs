@@ -3,11 +3,10 @@
 // Agents.cs
 
 using NUnit.Framework;
-using Robotango.Core.Common;
-using Robotango.Core.Diagnostics;
-using Robotango.Core.Types.Agents;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Skills;
+using Robotango.Common.Implements.Diagnostics;
+using Robotango.Core.Domain.System;
+using Robotango.Core.Types.Domain.Abilities;
+using Robotango.Core.Types.Domain.Agency;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases
@@ -19,11 +18,11 @@ namespace Robotango.Tests.Cases
         public void Agent_has_default_name()
         {
             var agent1 = Factory.CreateAgent();
-            var agent2 = Factory.CreateAgent< IRational, IEntity >();
+            var agent2 = Factory.CreateAgent< IRational, IVirtual >();
             Log( agent1 );
             Log( agent2 );
-            Assert.AreEqual( Constants.Agents.Names.Default, agent1.Name );
-            Assert.AreEqual( Constants.Agents.Names.Default, agent2.Name );
+            Assert.AreEqual( Settings.Agents.Names.Default, agent1.Name );
+            Assert.AreEqual( Settings.Agents.Names.Default, agent2.Name );
         }
 
         [Test]
@@ -49,7 +48,7 @@ namespace Robotango.Tests.Cases
         {
             var agent = Factory.CreateAgent< IRational >();
             var world = Factory.CreateReality();
-            var newWorld = Factory.CreateReality ();
+            var newWorld = Factory.CreateReality();
             world.Add( agent );
             agent.Reality = newWorld;
         }

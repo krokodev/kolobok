@@ -4,8 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Types.Attributes;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Skills;
+using Robotango.Core.Types.Domain.Abilities;
 using Robotango.Tests.Helpers;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;
@@ -50,18 +49,18 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Agent_believes_that_its_hat_is_red()
         {
-            var agent = Factory.CreateAgent< IRational, IEntity >();
+            var agent = Factory.CreateAgent< IRational, IVirtual >();
 
             agent.As< IRational >().Believes( world => {
                 var subj = agent.Clone();
                 world.Add( subj );
-                subj.As< IEntity >().Add( new Hat() );
-                subj.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
+                subj.As< IVirtual >().Add( new Hat() );
+                subj.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IRational >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IEntity >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]
@@ -75,13 +74,13 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Alice_thinks_a_lot()
         {
-            var alice = Factory.CreateAgent< IRational, IEntity >( "Alice" );
+            var alice = Factory.CreateAgent< IRational, IVirtual >( "Alice" );
 
             alice.As< IRational >().Believes( world => {
                 var herself = alice.Clone();
                 world.Add( herself );
-                herself.As< IEntity >().Add( new Hat() );
-                herself.As< IEntity >().GetFirst< IHat >().Color = Colors.Red;
+                herself.As< IVirtual >().Add( new Hat() );
+                herself.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IRational >().Think();
@@ -93,7 +92,7 @@ namespace Robotango.Tests.Cases
 
             alice.As< IRational >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IEntity >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]

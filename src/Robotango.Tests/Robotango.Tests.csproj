@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Robotango.Common\Robotango.Common.csproj">
+      <Project>{56680553-e002-4bcc-bba3-13cb6f96af3a}</Project>
+      <Name>Robotango.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Robotango.Core\Robotango.Core.csproj">
       <Project>{ecc82973-7e15-4b24-85c8-a1508be2aafa}</Project>
       <Name>Robotango.Core</Name>

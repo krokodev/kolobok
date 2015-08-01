@@ -4,8 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Types.Attributes;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Skills;
+using Robotango.Core.Types.Domain.Abilities;
 using Robotango.Tests.Stuff;
 using Robotango.Tests.Utils;
 
@@ -18,9 +17,9 @@ namespace Robotango.Tests.Cases
         public void Dump_contains_info_about_agents_attributes()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = Factory.CreateAgent< IRational, IEntity >( "Alice" );
-            var bob = Factory.CreateAgent< IRational, IEntity >( "Bob" );
-            var charly = Factory.CreateAgent< IRational, IEntity >( "Charly" );
+            var alice = Factory.CreateAgent< IRational, IVirtual >( "Alice" );
+            var bob = Factory.CreateAgent< IRational, IVirtual >( "Bob" );
+            var charly = Factory.CreateAgent< IRational, IVirtual >( "Charly" );
 
             universe.Add( alice );
             universe.Add( bob );
@@ -30,8 +29,8 @@ namespace Robotango.Tests.Cases
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( alice.Clone() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Add( bob.Clone() );
 
-            alice.As< IEntity >().Add< Hat >().IHat.Color = Colors.Red;
-            bob.As< IEntity >().Add< Hat >().IHat.Color = Colors.Black;
+            alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
+            bob.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Black;
 
             var dump = universe.GetDump();
 

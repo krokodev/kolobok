@@ -3,9 +3,9 @@
 // ComponentsAssertThat.cs
 
 using NUnit.Framework;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Compositions;
-using Robotango.Core.Types.Skills;
+using Robotango.Common.Types.Compositions;
+using Robotango.Core.Types.Domain.Abilities;
+using Robotango.Core.Types.Domain.Agency;
 
 namespace Robotango.Tests.Helpers
 {
@@ -13,13 +13,13 @@ namespace Robotango.Tests.Helpers
     {
         public static void Is_component( IRational rational )
         {
-            Assert.IsInstanceOf< IComponent >( rational );
+            Assert.IsInstanceOf< IAbility >( rational );
         }
 
-        public static void Has_rational_and_social_components( IComposition composition )
+        public static void Has_rational_and_social_components( IComposite composite )
         {
-            Assert.IsNotNull( composition.GetComponent< IRational >() );
-            Assert.IsNotNull( composition.GetComponent< ISocial >() );
+            Assert.That( composite.HasComponent< IRational >() );
+            Assert.IsNotNull( composite.HasComponent< ICommunicative >() );
         }
     }
 }

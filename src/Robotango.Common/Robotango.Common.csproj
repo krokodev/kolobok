@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ECC82973-7E15-4B24-85C8-A1508BE2AAFA}</ProjectGuid>
+    <ProjectGuid>{56680553-E002-4BCC-BBA3-13CB6F96AF3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Robotango.Core</RootNamespace>
-    <AssemblyName>Robotango.Core</AssemblyName>
+    <RootNamespace>Robotango.Common</RootNamespace>
+    <AssemblyName>Robotango.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MoreLinq">
-      <HintPath>..\..\packages\morelinq.1.1.1\lib\net35\MoreLinq.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,41 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\System\Settings.cs" />
-    <Compile Include="Domain\Communications\Answer.cs" />
-    <Compile Include="Domain\Communications\AnswerResult.cs" />
-    <Compile Include="Domain\Communications\Question.cs" />
-    <Compile Include="Types\Attributes\Colors.cs" />
-    <Compile Include="Types\Domain\Communications\IAnswer.cs" />
-    <Compile Include="Types\Domain\Communications\IAnswerResult.cs" />
-    <Compile Include="Types\Attributes\IColored.cs" />
-    <Compile Include="Types\Attributes\IAttribute.cs" />
-    <Compile Include="Domain\Abilities\Virtual.cs" />
-    <Compile Include="Domain\Agents\Reality.cs" />
-    <Compile Include="Domain\Agents\Agent.cs" />
-    <Compile Include="Types\Domain\Abilities\IVirtual.cs" />
-    <Compile Include="Types\Domain\Communications\IQuestion.cs" />
-    <Compile Include="Types\Domain\Abilities\IReflective.cs" />
-    <Compile Include="Types\Domain\Abilities\ISentient.cs" />
-    <Compile Include="Types\Domain\Agency\IReality.cs" />
-    <Compile Include="Domain\System\Factory.cs" />
-    <Compile Include="Types\Domain\Agency\IAgent.cs" />
-    <Compile Include="Types\Domain\Agency\IAbility.cs" />
-    <Compile Include="Types\Factories\IFactory.cs" />
-    <Compile Include="Types\Domain\Abilities\IRational.cs" />
-    <Compile Include="Types\Domain\Abilities\ICommunicative.cs" />
+    <Compile Include="Implements\Composition.cs" />
+    <Compile Include="Implements\Diagnostics\Assert.cs" />
+    <Compile Include="Implements\Diagnostics\RobotangoException.cs" />
+    <Compile Include="Implements\Diagnostics\UnknownAgentException.cs" />
+    <Compile Include="Implements\Diagnostics\VerificationException.cs" />
+    <Compile Include="Implements\Extensions\CollectionExtensions.cs" />
+    <Compile Include="Implements\Tools\OutlineWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\Abilities\Rational.cs" />
-    <Compile Include="Domain\Abilities\Communicative.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Robotango.Common\Robotango.Common.csproj">
-      <Project>{56680553-e002-4bcc-bba3-13cb6f96af3a}</Project>
-      <Name>Robotango.Common</Name>
-    </ProjectReference>
+    <Compile Include="Types\Compositions\IComponent.cs" />
+    <Compile Include="Types\Compositions\IComposite.cs" />
+    <Compile Include="Types\Properties\IIdentifiable.cs" />
+    <Compile Include="Types\Properties\IResearchable.cs" />
+    <Compile Include="Types\Properties\IVerifiable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

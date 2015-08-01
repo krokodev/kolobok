@@ -3,11 +3,9 @@
 // Worlds.cs
 
 using NUnit.Framework;
-using Robotango.Core.Common;
-using Robotango.Core.Diagnostics;
-using Robotango.Core.Types.Agents;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Skills;
+using Robotango.Common.Implements.Diagnostics;
+using Robotango.Core.Domain.System;
+using Robotango.Core.Types.Domain.Abilities;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases
@@ -67,7 +65,7 @@ namespace Robotango.Tests.Cases
         [Test]
         public void Imaginary_agent_has_the_same_id()
         {
-            var alice = Factory.CreateAgent< IRational, IEntity >();
+            var alice = Factory.CreateAgent< IRational, IVirtual >();
             alice.As< IRational >().Believes( world => world.Add( alice.Clone() ) );
             alice.As< IRational >().Think();
             Log( alice );
@@ -79,7 +77,7 @@ namespace Robotango.Tests.Cases
         public void Imaginary_agent_has_the_same_name()
         {
             const string name = "Alice";
-            var alice = Factory.CreateAgent< IRational, IEntity >( name );
+            var alice = Factory.CreateAgent< IRational, IVirtual >( name );
             alice.As< IRational >().Believes( world => world.Add( alice.Clone() ) );
             alice.As< IRational >().Think();
             Log( alice.Name );
@@ -93,7 +91,7 @@ namespace Robotango.Tests.Cases
         {
             var world = Factory.CreateReality();
             Log( world.Name );
-            Assert.AreEqual( Constants.Worlds.Names.Default, world.Name );
+            Assert.AreEqual( Settings.Worlds.Names.Default, world.Name );
         }
 
         [Test]
@@ -108,7 +106,7 @@ namespace Robotango.Tests.Cases
         public void World_has_depth()
         {
             var world = Factory.CreateReality();
-            Assert.AreEqual( Constants.Depth.Basic, world.Depth );
+            Assert.AreEqual( Settings.Depth.Basic, world.Depth );
         }
 
         [Test]

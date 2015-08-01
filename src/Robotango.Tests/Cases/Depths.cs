@@ -3,9 +3,8 @@
 // Depths.cs
 
 using NUnit.Framework;
-using Robotango.Core.Common;
-using Robotango.Core.Types.Components;
-using Robotango.Core.Types.Skills;
+using Robotango.Core.Domain.System;
+using Robotango.Core.Types.Domain.Abilities;
 using Robotango.Tests.Utils;
 
 namespace Robotango.Tests.Cases
@@ -18,14 +17,14 @@ namespace Robotango.Tests.Cases
         {
             var world = Factory.CreateReality();
             Log( world );
-            Assert.AreEqual( Constants.Worlds.Names.Default, world.Name );
+            Assert.AreEqual( Settings.Worlds.Names.Default, world.Name );
         }
 
         [Test]
         public void World_has_depth()
         {
             var world = Factory.CreateReality();
-            Assert.AreEqual( Constants.Depth.Basic, world.Depth );
+            Assert.AreEqual( Settings.Depth.Basic, world.Depth );
         }
 
         [Test]
@@ -47,7 +46,7 @@ namespace Robotango.Tests.Cases
         public void Agent_has_depth()
         {
             var agent = Factory.CreateAgent< IRational >();
-            Assert.AreEqual( Constants.Depth.Basic, agent.Depth );
+            Assert.AreEqual( Settings.Depth.Basic, agent.Depth );
         }
 
         [Test]
@@ -65,7 +64,7 @@ namespace Robotango.Tests.Cases
             var agent = Factory.CreateAgent();
             matrix.As< IRational >().Imaginary.Add( agent );
             Assert.AreEqual( 1, agent.Depth );
-            Assert.AreEqual( Constants.Depth.Basic, agent.Clone().Depth );
+            Assert.AreEqual( Settings.Depth.Basic, agent.Clone().Depth );
         }
 
         [Test]
