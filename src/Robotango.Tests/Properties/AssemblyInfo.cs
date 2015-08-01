@@ -1,5 +1,5 @@
-﻿// Kolobok (c) 2015 Krokodev
-// Kolobok.Tests
+﻿// Robotango (c) 2015 Krokodev
+// Robotango.Tests
 // AssemblyInfo.cs
 
 using System.Reflection;
@@ -9,11 +9,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Robotango.Tests")]
+[assembly : AssemblyTitle( "Robotango.Tests" )]
 [assembly : AssemblyDescription( "" )]
 [assembly : AssemblyConfiguration( "" )]
 [assembly : AssemblyCompany( "" )]
-[assembly: AssemblyProduct("Robotango.Tests")]
+[assembly : AssemblyProduct( "Robotango.Tests" )]
 [assembly : AssemblyCopyright( "Copyright ©  2015" )]
 [assembly : AssemblyTrademark( "" )]
 [assembly : AssemblyCulture( "" )]

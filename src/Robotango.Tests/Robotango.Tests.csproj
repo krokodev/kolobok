@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="Helpers\RationalsAssertThat.cs" />
     <Compile Include="Helpers\ComponentsAssertThat.cs" />
-    <Compile Include="Attributes\Hat.cs" />
-    <Compile Include="Attributes\IHat.cs" />
+    <Compile Include="Stuff\Hat.cs" />
+    <Compile Include="Stuff\IHat.cs" />
     <Compile Include="Cases\Dump.cs" />
     <Compile Include="Cases\Attributes.cs" />
     <Compile Include="Cases\Agent.cs" />
@@ -71,7 +71,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Robotango.Core\Robotango.Core.csproj">
       <Project>{ecc82973-7e15-4b24-85c8-a1508be2aafa}</Project>
-      <Name>Kolobok.Core</Name>
+      <Name>Robotango.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
