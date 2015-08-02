@@ -18,8 +18,8 @@ namespace Robotango.Tests.Cases.Complex
         [Test, Ignore]
         public void Alice_can_move_in_her_world()
         {
-/*            var world = Factory.CreateWorld( "The World" );
-            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
+            var world = Factory.CreateWorld( "The World" );
+            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
             var locA = new Location( "A" );
             var locB = new Location( "B" );
             var locC = new Location( "C" );
@@ -30,21 +30,26 @@ namespace Robotango.Tests.Cases.Complex
             };
             alice.As< IVirtual >().Add( new Position( locA ) );
 
-            var wAlice = world.Reality.Poject( alice );
-
             world.Rational.Believes( reality => {
-                reality.Add( wAlice );
-                var alicePosition = reality.Agent( wAlice ).As< IVirtual >().GetFirst< IPosition >();
+                var alicePosition = reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );
 
             Log( world.Dump() );
-            Assert.False( world.Reality.Contains( alice ) );
+            Assert.True( world.Reality.Contains( alice ) );
+            Assert.AreEqual( locA, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
 
             world.Rational.Think();
-            Log( world.Dump() );*/
+            Log( world.Dump() );
+            Assert.AreEqual( locB, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
 
-            Assert.Ignore();
+            world.Rational.Think();
+            Log( world.Dump() );
+            Assert.AreEqual( locC, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
+
+            world.Rational.Think();
+            Log( world.Dump() );
+            Assert.AreEqual( locA, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
         }
 
         [Test]
@@ -54,7 +59,7 @@ namespace Robotango.Tests.Cases.Complex
         }
 
         [Test]
-        public void Reaity_can_kiil_the_agent()
+        public void Reality_can_kiil_the_agent()
         {
             Assert.Ignore();
         }
