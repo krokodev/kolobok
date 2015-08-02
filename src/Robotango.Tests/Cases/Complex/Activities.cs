@@ -15,11 +15,11 @@ namespace Robotango.Tests.Cases.Complex
     [TestFixture]
     public class Activities : BaseTests
     {
-        [Test, Ignore]
+        [Test]
         public void Alice_can_move_in_her_world()
         {
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var locA = new Location( "A" );
             var locB = new Location( "B" );
             var locC = new Location( "C" );
@@ -37,19 +37,19 @@ namespace Robotango.Tests.Cases.Complex
 
             Log( world.Dump() );
             Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( locA, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
+            Assert.AreEqual( locA, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locB, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
+            Assert.AreEqual( locB, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locC, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
+            Assert.AreEqual( locC, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locA, world.Reality.Agent( alice ).As<IVirtual>().GetFirst<IPosition>().Location );
+            Assert.AreEqual( locA, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace Robotango.Tests.Cases.Complex
             var destination = new Location( "Destination" );
             var reserve = new Location( "Reserve" );
 
-            house.Introduce( alice);
+            house.Introduce( alice );
             house.Introduce( bob );
             alice.As< IVirtual >().Add( new Position( initial ) );
             bob.As< IVirtual >().Add( new Position( destination ) );
@@ -84,6 +84,8 @@ namespace Robotango.Tests.Cases.Complex
 
             Assert.AreEqual( "Destination", destination.ILocation.Name );
             Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+
+            Assert.Ignore();
         }
     }
 }
