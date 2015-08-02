@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// BaseCase.cs
+// BaseTests.cs
 
 using System;
 using NUnit.Framework;

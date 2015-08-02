@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Common
-// RobotangoException.cs
+// AbstractException.cs
 
 using System;
 

@@ -10,6 +10,5 @@ namespace Robotango.Core.Types.Domain.Communications
     public interface IQuerist
     {
         IQuestion< T > Ask<T>( Func< IReality, T > theme );
-        
     }
 }

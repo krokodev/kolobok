@@ -7,6 +7,5 @@ namespace Robotango.Core.Types.Domain.Communications
     public interface IRespondent
     {
         IAnswer< T > Reply<T>( IQuestion< T > question );
-       
     }
 }

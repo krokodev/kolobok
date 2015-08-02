@@ -7,7 +7,5 @@ using Robotango.Core.Types.Domain.Communications;
 
 namespace Robotango.Core.Types.Abilities
 {
-    public interface ICommunicative : IAbility, IRespondent, IQuerist
-    {
-    }
+    public interface ICommunicative : IAbility, IRespondent, IQuerist {}
 }

@@ -4,17 +4,15 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
-using Robotango.Common.Domain.Types.Properties;
-using Robotango.Common.Utils.Extensions;
 using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Helpers;
 using Robotango.Tests.Utils.Stuff;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Rationals : Utils.Bases.BaseTests
+    public class Rationals : BaseTests
     {
         [Test]
         public void Rational_can_think()
@@ -90,7 +88,7 @@ namespace Robotango.Tests.Cases
             alice.As< IRational >().Think();
             alice.As< IRational >().Think();
 
-            Log( alice.As< IRational >().Imaginary.GetDump() );
+            Log( alice.As< IRational >().Imaginary.Dump() );
 
             alice.As< IRational >().Verify();
 

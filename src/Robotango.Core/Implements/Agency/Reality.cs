@@ -73,7 +73,7 @@ namespace Robotango.Core.Implements.Agency
             {
                 return _holder == null
                     ? IReality.Name
-                    : string.Format( Settings.Worlds.Names.FullTemplate, _holder.FullName, IReality.Name );
+                    : string.Format( Settings.Reality.Names.FullTemplate, _holder.FullName, IReality.Name );
             }
         }
 
@@ -85,7 +85,7 @@ namespace Robotango.Core.Implements.Agency
                     return IReality.Name;
                 }
                 return string.Format(
-                    Settings.Worlds.Names.FamilyTemplate,
+                    Settings.Reality.Names.FamilyTemplate,
                     _holder.Name,
                     _holder.Depth,
                     IReality.Name );
@@ -117,11 +117,11 @@ namespace Robotango.Core.Implements.Agency
 
         #region IResearchable
 
-        string IResearchable.GetDump( int level )
+        string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
             wr.Line( "{0} <{1}>", IReality.FamilyName, typeof( Reality ).Name );
-            _agents.ForEach( a => wr.Append( a.GetDump( wr.Level + 1 ) ) );
+            _agents.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
 
@@ -190,7 +190,7 @@ namespace Robotango.Core.Implements.Agency
             if( _holder != null && _holder.HasName() ) {
                 return _holder.Name;
             }
-            return Settings.Worlds.Names.Default;
+            return Settings.Reality.Names.Default;
         }
 
         #endregion

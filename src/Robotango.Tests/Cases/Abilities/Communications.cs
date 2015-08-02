@@ -8,10 +8,10 @@ using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Stuff;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Communications : Utils.Bases.BaseTests
+    public class Communications : BaseTests
     {
         [Test]
         public void Social_can_query_question()

@@ -31,7 +31,11 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IAttributeHolder
 
-        IAttributeHolder IAttributeHolder { get { return this; } }
+        private IAttributeHolder IAttributeHolder
+        {
+            get { return this; }
+        }
+
         void IAttributeHolder.Add( IAttribute attribute )
         {
             Debug.Assert.That( attribute.Holder == null, "Attribute already belongs to other entity" );
@@ -48,7 +52,7 @@ namespace Robotango.Core.Implements.Abilities
 
         T IAttributeHolder.GetFirst<T>()
         {
-            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' not found", typeof(T).Name );
+            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' not found", typeof( T ).Name );
             return _attributes.OfType< T >().First();
         }
 
@@ -64,11 +68,11 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IResearchable
 
-        string IResearchable.GetDump( int level )
+        string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Virtual ).Name );
-            _attributes.ForEach( a => wr.Append( a.GetDump( wr.Level + 1 ) ) );
+            _attributes.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
 

@@ -147,7 +147,7 @@ namespace Robotango.Core.System
                 { typeof( IRational ), () => new Rational() },
                 { typeof( ICommunicative ), () => new Communicative() },
                 { typeof( IVirtual ), () => new Virtual() },
-                { typeof( IReflective), () => new Reflective() },
+                { typeof( IReflective ), () => new Reflective() },
             };
 
         #endregion

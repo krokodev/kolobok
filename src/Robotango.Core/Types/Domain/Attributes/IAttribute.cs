@@ -1,5 +1,5 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Common
+// Robotango.Core
 // IAttribute.cs
 
 using Robotango.Common.Domain.Types.Properties;

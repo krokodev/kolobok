@@ -9,10 +9,10 @@ using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Stuff;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Attributes : Utils.Bases.BaseTests
+    public class Attributes : BaseTests
     {
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Entety_cant_have_others_attribute()
@@ -29,7 +29,7 @@ namespace Robotango.Tests.Cases
         public void Cloned_agent_has_the_same_attribute_value()
         {
             var alice = Factory.CreateAgent< IVirtual >();
-            alice.As< IVirtual >().Add<Hat>().IHat.Color = Colors.Red;
+            alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             var clone = alice.Clone();
 
             IHat aHat = alice.As< IVirtual >().GetFirst< Hat >();

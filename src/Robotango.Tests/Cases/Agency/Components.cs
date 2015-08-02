@@ -10,10 +10,10 @@ using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Helpers;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Agency
 {
     [TestFixture]
-    public class Components : Utils.Bases.BaseTests
+    public class Components : BaseTests
     {
         [Test]
         public void Rational_is_a_component()

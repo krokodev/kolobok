@@ -50,6 +50,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Cases\Complex\Activities.cs" />
+    <Compile Include="Utils\Stuff\ILocation.cs" />
+    <Compile Include="Utils\Stuff\Location.cs" />
     <Compile Include="Cases\Complex\Puzzles.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />

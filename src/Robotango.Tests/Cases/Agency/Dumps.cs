@@ -8,10 +8,10 @@ using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Stuff;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Agency
 {
     [TestFixture]
-    public class Dumps : Utils.Bases.BaseTests
+    public class Dumps : BaseTests
     {
         [Test]
         public void Dump_contains_info_about_agents_attributes()
@@ -32,7 +32,7 @@ namespace Robotango.Tests.Cases
             alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             bob.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Black;
 
-            var dump = universe.GetDump();
+            var dump = universe.Dump();
 
             Log( dump );
 

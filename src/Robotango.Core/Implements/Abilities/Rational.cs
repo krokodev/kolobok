@@ -43,7 +43,7 @@ namespace Robotango.Core.Implements.Abilities
         void IComponent.Init( IComposite composite )
         {
             _composite = composite;
-            _presentImage = new Reality( ( IAgent ) _composite, Settings.Worlds.Names.Imaginary );
+            _presentImage = new Reality( ( IAgent ) _composite, Settings.Reality.Names.Imaginary );
         }
 
         IComponent IComponent.Clone()
@@ -69,11 +69,11 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IResearchable
 
-        string IResearchable.GetDump( int level )
+        string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Rational ).Name );
-            wr.Append( _presentImage.GetDump( wr.Level + 1 ) );
+            wr.Append( _presentImage.Dump( wr.Level + 1 ) );
             return wr.ToString();
         }
 

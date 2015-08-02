@@ -6,13 +6,13 @@ namespace Robotango.Core.System
 {
     public static class Settings
     {
-        public static class Worlds
+        public static class Reality
         {
             public static class Names
             {
                 public const string FullTemplate = "{0}.{1}";
                 public const string FamilyTemplate = "{0}'{1}.{2}";
-                public const string Default = "Some world";
+                public const string Default = "Some Reality";
                 public const string Imaginary = "Img";
             }
         }
@@ -27,7 +27,7 @@ namespace Robotango.Core.System
             public static class Names
             {
                 public const string FullTemplate = "{0}[{1}]";
-                public const string Default = "Agent";
+                public const string Default = "Some Agent";
             }
         }
     }

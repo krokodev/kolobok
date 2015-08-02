@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Worlds.cs
+// Realities.cs
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
@@ -8,10 +8,10 @@ using Robotango.Core.System;
 using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Agency
 {
     [TestFixture]
-    public class Realities : Utils.Bases.BaseTests
+    public class Realities : BaseTests
     {
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Agent_belongs_only_one_world()
@@ -91,7 +91,7 @@ namespace Robotango.Tests.Cases
         {
             var world = Factory.CreateReality();
             Log( world.Name );
-            Assert.AreEqual( Settings.Worlds.Names.Default, world.Name );
+            Assert.AreEqual( Settings.Reality.Names.Default, world.Name );
         }
 
         [Test]

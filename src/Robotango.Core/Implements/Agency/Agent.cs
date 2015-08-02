@@ -97,11 +97,11 @@ namespace Robotango.Core.Implements.Agency
 
         #region IResearchable
 
-        string IResearchable.GetDump( int level )
+        string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
             wr.Line( "{0} <{1}>", IAgent.Name, typeof( Agent ).Name );
-            Components.OfType< IResearchable >().ForEach( c => wr.Append( c.GetDump( wr.Level + 1 ) ) );
+            Components.OfType< IResearchable >().ForEach( c => wr.Append( c.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
 

@@ -1,11 +1,11 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Common
-// IResearchable.cs
+// INamed.cs
 
 namespace Robotango.Common.Domain.Types.Properties
 {
-    public interface IResearchable
+    public interface INamed
     {
-        string Dump( int level = 0 );
+        string Name { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Common
+// Robotango.Core
 // IAttributeHolder.cs
 
 namespace Robotango.Core.Types.Domain.Attributes

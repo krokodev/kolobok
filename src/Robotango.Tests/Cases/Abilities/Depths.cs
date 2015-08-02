@@ -7,17 +7,17 @@ using Robotango.Core.System;
 using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Depths : Utils.Bases.BaseTests
+    public class Depths : BaseTests
     {
         [Test]
         public void World_has_default_name()
         {
             var world = Factory.CreateReality();
             Log( world );
-            Assert.AreEqual( Settings.Worlds.Names.Default, world.Name );
+            Assert.AreEqual( Settings.Reality.Names.Default, world.Name );
         }
 
         [Test]
