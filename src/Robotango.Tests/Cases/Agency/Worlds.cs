@@ -23,8 +23,7 @@ namespace Robotango.Tests.Cases.Agency
             alice.As< IVirtual >().Add( new Position( locA ) );
             world.Reality.Add( alice );
 
-            var dump = world.Dump();
-            Log( dump );
+            Log( world.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
             Assert.AreSame( world.Reality, world.Rational.Imaginary );
@@ -46,16 +45,18 @@ namespace Robotango.Tests.Cases.Agency
                 reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location = locB;
             } );
 
-            var dump = world.Dump();
-            Log( dump );
-            Log( alice );
-            Log( world.Reality );
+            Log( world.Dump() );
+            Log( alice.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
             Assert.False( world.Reality.Contains( alice ) );
             Assert.AreEqual( locA, alice.As< IVirtual >().GetFirst< IPosition >().Location );
 
+            Log( "Thinking...\n" );
+
             world.Rational.Think();
+
+            Log( world.Dump() );
 
             Assert.That( world.Reality.Contains( alice ) );
             Assert.AreEqual( locB, alice.As< IVirtual >().GetFirst< IPosition >().Location );
