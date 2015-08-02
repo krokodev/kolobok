@@ -20,15 +20,20 @@ namespace Robotango.Tests.Cases.Complex
         {
             var world = Factory.CreateWorld( "The World" );
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
-            var locA = new Location( "A" );
-            var locB = new Location( "B" );
-            var locC = new Location( "C" );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var c = new Location( "C" );
             var move = new Dictionary< ILocation, ILocation > {
-                { locA, locB },
-                { locB, locC },
-                { locC, locA }
+                { a, b },
+                { b, c },
+                { c, a }
             };
-            alice.As< IVirtual >().Add( new Position( locA ) );
+            alice.As< IVirtual >().Add( new Position( a ) );
+
+
+            // world[alice].As<IVirtual>
+            // world.Get<IVirtual>(alice).Its<Position>()[0].Location=b
+            // IAgent:  IPlural/ISingle Introduce(): assert contain or not whether single or not, excpeti if neither S nor P
 
             world.Rational.Believes( reality => {
                 var alicePosition = reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >();
@@ -37,19 +42,19 @@ namespace Robotango.Tests.Cases.Complex
 
             Log( world.Dump() );
             Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( locA, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locB, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( b, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locC, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( c, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.AreEqual( locA, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
         }
 
         [Test]
