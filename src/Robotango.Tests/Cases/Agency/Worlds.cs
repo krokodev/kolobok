@@ -17,11 +17,10 @@ namespace Robotango.Tests.Cases.Agency
         public void World_has_properties()
         {
             var locA = new Location( "A" );
-            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
             var world = Factory.CreateWorld( "The World" );
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().Add( new Position( locA ) );
-            world.Reality.Add( alice );
 
             Log( world.Dump() );
 
@@ -35,21 +34,17 @@ namespace Robotango.Tests.Cases.Agency
         {
             var locA = new Location( "A" );
             var locB = new Location( "B" );
-            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
             var world = Factory.CreateWorld( "The World" );
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().Add( new Position( locA ) );
-
-            world.Rational.Believes( reality => {
-                reality.Add( alice );
-                reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location = locB;
-            } );
+            world.Rational.Believes( reality => { reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location = locB; } );
 
             Log( world.Dump() );
             Log( alice.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
-            Assert.False( world.Reality.Contains( alice ) );
+            Assert.True( world.Reality.Contains( alice ) );
             Assert.AreEqual( locA, alice.As< IVirtual >().GetFirst< IPosition >().Location );
 
             Log( "Thinking...\n" );
@@ -61,6 +56,5 @@ namespace Robotango.Tests.Cases.Agency
             Assert.That( world.Reality.Contains( alice ) );
             Assert.AreEqual( locB, alice.As< IVirtual >().GetFirst< IPosition >().Location );
         }
-
     }
 }

@@ -70,7 +70,8 @@ namespace Robotango.Tests.Cases.Complex
             var destination = new Location( "Destination" );
             var reserve = new Location( "Reserve" );
 
-            house.Add( alice, bob );
+            house.Introduce( alice);
+            house.Introduce( bob );
             alice.As< IVirtual >().Add( new Position( initial ) );
             bob.As< IVirtual >().Add( new Position( destination ) );
 

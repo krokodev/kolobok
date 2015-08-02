@@ -27,7 +27,7 @@ namespace Robotango.Tests.Cases.Abilities
             var a = Factory.CreateAgent< IRational >();
             var b = Factory.CreateAgent();
 
-            a.As< IRational >().Believes( world => world.Add( b.Clone() ) );
+            a.As< IRational >().Believes( world => world.Introduce( b.Clone() ) );
             a.As< IRational >().Think();
 
             Assert.AreEqual( b.Id, a.As< IRational >().Imaginary.Agent( b ).Id );
@@ -39,7 +39,7 @@ namespace Robotango.Tests.Cases.Abilities
             var agent = Factory.CreateAgent< IRational >();
             var subj = Factory.CreateAgent();
 
-            agent.As< IRational >().Believes( world => world.Add( subj.Clone() ) );
+            agent.As< IRational >().Believes( world => world.Introduce( subj.Clone() ) );
             agent.As< IRational >().Think();
 
             Assert.AreEqual( subj.Id, agent.As< IRational >().Imaginary.Agent( subj ).Id );
@@ -51,11 +51,11 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var agent = Factory.CreateAgent< IRational, IVirtual >();
 
+            var he = agent.As< IRational >().Imaginary.Introduce( agent );
+
             agent.As< IRational >().Believes( world => {
-                var subj = agent.Clone();
-                world.Add( subj );
-                subj.As< IVirtual >().Add( new Hat() );
-                subj.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+                he.As< IVirtual >().Add( new Hat() );
+                he.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IRational >().Think();
@@ -76,11 +76,11 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IRational, IVirtual >( "Alice" );
 
+            var herselve = alice.As<IRational>().Imaginary.Introduce( alice );
+
             alice.As< IRational >().Believes( world => {
-                var herself = alice.Clone();
-                world.Add( herself );
-                herself.As< IVirtual >().Add( new Hat() );
-                herself.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+                herselve.As< IVirtual >().Add( new Hat() );
+                herselve.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IRational >().Think();
@@ -101,7 +101,7 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent< IRational >( "Bob" );
 
-            alice.As< IRational >().Believes( world => world.Add( bob.Clone() ) );
+            alice.As< IRational >().Believes( world => world.Introduce( bob.Clone() ) );
             alice.As< IRational >().Think();
 
             Assert.That( alice.As< IRational >().Imaginary.Contains( bob ) );
@@ -113,9 +113,9 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< IRational >( "Alice" );
             var bob = Factory.CreateAgent< IRational >( "Bob" );
 
-            alice.As< IRational >().Believes( world => world.Add( bob.Clone() ) );
+            alice.As< IRational >().Believes( world => world.Introduce( bob.Clone() ) );
             alice.As< IRational >().Think();
-            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( world => world.Add( alice.Clone() ) );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( world => world.Introduce( alice.Clone() ) );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
 
             Assert.That( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Contains( alice ) );

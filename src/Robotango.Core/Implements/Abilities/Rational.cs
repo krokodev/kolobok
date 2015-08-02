@@ -21,7 +21,7 @@ namespace Robotango.Core.Implements.Abilities
 
         void IRational.Think()
         {
-            _presentImage.Clear();
+            //_presentImage.Clear();
             _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 

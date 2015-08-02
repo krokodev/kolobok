@@ -75,7 +75,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As< IRational >().Believes( world => { world.Add( alice ); } );
+            bob.As< IRational >().Believes( world => { world.Introduce( alice ); } );
             bob.As< IRational >().Think();
 
             var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
@@ -90,17 +90,17 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Bob_answers_according_his_beliefes()
         {
-            var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
             var bob = Factory.CreateAgent< ICommunicative, IRational >();
+            var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
 
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
 
+            bob.As< IRational >().Imaginary.Introduce( alice );
+
             bob.As< IRational >().Believes( world => {
-                var alicaImage = alice.Clone();
-                world.Add( alicaImage );
-                alicaImage.As< IVirtual >().Add( new Hat() );
-                alicaImage.As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
+                world.Agent(alice).As< IVirtual >().Add( new Hat() );
+                world.Agent(alice).As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
             } );
             bob.As< IRational >().Think();
 

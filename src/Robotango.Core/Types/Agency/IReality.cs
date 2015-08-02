@@ -9,7 +9,7 @@ namespace Robotango.Core.Types.Agency
     public interface IReality : IIdentifiable, IVerifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
-        void Add( params IAgent[] agents );
+        IAgent Introduce( IAgent agent );
         IReality Clone( IAgent holder = null );
         bool Contains( IAgent agent );
         void Clear();
@@ -19,6 +19,5 @@ namespace Robotango.Core.Types.Agency
         string FamilyName { get; }
         IAgent Holder { get; }
         IReality Superior { get; }
-        IAgent Project( IAgent agent );
     }
 }

@@ -31,11 +31,8 @@ namespace Robotango.Tests.Cases.Abilities
         public void World_agents_have_the_same_depts()
         {
             var matrix = Factory.CreateAgent< IRational >( "Matrix" );
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent< IRational >( "Bob" );
-
-            matrix.As< IRational >().Imaginary.Add( alice );
-            matrix.As< IRational >().Imaginary.Add( bob );
+            var alice = matrix.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Alice" ));
+            var bob = matrix.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Bob" ));
 
             Assert.AreEqual( matrix.Depth + 1, matrix.As< IRational >().Imaginary.Depth );
             Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, alice.Depth );
@@ -58,11 +55,11 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Cloned_agent_has_basic_depth()
+        public void Projcted_agent_has_basic_depth()
         {
             var matrix = Factory.CreateAgent< IRational >( "Matrix" );
-            var agent = Factory.CreateAgent();
-            matrix.As< IRational >().Imaginary.Add( agent );
+            var agent = matrix.As< IRational >().Imaginary.Introduce(Factory.CreateAgent());
+
             Assert.AreEqual( 1, agent.Depth );
             Assert.AreEqual( Settings.Depth.Basic, agent.Clone().Depth );
         }
@@ -71,13 +68,9 @@ namespace Robotango.Tests.Cases.Abilities
         public void Inserted_agents_have_proper_depth()
         {
             var universe = Factory.CreateAgent< IRational >( "Universe" );
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent< IRational >( "Bob" );
-            var charly = Factory.CreateAgent< IRational >( "Charly" );
-
-            universe.As< IRational >().Imaginary.Add( alice );
-            alice.As< IRational >().Imaginary.Add( bob );
-            bob.As< IRational >().Imaginary.Add( charly );
+            var alice = universe.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
+            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
+            var charly = bob.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Charly" ));
 
             Log( universe.FullName );
             Log( alice.FullName );
@@ -98,14 +91,11 @@ namespace Robotango.Tests.Cases.Abilities
         public void Thinked_out_agent_has_proper_depth()
         {
             var universe = Factory.CreateAgent< IRational >( "Universe" );
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent< IRational >( "Bob" );
+            var alice = universe.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
+            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
             var charly = Factory.CreateAgent< IRational >( "Charly" );
 
-            universe.As< IRational >().Imaginary.Add( alice );
-            alice.As< IRational >().Imaginary.Add( bob );
-
-            bob.As< IRational >().Believes( iworld => iworld.Add( charly.Clone() ) );
+            bob.As< IRational >().Believes( iworld => iworld.Introduce( charly ) );
             bob.As< IRational >().Think();
 
             var bcharly = bob.As< IRational >().Imaginary.Agent( charly );
@@ -130,13 +120,12 @@ namespace Robotango.Tests.Cases.Abilities
         public void Deeply_thinked_out_agents_have_proper_depth()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
+            var alice = universe.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
             var bob = Factory.CreateAgent< IRational >( "Bob" );
 
-            universe.Add( alice );
-            alice.As< IRational >().Believes( iworld => iworld.Add( bob.Clone() ) );
+            alice.As< IRational >().Believes( iworld => iworld.Introduce( bob ) );
             alice.As< IRational >().Think();
-            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Add( alice.Clone() ) );
+            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Introduce( alice ) );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
 
             Log( universe

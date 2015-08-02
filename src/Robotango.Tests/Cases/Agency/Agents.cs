@@ -49,7 +49,7 @@ namespace Robotango.Tests.Cases.Agency
             var agent = Factory.CreateAgent< IRational >();
             var world = Factory.CreateReality();
             var newWorld = Factory.CreateReality();
-            world.Add( agent );
+            world.Introduce( agent );
             agent.Reality = newWorld;
         }
 
@@ -64,9 +64,8 @@ namespace Robotango.Tests.Cases.Agency
         [Test]
         public void Cloned_agent_has_no_reality()
         {
-            var agent = Factory.CreateAgent< IRational >();
             var world = Factory.CreateReality();
-            world.Add( agent );
+            var agent = world.Introduce( Factory.CreateAgent< IRational >() );
             Assert.AreEqual( world, agent.Reality );
             Assert.AreEqual( null, agent.Clone().Reality );
         }
@@ -75,10 +74,8 @@ namespace Robotango.Tests.Cases.Agency
         public void Agents_full_name_describes_its_hierarchy()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent( "Bob" );
-            universe.Add( alice );
-            alice.As< IRational >().Imaginary.Add( bob );
+            var alice = universe.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
+            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent( "Bob" ));
 
             Log( universe.FullName );
             Log( alice.FullName );
@@ -140,7 +137,7 @@ namespace Robotango.Tests.Cases.Agency
             var clone = alice.Clone();
             clone.Name = "Clone";
 
-            world.Add( clone );
+            world.Introduce( clone );
 
             Log( clone.FullName );
             Log( clone.As< IRational >().Imaginary.FamilyName );
@@ -156,7 +153,7 @@ namespace Robotango.Tests.Cases.Agency
             var bob = Factory.CreateAgent< IRational >( "Bob" );
             var charly = Factory.CreateAgent< IRational >( "Charly" );
 
-            bob.As< IRational >().Believes( iworld => iworld.Add( charly.Clone() ) );
+            bob.As< IRational >().Believes( iworld => iworld.Introduce( charly.Clone() ) );
             bob.As< IRational >().Think();
 
             var bcharly = bob.As< IRational >().Imaginary.Agent( charly );

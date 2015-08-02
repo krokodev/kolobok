@@ -17,24 +17,10 @@ namespace Robotango.Tests.Cases.Agency
             var agent = Factory.CreateAgent< IVirtual >( "Alice" );
             var world = Factory.CreateWorld( "The World" );
 
-            world.Reality.Add( agent );
-            world.Reality.Clear();
+            world.Reality.Introduce( agent );
             world.Rational.Think();
             Log( world.Dump() );
-            Assert.False( world.Reality.Contains( agent ) );
-
-            world.Reality.Project( agent );
-            world.Reality.Clear();
-            world.Rational.Think();
-            Log( world.Dump() );
-            Assert.False( world.Reality.Contains( agent ) );
-
-            world.Reality.Project( agent );
-            world.Reality.Clear();
-            world.Rational.Believes( reality => reality.Agent( agent ) );
-            world.Rational.Think();
-            Log( world.Dump() );
-            Assert.True( world.Reality.Contains( agent ) );
+            Assert.That( world.Reality.Contains( agent ) );
         }
 
         [Test]
