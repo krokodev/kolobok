@@ -135,8 +135,8 @@ namespace Robotango.Tests.Cases.Agency
             Log( bworld.FamilyName );
             Log( aworld.FamilyName );
 
-            Assert.AreEqual( "Alice'1.Img", aworld.FamilyName );
-            Assert.AreEqual( "Bob'0.Img", bworld.FamilyName );
+            Assert.AreEqual( "Alice'1.Imaginary", aworld.FamilyName );
+            Assert.AreEqual( "Bob'0.Imaginary", bworld.FamilyName );
         }
 
         [Test]
@@ -204,7 +204,7 @@ namespace Robotango.Tests.Cases.Agency
             Log( uabaWorld.Superior.Superior.FullName );
             Log( uabaWorld.Superior.Superior.Superior.FullName );
 
-            Assert.AreEqual( "Alice'2.Img", uabaWorld.FamilyName );
+            Assert.AreEqual( "Alice'2.Imaginary", uabaWorld.FamilyName );
         }
 
         [Test]
@@ -247,7 +247,7 @@ namespace Robotango.Tests.Cases.Agency
 
             Log( uabaWorld.FullName );
 
-            Assert.AreEqual( "Universe[Alice].Img[Bob].Img[Alice].Img", uabaWorld.FullName );
+            Assert.AreEqual( "Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary", uabaWorld.FullName );
         }
     }
 }

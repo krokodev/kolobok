@@ -86,7 +86,7 @@ namespace Robotango.Tests.Cases.Agency
 
             Assert.AreEqual( "Universe", universe.FullName );
             Assert.AreEqual( "Universe[Alice]", alice.FullName );
-            Assert.AreEqual( "Universe[Alice].Img[Bob]", bob.FullName );
+            Assert.AreEqual( "Universe[Alice].Imaginary[Bob]", bob.FullName );
         }
 
         [Test]
@@ -147,7 +147,7 @@ namespace Robotango.Tests.Cases.Agency
 
             Assert.AreEqual( "Clone", clone.Name );
             Assert.AreEqual( 0, clone.Depth );
-            Assert.AreEqual( "Clone'0.Img", clone.As< IRational >().Imaginary.FamilyName );
+            Assert.AreEqual( "Clone'0.Imaginary", clone.As< IRational >().Imaginary.FamilyName );
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace Robotango.Tests.Cases.Agency
 
             Assert.AreEqual( "bCharly", bcharly.Name );
             Assert.AreEqual( 1, bcharly.Depth );
-            Assert.AreEqual( "bCharly'1.Img", bcharly.As< IRational >().Imaginary.FamilyName );
+            Assert.AreEqual( "bCharly'1.Imaginary", bcharly.As< IRational >().Imaginary.FamilyName );
         }
     }
 }

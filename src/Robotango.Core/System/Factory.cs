@@ -115,6 +115,11 @@ namespace Robotango.Core.System
             return new Reality( name );
         }
 
+        public IWorld CreateWorld( string name = null )
+        {
+            return new World( this, name );
+        }
+
         #endregion
 
 

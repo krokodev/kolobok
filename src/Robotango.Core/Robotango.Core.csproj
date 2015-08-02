@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Implements\Abilities\Reflective.cs" />
     <Compile Include="Implements\Domain\Virtuals\Attribute.cs" />
+    <Compile Include="Implements\Agency\World.cs" />
+    <Compile Include="Types\Agency\IWorld.cs" />
     <Compile Include="Types\Domain\Virtuals\IPosition.cs" />
     <Compile Include="Implements\Domain\Virtuals\Location.cs" />
     <Compile Include="Implements\Domain\Virtuals\Position.cs" />

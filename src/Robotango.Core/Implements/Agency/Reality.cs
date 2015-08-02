@@ -120,7 +120,7 @@ namespace Robotango.Core.Implements.Agency
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
-            wr.Line( "{0} <{1}>", IReality.FamilyName, typeof( Reality ).Name );
+            wr.Line( "{0} <{1}>", IReality.Name, typeof( Reality ).Name );
             _agents.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
