@@ -5,6 +5,10 @@ Todo list
 Todo
 ~~~~
 - test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
+  - World : Special agent, IReality
+  - ren CreateReality - CreateWorld (return new World)
+  - Test: World Lows (=Beliefs)
+  - Test: World.Run (~Think)
 - IPurposful
 - form out beliefs in the class IBelief
 - dump beliefs

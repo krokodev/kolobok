@@ -14,7 +14,7 @@ namespace Robotango.Tests.Cases.Complex
     public class Activities : BaseTests
     {
         [Test]
-        public void Alice_asks_Bob_to_pass_her()
+        public void Alice_asks_Bob_to_pass_her_throw_door()
         {
             var house = Factory.CreateReality( "The House" );
             var alice = Factory.CreateAgent< IVirtual >( "Alice" );
