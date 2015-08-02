@@ -126,7 +126,7 @@ namespace Robotango.Core.Implements.Agency
 
         public override string ToString()
         {
-            return string.Format( "{0} {{{1}}}", IAgent.Name, IAgent.Id );
+            return string.Format( "'{0}' {{{1}}}", IAgent.Name, IAgent.Id );
         }
 
         #endregion

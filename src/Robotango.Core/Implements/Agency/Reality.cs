@@ -30,8 +30,9 @@ namespace Robotango.Core.Implements.Agency
             try {
                 return _agents.First( a => a.Id == agent.Id );
             }
-            catch {
-                throw new UnknownAgentException( "World {0} does not contain agent {1}", IReality, agent );
+            catch( Exception exception ) {
+                Debug.Log( exception );
+                throw new UnknownAgentException( "Reality {0} does not contain agent {1}", IReality, agent );
             }
         }
 
@@ -142,7 +143,7 @@ namespace Robotango.Core.Implements.Agency
 
         public override string ToString()
         {
-            return string.Format( "{0} {{{1}}}", IReality.Name, IReality.Id );
+            return string.Format( "'{0}' {{{1}}}", IReality.Name, IReality.Id );
         }
 
         #endregion
