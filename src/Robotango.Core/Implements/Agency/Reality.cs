@@ -103,6 +103,13 @@ namespace Robotango.Core.Implements.Agency
             get { return _holder == null ? null : _holder.Reality; }
         }
 
+        IAgent IReality.Project( IAgent agent )
+        {
+            var projection = agent.Clone();
+            _projections.Add( projection );
+            return projection;
+        }
+
         #endregion
 
 
@@ -168,6 +175,7 @@ namespace Robotango.Core.Implements.Agency
         #region Fields
 
         private List< IAgent > _agents = new List< IAgent >();
+        private readonly List< IAgent > _projections = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
         private readonly IAgent _holder;

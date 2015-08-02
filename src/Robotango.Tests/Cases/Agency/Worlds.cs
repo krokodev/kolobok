@@ -61,5 +61,6 @@ namespace Robotango.Tests.Cases.Agency
             Assert.That( world.Reality.Contains( alice ) );
             Assert.AreEqual( locB, alice.As< IVirtual >().GetFirst< IPosition >().Location );
         }
+
     }
 }

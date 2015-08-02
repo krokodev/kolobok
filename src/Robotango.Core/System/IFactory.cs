@@ -54,6 +54,6 @@ namespace Robotango.Core.System
         IAgent CreateAgent( string name, params IAbility[] abilities );
         IAbility CreateComponent<T>() where T : IAbility;
         IReality CreateReality( string name = null );
-        IWorld CreateWorld( string  name = null );
+        IWorld CreateWorld( string name = null );
     }
 }

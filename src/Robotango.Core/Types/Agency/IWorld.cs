@@ -7,7 +7,7 @@ using Robotango.Core.Types.Abilities;
 
 namespace Robotango.Core.Types.Agency
 {
-    public interface IWorld: INamed, IResearchable
+    public interface IWorld : INamed, IResearchable
     {
         IReality Reality { get; }
         IRational Rational { get; }

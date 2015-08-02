@@ -249,5 +249,6 @@ namespace Robotango.Tests.Cases.Agency
 
             Assert.AreEqual( "Universe[Alice].Imaginary[Bob].Imaginary[Alice].Imaginary", uabaWorld.FullName );
         }
+
     }
 }

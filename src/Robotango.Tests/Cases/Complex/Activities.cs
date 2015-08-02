@@ -2,7 +2,9 @@
 // Robotango.Tests
 // Activities.cs
 
+using System.Collections.Generic;
 using NUnit.Framework;
+using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Implements.Domain.Virtuals;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Domain.Virtuals;
@@ -13,17 +15,34 @@ namespace Robotango.Tests.Cases.Complex
     [TestFixture]
     public class Activities : BaseTests
     {
-        [Test]
-        public void Agent_can_move()
+        [Test, Ignore]
+        public void Alice_can_move_in_her_world()
         {
-            var world = Factory.CreateWorld( "The World" );
+/*            var world = Factory.CreateWorld( "The World" );
             var alice = Factory.CreateAgent< IVirtual >( "Alice" );
             var locA = new Location( "A" );
             var locB = new Location( "B" );
-
-            world.Reality.Add( alice );
-
+            var locC = new Location( "C" );
+            var move = new Dictionary< ILocation, ILocation > {
+                { locA, locB },
+                { locB, locC },
+                { locC, locA }
+            };
             alice.As< IVirtual >().Add( new Position( locA ) );
+
+            var wAlice = world.Reality.Poject( alice );
+
+            world.Rational.Believes( reality => {
+                reality.Add( wAlice );
+                var alicePosition = reality.Agent( wAlice ).As< IVirtual >().GetFirst< IPosition >();
+                alicePosition.Location = move[ alicePosition.Location ];
+            } );
+
+            Log( world.Dump() );
+            Assert.False( world.Reality.Contains( alice ) );
+
+            world.Rational.Think();
+            Log( world.Dump() );*/
 
             Assert.Ignore();
         }

@@ -19,5 +19,6 @@ namespace Robotango.Core.Types.Agency
         string FamilyName { get; }
         IAgent Holder { get; }
         IReality Superior { get; }
+        IAgent Project( IAgent agent );
     }
 }

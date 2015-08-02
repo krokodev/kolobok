@@ -4,7 +4,6 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Implements.Abilities;
 using Robotango.Core.System;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
