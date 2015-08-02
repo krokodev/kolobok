@@ -11,7 +11,7 @@ using Robotango.Tests.Utils.Stuff;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Dumps : BaseCase
+    public class Dumps : Utils.Bases.BaseTests
     {
         [Test]
         public void Dump_contains_info_about_agents_attributes()

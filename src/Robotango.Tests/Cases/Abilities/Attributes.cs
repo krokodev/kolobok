@@ -12,7 +12,7 @@ using Robotango.Tests.Utils.Stuff;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Attributes : BaseCase
+    public class Attributes : Utils.Bases.BaseTests
     {
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Entety_cant_have_others_attribute()

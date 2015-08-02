@@ -13,7 +13,7 @@ using Robotango.Tests.Utils.Helpers;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Components : BaseCase
+    public class Components : Utils.Bases.BaseTests
     {
         [Test]
         public void Rational_is_a_component()

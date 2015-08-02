@@ -9,10 +9,10 @@ using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Agency
 {
     [TestFixture]
-    public class Agents : BaseCase
+    public class Agents : BaseTests
     {
         [Test]
         public void Agent_has_default_name()

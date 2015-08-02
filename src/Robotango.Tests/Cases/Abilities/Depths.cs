@@ -10,7 +10,7 @@ using Robotango.Tests.Utils.Bases;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Depths : BaseCase
+    public class Depths : Utils.Bases.BaseTests
     {
         [Test]
         public void World_has_default_name()

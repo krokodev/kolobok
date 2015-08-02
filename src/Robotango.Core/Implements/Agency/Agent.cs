@@ -29,6 +29,11 @@ namespace Robotango.Core.Implements.Agency
             return IComposite.GetComponent< T >();
         }
 
+        bool IAgent.Is<T>()
+        {
+            return IComposite.HasComponent< T >();
+        }
+
         IAgent IAgent.Clone()
         {
             var clone = new Agent {

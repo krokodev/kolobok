@@ -1,17 +1,18 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Reflectives.cs
+// Puzzles.cs
 
 using NUnit.Framework;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases
+namespace Robotango.Tests.Cases.Complex
 {
     [Ignore]
-    [TestFixture]
-    public class Reflectives : BaseCase
+
+    //[TestFixture]
+    public class Puzzles : BaseTests
     {
-        [Test]
+        //[Test]
         public void Wise_agent_can_solve_color_of_its_hat_during_conversation()
         {
             /*            const Colors aColor = Colors.White;

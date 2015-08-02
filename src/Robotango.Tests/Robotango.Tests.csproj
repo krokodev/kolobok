@@ -49,20 +49,22 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Cases\Complex\Activities.cs" />
+    <Compile Include="Cases\Complex\Puzzles.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
     <Compile Include="Utils\Stuff\Hat.cs" />
     <Compile Include="Utils\Stuff\IHat.cs" />
-    <Compile Include="Cases\Dumps.cs" />
-    <Compile Include="Cases\Attributes.cs" />
-    <Compile Include="Cases\Agents.cs" />
-    <Compile Include="Cases\Depths.cs" />
-    <Compile Include="Cases\Worlds.cs" />
-    <Compile Include="Cases\Reflectives.cs" />
-    <Compile Include="Cases\Rationals.cs" />
-    <Compile Include="Cases\Communications.cs" />
-    <Compile Include="Utils\Bases\BaseCase.cs" />
-    <Compile Include="Cases\Components.cs" />
+    <Compile Include="Cases\Agency\Dumps.cs" />
+    <Compile Include="Cases\Abilities\Attributes.cs" />
+    <Compile Include="Cases\Agency\Agents.cs" />
+    <Compile Include="Cases\Abilities\Depths.cs" />
+    <Compile Include="Cases\Agency\Realities.cs" />
+    <Compile Include="Cases\Abilities\Reflectives.cs" />
+    <Compile Include="Cases\Abilities\Rationals.cs" />
+    <Compile Include="Cases\Abilities\Communications.cs" />
+    <Compile Include="Utils\Bases\BaseTests.cs" />
+    <Compile Include="Cases\Agency\Components.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

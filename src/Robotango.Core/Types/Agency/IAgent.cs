@@ -9,6 +9,7 @@ namespace Robotango.Core.Types.Agency
     public interface IAgent : IIdentifiable, IResearchable
     {
         T As<T>() where T : IAbility;
+        bool Is<T>() where T : IAbility;
         IAgent Clone();
         IReality Reality { get; set; }
         string Name { get; set; }

@@ -8,7 +8,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Tests.Utils.Bases
 {
-    public abstract class BaseCase
+    public abstract class BaseTests
     {
         #region Init
 

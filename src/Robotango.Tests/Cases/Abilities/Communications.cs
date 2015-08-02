@@ -11,7 +11,7 @@ using Robotango.Tests.Utils.Stuff;
 namespace Robotango.Tests.Cases
 {
     [TestFixture]
-    public class Communications : BaseCase
+    public class Communications : Utils.Bases.BaseTests
     {
         [Test]
         public void Social_can_query_question()
