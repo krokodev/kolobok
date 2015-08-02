@@ -4,16 +4,17 @@ Todo list
 
 Todo
 ~~~~
-> finish dump test
-- see ipad
-- create and dump complex world with alice, bob, hats and their beliefs
-- Use Name as attribute 
+- test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
+- IPurposful
 - form out beliefs in the class IBelief
+- dump beliefs
 - IWorld.Project -- make agent projection
 - IReflective -- see later
 
+
 Done
 ~~~~
++ dump test with attributes and imagiraryties
 + ren Robotango
 + Use IAttribute instead of Propety/Owner
 + many tests
