@@ -76,7 +76,7 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IRational, IVirtual >( "Alice" );
 
-            var herselve = alice.As<IRational>().Imaginary.Introduce( alice );
+            var herselve = alice.As< IRational >().Imaginary.Introduce( alice );
 
             alice.As< IRational >().Believes( world => {
                 herselve.As< IVirtual >().Add( new Hat() );

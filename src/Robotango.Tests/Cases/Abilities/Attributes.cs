@@ -57,8 +57,8 @@ namespace Robotango.Tests.Cases.Abilities
         public void Alice_and_Bob_have_positions()
         {
             var house = Factory.CreateReality( "The House" );
-            var alice = house.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
-            var bob = house.Introduce(Factory.CreateAgent< IVirtual >( "Bob" ));
+            var alice = house.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var bob = house.Introduce( Factory.CreateAgent< IVirtual >( "Bob" ) );
 
             var initial = new Location( "Initial" );
             var destination = new Location( "Destination" );

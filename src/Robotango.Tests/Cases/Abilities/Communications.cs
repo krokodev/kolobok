@@ -99,8 +99,8 @@ namespace Robotango.Tests.Cases.Abilities
             bob.As< IRational >().Imaginary.Introduce( alice );
 
             bob.As< IRational >().Believes( world => {
-                world.Agent(alice).As< IVirtual >().Add( new Hat() );
-                world.Agent(alice).As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
+                world.Agent( alice ).As< IVirtual >().Add( new Hat() );
+                world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
             } );
             bob.As< IRational >().Think();
 

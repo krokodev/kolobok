@@ -84,8 +84,6 @@ namespace Robotango.Tests.Cases.Complex
 
             Assert.AreEqual( "Destination", destination.ILocation.Name );
             Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
-
-            Assert.Ignore();
         }
     }
 }

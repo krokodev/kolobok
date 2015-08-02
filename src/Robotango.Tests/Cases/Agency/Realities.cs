@@ -115,8 +115,8 @@ namespace Robotango.Tests.Cases.Agency
         public void World_agents_have_the_same_depts()
         {
             var matrix = Factory.CreateAgent< IRational >( "Matrix" );
-            var alice = matrix.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
-            var bob = matrix.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
+            var alice = matrix.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
+            var bob = matrix.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Bob" ) );
 
             Assert.AreEqual( matrix.Depth + 1, matrix.As< IRational >().Imaginary.Depth );
             Assert.AreEqual( matrix.As< IRational >().Imaginary.Depth, alice.Depth );
@@ -127,7 +127,7 @@ namespace Robotango.Tests.Cases.Agency
         public void Agents_Imaginary_world_has_proper_family_name()
         {
             var bworld = Factory.CreateAgent< IRational >( "Bob" ).As< IRational >().Imaginary;
-            var alice = bworld.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
+            var alice = bworld.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
             var aworld = alice.As< IRational >().Imaginary;
 
             Log( bworld.FamilyName );
@@ -141,9 +141,9 @@ namespace Robotango.Tests.Cases.Agency
         public void Imaginary_worlds_have_holders()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
-            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
-            
+            var alice = universe.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
+            var bob = alice.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Bob" ) );
+
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Introduce( alice );
 
             Assert.IsNull( universe.Holder );
@@ -179,8 +179,8 @@ namespace Robotango.Tests.Cases.Agency
         public void Wolds_family_name_represents_its_position_in_hierarchy()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
-            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
+            var alice = universe.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
+            var bob = alice.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Bob" ) );
             var aPrj = alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Introduce( alice );
 
             alice.As< IRational >().Think();
@@ -206,7 +206,7 @@ namespace Robotango.Tests.Cases.Agency
         {
             var universe = Factory.CreateReality();
             var alice = universe.Introduce( Factory.CreateAgent< IRational >() );
-            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >());
+            var bob = alice.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >() );
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Introduce( alice );
 
             var aimg = alice.As< IRational >().Imaginary;
@@ -221,8 +221,8 @@ namespace Robotango.Tests.Cases.Agency
         public void Worlds_full_name_describes_its_hierarchy()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce( Factory.CreateAgent< IRational >( "Alice" ));
-            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent< IRational >( "Bob" ));
+            var alice = universe.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
+            var bob = alice.As< IRational >().Imaginary.Introduce( Factory.CreateAgent< IRational >( "Bob" ) );
 
             alice.As< IRational >().Think();
             alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( iworld => iworld.Introduce( alice ) );

@@ -74,8 +74,8 @@ namespace Robotango.Tests.Cases.Agency
         public void Agents_full_name_describes_its_hierarchy()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce(Factory.CreateAgent< IRational >( "Alice" ));
-            var bob = alice.As< IRational >().Imaginary.Introduce(Factory.CreateAgent( "Bob" ));
+            var alice = universe.Introduce( Factory.CreateAgent< IRational >( "Alice" ) );
+            var bob = alice.As< IRational >().Imaginary.Introduce( Factory.CreateAgent( "Bob" ) );
 
             Log( universe.FullName );
             Log( alice.FullName );
