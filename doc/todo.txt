@@ -8,16 +8,16 @@ Todo
 - IPurposful
 - form out beliefs in the class IBelief
 - dump beliefs
-- World : Special agent, IReality
-  - ren CreateReality - CreateWorld (return new World)
-  - Test: World Lows (=Beliefs)
-  - Test: World.Run (~Think)
-- IWorld.Project -- make agent projection
 - IReflective -- see later
 
 
 Done
 ~~~~
++ IWorld.Project -- make agent projection
++ World : Special agent, IReality
+  + ren CreateReality - CreateWorld (return new World)
+  + Test: World Lows (=Beliefs)
+  + Test: World.Run (~Think)
 + dump test with attributes and imagiraryties
 + ren Robotango
 + Use IAttribute instead of Propety/Owner
