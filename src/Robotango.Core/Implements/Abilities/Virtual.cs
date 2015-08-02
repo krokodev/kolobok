@@ -9,7 +9,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Domain.Attributes;
+using Robotango.Core.Types.Domain.Virtuals;
 
 namespace Robotango.Core.Implements.Abilities
 {

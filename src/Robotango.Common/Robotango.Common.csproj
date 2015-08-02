@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Implements\Compositions\Composition.cs" />
+    <Compile Include="Domain\Types\Properties\ILocation.cs" />
     <Compile Include="Domain\Types\Properties\INamed.cs" />
     <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
     <Compile Include="Utils\Diagnostics\Debug\Debug.cs" />

@@ -3,9 +3,10 @@
 // Activities.cs
 
 using NUnit.Framework;
+using Robotango.Core.Implements.Domain.Virtuals;
 using Robotango.Core.Types.Abilities;
+using Robotango.Core.Types.Domain.Virtuals;
 using Robotango.Tests.Utils.Bases;
-using Robotango.Tests.Utils.Stuff;
 
 namespace Robotango.Tests.Cases.Complex
 {
@@ -13,9 +14,9 @@ namespace Robotango.Tests.Cases.Complex
     public class Activities : BaseTests
     {
         [Test]
-        public void Alice_ask_Bob_to_pass_her()
+        public void Alice_asks_Bob_to_pass_her()
         {
-            var room = Factory.CreateReality( "The Room" );
+            var house = Factory.CreateReality( "The House" );
             var alice = Factory.CreateAgent< IVirtual >( "Alice" );
             var bob = Factory.CreateAgent< IVirtual >( "Bob" );
 
@@ -23,14 +24,14 @@ namespace Robotango.Tests.Cases.Complex
             var destination = new Location( "Destination" );
             var reserve = new Location( "Reserve" );
 
-            room.Add( alice, bob );
-            alice.As< IVirtual >().Add( initial );
-            bob.As< IVirtual >().Add( destination );
+            house.Add( alice, bob );
+            alice.As< IVirtual >().Add( new Position( initial ) );
+            bob.As< IVirtual >().Add( new Position( destination ) );
 
-            Log( room.Dump() );
+            Log( house.Dump() );
 
             Assert.AreEqual( "Destination", destination.ILocation.Name );
-            Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< ILocation >() );
+            Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
         }
     }
 }

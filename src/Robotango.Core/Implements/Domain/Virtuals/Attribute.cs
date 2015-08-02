@@ -4,9 +4,9 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Types.Domain.Attributes;
+using Robotango.Core.Types.Domain.Virtuals;
 
-namespace Robotango.Core.Implements.Domain.Attributes
+namespace Robotango.Core.Implements.Domain.Virtuals
 {
     public abstract class Attribute<T> : IAttribute
         where T : IAttribute, new()
@@ -38,7 +38,7 @@ namespace Robotango.Core.Implements.Domain.Attributes
         protected virtual string Dump( int level )
         {
             var wr = new OutlineWriter( level );
-            wr.Line( "{0}=[{2}] <{1}>", typeof( T ).Name, typeof( Attribute< T > ).Name, GetContent() );
+            wr.Line( "{0}=[{2}] <{1}>", typeof( T ).Name, typeof( Attribute< T > ).Name, GetDumpContent() );
             return wr.ToString();
         }
 
@@ -47,7 +47,7 @@ namespace Robotango.Core.Implements.Domain.Attributes
             return new T();
         }
 
-        protected virtual string GetContent()
+        protected virtual string GetDumpContent()
         {
             return "";
         }

@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Domain.Attributes;
+using Robotango.Core.Types.Domain.Virtuals;
 
 namespace Robotango.Core.Types.Abilities
 {

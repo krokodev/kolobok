@@ -50,13 +50,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Cases\Complex\Activities.cs" />
-    <Compile Include="Utils\Stuff\ILocation.cs" />
-    <Compile Include="Utils\Stuff\Location.cs" />
     <Compile Include="Cases\Complex\Puzzles.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
-    <Compile Include="Utils\Stuff\Hat.cs" />
-    <Compile Include="Utils\Stuff\IHat.cs" />
+    <Compile Include="Domain\Hat.cs" />
+    <Compile Include="Domain\IHat.cs" />
     <Compile Include="Cases\Agency\Dumps.cs" />
     <Compile Include="Cases\Abilities\Attributes.cs" />
     <Compile Include="Cases\Agency\Agents.cs" />

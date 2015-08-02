@@ -5,9 +5,11 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Implements.Domain.Virtuals;
 using Robotango.Core.Types.Abilities;
+using Robotango.Core.Types.Domain.Virtuals;
+using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
-using Robotango.Tests.Utils.Stuff;
 
 namespace Robotango.Tests.Cases.Abilities
 {
@@ -49,6 +51,33 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.AreSame( aHat, aHat );
             Assert.AreSame( cHat, cHat );
             Assert.AreNotSame( aHat, cHat );
+        }
+
+        [Test]
+        public void Alice_and_Bob_have_positions()
+        {
+            var house = Factory.CreateReality( "The House" );
+            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
+            var bob = Factory.CreateAgent< IVirtual >( "Bob" );
+
+            var initial = new Location( "Initial" );
+            var destination = new Location( "Destination" );
+
+            house.Add( alice, bob );
+            alice.As< IVirtual >().Add( new Position( initial ) );
+            bob.As< IVirtual >().Add( new Position( destination ) );
+
+            var dump = house.Dump();
+
+            Log( house.Dump() );
+
+            Assert.That( dump.Contains( "Position" ) );
+            Assert.That( dump.Contains( "Location" ) );
+            Assert.That( dump.Contains( "Destination" ) );
+            Assert.That( dump.Contains( "Initial" ) );
+            Assert.AreEqual( "Destination", destination.ILocation.Name );
+            Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( destination, bob.As< IVirtual >().GetFirst< IPosition >().Location );
         }
     }
 }

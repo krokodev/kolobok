@@ -43,13 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implements\Abilities\Reflective.cs" />
-    <Compile Include="Implements\Domain\Attributes\Attribute.cs" />
+    <Compile Include="Implements\Domain\Virtuals\Attribute.cs" />
+    <Compile Include="Types\Domain\Virtuals\IPosition.cs" />
+    <Compile Include="Implements\Domain\Virtuals\Location.cs" />
+    <Compile Include="Implements\Domain\Virtuals\Position.cs" />
     <Compile Include="System\Settings.cs" />
     <Compile Include="Implements\Domain\Communications\Answer.cs" />
     <Compile Include="Implements\Domain\Communications\AnswerResult.cs" />
     <Compile Include="Implements\Domain\Communications\Question.cs" />
-    <Compile Include="Types\Domain\Attributes\IAttribute.cs" />
-    <Compile Include="Types\Domain\Attributes\IAttributeHolder.cs" />
+    <Compile Include="Types\Domain\Virtuals\IAttribute.cs" />
+    <Compile Include="Types\Domain\Virtuals\IAttributeHolder.cs" />
     <Compile Include="Types\Domain\Communications\IAnswer.cs" />
     <Compile Include="Types\Domain\Communications\IRespondent.cs" />
     <Compile Include="Types\Domain\Communications\IAnswerResult.cs" />
