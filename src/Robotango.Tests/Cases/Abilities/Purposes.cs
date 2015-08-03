@@ -30,7 +30,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Purposeful_dump_contains_intentions()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var intention = agent.As< IPurposeful >().AddIntention( reality => false );
+            var intention = agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) == false );
             var dump = agent.Dump();
 
             Log( dump );

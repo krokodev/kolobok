@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
@@ -27,9 +28,9 @@ namespace Robotango.Core.Implements.Abilities
 
         void IComponent.Init( IComposite composition )
         {
-            IAgent = (IAgent)composition;
-            IThinking = composition.GetComponent< IThinking >();
-            Debug.Assert.That( IThinking != null, new MissedComponentException( typeof( IThinking ) ) );
+            _agent = (IAgent)composition;
+            _thinking = composition.GetComponent< IThinking >();
+            Debug.Assert.That( _thinking != null, new MissedComponentException( typeof( IThinking ) ) );
         }
 
         #endregion
@@ -37,9 +38,9 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IPurposeful
 
-        IIntention IPurposeful.AddIntention( Func< IReality, bool > condition )
+        IIntention IPurposeful.AddIntention( Expression<Func< IReality, bool > >predicate )
         {
-            var intention = new Intention (IThinking.Imaginary, IAgent, condition);
+            var intention = new Intention (_thinking.Imaginary, _agent, predicate);
             _intentions.Add( intention );
             return intention;
         }
@@ -49,9 +50,9 @@ namespace Robotango.Core.Implements.Abilities
 
         #region Fields
 
-        private IThinking IThinking { get; set; }
+        private IThinking _thinking;
+        private IAgent _agent;
         private readonly List< IIntention > _intentions = new List< IIntention >();
-        private IAgent IAgent;
 
         #endregion
 

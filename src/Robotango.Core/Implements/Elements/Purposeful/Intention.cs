@@ -3,6 +3,8 @@
 // Intention.cs
 
 using System;
+using System.Linq.Expressions;
+using System.Reflection;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Types.Agency;
@@ -36,10 +38,9 @@ namespace Robotango.Core.Implements.Elements.Purposeful
 
         string IResearchable.Dump( int level )
         {
-            return OutlineWriter.Line( level,
-                "[Holder:{0};Context:{1}] <{2}>",
-                _holder.Name,
-                _context.FamilyName,
+            return OutlineWriter.Line( level, 
+                "[{0}] <{1}>",
+                _sources,
                 typeof( Intention ).Name
                 );
         }
@@ -49,11 +50,12 @@ namespace Robotango.Core.Implements.Elements.Purposeful
 
         #region Ctor
 
-        public Intention( IReality context, IAgent holder, Func< IReality, bool > predicate )
+        public Intention( IReality context, IAgent holder, Expression<Func< IReality, bool >> predicateExpression )
         {
             _context = context;
             _holder = holder;
-            _predicate = predicate;
+            _predicate = predicateExpression.Compile();
+            _sources = predicateExpression.ToString();
         }
 
         #endregion
@@ -64,6 +66,7 @@ namespace Robotango.Core.Implements.Elements.Purposeful
         private readonly IAgent _holder;
         private readonly Func< IReality, bool > _predicate;
         private readonly IReality _context;
+        private string _sources;
 
         #endregion
     }

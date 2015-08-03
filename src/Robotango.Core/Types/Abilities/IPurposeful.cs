@@ -3,6 +3,7 @@
 // IPurposeful.cs
 
 using System;
+using System.Linq.Expressions;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Purposful;
 
@@ -10,6 +11,6 @@ namespace Robotango.Core.Types.Abilities
 {
     public interface IPurposeful : IAbility
     {
-        IIntention AddIntention( Func< IReality, bool > condition );
+        IIntention AddIntention( Expression<Func< IReality, bool > >predicate );
     }
 }

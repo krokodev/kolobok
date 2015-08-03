@@ -37,9 +37,12 @@ namespace Robotango.Core.Implements.Elements.Virtual
 
         protected virtual string Dump( int level )
         {
-            var wr = new OutlineWriter( level );
-            wr.Line( "{0}=[{2}] <{1}>", typeof( T ).Name, typeof( Attribute< T > ).Name, GetDumpContent() );
-            return wr.ToString();
+            return OutlineWriter.Line(
+                level,
+                "{0}=[{2}] <{1}>",
+                typeof( T ).Name,
+                typeof( Attribute< T > ).Name,
+                GetDumpContent() );
         }
 
         protected virtual IAttribute Clone()
