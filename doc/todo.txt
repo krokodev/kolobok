@@ -4,7 +4,6 @@ Todo list
 
 Todo
 ~~~~
-- test: Purposeful.Clone
 > test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
 - IPurposful
 - form out beliefs in the class IBelief
@@ -14,6 +13,7 @@ Todo
 
 Done
 ~~~~
++ test: Purposeful.Clone
 + ren IRational - IThinking, Imaginary - Mind/Inner(?), Reality- Outer/Reality
 + IWorld.Project -- make agent projection
 + World : Special agent, IReality
