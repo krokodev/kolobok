@@ -27,10 +27,10 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Purposeful_dump_contains_desires()
+        public void Purposeful_dump_contains_intentions()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var desire = agent.As< IPurposeful >().AddDesire( reality => false );
+            var intention = agent.As< IPurposeful >().AddIntention( reality => false );
             var dump = agent.Dump();
 
             Log( dump );
@@ -40,25 +40,25 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Desire_can_be_satisfied()
+        public void Intention_can_be_satisfied()
         {
             Assert.Ignore();
         }
 
         [Test]
-        public void Testing_desire_depends_on_reality()
+        public void Testing_intention_depends_on_reality()
         {
             Assert.Ignore();
         }
 
         [Test]
-        public void Testing_desire_could_not_change_the_reality()
+        public void Testing_intention_could_not_change_the_reality()
         {
             Assert.Ignore();
         }
 
         [Ignore, Test]
-        public void Alice_desires_to_be_in_location_A()
+        public void Alice_intentions_to_be_in_location_A()
         {
             var world = Factory.CreateWorld();
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
@@ -67,7 +67,7 @@ namespace Robotango.Tests.Cases.Abilities
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            var desire = alice.As< IPurposeful >().AddDesire(
+            var intention = alice.As< IPurposeful >().AddIntention(
                 reality =>
                     reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b
                 );
@@ -75,8 +75,8 @@ namespace Robotango.Tests.Cases.Abilities
             var dump = world.Dump();
             Log( dump );
 
-            Assert.AreEqual( alice.As< IThinking >().Imaginary, desire.Context );
-            Assert.False( desire.IsSatisfied );
+            Assert.AreEqual( alice.As< IThinking >().Imaginary, intention.Context );
+            Assert.False( intention.IsSatisfied );
         }
     }
 }

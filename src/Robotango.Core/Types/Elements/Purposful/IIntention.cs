@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IDesire.cs
+// IIntention.cs
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Types.Abilities;

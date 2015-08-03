@@ -10,6 +10,6 @@ namespace Robotango.Core.Types.Abilities
 {
     public interface IPurposeful : IAbility
     {
-        IIntention AddDesire( Func< IReality, bool > condition );
+        IIntention AddIntention( Func< IReality, bool > condition );
     }
 }

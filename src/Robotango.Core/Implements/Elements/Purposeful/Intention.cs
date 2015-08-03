@@ -12,7 +12,7 @@ namespace Robotango.Core.Implements.Elements.Purposeful
 {
     internal class Intention : IIntention
     {
-        #region IDesire
+        #region IIntention
 
         IReality IIntention.Context
         {
