@@ -3,9 +3,12 @@
 // Purposeful.cs
 
 using System;
+using System.Collections.Generic;
 using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Common.Utils.Tools;
 using Robotango.Core.Implements.Elements.Purposeful;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
@@ -13,7 +16,7 @@ using Robotango.Core.Types.Elements.Purposful;
 
 namespace Robotango.Core.Implements.Abilities
 {
-    internal class Purposeful : IPurposeful
+    internal class Purposeful : IPurposeful, IResearchable
     {
         #region IComponent
 
@@ -24,8 +27,9 @@ namespace Robotango.Core.Implements.Abilities
 
         void IComponent.Init( IComposite composition )
         {
-            Thinking = composition.GetComponent< IThinking >();
-            Debug.Assert.That( Thinking != null, new MissedComponentException( typeof( IThinking ) ) );
+            IAgent = (IAgent)composition;
+            IThinking = composition.GetComponent< IThinking >();
+            Debug.Assert.That( IThinking != null, new MissedComponentException( typeof( IThinking ) ) );
         }
 
         #endregion
@@ -33,9 +37,11 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IPurposeful
 
-        IDesire IPurposeful.AddDesire( Func< IReality, bool > goal )
+        IIntention IPurposeful.AddDesire( Func< IReality, bool > condition )
         {
-            return new Desire();
+            var desire = new Intention (IThinking.Imaginary, IAgent, condition);
+            _desires.Add( desire );
+            return desire;
         }
 
         #endregion
@@ -43,7 +49,22 @@ namespace Robotango.Core.Implements.Abilities
 
         #region Fields
 
-        private IThinking Thinking { get; set; }
+        private IThinking IThinking { get; set; }
+        private readonly List< IIntention > _desires = new List< IIntention >();
+        private IAgent IAgent;
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.Dump( int level )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line( "<{0}>", typeof( Purposeful ).Name );
+            _desires.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+            return wr.ToString();
+        }
 
         #endregion
     }

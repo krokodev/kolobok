@@ -27,12 +27,16 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Dump_contains_desires()
+        public void Purposeful_dump_contains_desires()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
+            var desire = agent.As< IPurposeful >().AddDesire( reality => false );
             var dump = agent.Dump();
+
             Log( dump );
-            Assert.That(dump.Contains("Desire"));
+
+            Assert.That( dump.Contains( "<Purposeful>" ) );
+            Assert.That( dump.Contains( "Intention" ) );
         }
 
         [Test]

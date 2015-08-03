@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implements\Elements\Purposeful\Desire.cs" />
+    <Compile Include="Implements\Elements\Purposeful\Intention.cs" />
     <Compile Include="Implements\Abilities\Purposeful.cs" />
-    <Compile Include="Types\Elements\Purposful\IDesire.cs" />
+    <Compile Include="Types\Elements\Purposful\IIntention.cs" />
     <Compile Include="Implements\Abilities\Reflective.cs" />
     <Compile Include="Implements\Elements\Virtual\Attribute.cs" />
     <Compile Include="Implements\Agency\World.cs" />

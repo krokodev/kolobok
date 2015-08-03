@@ -81,5 +81,12 @@ namespace Robotango.Common.Utils.Tools
         {
             _sb.AppendLine();
         }
+
+        public static string Line( int level, string template, params object[] args )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line( template, args );
+            return wr.ToString();
+        }
     }
 }

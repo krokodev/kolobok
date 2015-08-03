@@ -16,7 +16,7 @@ namespace Robotango.Tests.Cases.Complex
     public class Activities : BaseTests
     {
         [Test]
-        public void Alice_can_move_in_her_world()
+        public void Alice_can_move_in_her_outer_world()
         {
             var world = Factory.CreateWorld( "The World" );
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
