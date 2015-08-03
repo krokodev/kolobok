@@ -4,10 +4,10 @@
 
 using System;
 using Robotango.Common.Domain.Types.Compositions;
-using Robotango.Core.Implements.Domain.Communications;
+using Robotango.Core.Implements.Elements.Communicative;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Domain.Communications;
+using Robotango.Core.Types.Elements.Communicative;
 
 namespace Robotango.Core.Implements.Abilities
 {
@@ -15,9 +15,9 @@ namespace Robotango.Core.Implements.Abilities
     {
         #region IComponent
 
-        void IComponent.Init( IComposite composite )
+        void IComponent.Init( IComposite composition )
         {
-            IRational = composite.GetComponent< IRational >();
+            IRational = composition.GetComponent< IRational >();
         }
 
         IComponent IComponent.Clone()

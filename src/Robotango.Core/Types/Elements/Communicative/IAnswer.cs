@@ -4,7 +4,7 @@
 
 using Robotango.Core.Types.Abilities;
 
-namespace Robotango.Core.Types.Domain.Communications
+namespace Robotango.Core.Types.Elements.Communicative
 {
     public interface IAnswer<T>
     {

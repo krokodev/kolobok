@@ -60,7 +60,7 @@ namespace Robotango.Core.Implements.Agency
 
         public World( IFactory factory, string name )
         {
-            _agent = factory.CreateAgent< IRational >( name?? Settings.Worlds.Names.Default );
+            _agent = factory.CreateAgent< IRational >( name ?? Settings.Worlds.Names.Default );
             _rational = _agent.As< IRational >();
             ;
         }

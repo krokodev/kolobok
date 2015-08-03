@@ -3,7 +3,7 @@
 // IHat.cs
 
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Types.Domain.Virtuals;
+using Robotango.Core.Types.Elements.Virtual;
 
 namespace Robotango.Tests.Domain
 {

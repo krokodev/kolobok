@@ -2,7 +2,7 @@
 // Robotango.Core
 // IAttributeHolder.cs
 
-namespace Robotango.Core.Types.Domain.Virtuals
+namespace Robotango.Core.Types.Elements.Virtual
 {
     public interface IAttributeHolder
     {

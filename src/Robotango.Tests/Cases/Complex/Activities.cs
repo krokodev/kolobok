@@ -5,9 +5,9 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Implements.Domain.Virtuals;
+using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Domain.Virtuals;
+using Robotango.Core.Types.Elements.Virtual;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Complex
@@ -64,19 +64,19 @@ namespace Robotango.Tests.Cases.Complex
             Assert.Ignore();
         }
 
-        [Test,Ignore]
+        [Ignore, Test]
         public void Alice_asks_Bob_to_pass_her_throw_door()
         {
             var world = Factory.CreateWorld( "The House" );
-            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
-            var bob = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Bob" ));
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var bob = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Bob" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b );
             bob.As< IVirtual >().Add( new Position( b ) );
 
             Log( world.Dump() );
@@ -97,17 +97,17 @@ namespace Robotango.Tests.Cases.Complex
             Assert.Ignore();
         }
 
-        [Test]
+        [Ignore, Test]
         public void Alice_goes_throw_the_door()
         {
             var world = Factory.CreateWorld( "The House" );
-            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful >( "Alice" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b );
 
             Log( world.Dump() );
 

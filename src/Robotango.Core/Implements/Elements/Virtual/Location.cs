@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 
-namespace Robotango.Core.Implements.Domain.Virtuals
+namespace Robotango.Core.Implements.Elements.Virtual
 {
     public class Location : ILocation
     {
@@ -37,7 +37,7 @@ namespace Robotango.Core.Implements.Domain.Virtuals
 
         public override string ToString()
         {
-            return ((INamed)this).Name;
+            return ( ( INamed ) this ).Name;
         }
     }
 }

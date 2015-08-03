@@ -8,6 +8,7 @@ using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.System;
 using Robotango.Core.Types.Agency;
@@ -25,7 +26,7 @@ namespace Robotango.Core.Implements.Agency
 
         T IAgent.As<T>()
         {
-            Debug.Assert.That( IComposite.HasComponent< T >() );
+            Debug.Assert.That( IComposite.HasComponent< T >(), new MissedComponentException( typeof( T ) ) );
             return IComposite.GetComponent< T >();
         }
 

@@ -21,7 +21,12 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         T IComposite.GetComponent<T>()
         {
-            return Components.OfType< T >().FirstOrDefault();
+            try {
+                return Components.OfType< T >().FirstOrDefault();
+            }
+            catch {
+                throw new MissedComponentException( typeof( T ) );
+            }
         }
 
         public bool HasComponent<T>() where T : IComponent

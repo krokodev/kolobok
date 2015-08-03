@@ -5,9 +5,9 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Implements.Domain.Virtuals;
+using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Domain.Virtuals;
+using Robotango.Core.Types.Elements.Virtual;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 

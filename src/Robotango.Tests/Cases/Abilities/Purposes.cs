@@ -3,10 +3,10 @@
 // Purposes.cs
 
 using NUnit.Framework;
-using Robotango.Core.Implements.Domain.Virtuals;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Domain.Virtuals;
-using Robotango.Tests.Cases.Complex;
+using Robotango.Core.Types.Elements.Virtual;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Abilities
@@ -15,25 +15,15 @@ namespace Robotango.Tests.Cases.Abilities
     public class Purposes : BaseTests
     {
         [Test]
-        public void Alice_desires_to_be_in_location_A()
+        public void Agent_can_be_Purposeful()
         {
-            var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IRational >( "Alice" ) );
+            Factory.CreateAgent< IPurposeful, IRational >();
+        }
 
-            var a = new Location( "A" );
-            var b = new Location( "B" );
-
-            alice.As< IVirtual >().Add( new Position( a ) );
-            var desire = alice.As< IPurposeful >().AddDesire(
-                reality =>
-                    reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b
-                );
-
-            var dump = world.Dump();
-            Log( dump);
-
-            Assert.AreEqual(  alice.As< IRational >().Imaginary, desire.Reality);
-            Assert.False( desire.IsSatisfied );
+        [Test, ExpectedException( typeof( MissedComponentException ) )]
+        public void Purposeful_agent_must_be_Thinking()
+        {
+            Factory.CreateAgent< IPurposeful >();
         }
 
         [Test]
@@ -41,13 +31,7 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var world = Factory.CreateWorld();
             var dump = world.Dump();
-            Log( dump);
-            Assert.Ignore();
-        }
-
-        [Test]
-        public void Purposeful_agent_must_be_Thinking()
-        {
+            Log( dump );
             Assert.Ignore();
         }
 
@@ -69,5 +53,26 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.Ignore();
         }
 
+        [Ignore, Test]
+        public void Alice_desires_to_be_in_location_A()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IRational >( "Alice" ) );
+
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+
+            alice.As< IVirtual >().Add( new Position( a ) );
+            var desire = alice.As< IPurposeful >().AddDesire(
+                reality =>
+                    reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b
+                );
+
+            var dump = world.Dump();
+            Log( dump );
+
+            Assert.AreEqual( alice.As< IRational >().Imaginary, desire.Reality );
+            Assert.False( desire.IsSatisfied );
+        }
     }
 }

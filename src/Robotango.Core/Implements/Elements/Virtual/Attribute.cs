@@ -4,9 +4,9 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Types.Domain.Virtuals;
+using Robotango.Core.Types.Elements.Virtual;
 
-namespace Robotango.Core.Implements.Domain.Virtuals
+namespace Robotango.Core.Implements.Elements.Virtual
 {
     public abstract class Attribute<T> : IAttribute
         where T : IAttribute, new()

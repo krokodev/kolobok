@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 
-namespace Robotango.Core.Types.Domain.Virtuals
+namespace Robotango.Core.Types.Elements.Virtual
 {
     public interface IAttribute : IResearchable
     {

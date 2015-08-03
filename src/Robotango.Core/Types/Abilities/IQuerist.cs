@@ -4,7 +4,7 @@
 
 using System;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Domain.Communications;
+using Robotango.Core.Types.Elements.Communicative;
 
 namespace Robotango.Core.Types.Abilities
 {

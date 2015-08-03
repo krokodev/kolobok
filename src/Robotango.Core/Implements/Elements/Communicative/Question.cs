@@ -5,9 +5,9 @@
 using System;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Domain.Communications;
+using Robotango.Core.Types.Elements.Communicative;
 
-namespace Robotango.Core.Implements.Domain.Communications
+namespace Robotango.Core.Implements.Elements.Communicative
 {
     internal struct Question<T> : IQuestion< T >
     {

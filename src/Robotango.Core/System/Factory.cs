@@ -138,7 +138,7 @@ namespace Robotango.Core.System
         private static void AssertComponentIsRegisrtered( Type componentType )
         {
             if( !ComponentConstructors.ContainsKey( componentType ) ) {
-                throw new AssertException( "Unexcpected type '{0}'", componentType.Name );
+                throw new UnknownComponentException( "Unexcpected type '{0}'", componentType.Name );
             }
         }
 
@@ -153,6 +153,7 @@ namespace Robotango.Core.System
                 { typeof( ICommunicative ), () => new Communicative() },
                 { typeof( IVirtual ), () => new Virtual() },
                 { typeof( IReflective ), () => new Reflective() },
+                { typeof( IPurposeful ), () => new Purposeful() },
             };
 
         #endregion

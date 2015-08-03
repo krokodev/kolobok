@@ -4,9 +4,10 @@
 
 using Robotango.Core.Types.Agency;
 
-namespace Robotango.Core
+namespace Robotango.Core.Types.Elements.Purposful
 {
-    public interface IDesire {
+    public interface IDesire
+    {
         IReality Reality { get; }
         bool IsSatisfied { get; }
     }
