@@ -34,6 +34,12 @@ Later
 - Arch: remove cycking in ISkills-Agents and so on http://screencast.com/t/cWaOhl3PlaS
 - IReflective -- is able to make think its agents in its subworlds
 
+Ideas
+~~~~~
+// world[alice].As<IVirtual>
+// world.Get<IVirtual>(alice).Its<Position>()[0].Location=b
+// IAgent:  IPlural/ISingle Introduce(): assert contain or not whether single or not, excpeti if neither S nor P
+
 Canceled
 ~~~~~~~~
 x 

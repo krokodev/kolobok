@@ -33,5 +33,11 @@ namespace Robotango.Core.Implements.Domain.Virtuals
         }
 
         #endregion
+
+
+        public override string ToString()
+        {
+            return ((INamed)this).Name;
+        }
     }
 }

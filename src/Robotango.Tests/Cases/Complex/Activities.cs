@@ -30,11 +30,6 @@ namespace Robotango.Tests.Cases.Complex
             };
             alice.As< IVirtual >().Add( new Position( a ) );
 
-
-            // world[alice].As<IVirtual>
-            // world.Get<IVirtual>(alice).Its<Position>()[0].Location=b
-            // IAgent:  IPlural/ISingle Introduce(): assert contain or not whether single or not, excpeti if neither S nor P
-
             world.Rational.Believes( reality => {
                 var alicePosition = reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
@@ -64,31 +59,68 @@ namespace Robotango.Tests.Cases.Complex
         }
 
         [Test]
-        public void Reality_can_kiil_the_agent()
+        public void Reality_can_kill_the_agent()
         {
             Assert.Ignore();
         }
 
-        [Test]
+        [Test,Ignore]
         public void Alice_asks_Bob_to_pass_her_throw_door()
         {
-            var house = Factory.CreateReality( "The House" );
-            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
-            var bob = Factory.CreateAgent< IVirtual >( "Bob" );
+            var world = Factory.CreateWorld( "The House" );
+            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
+            var bob = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Bob" ));
 
-            var initial = new Location( "Initial" );
-            var destination = new Location( "Destination" );
-            var reserve = new Location( "Reserve" );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var c = new Location( "C" );
 
-            house.Introduce( alice );
-            house.Introduce( bob );
-            alice.As< IVirtual >().Add( new Position( initial ) );
-            bob.As< IVirtual >().Add( new Position( destination ) );
+            alice.As< IVirtual >().Add( new Position( a ) );
+            alice.As< IPurposeful >().Desires( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+            bob.As< IVirtual >().Add( new Position( b ) );
 
-            Log( house.Dump() );
+            Log( world.Dump() );
 
-            Assert.AreEqual( "Destination", destination.ILocation.Name );
-            Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( b, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+
+            world.Rational.Think();
+            world.Rational.Think();
+            world.Rational.Think();
+            world.Rational.Think();
+
+            Log( world.Dump() );
+
+            Assert.AreEqual( b, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( c, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+
+            Assert.Ignore();
+        }
+
+        [Test]
+        public void Alice_goes_throw_the_door()
+        {
+            var world = Factory.CreateWorld( "The House" );
+            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual >( "Alice" ));
+
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+
+            alice.As< IVirtual >().Add( new Position( a ) );
+            alice.As< IPurposeful >().Desires( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+
+            Log( world.Dump() );
+
+            Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+
+            world.Rational.Think();
+            world.Rational.Think();
+            world.Rational.Think();
+            world.Rational.Think();
+
+            Log( world.Dump() );
+
+            Assert.AreEqual( b, alice.As< IVirtual >().GetFirst< IPosition >().Location );
 
             Assert.Ignore();
         }

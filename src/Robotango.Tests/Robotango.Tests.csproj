@@ -49,9 +49,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Cases\Abilities\Purposes.cs" />
     <Compile Include="Cases\Agency\Projections.cs" />
     <Compile Include="Cases\Agency\Worlds.cs" />
     <Compile Include="Cases\Complex\Activities.cs" />
+    <Compile Include="Cases\Complex\IPurposeful.cs" />
     <Compile Include="Cases\Complex\Puzzles.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
