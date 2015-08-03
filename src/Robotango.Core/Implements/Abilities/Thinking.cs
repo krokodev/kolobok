@@ -42,7 +42,7 @@ namespace Robotango.Core.Implements.Abilities
         void IComponent.Init( IComposite composite )
         {
             _composite = composite;
-            _presentImage = new Reality( ( IAgent ) _composite, Settings.Agents.Rational.InnerReality.Name );
+            _presentImage = new Reality( ( IAgent ) _composite, Settings.Agents.Thinking.InnerReality.Name );
         }
 
         IComponent IComponent.Clone()

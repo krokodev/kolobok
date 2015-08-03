@@ -8,7 +8,7 @@ namespace Robotango.Core.Types.Elements.Purposful
 {
     public interface IDesire
     {
-        IReality Reality { get; }
+        IReality Context { get; }
         bool IsSatisfied { get; }
     }
 }

@@ -29,10 +29,10 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Dump_contains_desires()
         {
-            var world = Factory.CreateWorld();
-            var dump = world.Dump();
+            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
+            var dump = agent.Dump();
             Log( dump );
-            Assert.Ignore();
+            Assert.That(dump.Contains("Desire"));
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace Robotango.Tests.Cases.Abilities
             var dump = world.Dump();
             Log( dump );
 
-            Assert.AreEqual( alice.As< IThinking >().Imaginary, desire.Reality );
+            Assert.AreEqual( alice.As< IThinking >().Imaginary, desire.Context );
             Assert.False( desire.IsSatisfied );
         }
     }

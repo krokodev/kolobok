@@ -9,7 +9,7 @@ namespace Robotango.Core.Implements.Elements.Purposeful
 {
     internal class Desire : IDesire
     {
-        public IReality Reality { get; private set; }
+        public IReality Context { get; private set; }
         public bool IsSatisfied { get; private set; }
     }
 }

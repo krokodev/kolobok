@@ -18,7 +18,7 @@ namespace Robotango.Core.System
 
         public static class Agents
         {
-            public static class Rational
+            public static class Thinking
             {
                 public static class InnerReality
                 {
