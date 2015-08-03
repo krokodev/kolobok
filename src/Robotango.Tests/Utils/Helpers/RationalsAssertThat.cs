@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// ThinkingsAssertThat.cs
+// RationalsAssertThat.cs
 
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;

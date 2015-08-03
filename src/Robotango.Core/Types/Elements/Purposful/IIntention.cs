@@ -3,7 +3,6 @@
 // IIntention.cs
 
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
 
 namespace Robotango.Core.Types.Elements.Purposful
@@ -11,7 +10,7 @@ namespace Robotango.Core.Types.Elements.Purposful
     public interface IIntention : IResearchable
     {
         IAgent Holder { get; }
-        IReality Context { get;  }
+        IReality Context { get; }
         bool IsSatisfied { get; }
     }
 }

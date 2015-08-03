@@ -28,7 +28,7 @@ namespace Robotango.Core.Implements.Abilities
 
         void IComponent.Init( IComposite composition )
         {
-            _agent = (IAgent)composition;
+            _agent = ( IAgent ) composition;
             _thinking = composition.GetComponent< IThinking >();
             Debug.Assert.That( _thinking != null, new MissedComponentException( typeof( IThinking ) ) );
         }
@@ -38,9 +38,9 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IPurposeful
 
-        IIntention IPurposeful.AddIntention( Expression<Func< IReality, bool > >predicate )
+        IIntention IPurposeful.AddIntention( Expression< Func< IReality, bool > > predicate )
         {
-            var intention = new Intention (_thinking.Imaginary, _agent, predicate);
+            var intention = new Intention( _thinking.Imaginary, _agent, predicate );
             _intentions.Add( intention );
             return intention;
         }

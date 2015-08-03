@@ -9,8 +9,6 @@ namespace Robotango.Common.Utils.Diagnostics.Exceptions
     public abstract class AbstractException : Exception
     {
         protected AbstractException( string format, params object[] args )
-            : base( string.Format( format, args ) )
-        {
-        }
+            : base( string.Format( format, args ) ) {}
     }
 }

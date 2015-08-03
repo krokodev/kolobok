@@ -30,9 +30,9 @@ namespace Robotango.Tests.Cases.Abilities
         public void Purposeful_dump_contains_intentions()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var intention = agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) == false );
+            agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) == false );
+            
             var dump = agent.Dump();
-
             Log( dump );
 
             Assert.That( dump.Contains( "<Purposeful>" ) );
@@ -42,7 +42,16 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Intention_can_be_satisfied()
         {
-            Assert.Ignore();
+            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
+            var intention = agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) );
+
+            Log( agent.Dump() );
+
+            Assert.False( intention.IsSatisfied );
+
+            agent.As< IThinking >().Imaginary.Introduce( agent );
+            
+            Assert.True( intention.IsSatisfied );
         }
 
         [Test]

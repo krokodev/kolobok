@@ -11,6 +11,6 @@ namespace Robotango.Core.Types.Abilities
 {
     public interface IPurposeful : IAbility
     {
-        IIntention AddIntention( Expression<Func< IReality, bool > >predicate );
+        IIntention AddIntention( Expression< Func< IReality, bool > > predicate );
     }
 }
