@@ -21,10 +21,10 @@ namespace Robotango.Tests.Cases.Agency
             var bob = universe.Introduce( Factory.CreateAgent< IThinking, IVirtual >( "Bob" ) );
             var charly = universe.Introduce( Factory.CreateAgent< IThinking, IVirtual >( "Charly" ) );
 
-            alice.As< IThinking >().Imaginary.Introduce( bob.Clone() );
-            alice.As< IThinking >().Imaginary.Introduce( charly.Clone() );
-            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Imaginary.Introduce( alice.Clone() );
-            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Imaginary.Introduce( bob.Clone() );
+            alice.As< IThinking >().Imagination.Introduce( bob.Clone() );
+            alice.As< IThinking >().Imagination.Introduce( charly.Clone() );
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Introduce( alice.Clone() );
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Introduce( bob.Clone() );
 
             alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             bob.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Black;

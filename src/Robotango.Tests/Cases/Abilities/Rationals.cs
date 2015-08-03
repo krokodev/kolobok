@@ -30,7 +30,7 @@ namespace Robotango.Tests.Cases.Abilities
             a.As< IThinking >().Believes( world => world.Introduce( b.Clone() ) );
             a.As< IThinking >().Think();
 
-            Assert.AreEqual( b.Id, a.As< IThinking >().Imaginary.Agent( b ).Id );
+            Assert.AreEqual( b.Id, a.As< IThinking >().Imagination.Agent( b ).Id );
         }
 
         [Test]
@@ -42,8 +42,8 @@ namespace Robotango.Tests.Cases.Abilities
             agent.As< IThinking >().Believes( world => world.Introduce( subj.Clone() ) );
             agent.As< IThinking >().Think();
 
-            Assert.AreEqual( subj.Id, agent.As< IThinking >().Imaginary.Agent( subj ).Id );
-            Assert.AreNotSame( subj, agent.As< IThinking >().Imaginary.Agent( subj ) );
+            Assert.AreEqual( subj.Id, agent.As< IThinking >().Imagination.Agent( subj ).Id );
+            Assert.AreNotSame( subj, agent.As< IThinking >().Imagination.Agent( subj ) );
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var agent = Factory.CreateAgent< IThinking, IVirtual >();
 
-            var he = agent.As< IThinking >().Imaginary.Introduce( agent );
+            var he = agent.As< IThinking >().Imagination.Introduce( agent );
 
             agent.As< IThinking >().Believes( world => {
                 he.As< IVirtual >().Add( new Hat() );
@@ -60,7 +60,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             agent.As< IThinking >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imaginary.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imagination.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]
@@ -76,7 +76,7 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IThinking, IVirtual >( "Alice" );
 
-            var herselve = alice.As< IThinking >().Imaginary.Introduce( alice );
+            var herselve = alice.As< IThinking >().Imagination.Introduce( alice );
 
             alice.As< IThinking >().Believes( world => {
                 herselve.As< IVirtual >().Add( new Hat() );
@@ -88,11 +88,11 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IThinking >().Think();
             alice.As< IThinking >().Think();
 
-            Log( alice.As< IThinking >().Imaginary.Dump() );
+            Log( alice.As< IThinking >().Imagination.Dump() );
 
             alice.As< IThinking >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imaginary.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]
@@ -104,7 +104,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IThinking >().Believes( world => world.Introduce( bob.Clone() ) );
             alice.As< IThinking >().Think();
 
-            Assert.That( alice.As< IThinking >().Imaginary.Contains( bob ) );
+            Assert.That( alice.As< IThinking >().Imagination.Contains( bob ) );
         }
 
         [Test]
@@ -115,10 +115,10 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IThinking >().Believes( world => world.Introduce( bob.Clone() ) );
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Believes( world => world.Introduce( alice.Clone() ) );
-            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Believes( world => world.Introduce( alice.Clone() ) );
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Think();
 
-            Assert.That( alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Imaginary.Contains( alice ) );
+            Assert.That( alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Contains( alice ) );
         }
     }
 }

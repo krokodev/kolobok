@@ -49,7 +49,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             Assert.False( intention.IsSatisfied );
 
-            agent.As< IThinking >().Imaginary.Introduce( agent );
+            agent.As< IThinking >().Imagination.Introduce( agent );
 
             Assert.True( intention.IsSatisfied );
         }
@@ -76,7 +76,7 @@ namespace Robotango.Tests.Cases.Abilities
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            var herself = alice.As< IThinking >().Imaginary.Introduce( alice );
+            var herself = alice.As< IThinking >().Imagination.Introduce( alice );
 
             var intention = alice.As< IPurposeful >().AddIntention(
                 reality =>

@@ -16,7 +16,7 @@ namespace Robotango.Core.Implements.Agency
 
         IReality IWorld.Reality
         {
-            get { return _thinking.Imaginary; }
+            get { return _thinking.Imagination; }
         }
 
         IThinking IWorld.Thinking

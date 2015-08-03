@@ -96,7 +96,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As< IThinking >().Imaginary.Introduce( alice );
+            bob.As< IThinking >().Imagination.Introduce( alice );
 
             bob.As< IThinking >().Believes( world => {
                 world.Agent( alice ).As< IVirtual >().Add( new Hat() );

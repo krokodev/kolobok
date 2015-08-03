@@ -25,7 +25,7 @@ namespace Robotango.Tests.Cases.Agency
             Log( world.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
-            Assert.AreSame( world.Reality, world.Thinking.Imaginary );
+            Assert.AreSame( world.Reality, world.Thinking.Imagination );
             Assert.That( world.Reality.Contains( alice ) );
         }
 

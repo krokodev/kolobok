@@ -12,6 +12,6 @@ namespace Robotango.Core.Types.Abilities
     {
         void Think();
         void Believes( Action< IReality > belief );
-        IReality Imaginary { get; }
+        IReality Imagination { get; }
     }
 }

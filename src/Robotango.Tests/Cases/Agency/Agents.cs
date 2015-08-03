@@ -75,7 +75,7 @@ namespace Robotango.Tests.Cases.Agency
         {
             var universe = Factory.CreateReality( "Universe" );
             var alice = universe.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
-            var bob = alice.As< IThinking >().Imaginary.Introduce( Factory.CreateAgent( "Bob" ) );
+            var bob = alice.As< IThinking >().Imagination.Introduce( Factory.CreateAgent( "Bob" ) );
 
             Log( universe.FullName );
             Log( alice.FullName );
@@ -83,7 +83,7 @@ namespace Robotango.Tests.Cases.Agency
 
             Assert.AreEqual( "Universe", universe.FullName );
             Assert.AreEqual( "Universe[Alice]", alice.FullName );
-            Assert.AreEqual( "Universe[Alice].Imaginary[Bob]", bob.FullName );
+            Assert.AreEqual( "Universe[Alice].Imagination[Bob]", bob.FullName );
         }
 
         [Test]
@@ -93,10 +93,10 @@ namespace Robotango.Tests.Cases.Agency
             alice.Name = "New Alice";
 
             Log( alice.FullName );
-            Log( alice.As< IThinking >().Imaginary.FamilyName );
+            Log( alice.As< IThinking >().Imagination.FamilyName );
 
             Assert.AreEqual( "New Alice", alice.Name );
-            Assert.AreEqual( "New Alice", alice.As< IThinking >().Imaginary.Holder.Name );
+            Assert.AreEqual( "New Alice", alice.As< IThinking >().Imagination.Holder.Name );
         }
 
         [Test]
@@ -107,10 +107,10 @@ namespace Robotango.Tests.Cases.Agency
             clone.Name = "Clone";
 
             Log( clone );
-            Log( clone.As< IThinking >().Imaginary.Holder );
+            Log( clone.As< IThinking >().Imagination.Holder );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( clone, clone.As< IThinking >().Imaginary.Holder );
+            Assert.AreEqual( clone, clone.As< IThinking >().Imagination.Holder );
         }
 
         [Test]
@@ -122,10 +122,10 @@ namespace Robotango.Tests.Cases.Agency
             clone.Name = "Clone";
 
             Log( clone.FullName );
-            Log( clone.As< IThinking >().Imaginary.FamilyName );
+            Log( clone.As< IThinking >().Imagination.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
-            Assert.AreEqual( "Clone", ( ( IAgent ) clone.As< IThinking >().Imaginary.Holder ).Name );
+            Assert.AreEqual( "Clone", ( ( IAgent ) clone.As< IThinking >().Imagination.Holder ).Name );
         }
 
         [Test]
@@ -140,11 +140,11 @@ namespace Robotango.Tests.Cases.Agency
             world.Introduce( clone );
 
             Log( clone.FullName );
-            Log( clone.As< IThinking >().Imaginary.FamilyName );
+            Log( clone.As< IThinking >().Imagination.FamilyName );
 
             Assert.AreEqual( "Clone", clone.Name );
             Assert.AreEqual( 0, clone.Depth );
-            Assert.AreEqual( "Clone'0.Imaginary", clone.As< IThinking >().Imaginary.FamilyName );
+            Assert.AreEqual( "Clone'0.Imagination", clone.As< IThinking >().Imagination.FamilyName );
         }
 
         [Test]
@@ -156,15 +156,15 @@ namespace Robotango.Tests.Cases.Agency
             bob.As< IThinking >().Believes( iworld => iworld.Introduce( charly.Clone() ) );
             bob.As< IThinking >().Think();
 
-            var bcharly = bob.As< IThinking >().Imaginary.Agent( charly );
+            var bcharly = bob.As< IThinking >().Imagination.Agent( charly );
             bcharly.Name = "bCharly";
 
             Log( bcharly.FullName );
-            Log( bcharly.As< IThinking >().Imaginary.FamilyName );
+            Log( bcharly.As< IThinking >().Imagination.FamilyName );
 
             Assert.AreEqual( "bCharly", bcharly.Name );
             Assert.AreEqual( 1, bcharly.Depth );
-            Assert.AreEqual( "bCharly'1.Imaginary", bcharly.As< IThinking >().Imaginary.FamilyName );
+            Assert.AreEqual( "bCharly'1.Imagination", bcharly.As< IThinking >().Imagination.FamilyName );
         }
     }
 }

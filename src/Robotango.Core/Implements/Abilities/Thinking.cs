@@ -29,7 +29,7 @@ namespace Robotango.Core.Implements.Abilities
             _beliefs.Add( belief );
         }
 
-        IReality IThinking.Imaginary
+        IReality IThinking.Imagination
         {
             get { return _presentImage; }
         }

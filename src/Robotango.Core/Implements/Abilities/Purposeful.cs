@@ -40,7 +40,7 @@ namespace Robotango.Core.Implements.Abilities
 
         IIntention IPurposeful.AddIntention( Expression< Func< IReality, bool > > predicate )
         {
-            var intention = new Intention( _thinking.Imaginary, _agent, predicate );
+            var intention = new Intention( _thinking.Imagination, _agent, predicate );
             _intentions.Add( intention );
             return intention;
         }
