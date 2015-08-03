@@ -66,8 +66,9 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.Ignore();
         }
 
-        [Ignore, Test]
-        public void Alice_intentions_to_be_in_location_A()
+
+        [Ignore,Test]
+        public void Alice_intends_to_be_in_location_A()
         {
             var world = Factory.CreateWorld();
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
@@ -76,16 +77,17 @@ namespace Robotango.Tests.Cases.Abilities
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
+            alice.As< IThinking >().Imaginary.Introduce( alice );
+
             var intention = alice.As< IPurposeful >().AddIntention(
                 reality =>
                     reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b
                 );
 
-            var dump = world.Dump();
-            Log( dump );
+            Log( world.Dump() );
 
             Assert.AreEqual( alice.As< IThinking >().Imaginary, intention.Context );
-            Assert.False( intention.IsSatisfied );
+            Assert.True( intention.IsSatisfied );
         }
     }
 }

@@ -40,6 +40,11 @@ namespace Robotango.Core.Implements.Elements.Virtual
             return string.Format( "Location:{0}", IPosition.Location.Name );
         }
 
+        protected override IAttribute Clone()
+        {
+            return new Position( IPosition.Location );
+        }
+
         #endregion
     }
 }

@@ -14,7 +14,7 @@ using Robotango.Tests.Utils.Bases;
 namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Attributes : BaseTests
+    public class Virtuals : BaseTests
     {
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Entety_cant_have_others_attribute()
@@ -77,6 +77,22 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.AreEqual( "Destination", destination.ILocation.Name );
             Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
             Assert.AreEqual( destination, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+        }
+
+
+        [Test]
+        public void Position_location_name_should_be_cloned()
+        {
+            var alice = Factory.CreateAgent< IVirtual >( "Alice" );
+
+            var a = new Location( "A" );
+
+            alice.As< IVirtual >().Add( new Position( a ) );
+            var clone = alice.Clone();
+            
+            Assert.AreEqual("A", clone.As< IVirtual >().GetFirst< IPosition >().Location.Name);
+
+            Log( clone.Dump() );
         }
     }
 }

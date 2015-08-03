@@ -59,7 +59,7 @@
     <Compile Include="Domain\Hat.cs" />
     <Compile Include="Domain\IHat.cs" />
     <Compile Include="Cases\Agency\Dumps.cs" />
-    <Compile Include="Cases\Abilities\Attributes.cs" />
+    <Compile Include="Cases\Abilities\Virtuals.cs" />
     <Compile Include="Cases\Agency\Agents.cs" />
     <Compile Include="Cases\Abilities\Depths.cs" />
     <Compile Include="Cases\Agency\Realities.cs" />
