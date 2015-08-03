@@ -76,7 +76,7 @@ namespace Robotango.Tests.Cases.Complex
             var c = new Location( "C" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().Desires( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
             bob.As< IVirtual >().Add( new Position( b ) );
 
             Log( world.Dump() );
@@ -107,7 +107,7 @@ namespace Robotango.Tests.Cases.Complex
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().Desires( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location==b );
 
             Log( world.Dump() );
 

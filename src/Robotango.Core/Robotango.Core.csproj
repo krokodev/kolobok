@@ -57,13 +57,13 @@
     <Compile Include="Types\Domain\Virtuals\IAttribute.cs" />
     <Compile Include="Types\Domain\Virtuals\IAttributeHolder.cs" />
     <Compile Include="Types\Domain\Communications\IAnswer.cs" />
-    <Compile Include="Types\Domain\Communications\IRespondent.cs" />
+    <Compile Include="Types\Abilities\IRespondent.cs" />
     <Compile Include="Types\Domain\Communications\IAnswerResult.cs" />
     <Compile Include="Implements\Abilities\Virtual.cs" />
     <Compile Include="Implements\Agency\Reality.cs" />
     <Compile Include="Implements\Agency\Agent.cs" />
     <Compile Include="Types\Abilities\IVirtual.cs" />
-    <Compile Include="Types\Domain\Communications\IQuerist.cs" />
+    <Compile Include="Types\Abilities\IQuerist.cs" />
     <Compile Include="Types\Domain\Communications\IQuestion.cs" />
     <Compile Include="Types\Abilities\IReflective.cs" />
     <Compile Include="Types\Abilities\ISentient.cs" />

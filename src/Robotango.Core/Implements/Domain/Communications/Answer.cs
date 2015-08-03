@@ -2,6 +2,7 @@
 // Robotango.Core
 // Answer.cs
 
+using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Domain.Communications;
 
 namespace Robotango.Core.Implements.Domain.Communications

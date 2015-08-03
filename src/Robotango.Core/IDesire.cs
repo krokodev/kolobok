@@ -2,7 +2,12 @@
 // Robotango.Core
 // IDesire.cs
 
+using Robotango.Core.Types.Agency;
+
 namespace Robotango.Core
 {
-    public interface IDesire {}
+    public interface IDesire {
+        IReality Reality { get; }
+        bool IsSatisfied { get; }
+    }
 }

@@ -4,6 +4,7 @@ Todo list
 
 Todo
 ~~~~
+- ren IRational - IThinking, Imaginary - Mind/Inner(?), Reality- Outer/Reality
 > test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
 - IPurposful
 - form out beliefs in the class IBelief

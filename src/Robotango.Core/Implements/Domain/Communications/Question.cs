@@ -3,6 +3,7 @@
 // Question.cs
 
 using System;
+using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Domain.Communications;
 

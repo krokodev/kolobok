@@ -107,7 +107,7 @@ namespace Robotango.Core.System
         {
             Debug.Assert.That( typeof( T ).GetInterfaces().Any( t => t == typeof( IAbility ) ) );
             AssertComponentIsRegisrtered( typeof( T ) );
-            return doCreateComponent( typeof( T ) );
+            return CreateComponent( typeof( T ) );
         }
 
         IReality IFactory.CreateReality( string name )
@@ -125,7 +125,7 @@ namespace Robotango.Core.System
 
         #region Routines
 
-        private static IAbility doCreateComponent( Type componentType )
+        private static IAbility CreateComponent( Type componentType )
         {
             return ComponentConstructors[ componentType ]();
         }

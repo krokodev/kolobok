@@ -2,7 +2,9 @@
 // Robotango.Core
 // IRespondent.cs
 
-namespace Robotango.Core.Types.Domain.Communications
+using Robotango.Core.Types.Domain.Communications;
+
+namespace Robotango.Core.Types.Abilities
 {
     public interface IRespondent
     {

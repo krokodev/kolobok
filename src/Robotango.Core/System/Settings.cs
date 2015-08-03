@@ -17,11 +17,6 @@ namespace Robotango.Core.System
             }
         }
 
-        public static class Depth
-        {
-            public const uint Basic = 0;
-        }
-
         public static class Agents
         {
             public static class Names
@@ -29,6 +24,17 @@ namespace Robotango.Core.System
                 public const string FullTemplate = "{0}[{1}]";
                 public const string Default = "Some Agent";
             }
+        }
+        public static class Worlds
+        {
+            public static class Names
+            {
+                public const string Default = "Some World";
+            }
+        }
+        public static class Depth
+        {
+            public const uint Basic = 0;
         }
     }
 }
