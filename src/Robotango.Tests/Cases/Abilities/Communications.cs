@@ -39,7 +39,7 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Non_Rationals_answer_is_invalid()
+        public void Non_Thinkings_answer_is_invalid()
         {
             var alice = Factory.CreateAgent< ICommunicative >();
             var bob = Factory.CreateAgent< ICommunicative >();
@@ -56,7 +56,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Bob_does_not_know_question_theme_so_answer_is_invalid()
         {
             var alice = Factory.CreateAgent< ICommunicative >();
-            var bob = Factory.CreateAgent< ICommunicative, IRational >();
+            var bob = Factory.CreateAgent< ICommunicative, IThinking >();
 
             var question = alice.As< ICommunicative >().Ask< bool >( world => world.Agent( bob ) != null );
             var answer = bob.As< ICommunicative >().Reply< bool >( question );
@@ -70,13 +70,13 @@ namespace Robotango.Tests.Cases.Abilities
         public void Bob_answers_about_Alicas_hat_color()
         {
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
-            var bob = Factory.CreateAgent< ICommunicative, IRational >();
+            var bob = Factory.CreateAgent< ICommunicative, IThinking >();
 
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As< IRational >().Believes( world => { world.Introduce( alice ); } );
-            bob.As< IRational >().Think();
+            bob.As< IThinking >().Believes( world => { world.Introduce( alice ); } );
+            bob.As< IThinking >().Think();
 
             var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
@@ -90,19 +90,19 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Bob_answers_according_his_beliefes()
         {
-            var bob = Factory.CreateAgent< ICommunicative, IRational >();
+            var bob = Factory.CreateAgent< ICommunicative, IThinking >();
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
 
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
 
-            bob.As< IRational >().Imaginary.Introduce( alice );
+            bob.As< IThinking >().Imaginary.Introduce( alice );
 
-            bob.As< IRational >().Believes( world => {
+            bob.As< IThinking >().Believes( world => {
                 world.Agent( alice ).As< IVirtual >().Add( new Hat() );
                 world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
             } );
-            bob.As< IRational >().Think();
+            bob.As< IThinking >().Think();
 
             var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );

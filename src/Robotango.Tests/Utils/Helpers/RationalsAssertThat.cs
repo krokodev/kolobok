@@ -1,17 +1,17 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// RationalsAssertThat.cs
+// ThinkingsAssertThat.cs
 
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Agency;
 
 namespace Robotango.Tests.Utils.Helpers
 {
-    public class RationalsAssertThat
+    public class ThinkingsAssertThat
     {
-        public static void Rational_can_think( IAgent agent )
+        public static void Thinking_can_think( IAgent agent )
         {
-            var r = agent.As< IRational >();
+            var r = agent.As< IThinking >();
             r.Think();
         }
     }

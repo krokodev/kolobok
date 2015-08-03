@@ -16,12 +16,12 @@ namespace Robotango.Core.Implements.Agency
 
         IReality IWorld.Reality
         {
-            get { return _rational.Imaginary; }
+            get { return _thinking.Imaginary; }
         }
 
-        IRational IWorld.Rational
+        IThinking IWorld.Thinking
         {
-            get { return _rational; }
+            get { return _thinking; }
         }
 
         #endregion
@@ -60,8 +60,8 @@ namespace Robotango.Core.Implements.Agency
 
         public World( IFactory factory, string name )
         {
-            _agent = factory.CreateAgent< IRational >( name ?? Settings.Worlds.Names.Default );
-            _rational = _agent.As< IRational >();
+            _agent = factory.CreateAgent< IThinking >( name ?? Settings.Worlds.Names.Default );
+            _thinking = _agent.As< IThinking >();
             ;
         }
 
@@ -71,7 +71,7 @@ namespace Robotango.Core.Implements.Agency
         #region Fields
 
         private readonly IAgent _agent;
-        private readonly IRational _rational;
+        private readonly IThinking _thinking;
 
         #endregion
     }

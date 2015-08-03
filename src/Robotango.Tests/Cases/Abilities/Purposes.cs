@@ -17,7 +17,7 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Agent_can_be_Purposeful()
         {
-            Factory.CreateAgent< IPurposeful, IRational >();
+            Factory.CreateAgent< IPurposeful, IThinking >();
         }
 
         [Test, ExpectedException( typeof( MissedComponentException ) )]
@@ -57,7 +57,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Alice_desires_to_be_in_location_A()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IRational >( "Alice" ) );
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
@@ -71,7 +71,7 @@ namespace Robotango.Tests.Cases.Abilities
             var dump = world.Dump();
             Log( dump );
 
-            Assert.AreEqual( alice.As< IRational >().Imaginary, desire.Reality );
+            Assert.AreEqual( alice.As< IThinking >().Imaginary, desire.Reality );
             Assert.False( desire.IsSatisfied );
         }
     }

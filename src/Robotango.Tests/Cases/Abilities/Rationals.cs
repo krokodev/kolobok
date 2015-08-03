@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Rationals.cs
+// Thinkings.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
@@ -12,113 +12,113 @@ using Robotango.Tests.Utils.Helpers;
 namespace Robotango.Tests.Cases.Abilities
 {
     [TestFixture]
-    public class Rationals : BaseTests
+    public class Thinkings : BaseTests
     {
         [Test]
-        public void Rational_can_think()
+        public void Thinking_can_think()
         {
-            var a = Factory.CreateAgent< IRational >();
-            RationalsAssertThat.Rational_can_think( a );
+            var a = Factory.CreateAgent< IThinking >();
+            ThinkingsAssertThat.Thinking_can_think( a );
         }
 
         [Test]
         public void Agent_A_believes_that_agent_B_exists()
         {
-            var a = Factory.CreateAgent< IRational >();
+            var a = Factory.CreateAgent< IThinking >();
             var b = Factory.CreateAgent();
 
-            a.As< IRational >().Believes( world => world.Introduce( b.Clone() ) );
-            a.As< IRational >().Think();
+            a.As< IThinking >().Believes( world => world.Introduce( b.Clone() ) );
+            a.As< IThinking >().Think();
 
-            Assert.AreEqual( b.Id, a.As< IRational >().Imaginary.Agent( b ).Id );
+            Assert.AreEqual( b.Id, a.As< IThinking >().Imaginary.Agent( b ).Id );
         }
 
         [Test]
         public void Imaginared_agent_is_not_the_same_as_the_real()
         {
-            var agent = Factory.CreateAgent< IRational >();
+            var agent = Factory.CreateAgent< IThinking >();
             var subj = Factory.CreateAgent();
 
-            agent.As< IRational >().Believes( world => world.Introduce( subj.Clone() ) );
-            agent.As< IRational >().Think();
+            agent.As< IThinking >().Believes( world => world.Introduce( subj.Clone() ) );
+            agent.As< IThinking >().Think();
 
-            Assert.AreEqual( subj.Id, agent.As< IRational >().Imaginary.Agent( subj ).Id );
-            Assert.AreNotSame( subj, agent.As< IRational >().Imaginary.Agent( subj ) );
+            Assert.AreEqual( subj.Id, agent.As< IThinking >().Imaginary.Agent( subj ).Id );
+            Assert.AreNotSame( subj, agent.As< IThinking >().Imaginary.Agent( subj ) );
         }
 
         [Test]
         public void Agent_believes_that_its_hat_is_red()
         {
-            var agent = Factory.CreateAgent< IRational, IVirtual >();
+            var agent = Factory.CreateAgent< IThinking, IVirtual >();
 
-            var he = agent.As< IRational >().Imaginary.Introduce( agent );
+            var he = agent.As< IThinking >().Imaginary.Introduce( agent );
 
-            agent.As< IRational >().Believes( world => {
+            agent.As< IThinking >().Believes( world => {
                 he.As< IVirtual >().Add( new Hat() );
                 he.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
-            agent.As< IRational >().Think();
+            agent.As< IThinking >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IRational >().Imaginary.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imaginary.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]
-        public void Rational_is_verifiable()
+        public void Thinking_is_verifiable()
         {
-            var agent = Factory.CreateAgent< IRational >();
+            var agent = Factory.CreateAgent< IThinking >();
 
-            agent.As< IRational >().Verify();
+            agent.As< IThinking >().Verify();
         }
 
         [Test]
         public void Alice_thinks_a_lot()
         {
-            var alice = Factory.CreateAgent< IRational, IVirtual >( "Alice" );
+            var alice = Factory.CreateAgent< IThinking, IVirtual >( "Alice" );
 
-            var herselve = alice.As< IRational >().Imaginary.Introduce( alice );
+            var herselve = alice.As< IThinking >().Imaginary.Introduce( alice );
 
-            alice.As< IRational >().Believes( world => {
+            alice.As< IThinking >().Believes( world => {
                 herselve.As< IVirtual >().Add( new Hat() );
                 herselve.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
             } );
 
-            alice.As< IRational >().Think();
-            alice.As< IRational >().Think();
-            alice.As< IRational >().Think();
-            alice.As< IRational >().Think();
+            alice.As< IThinking >().Think();
+            alice.As< IThinking >().Think();
+            alice.As< IThinking >().Think();
+            alice.As< IThinking >().Think();
 
-            Log( alice.As< IRational >().Imaginary.Dump() );
+            Log( alice.As< IThinking >().Imaginary.Dump() );
 
-            alice.As< IRational >().Verify();
+            alice.As< IThinking >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IRational >().Imaginary.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imaginary.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
         }
 
         [Test]
         public void Alice_imaginates_Bob()
         {
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent< IRational >( "Bob" );
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IRational >().Believes( world => world.Introduce( bob.Clone() ) );
-            alice.As< IRational >().Think();
+            alice.As< IThinking >().Believes( world => world.Introduce( bob.Clone() ) );
+            alice.As< IThinking >().Think();
 
-            Assert.That( alice.As< IRational >().Imaginary.Contains( bob ) );
+            Assert.That( alice.As< IThinking >().Imaginary.Contains( bob ) );
         }
 
         [Test]
         public void Alice_imaginates_Bob_which_imaginates_Alice()
         {
-            var alice = Factory.CreateAgent< IRational >( "Alice" );
-            var bob = Factory.CreateAgent< IRational >( "Bob" );
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IRational >().Believes( world => world.Introduce( bob.Clone() ) );
-            alice.As< IRational >().Think();
-            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Believes( world => world.Introduce( alice.Clone() ) );
-            alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Think();
+            alice.As< IThinking >().Believes( world => world.Introduce( bob.Clone() ) );
+            alice.As< IThinking >().Think();
+            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Believes( world => world.Introduce( alice.Clone() ) );
+            alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Think();
 
-            Assert.That( alice.As< IRational >().Imaginary.Agent( bob ).As< IRational >().Imaginary.Contains( alice ) );
+            Assert.That( alice.As< IThinking >().Imaginary.Agent( bob ).As< IThinking >().Imaginary.Contains( alice ) );
         }
     }
 }

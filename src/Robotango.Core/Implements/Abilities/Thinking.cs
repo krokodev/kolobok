@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Rational.cs
+// Thinking.cs
 
 using System;
 using System.Collections.Generic;
@@ -15,21 +15,21 @@ using Robotango.Core.Types.Agency;
 
 namespace Robotango.Core.Implements.Abilities
 {
-    public class Rational : IRational
+    public class Thinking : IThinking
     {
-        #region IRational
+        #region IThinking
 
-        void IRational.Think()
+        void IThinking.Think()
         {
             _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
         }
 
-        void IRational.Believes( Action< IReality > belief )
+        void IThinking.Believes( Action< IReality > belief )
         {
             _beliefs.Add( belief );
         }
 
-        IReality IRational.Imaginary
+        IReality IThinking.Imaginary
         {
             get { return _presentImage; }
         }
@@ -42,12 +42,12 @@ namespace Robotango.Core.Implements.Abilities
         void IComponent.Init( IComposite composite )
         {
             _composite = composite;
-            _presentImage = new Reality( ( IAgent ) _composite, Settings.Reality.Names.Imaginary );
+            _presentImage = new Reality( ( IAgent ) _composite, Settings.Agents.Rational.InnerReality.Name );
         }
 
         IComponent IComponent.Clone()
         {
-            return new Rational {
+            return new Thinking {
                 _beliefs = _beliefs.ToList(),
                 _presentImage = _presentImage.Clone()
             };
@@ -71,7 +71,7 @@ namespace Robotango.Core.Implements.Abilities
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
-            wr.Line( "<{0}>", typeof( Rational ).Name );
+            wr.Line( "<{0}>", typeof( Thinking ).Name );
             wr.Append( _presentImage.Dump( wr.Level + 1 ) );
             return wr.ToString();
         }

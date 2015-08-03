@@ -16,32 +16,32 @@ namespace Robotango.Tests.Cases.Agency
     public class Components : BaseTests
     {
         [Test]
-        public void Rational_is_a_component()
+        public void Thinking_is_a_component()
         {
-            IRational r = new Rational();
+            IThinking r = new Thinking();
             ComponentsAssertThat.Is_component( r );
         }
 
         [Test]
         public void Factory_creates_composite_agent()
         {
-            var r = Factory.CreateComponent< IRational >();
+            var r = Factory.CreateComponent< IThinking >();
             var s = Factory.CreateComponent< ICommunicative >();
             var a = Factory.CreateAgent( r, s );
-            ComponentsAssertThat.Has_rational_and_social_components( a as IComposite );
+            ComponentsAssertThat.Has_Thinking_and_social_components( a as IComposite );
         }
 
         [Test]
         public void Factory_conveniently_creates_composite_agent()
         {
-            var a = Factory.CreateAgent< IRational, ICommunicative >();
-            ComponentsAssertThat.Has_rational_and_social_components( a as IComposite );
+            var a = Factory.CreateAgent< IThinking, ICommunicative >();
+            ComponentsAssertThat.Has_Thinking_and_social_components( a as IComposite );
         }
 
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Non_unique_components_cause_exception()
         {
-            Factory.CreateAgent< IRational, IRational >();
+            Factory.CreateAgent< IThinking, IThinking >();
         }
     }
 }

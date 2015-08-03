@@ -11,14 +11,14 @@ namespace Robotango.Tests.Utils.Helpers
 {
     public class ComponentsAssertThat
     {
-        public static void Is_component( IRational rational )
+        public static void Is_component( IThinking thinking )
         {
-            Assert.IsInstanceOf< IAbility >( rational );
+            Assert.IsInstanceOf< IAbility >( thinking );
         }
 
-        public static void Has_rational_and_social_components( IComposite composite )
+        public static void Has_Thinking_and_social_components( IComposite composite )
         {
-            Assert.That( composite.HasComponent< IRational >() );
+            Assert.That( composite.HasComponent< IThinking >() );
             Assert.IsNotNull( composite.HasComponent< ICommunicative >() );
         }
     }

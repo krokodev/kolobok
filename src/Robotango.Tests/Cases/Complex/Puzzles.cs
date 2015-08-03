@@ -19,8 +19,8 @@ namespace Robotango.Tests.Cases.Complex
             const Colors bColor = Colors.Black;
 
             var w = Factory.CreateAgent< IWorld >();
-            var a = Factory.CreateAgent< IRational, ISocial, IReflective, IOwner >();
-            var b = Factory.CreateAgent< IRational, ISocial, IReflective, IOwner >();
+            var a = Factory.CreateAgent< IThinking, ISocial, IReflective, IOwner >();
+            var b = Factory.CreateAgent< IThinking, ISocial, IReflective, IOwner >();
 
             w.As< IWorld >().Contains( a, b );
 
@@ -30,13 +30,13 @@ namespace Robotango.Tests.Cases.Complex
             a.As< IOwner >().GetFirst< IHat >().Color = aColor;
             b.As< IOwner >().GetFirst< IHat >().Color = bColor;
 
-            a.As< IRational >().Believes( world => world.Contains( a, b ) );
-            a.As< IRational >().Believes( world => world.Agent( a ).As< IOwner >().GetFirst< IHat >().Color = Colors.Unknown );
-            a.As< IRational >().Believes( world => world.Agent( b ).As< IOwner >().GetFirst< IHat >().Color = bColor );
+            a.As< IThinking >().Believes( world => world.Contains( a, b ) );
+            a.As< IThinking >().Believes( world => world.Agent( a ).As< IOwner >().GetFirst< IHat >().Color = Colors.Unknown );
+            a.As< IThinking >().Believes( world => world.Agent( b ).As< IOwner >().GetFirst< IHat >().Color = bColor );
 
-            b.As< IRational >().Believes( world => world.Contains( a, b ) );
-            b.As< IRational >().Believes( world => world.Agent( b ).As< IOwner >().GetFirst< IHat >().Color = Colors.Unknown );
-            b.As< IRational >().Believes( world => world.Agent( a ).As< IOwner >().GetFirst< IHat >().Color = aColor );
+            b.As< IThinking >().Believes( world => world.Contains( a, b ) );
+            b.As< IThinking >().Believes( world => world.Agent( b ).As< IOwner >().GetFirst< IHat >().Color = Colors.Unknown );
+            b.As< IThinking >().Believes( world => world.Agent( a ).As< IOwner >().GetFirst< IHat >().Color = aColor );
 
             Assert.That(
                 a.As< ISocial >()
@@ -48,12 +48,12 @@ namespace Robotango.Tests.Cases.Complex
 
             // Some iterations
             foreach( var i in Enumerable.Range( 0, 10 ) ) {
-                a.As< IRational >().Think();
-                b.As< IRational >().Think();
+                a.As< IThinking >().Think();
+                b.As< IThinking >().Think();
 
                 // a ask b about b's hat color
-                a.As< IRational >().Believes( aWorld =>
-                    aWorld.Agent( b ).As< IRational >().Believes( bWorld =>
+                a.As< IThinking >().Believes( aWorld =>
+                    aWorld.Agent( b ).As< IThinking >().Believes( bWorld =>
                         bWorld.Agent( b ).As< IOwner >().GetFirst< IHat >().Color
                             = b.As< ISocial >()
                                 .Replies< Colors >( world =>

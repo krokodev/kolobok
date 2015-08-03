@@ -13,12 +13,19 @@ namespace Robotango.Core.System
                 public const string FullTemplate = "{0}.{1}";
                 public const string FamilyTemplate = "{0}'{1}.{2}";
                 public const string Default = "Some Reality";
-                public const string Imaginary = "Imaginary";
             }
         }
 
         public static class Agents
         {
+            public static class Rational
+            {
+                public static class InnerReality
+                {
+                    public const string Name = "Imaginary";
+                }
+            }
+
             public static class Names
             {
                 public const string FullTemplate = "{0}[{1}]";

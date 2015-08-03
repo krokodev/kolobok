@@ -11,7 +11,6 @@ namespace Robotango.Common.Utils.Diagnostics.Exceptions
         protected AbstractException( string format, params object[] args )
             : base( string.Format( format, args ) )
         {
-            Console.WriteLine( format, args );
         }
     }
 }

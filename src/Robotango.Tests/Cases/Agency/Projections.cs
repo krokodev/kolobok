@@ -18,7 +18,7 @@ namespace Robotango.Tests.Cases.Agency
             var world = Factory.CreateWorld( "The World" );
 
             world.Reality.Introduce( agent );
-            world.Rational.Think();
+            world.Thinking.Think();
             Log( world.Dump() );
             Assert.That( world.Reality.Contains( agent ) );
         }

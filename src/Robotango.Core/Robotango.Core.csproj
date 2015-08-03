@@ -75,10 +75,10 @@
     <Compile Include="Types\Agency\IAgent.cs" />
     <Compile Include="Types\Agency\IAbility.cs" />
     <Compile Include="System\IFactory.cs" />
-    <Compile Include="Types\Abilities\IRational.cs" />
+    <Compile Include="Types\Abilities\IThinking.cs" />
     <Compile Include="Types\Abilities\ICommunicative.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implements\Abilities\Rational.cs" />
+    <Compile Include="Implements\Abilities\Thinking.cs" />
     <Compile Include="Implements\Abilities\Communicative.cs" />
   </ItemGroup>
   <ItemGroup>

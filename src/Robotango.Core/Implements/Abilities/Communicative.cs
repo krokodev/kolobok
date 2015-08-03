@@ -17,7 +17,7 @@ namespace Robotango.Core.Implements.Abilities
 
         void IComponent.Init( IComposite composition )
         {
-            IRational = composition.GetComponent< IRational >();
+            Thinking = composition.GetComponent< IThinking >();
         }
 
         IComponent IComponent.Clone()
@@ -57,7 +57,7 @@ namespace Robotango.Core.Implements.Abilities
 
         #region Fields
 
-        private IRational IRational { get; set; }
+        private IThinking Thinking { get; set; }
 
         #endregion
 
@@ -81,7 +81,7 @@ namespace Robotango.Core.Implements.Abilities
 
         private IReality GetWorldForAnswer()
         {
-            return IRational == null ? null : IRational.Imaginary;
+            return Thinking == null ? null : Thinking.Imaginary;
         }
 
         #endregion

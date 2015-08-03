@@ -149,7 +149,7 @@ namespace Robotango.Core.System
 
         private static readonly Dictionary< Type, Func< IAbility > >
             ComponentConstructors = new Dictionary< Type, Func< IAbility > > {
-                { typeof( IRational ), () => new Rational() },
+                { typeof( IThinking ), () => new Thinking() },
                 { typeof( ICommunicative ), () => new Communicative() },
                 { typeof( IVirtual ), () => new Virtual() },
                 { typeof( IReflective ), () => new Reflective() },

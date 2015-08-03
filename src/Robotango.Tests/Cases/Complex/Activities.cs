@@ -30,7 +30,7 @@ namespace Robotango.Tests.Cases.Complex
             };
             alice.As< IVirtual >().Add( new Position( a ) );
 
-            world.Rational.Believes( reality => {
+            world.Thinking.Believes( reality => {
                 var alicePosition = reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );
@@ -39,15 +39,15 @@ namespace Robotango.Tests.Cases.Complex
             Assert.True( world.Reality.Contains( alice ) );
             Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
-            world.Rational.Think();
+            world.Thinking.Think();
             Log( world.Dump() );
             Assert.AreEqual( b, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
-            world.Rational.Think();
+            world.Thinking.Think();
             Log( world.Dump() );
             Assert.AreEqual( c, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
 
-            world.Rational.Think();
+            world.Thinking.Think();
             Log( world.Dump() );
             Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
         }
@@ -84,10 +84,10 @@ namespace Robotango.Tests.Cases.Complex
             Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
             Assert.AreEqual( b, bob.As< IVirtual >().GetFirst< IPosition >().Location );
 
-            world.Rational.Think();
-            world.Rational.Think();
-            world.Rational.Think();
-            world.Rational.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
 
             Log( world.Dump() );
 
@@ -113,10 +113,10 @@ namespace Robotango.Tests.Cases.Complex
 
             Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
 
-            world.Rational.Think();
-            world.Rational.Think();
-            world.Rational.Think();
-            world.Rational.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
+            world.Thinking.Think();
 
             Log( world.Dump() );
 

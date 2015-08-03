@@ -24,8 +24,8 @@ namespace Robotango.Core.Implements.Abilities
 
         void IComponent.Init( IComposite composition )
         {
-            IRational = composition.GetComponent< IRational >();
-            Debug.Assert.That( IRational != null, new MissedComponentException( typeof( IRational ) ) );
+            Thinking = composition.GetComponent< IThinking >();
+            Debug.Assert.That( Thinking != null, new MissedComponentException( typeof( IThinking ) ) );
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace Robotango.Core.Implements.Abilities
 
         #region Fields
 
-        private IRational IRational { get; set; }
+        private IThinking Thinking { get; set; }
 
         #endregion
     }
