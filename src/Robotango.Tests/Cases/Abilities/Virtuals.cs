@@ -34,8 +34,8 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             var clone = alice.Clone();
 
-            IHat aHat = alice.As< IVirtual >().GetFirst< Hat >();
-            IHat cHat = clone.As< IVirtual >().GetFirst< Hat >();
+            IHat aHat = alice.As< IVirtual >().Get< Hat >();
+            IHat cHat = clone.As< IVirtual >().Get< Hat >();
 
             Assert.AreEqual( aHat.Color, cHat.Color );
         }
@@ -46,8 +46,8 @@ namespace Robotango.Tests.Cases.Abilities
             var agent = Factory.CreateAgent< IVirtual >();
             agent.As< IVirtual >().Add( new Hat() );
             var clone = agent.Clone();
-            var aHat = agent.As< IVirtual >().GetFirst< Hat >();
-            var cHat = clone.As< IVirtual >().GetFirst< Hat >();
+            var aHat = agent.As< IVirtual >().Get< Hat >();
+            var cHat = clone.As< IVirtual >().Get< Hat >();
             Assert.AreSame( aHat, aHat );
             Assert.AreSame( cHat, cHat );
             Assert.AreNotSame( aHat, cHat );
@@ -75,8 +75,8 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.That( dump.Contains( "Destination" ) );
             Assert.That( dump.Contains( "Initial" ) );
             Assert.AreEqual( "Destination", destination.ILocation.Name );
-            Assert.AreEqual( initial, alice.As< IVirtual >().GetFirst< IPosition >().Location );
-            Assert.AreEqual( destination, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( initial, alice.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( destination, bob.As< IVirtual >().Get< IPosition >().Location );
         }
 
 
@@ -90,7 +90,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add( new Position( a ) );
             var clone = alice.Clone();
             
-            Assert.AreEqual("A", clone.As< IVirtual >().GetFirst< IPosition >().Location.Name);
+            Assert.AreEqual("A", clone.As< IVirtual >().Get< IPosition >().Location.Name);
 
             Log( clone.Dump() );
         }

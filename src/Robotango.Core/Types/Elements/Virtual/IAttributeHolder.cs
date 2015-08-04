@@ -8,6 +8,6 @@ namespace Robotango.Core.Types.Elements.Virtual
     {
         void Add( IAttribute attribute );
         T Add<T>() where T : IAttribute, new();
-        T GetFirst<T>() where T : IAttribute;
+        T Get<T>() where T : IAttribute;
     }
 }

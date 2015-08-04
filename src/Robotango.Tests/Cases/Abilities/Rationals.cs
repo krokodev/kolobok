@@ -55,12 +55,12 @@ namespace Robotango.Tests.Cases.Abilities
 
             agent.As< IThinking >().Believes( world => {
                 he.As< IVirtual >().Add( new Hat() );
-                he.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+                he.As< IVirtual >().Get< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IThinking >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imagination.Agent( agent ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imagination.Agent( agent ).As< IVirtual >().Get< IHat >().Color );
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IThinking >().Believes( world => {
                 herselve.As< IVirtual >().Add( new Hat() );
-                herselve.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+                herselve.As< IVirtual >().Get< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IThinking >().Think();
@@ -92,7 +92,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IThinking >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
         }
 
         [Test]

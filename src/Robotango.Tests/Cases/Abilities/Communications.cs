@@ -17,7 +17,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Social_can_query_question()
         {
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
 
             Assert.AreEqual( alice.As< ICommunicative >(), question.Querist );
             Assert.NotNull( question.Querist );
@@ -28,7 +28,7 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
             var bob = Factory.CreateAgent< IVirtual, ICommunicative >();
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Assert.AreEqual( answer.Question, question );
@@ -73,12 +73,12 @@ namespace Robotango.Tests.Cases.Abilities
             var bob = Factory.CreateAgent< ICommunicative, IThinking >();
 
             alice.As< IVirtual >().Add( new Hat() );
-            alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+            alice.As< IVirtual >().Get< IHat >().Color = Colors.Red;
 
             bob.As< IThinking >().Believes( world => { world.Introduce( alice ); } );
             bob.As< IThinking >().Think();
 
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Log( answer.Result.Value );
@@ -94,17 +94,17 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
 
             alice.As< IVirtual >().Add( new Hat() );
-            alice.As< IVirtual >().GetFirst< IHat >().Color = Colors.Red;
+            alice.As< IVirtual >().Get< IHat >().Color = Colors.Red;
 
             bob.As< IThinking >().Imagination.Introduce( alice );
 
             bob.As< IThinking >().Believes( world => {
                 world.Agent( alice ).As< IVirtual >().Add( new Hat() );
-                world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color = Colors.Black;
+                world.Agent( alice ).As< IVirtual >().Get< IHat >().Color = Colors.Black;
             } );
             bob.As< IThinking >().Think();
 
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetFirst< IHat >().Color );
+            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Log( answer.Result.Value );

@@ -31,25 +31,25 @@ namespace Robotango.Tests.Cases.Complex
             alice.As< IVirtual >().Add( new Position( a ) );
 
             world.Thinking.Believes( reality => {
-                var alicePosition = reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >();
+                var alicePosition = reality.Agent( alice ).As< IVirtual >().Get< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );
 
             Log( world.Dump() );
             Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( b, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( b, world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( c, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( c, world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location );
         }
 
         [Test]
@@ -76,13 +76,13 @@ namespace Robotango.Tests.Cases.Complex
             var c = new Location( "C" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().Intends( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b );
+            alice.As< IPurposeful >().Intends( reality => reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location == b );
             bob.As< IVirtual >().Add( new Position( b ) );
 
             Log( world.Dump() );
 
-            Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
-            Assert.AreEqual( b, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, alice.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( b, bob.As< IVirtual >().Get< IPosition >().Location );
 
             world.Thinking.Think();
             world.Thinking.Think();
@@ -91,8 +91,8 @@ namespace Robotango.Tests.Cases.Complex
 
             Log( world.Dump() );
 
-            Assert.AreEqual( b, alice.As< IVirtual >().GetFirst< IPosition >().Location );
-            Assert.AreEqual( c, bob.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( b, alice.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( c, bob.As< IVirtual >().Get< IPosition >().Location );
 
             Assert.Ignore();
         }
@@ -107,11 +107,11 @@ namespace Robotango.Tests.Cases.Complex
             var b = new Location( "B" );
 
             alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IPurposeful >().Intends( reality => reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b );
+            alice.As< IPurposeful >().Intends( reality => reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location == b );
 
             Log( world.Dump() );
 
-            Assert.AreEqual( a, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( a, alice.As< IVirtual >().Get< IPosition >().Location );
 
             world.Thinking.Think();
             world.Thinking.Think();
@@ -120,7 +120,7 @@ namespace Robotango.Tests.Cases.Complex
 
             Log( world.Dump() );
 
-            Assert.AreEqual( b, alice.As< IVirtual >().GetFirst< IPosition >().Location );
+            Assert.AreEqual( b, alice.As< IVirtual >().Get< IPosition >().Location );
 
             Assert.Ignore();
         }

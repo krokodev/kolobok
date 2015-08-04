@@ -50,9 +50,9 @@ namespace Robotango.Core.Implements.Abilities
             return a;
         }
 
-        T IAttributeHolder.GetFirst<T>()
+        T IAttributeHolder.Get<T>()
         {
-            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' not found", typeof( T ).Name );
+            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' is not found", typeof( T ).Name );
             return _attributes.OfType< T >().First();
         }
 
