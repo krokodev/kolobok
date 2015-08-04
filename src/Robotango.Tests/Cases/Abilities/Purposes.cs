@@ -136,7 +136,23 @@ namespace Robotango.Tests.Cases.Abilities
         [Test]
         public void Alice_intention_evaluation_should_not_change_the_outer_reality()
         {
-            Assert.Ignore();
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual, IPurposeful, IThinking >("Alice"));
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            
+            alice.As<IVirtual>().Add( new Position(a));
+            alice.As< IThinking >().Imagination.Introduce( alice );
+
+            var intention = alice.As< IPurposeful >().Intends(
+                reality => {
+                    var self = reality.Agent( alice ).As< IVirtual >();
+                    self.Get< IPosition >().Location = b;
+                    return self.Get< IPosition >().Location == b;
+                } );
+
+            Assert.That(intention.IsSatisfied());
+            Assert.That(world.Reality.Agent( alice ).As<IVirtual>().Get<IPosition>().Location, Is.Not.EqualTo( b ));
         }
     }
 }
