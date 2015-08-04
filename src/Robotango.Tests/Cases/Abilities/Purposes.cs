@@ -3,9 +3,11 @@
 // Purposes.cs
 
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
+using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Virtual;
 using Robotango.Tests.Utils.Bases;
 
@@ -52,7 +54,6 @@ namespace Robotango.Tests.Cases.Abilities
 
             Assert.That( intention.IsSatisfied(), Is.True );
         }
-
 
         [Test]
         public void Alice_intends_to_be_in_location_B_and_is_satisfied_by_suggestion_that_she_is()
@@ -109,16 +110,15 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.That( dump, Is.StringContaining( "Wants to be in A" ) );
         }
 
-
         [Test]
         public void Alice_intention_evaluation_could_change_its_inner_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual, IPurposeful, IThinking >("Alice"));
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
-            
-            alice.As<IVirtual>().Add( new Position(a));
+
+            alice.As< IVirtual >().Add( new Position( a ) );
             alice.As< IThinking >().Imagination.Introduce( alice );
 
             var intention = alice.As< IPurposeful >().Intends(
@@ -128,21 +128,22 @@ namespace Robotango.Tests.Cases.Abilities
                     return self.Get< IPosition >().Location == b;
                 } );
 
-            Assert.That(intention.IsSatisfied());
-            Assert.That(alice.As<IThinking>().Imagination.Agent( alice ).As<IVirtual>().Get<IPosition>().Location, Is.EqualTo( b ));
+            Assert.That( intention.IsSatisfied() );
+            Assert.That( alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().Get< IPosition >().Location, Is.EqualTo( b ) );
         }
-
 
         [Test]
         public void Alice_intention_evaluation_should_not_change_the_outer_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce(Factory.CreateAgent< IVirtual, IPurposeful, IThinking >("Alice"));
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
-            
-            alice.As<IVirtual>().Add( new Position(a));
+
+            alice.As< IVirtual >().Add( new Position( a ) );
             alice.As< IThinking >().Imagination.Introduce( alice );
+//            alice.Do( As.Virtual.Set.Position(a) ).Then( As.Thinking.Introduce( alice ) );
+
 
             var intention = alice.As< IPurposeful >().Intends(
                 reality => {
@@ -150,9 +151,21 @@ namespace Robotango.Tests.Cases.Abilities
                     self.Get< IPosition >().Location = b;
                     return self.Get< IPosition >().Location == b;
                 } );
+            ConstraintExpression  qq;
 
-            Assert.That(intention.IsSatisfied());
-            Assert.That(world.Reality.Agent( alice ).As<IVirtual>().Get<IPosition>().Location, Is.Not.EqualTo( b ));
+            Assert.That( intention.IsSatisfied() );
+            Assert.That( world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location, Is.Not.EqualTo( b ) );
+        }
+    }
+
+    public static class As {
+        public static ThinkingProxy Thinking { get; set; }
+    }
+
+    public class ThinkingProxy {
+        public object Introduce( IAgent alice )
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
