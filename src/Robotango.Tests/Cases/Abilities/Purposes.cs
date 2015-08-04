@@ -87,7 +87,7 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Intention_can_be_named()
+        public void Intention_can_be_named_and_names_are_dumped()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
             var a = new Location( "A" );
