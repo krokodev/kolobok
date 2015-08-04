@@ -25,19 +25,24 @@ namespace Robotango.Tests.Utils.Bases
 
         protected IFactory Factory { get; set; }
 
-        protected static void Log( string str )
+        protected static string Log( string str )
         {
             Console.WriteLine( str );
+            return str;
         }
 
-        protected static void Log( object obj )
+        protected static string Log( object obj )
         {
-            Console.WriteLine( obj.ToString() );
+            var str = obj.ToString();
+            Console.WriteLine( str );
+            return str;
         }
 
-        protected static void Log( string format, params object[] args )
+        protected static string Log( string template, params object[] args )
         {
-            Console.WriteLine( format, args );
+            var str = string.Format( template, args );
+            Console.WriteLine( str );
+            return str;
         }
 
         #endregion

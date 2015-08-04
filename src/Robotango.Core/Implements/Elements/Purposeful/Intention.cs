@@ -6,6 +6,7 @@ using System;
 using System.Linq.Expressions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.System;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Purposful;
 
@@ -20,9 +21,9 @@ namespace Robotango.Core.Implements.Elements.Purposeful
             get { return _context; }
         }
 
-        bool IIntention.IsSatisfied
+        bool IIntention.IsSatisfied()
         {
-            get { return _predicate( _context ); }
+            return _predicate( _context );
         }
 
         IAgent IIntention.Holder
@@ -38,8 +39,8 @@ namespace Robotango.Core.Implements.Elements.Purposeful
         string IResearchable.Dump( int level )
         {
             return OutlineWriter.Line( level,
-                "[{0}] <{1}>",
-                _sources,
+                "'{0}' <{1}>",
+                _name,
                 typeof( Intention ).Name
                 );
         }
@@ -49,12 +50,12 @@ namespace Robotango.Core.Implements.Elements.Purposeful
 
         #region Ctor
 
-        public Intention( IReality context, IAgent holder, Expression< Func< IReality, bool > > predicateExpression )
+        public Intention( IReality context, IAgent holder, Func< IReality, bool > predicate, string name )
         {
             _context = context;
             _holder = holder;
-            _predicate = predicateExpression.Compile();
-            _sources = predicateExpression.Body.ToString();
+            _predicate = predicate;
+            _name = name??Settings.Intentions.Names.Default;
         }
 
         #endregion
@@ -65,7 +66,7 @@ namespace Robotango.Core.Implements.Elements.Purposeful
         private readonly IAgent _holder;
         private readonly Func< IReality, bool > _predicate;
         private readonly IReality _context;
-        private readonly string _sources;
+        private readonly string _name;
 
         #endregion
     }

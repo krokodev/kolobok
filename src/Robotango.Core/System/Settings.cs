@@ -40,6 +40,13 @@ namespace Robotango.Core.System
                 public const string Default = "Some World";
             }
         }
+        public static class Intentions
+        {
+            public static class Names
+            {
+                public const string Default = "Some Intention";
+            }
+        }
 
         public static class Depth
         {

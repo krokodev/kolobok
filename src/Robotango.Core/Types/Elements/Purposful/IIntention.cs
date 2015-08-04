@@ -11,6 +11,6 @@ namespace Robotango.Core.Types.Elements.Purposful
     {
         IAgent Holder { get; }
         IReality Context { get; }
-        bool IsSatisfied { get; }
+        bool IsSatisfied();
     }
 }

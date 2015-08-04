@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
@@ -38,21 +37,12 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IPurposeful
 
-        IIntention IPurposeful.AddIntention( Expression< Func< IReality, bool > > predicate )
+        IIntention IPurposeful.Intends( Func< IReality, bool > predicate, string name )
         {
-            var intention = new Intention( _thinking.Imagination, _agent, predicate );
+            var intention = new Intention( _thinking.Imagination, _agent, predicate, name );
             _intentions.Add( intention );
             return intention;
         }
-
-        #endregion
-
-
-        #region Fields
-
-        private IThinking _thinking;
-        private IAgent _agent;
-        private readonly List< IIntention > _intentions = new List< IIntention >();
 
         #endregion
 
@@ -66,6 +56,15 @@ namespace Robotango.Core.Implements.Abilities
             _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private IThinking _thinking;
+        private IAgent _agent;
+        private readonly List< IIntention > _intentions = new List< IIntention >();
 
         #endregion
     }

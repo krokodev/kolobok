@@ -30,10 +30,9 @@ namespace Robotango.Tests.Cases.Abilities
         public void Purposeful_dump_contains_intentions()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) == false );
+            agent.As< IPurposeful >().Intends( reality => reality.Contains( agent ) == false );
 
-            var dump = agent.Dump();
-            Log( dump );
+            var dump = Log( agent.Dump() );
 
             Assert.That( dump.Contains( "<Purposeful>" ) );
             Assert.That( dump.Contains( "Intention" ) );
@@ -43,25 +42,19 @@ namespace Robotango.Tests.Cases.Abilities
         public void Intention_can_be_satisfied()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var intention = agent.As< IPurposeful >().AddIntention( reality => reality.Contains( agent ) );
+            var intention = agent.As< IPurposeful >().Intends( reality => reality.Contains( agent ) );
 
             Log( agent.Dump() );
 
-            Assert.False( intention.IsSatisfied );
+            Assert.False( intention.IsSatisfied() );
 
             agent.As< IThinking >().Imagination.Introduce( agent );
 
-            Assert.True( intention.IsSatisfied );
+            Assert.That( intention.IsSatisfied(), Is.True );
         }
 
         [Test]
-        public void Testing_intention_depends_on_reality()
-        {
-            Assert.Ignore();
-        }
-
-        [Test]
-        public void Testing_intention_could_not_change_the_reality()
+        public void Tested_intention_should_not_change_the_reality()
         {
             Assert.Ignore();
         }
@@ -78,7 +71,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add( new Position( a ) );
             var herself = alice.As< IThinking >().Imagination.Introduce( alice );
 
-            var intention = alice.As< IPurposeful >().AddIntention(
+            var intention = alice.As< IPurposeful >().Intends(
                 reality =>
                     reality.Agent( alice ).As< IVirtual >().GetFirst< IPosition >().Location == b
                 );
@@ -86,11 +79,39 @@ namespace Robotango.Tests.Cases.Abilities
             Log( world.Dump() );
 
             alice.As< IVirtual >().GetFirst< IPosition >().Location = b;
-            Assert.False( intention.IsSatisfied );
+            Assert.False( intention.IsSatisfied() );
 
             alice.As< IVirtual >().GetFirst< IPosition >().Location = a;
             herself.As< IVirtual >().GetFirst< IPosition >().Location = b;
-            Assert.True( intention.IsSatisfied );
+            Assert.True( intention.IsSatisfied() );
+        }
+
+        [Test]
+        public void Intention_can_be_named()
+        {
+            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
+            var a = new Location( "A" );
+
+            agent.As< IPurposeful >().Intends(
+                reality => true
+                );
+            agent.As< IPurposeful >().Intends(
+                reality =>
+                    reality.Contains( agent ),
+                "Wants to be present"
+                );
+            agent.As< IPurposeful >().Intends(
+                reality =>
+                    reality.Agent( agent ).As< IVirtual >().GetFirst< IPosition >().Location == a,
+                "Wants to be in A"
+                );
+
+            var dump = Log( agent.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "Some Agent" ) );
+            Assert.That( dump, Is.StringContaining( "Some Intention" ) );
+            Assert.That( dump, Is.StringContaining( "Wants to be present" ) );
+            Assert.That( dump, Is.StringContaining( "Wants to be in A" ) );
         }
     }
 }
