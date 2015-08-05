@@ -70,12 +70,20 @@ namespace Robotango.Tests.Cases.Complex
         [Ignore, Test]
         public void Access_agent_location_directly()
         {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var a = new Location( "A" );
+
+            alice.Set( Its.Virtual.Location, a );
+
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
         [Ignore, Test]
         public void Change_agent_location_directly()
         {
         }
+
         [Ignore, Test]
         public void Set_agent_location_via_Do()
         {
