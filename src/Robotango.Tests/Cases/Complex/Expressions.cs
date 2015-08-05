@@ -43,7 +43,7 @@ namespace Robotango.Tests.Cases.Complex
         }
 
         [Test]
-        public void Set_location_directly()
+        public void Set_agent_location_directly()
         {
             var world = Factory.CreateWorld();
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
@@ -51,12 +51,20 @@ namespace Robotango.Tests.Cases.Complex
 
             alice.Set( Its.Virtual.Location,  a );
 
-            Assert.That( alice.Get( Its.Virtual.Position ).Location, Is.EqualTo( a ) );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
         [Ignore, Test]
         public void Access_agent_location_via_position()
         {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var a = new Location( "A" );
+
+            alice.Set( Its.Virtual.Position, new Position() );
+            alice.Get( Its.Virtual.Position ).Location = a;
+
+            Assert.That( alice.Get( Its.Virtual.Position ).Location, Is.EqualTo( a ) );
         }
 
         [Ignore, Test]

@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Common
-// IActionExecuter.cs
+// IExecutor.cs
 
 using System;
 
@@ -13,5 +13,3 @@ namespace Robotango.Common.Domain.Types.Expressions
         void Set<TV>( IPropertyAccessor< T, TV > propertyAccessor, TV value );
     }
 }
-
-    
