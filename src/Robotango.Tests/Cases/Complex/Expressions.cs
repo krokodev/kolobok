@@ -2,14 +2,11 @@
 // Robotango.Tests
 // Expressions.cs
 
-using System;
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Interfaces.Agency;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 
@@ -138,7 +135,7 @@ namespace Robotango.Tests.Cases.Complex
 
             alice.Do( As.Thinking.Know( bob ) );
 
-            Assert.That( alice.As<IThinking>().Imagination.Contains( bob ) );
+            Assert.That( alice.As< IThinking >().Imagination.Contains( bob ) );
         }
 
         [Test]
@@ -148,9 +145,8 @@ namespace Robotango.Tests.Cases.Complex
 
             alice.Do( As.Thinking.Know( Its.Self ) );
 
-            Assert.That( alice.As<IThinking>().Imagination.Contains( alice ) );
+            Assert.That( alice.As< IThinking >().Imagination.Contains( alice ) );
         }
-
 
         [Test]
         public void Alice_Is_Knowing_Bob()
@@ -165,24 +161,43 @@ namespace Robotango.Tests.Cases.Complex
             Assert.That( knowsBob );
         }
 
+        [Test]
+        public void Alice_Do_Believe()
+        {
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var belief = new Belief( reality => { } );
+
+            alice.Do( As.Thinking.Believe( belief ) );
+
+            Assert.That( alice.As< IThinking >().HasBelief( belief ) );
+        }
+
+        [Ignore, Test]
+        public void Alice_Is_Believing()
+        {
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var belief = new Belief( reality => { } );
+
+            var hasBelief = alice
+                .Do( As.Thinking.Believe( belief ) )
+                .Is( As.Thinking.Believing( belief ) );
+
+            Assert.That( hasBelief );
+            
+        }
+
 
         [Test]
         public void Alice_Do_Believe_she_has_a_hat()
         {
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
-            Action< IReality > hasHatAction = reality=>reality.Agent(alice).As<IVirtual>().Has<Hat>();
-            var sheHasHat = new Belief( hasHatAction );
+            var sheHasHat = new Belief( reality => reality.Agent( alice ).As< IVirtual >().Has< Hat >() );
 
-            alice.Do( As.Thinking.Believe( sheHasHat  ) );
-            
-            Assert.That( alice.As<IThinking>().HasBelief( sheHasHat ) );
+            //alice.Do( As.Thinking.Believe( In.. ) );
+
         }
 
-
-        [Ignore,Test]
-        public void Alice_Do_Think()
-        {
-        }
-
+        [Ignore, Test]
+        public void Alice_Do_Think() {}
     }
 }

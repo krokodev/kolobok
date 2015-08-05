@@ -33,6 +33,10 @@ namespace Robotango.Core.Expressions
             return self => Convert( self ).AddBelief( belief );
         }
 
+        Func< IAgent, bool > IThinkingExecutor.Believing( IBelief belief )
+        {
+            return self => Convert( self ).HasBelief( belief );
+        }
 
         #endregion
 
