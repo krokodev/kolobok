@@ -4,14 +4,14 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Compositions;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Tests.Utils.Helpers
 {
     public class ComponentsAssertThat
     {
-        public static void Is_component( IThinking thinking )
+        public static void Is_ability( IComponent thinking )
         {
             Assert.IsInstanceOf< IAbility >( thinking );
         }

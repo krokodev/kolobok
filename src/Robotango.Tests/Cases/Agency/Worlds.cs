@@ -3,9 +3,8 @@
 // Worlds.cs
 
 using NUnit.Framework;
-using Robotango.Core.Implements.Elements.Virtual;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Elements.Virtual;
+using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Agency
@@ -38,7 +37,7 @@ namespace Robotango.Tests.Cases.Agency
             var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().Add( new Position( locA ) );
-            world.Thinking.Believes( reality => { reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location = locB; } );
+            world.Thinking.AddBelief( reality => { reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location = locB; } );
 
             Log( world.Dump() );
             Log( alice.Dump() );

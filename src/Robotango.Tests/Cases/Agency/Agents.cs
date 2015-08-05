@@ -4,9 +4,9 @@
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Agency
@@ -153,7 +153,7 @@ namespace Robotango.Tests.Cases.Agency
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
             var charly = Factory.CreateAgent< IThinking >( "Charly" );
 
-            bob.As< IThinking >().Believes( iworld => iworld.Introduce( charly.Clone() ) );
+            bob.As< IThinking >().AddBelief( iworld => iworld.Introduce( charly.Clone() ) );
             bob.As< IThinking >().Think();
 
             var bcharly = bob.As< IThinking >().Imagination.Agent( charly );

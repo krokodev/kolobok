@@ -3,8 +3,8 @@
 // Depths.cs
 
 using NUnit.Framework;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.System;
-using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Abilities
@@ -95,7 +95,7 @@ namespace Robotango.Tests.Cases.Abilities
             var bob = alice.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Bob" ) );
             var charly = Factory.CreateAgent< IThinking >( "Charly" );
 
-            bob.As< IThinking >().Believes( iworld => iworld.Introduce( charly ) );
+            bob.As< IThinking >().AddBelief( iworld => iworld.Introduce( charly ) );
             bob.As< IThinking >().Think();
 
             var bcharly = bob.As< IThinking >().Imagination.Agent( charly );
@@ -123,9 +123,9 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = universe.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IThinking >().Believes( iworld => iworld.Introduce( bob ) );
+            alice.As< IThinking >().AddBelief( iworld => iworld.Introduce( bob ) );
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Believes( iworld => iworld.Introduce( alice ) );
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.Introduce( alice ) );
             alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Think();
 
             Log( universe

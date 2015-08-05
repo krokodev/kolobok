@@ -3,7 +3,8 @@
 // IThinkingExecutor.cs
 
 using System;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Elements.Thinking;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Expressions
 {
@@ -12,5 +13,6 @@ namespace Robotango.Core.Expressions
         Action< IAgent > Know( IAgent other );
         Action< IAgent > Know( Func< IAgent, IAgent > selectOther );
         Func< IAgent, bool > Knowing( IAgent other );
+        Action< IAgent > Believe( IBelief belief );
     }
 }

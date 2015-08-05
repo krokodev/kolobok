@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Implements.Abilities;
-using Robotango.Core.Implements.Agency;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Abilities;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.System
 {

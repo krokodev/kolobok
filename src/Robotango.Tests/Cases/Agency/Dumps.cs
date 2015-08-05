@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
-using Robotango.Core.Types.Abilities;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 

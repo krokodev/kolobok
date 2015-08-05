@@ -5,9 +5,8 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Implements.Elements.Virtual;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Elements.Virtual;
+using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Complex
@@ -30,7 +29,7 @@ namespace Robotango.Tests.Cases.Complex
             };
             alice.As< IVirtual >().Add( new Position( a ) );
 
-            world.Thinking.Believes( reality => {
+            world.Thinking.AddBelief( reality => {
                 var alicePosition = reality.Agent( alice ).As< IVirtual >().Get< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );

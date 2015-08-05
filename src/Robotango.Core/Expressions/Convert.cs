@@ -3,8 +3,8 @@
 // Convert.cs
 
 using System;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Expressions
 {

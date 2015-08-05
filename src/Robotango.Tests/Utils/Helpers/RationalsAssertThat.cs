@@ -2,8 +2,8 @@
 // Robotango.Tests
 // RationalsAssertThat.cs
 
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Tests.Utils.Helpers
 {

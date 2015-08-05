@@ -5,8 +5,7 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Implements.Abilities;
-using Robotango.Core.Types.Abilities;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Helpers;
 
@@ -18,8 +17,8 @@ namespace Robotango.Tests.Cases.Agency
         [Test]
         public void Thinking_is_a_component()
         {
-            IThinking r = new Thinking();
-            ComponentsAssertThat.Is_component( r );
+            var r = Factory.CreateComponent<IThinking>();
+            ComponentsAssertThat.Is_ability( r );
         }
 
         [Test]

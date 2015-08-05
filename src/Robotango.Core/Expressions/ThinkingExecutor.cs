@@ -3,8 +3,9 @@
 // ThinkingExecutor.cs
 
 using System;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
+using Robotango.Core.Elements.Thinking;
+using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Expressions
 {
@@ -26,6 +27,12 @@ namespace Robotango.Core.Expressions
         {
             return self => Convert( self ).Imagination.Contains( other );
         }
+
+        public Action< IAgent > Believe( IBelief belief )
+        {
+            return self => Convert( self ).AddBelief( belief.Essence );
+        }
+
 
         #endregion
 

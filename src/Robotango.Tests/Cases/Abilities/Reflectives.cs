@@ -3,7 +3,7 @@
 // Reflectives.cs
 
 using NUnit.Framework;
-using Robotango.Core.Types.Abilities;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Abilities

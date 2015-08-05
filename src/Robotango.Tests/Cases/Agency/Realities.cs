@@ -4,8 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.System;
-using Robotango.Core.Types.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Agency
@@ -68,7 +68,7 @@ namespace Robotango.Tests.Cases.Agency
         public void Imaginary_agent_has_the_same_id()
         {
             var alice = Factory.CreateAgent< IThinking, IVirtual >();
-            alice.As< IThinking >().Believes( world => world.Introduce( alice.Clone() ) );
+            alice.As< IThinking >().AddBelief( world => world.Introduce( alice.Clone() ) );
             alice.As< IThinking >().Think();
             Log( alice );
             Log( alice.As< IThinking >().Imagination.Agent( alice ) );
@@ -80,7 +80,7 @@ namespace Robotango.Tests.Cases.Agency
         {
             const string name = "Alice";
             var alice = Factory.CreateAgent< IThinking, IVirtual >( name );
-            alice.As< IThinking >().Believes( world => world.Introduce( alice.Clone() ) );
+            alice.As< IThinking >().AddBelief( world => world.Introduce( alice.Clone() ) );
             alice.As< IThinking >().Think();
             Log( alice.Name );
             Log( alice.As< IThinking >().Imagination.Agent( alice ).Name );
@@ -168,7 +168,7 @@ namespace Robotango.Tests.Cases.Agency
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IThinking >().Believes( iworld => iworld.Introduce( bob.Clone() ) );
+            alice.As< IThinking >().AddBelief( iworld => iworld.Introduce( bob.Clone() ) );
             alice.As< IThinking >().Think();
 
             Assert.NotNull( alice.As< IThinking >().Imagination.Holder );
@@ -225,7 +225,7 @@ namespace Robotango.Tests.Cases.Agency
             var bob = alice.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Bob" ) );
 
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Believes( iworld => iworld.Introduce( alice ) );
+            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.Introduce( alice ) );
             alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Think();
 
             var uabaWorld = universe

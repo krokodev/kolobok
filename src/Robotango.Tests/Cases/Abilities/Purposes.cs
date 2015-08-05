@@ -4,9 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Implements.Elements.Virtual;
-using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Elements.Virtual;
+using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Abilities

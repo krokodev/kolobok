@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
-using Robotango.Core.Types.Abilities;
+using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 
@@ -75,7 +75,7 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add( new Hat() );
             alice.As< IVirtual >().Get< IHat >().Color = Colors.Red;
 
-            bob.As< IThinking >().Believes( world => { world.Introduce( alice ); } );
+            bob.As< IThinking >().AddBelief( world => { world.Introduce( alice ); } );
             bob.As< IThinking >().Think();
 
             var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
@@ -98,7 +98,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             bob.As< IThinking >().Imagination.Introduce( alice );
 
-            bob.As< IThinking >().Believes( world => {
+            bob.As< IThinking >().AddBelief( world => {
                 world.Agent( alice ).As< IVirtual >().Add( new Hat() );
                 world.Agent( alice ).As< IVirtual >().Get< IHat >().Color = Colors.Black;
             } );

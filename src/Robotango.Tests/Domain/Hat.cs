@@ -4,8 +4,7 @@
 
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Implements.Elements.Virtual;
-using Robotango.Core.Types.Elements.Virtual;
+using Robotango.Core.Elements.Virtual;
 
 namespace Robotango.Tests.Domain
 {

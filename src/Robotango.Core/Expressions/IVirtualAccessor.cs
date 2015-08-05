@@ -4,8 +4,8 @@
 
 using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Types.Agency;
-using Robotango.Core.Types.Elements.Virtual;
+using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Expressions
 {
