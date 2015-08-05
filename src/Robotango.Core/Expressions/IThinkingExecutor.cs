@@ -9,7 +9,8 @@ namespace Robotango.Core.Expressions
 {
     public interface IThinkingExecutor
     {
-        Action< IAgent > Introduce( IAgent agent );
-        Action< IAgent > Introduce( Func< IAgent, IAgent > agentSelector );
+        Action< IAgent > Know( IAgent other );
+        Action< IAgent > Know( Func< IAgent, IAgent > selectOther );
+        Func< IAgent, bool > Knowing( IAgent other );
     }
 }

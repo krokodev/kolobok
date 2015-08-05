@@ -133,7 +133,7 @@ namespace Robotango.Tests.Cases.Complex
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.Do( As.Thinking.Introduce( bob ) );
+            alice.Do( As.Thinking.Know( bob ) );
 
             Assert.That( alice.As<IThinking>().Imagination.Contains( bob ) );
         }
@@ -143,28 +143,34 @@ namespace Robotango.Tests.Cases.Complex
         {
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
 
-            alice.Do( As.Thinking.Introduce( Its.Self ) );
+            alice.Do( As.Thinking.Know( Its.Self ) );
 
             Assert.That( alice.As<IThinking>().Imagination.Contains( alice ) );
         }
 
+
         [Test]
-        public void Alice_Think()
+        public void Alice_Is_Knowing_Bob()
+        {
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
+
+            var knowsBob = alice
+                .Do( As.Thinking.Know( bob ) )
+                .Is( As.Thinking.Knowing( bob ) );
+
+            Assert.That( knowsBob );
+        }
+
+
+        [Test]
+        public void Alice_Do_Believe()
         {
         }
 
-        [Test]
-        public void Alice_Believs()
-        {
-        }
 
         [Test]
-        public void Alice_If_Knows()
-        {
-        }
-
-        [Test]
-        public void World_If_Contains()
+        public void Alice_Do_Think()
         {
         }
 

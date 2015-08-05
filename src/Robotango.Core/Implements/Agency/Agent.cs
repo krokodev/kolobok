@@ -105,9 +105,14 @@ namespace Robotango.Core.Implements.Agency
             return propertyAccessor.Get( this );
         }
 
-        public void Set<TV>( IPropertyAccessor< IAgent, TV > propertyAccessor, TV value )
+        void IExecutor< IAgent >.Set<TV>( IPropertyAccessor< IAgent, TV > propertyAccessor, TV value )
         {
             propertyAccessor.Set( this, value );
+        }
+
+        bool IExecutor< IAgent >.Is( Func< IAgent, bool > predicate )
+        {
+            return predicate( this );
         }
 
         #endregion

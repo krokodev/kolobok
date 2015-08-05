@@ -12,14 +12,19 @@ namespace Robotango.Core.Expressions
     {
         #region IThinkingExecutor
 
-        Action< IAgent > IThinkingExecutor.Introduce( IAgent other )
+        Action< IAgent > IThinkingExecutor.Know( IAgent other )
         {
-            return agent => Convert( agent ).Imagination.Introduce( other );
+            return self => Convert( self ).Imagination.Introduce( other );
         }
 
-        public Action< IAgent > Introduce( Func< IAgent, IAgent > agentSelector )
+        public Action< IAgent > Know( Func< IAgent, IAgent > selectOther )
         {
-            return agent => Convert( agent ).Imagination.Introduce( agentSelector( agent ) );
+            return self => Convert( self ).Imagination.Introduce( selectOther( self ) );
+        }
+
+        public Func< IAgent, bool > Knowing( IAgent other )
+        {
+            return self => Convert( self ).Imagination.Contains( other );
         }
 
         #endregion
