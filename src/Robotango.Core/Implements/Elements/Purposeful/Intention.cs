@@ -3,7 +3,6 @@
 // Intention.cs
 
 using System;
-using System.Linq.Expressions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.System;
@@ -55,7 +54,7 @@ namespace Robotango.Core.Implements.Elements.Purposeful
             _context = context;
             _holder = holder;
             _predicate = predicate;
-            _name = name??Settings.Intentions.Names.Default;
+            _name = name ?? Settings.Intentions.Names.Default;
         }
 
         #endregion

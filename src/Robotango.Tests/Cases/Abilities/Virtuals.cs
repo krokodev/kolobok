@@ -1,10 +1,11 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Attributes.cs
+// Virtuals.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Expressions;
 using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
 using Robotango.Core.Types.Elements.Virtual;
@@ -79,7 +80,6 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.AreEqual( destination, bob.As< IVirtual >().Get< IPosition >().Location );
         }
 
-
         [Test]
         public void Position_location_name_should_be_cloned()
         {
@@ -89,10 +89,59 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IVirtual >().Add( new Position( a ) );
             var clone = alice.Clone();
-            
-            Assert.AreEqual("A", clone.As< IVirtual >().Get< IPosition >().Location.Name);
+
+            Assert.AreEqual( "A", clone.As< IVirtual >().Get< IPosition >().Location.Name );
 
             Log( clone.Dump() );
+        }
+
+        [Test]
+        public void Agent_has_only_one_position_after_changings_locations()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+
+            alice.Set( Its.Virtual.Location, new Location( "A" ) );
+            alice.Set( Its.Virtual.Location, new Location( "B" ) );
+            alice.Set( Its.Virtual.Location, new Location( "C" ) );
+
+            alice.Get( Its.Virtual.Position ).Location = new Location( "D" );
+
+            Log( world.Dump() );
+
+            Assert.That( alice.As< IVirtual >().All< IPosition >().Count, Is.EqualTo( 1 ) );
+        }
+
+        [Test]
+        public void Agent_has_many_positions_after_setting_new_positions()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+
+            alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "C" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "D" ) ) );
+
+            Log( world.Dump() );
+
+            Assert.That( alice.As< IVirtual >().All< IPosition >().Count, Is.EqualTo( 4 ) );
+        }
+
+        [Test]
+        public void Default_position_is_the_first_added()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+
+            alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "C" ) ) );
+            alice.Set( Its.Virtual.Position, new Position( new Location( "D" ) ) );
+
+            Log( world.Dump() );
+
+            Assert.That( alice.Get( Its.Virtual.Location ).Name, Is.EqualTo( "A" ) );
         }
     }
 }

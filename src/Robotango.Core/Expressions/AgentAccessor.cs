@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Accessor.cs
+// AgentAccessor.cs
 
 using System;
 

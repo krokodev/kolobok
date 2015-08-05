@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Convertors.cs
+// Convert.cs
 
 using System;
 using Robotango.Core.Types.Abilities;
