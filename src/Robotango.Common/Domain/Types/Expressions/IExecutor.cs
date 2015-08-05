@@ -6,7 +6,7 @@ using System;
 
 namespace Robotango.Common.Domain.Types.Expressions
 {
-    public interface IExecutor<T>
+    public interface IExecutor<out T>
     {
         IExecutor< T > Do( Action< T > action );
         TV Get<TV>( IPropertyAccessor< T, TV > propertyAccessor );

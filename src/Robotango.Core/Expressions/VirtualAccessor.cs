@@ -13,7 +13,7 @@ using Robotango.Core.Types.Elements.Virtual;
 
 namespace Robotango.Core.Expressions
 {
-    public class VirtualAccessor : AgentAccessor< IAgent, IVirtual >, IVirtualAccessor
+    public class VirtualAccessor : AgentProxy< IVirtual >, IVirtualAccessor
     {
         #region IVirtualAccessor
 

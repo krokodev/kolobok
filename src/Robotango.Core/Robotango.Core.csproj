@@ -42,10 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expressions\As.cs" />
     <Compile Include="Expressions\Convert.cs" />
-    <Compile Include="Expressions\AgentAccessor.cs" />
+    <Compile Include="Expressions\AgentProxy.cs" />
+    <Compile Include="Expressions\IThinkingExecutor.cs" />
     <Compile Include="Expressions\Its.cs" />
     <Compile Include="Expressions\IVirtualAccessor.cs" />
+    <Compile Include="Expressions\ThinkingExecutor.cs" />
     <Compile Include="Expressions\VirtualAccessor.cs" />
     <Compile Include="Implements\Elements\Purposeful\Intention.cs" />
     <Compile Include="Implements\Abilities\Purposeful.cs" />

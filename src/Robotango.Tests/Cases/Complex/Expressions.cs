@@ -3,6 +3,7 @@
 // Expressions.cs
 
 using NUnit.Framework;
+using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Core.Expressions;
 using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
@@ -125,5 +126,25 @@ namespace Robotango.Tests.Cases.Complex
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
+
+        [Test]
+        public void Alice_Introduce_Bob_()
+        {
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
+
+            alice.Do( As.Thinking.Introduce( bob ) );
+
+            Assert.That( alice.As<IThinking>().Imagination.Contains( bob ) );
+        }
+
+        [Ignore,Test]
+        public void Alice_Introduce_Herself()
+        {
+            var alice = Factory.CreateAgent< IVirtual >( "Alice" ).IExecutor;
+
+            //alice.Do( As.Thinking.Introduce( Its.Self ) );
+        }
+
     }
 }

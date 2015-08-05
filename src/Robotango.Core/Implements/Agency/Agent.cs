@@ -87,7 +87,12 @@ namespace Robotango.Core.Implements.Agency
         #endregion
 
 
-        #region IActionExecuter
+        #region IExecuter
+
+        IExecutor< IAgent > IAgent.IExecutor
+        {
+            get { return this; }
+        }
 
         IExecutor< IAgent > IExecutor< IAgent >.Do( Action< IAgent > action )
         {

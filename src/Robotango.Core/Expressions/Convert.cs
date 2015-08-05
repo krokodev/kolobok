@@ -15,6 +15,7 @@ namespace Robotango.Core.Expressions
             public class To
             {
                 public static readonly Func< IAgent, IVirtual > Virtual = agent => agent.As< IVirtual >();
+                public static readonly Func< IAgent, IThinking > Thinking = agent => agent.As< IThinking >();
             }
         }
     }

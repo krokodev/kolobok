@@ -16,6 +16,7 @@ namespace Robotango.Core.Types.Agency
         string Name { get; set; }
         uint Depth { get; }
         string FullName { get; }
+        IExecutor< IAgent > IExecutor { get; }
         bool HasName();
     }
 }
