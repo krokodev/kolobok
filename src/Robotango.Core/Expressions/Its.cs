@@ -6,7 +6,7 @@ namespace Robotango.Core.Expressions
 {
     public class Its
     {
-        public static VirtualAccessor Virtual
+        public static IVirtualAccessor Virtual
         {
             get { return new VirtualAccessor( Convert.Agent.To.Virtual ); }
         }

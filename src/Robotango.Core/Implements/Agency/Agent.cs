@@ -100,6 +100,10 @@ namespace Robotango.Core.Implements.Agency
             return propertyAccessor.Get( this );
         }
 
+        public void Set<TV>( IPropertyAccessor< IAgent, TV > propertyAccessor, TV value )
+        {
+            propertyAccessor.Set( this, value );
+        }
 
         #endregion
 

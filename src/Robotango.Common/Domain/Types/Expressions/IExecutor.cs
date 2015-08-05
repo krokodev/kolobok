@@ -10,6 +10,7 @@ namespace Robotango.Common.Domain.Types.Expressions
     {
         IExecutor< T > Do( Action< T > action );
         TV Get<TV>( IPropertyAccessor< T, TV > propertyAccessor );
+        void Set<TV>( IPropertyAccessor< T, TV > propertyAccessor, TV value );
     }
 }
 

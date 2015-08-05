@@ -7,8 +7,39 @@ using Robotango.Common.Domain.Types.Expressions;
 
 namespace Robotango.Common.Domain.Implements.Expressions
 {
-    public class PropertyAccessor<T, TV> : IPropertyAccessor<T, TV>
+    public class PropertyAccessor<T, TV> : IPropertyAccessor< T, TV >
     {
-        public Func< T, TV > Get { get; set; }
+        #region IPropertyAccessor
+
+        Func< T, TV > IPropertyAccessor< T, TV >.Get
+        {
+            get { return _getter; }
+        }
+
+        Action< T, TV > IPropertyAccessor< T, TV >.Set
+        {
+            get { return _setter; }
+        }
+
+        #endregion
+
+
+        #region Ctor
+
+        public PropertyAccessor( Func< T, TV > getter, Action< T, TV > setter )
+        {
+            _getter = getter;
+            _setter = setter;
+        }
+
+        #endregion
+
+
+        #region Fields
+
+        private readonly Func< T, TV > _getter;
+        private readonly Action< T, TV > _setter;
+
+        #endregion
     }
 }

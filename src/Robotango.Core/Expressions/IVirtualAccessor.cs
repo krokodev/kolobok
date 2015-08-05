@@ -1,9 +1,9 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IVirtualGetter.cs
+// IVirtualAccessor.cs
 
-using System;
-using Robotango.Common.Domain.Implements.Expressions;
+using Robotango.Common.Domain.Types.Expressions;
+using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Virtual;
 
@@ -11,6 +11,7 @@ namespace Robotango.Core.Expressions
 {
     public interface IVirtualAccessor
     {
-        Common.Domain.Implements.Expressions.PropertyAccessor< IAgent, IPosition > Position { get; }
+        IPropertyAccessor< IAgent, IPosition > Position { get; }
+        IPropertyAccessor< IAgent, ILocation > Location { get; }
     }
 }

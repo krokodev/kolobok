@@ -6,7 +6,9 @@ using System;
 
 namespace Robotango.Common.Domain.Types.Expressions
 {
-    public interface IPropertyAccessor<T, TV> {
+    public interface IPropertyAccessor<in T, TV>
+    {
         Func< T, TV > Get { get; }
+        Action< T, TV > Set { get; }
     }
 }
