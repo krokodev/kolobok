@@ -80,9 +80,69 @@ namespace Robotango.Tests.Cases.Complex
         }
 
         [Ignore, Test]
-        public void Change_agent_location_directly()
+        public void Change_agent_location_deirectly()
         {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var c = new Location( "C" );
+
+            alice.Set( Its.Virtual.Location, a );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
+
+            alice.Set( Its.Virtual.Location, b );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+
+            alice.Set( Its.Virtual.Location, c );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( c ) );
+
+            alice.Set( Its.Virtual.Location, a );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
+
+            Log(world.Dump());
         }
+
+        [Ignore, Test]
+        public void Agent_has_only_one_position_after_settings()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+
+            alice.Set( Its.Virtual.Location, new Location( "A" ) );
+            alice.Set( Its.Virtual.Location, new Location( "B" ) );
+            alice.Set( Its.Virtual.Location, new Location( "C" ) );
+
+            Log(world.Dump());
+
+            Assert.That( alice.As<IVirtual>().All<IPosition>().Count, Is.EqualTo( 1 ) );
+        }
+
+        [Ignore, Test]
+        public void Change_agent_location_via_position()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var c = new Location( "C" );
+            var d = new Location( "D" );
+
+            alice.Set( Its.Virtual.Location, a );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
+
+            alice.Set( Its.Virtual.Location, b );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+
+            alice.Set( Its.Virtual.Location, c );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( c ) );
+
+            alice.Get( Its.Virtual.Position ).Location = a;
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( c ) );
+
+        }
+
 
         [Ignore, Test]
         public void Set_agent_location_via_Do()

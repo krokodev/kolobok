@@ -37,6 +37,11 @@ namespace Robotango.Core.Implements.Abilities
             get { return this; }
         }
 
+        IList< T > IAttributeHolder.All<T>()
+        {
+            return _attributes.OfType< T >().ToList();
+        }
+
         void IAttributeHolder.Add( IAttribute attribute )
         {
             Debug.Assert.That( attribute.Holder == null, "Attribute already belongs to other holder" );
