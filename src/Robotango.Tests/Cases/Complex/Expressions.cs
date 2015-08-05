@@ -2,12 +2,14 @@
 // Robotango.Tests
 // Expressions.cs
 
+using System;
 using NUnit.Framework;
+using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
-using Robotango.Tests.Domain;
+using Robotango.Core.Interfaces.Agency;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Complex
@@ -183,21 +185,26 @@ namespace Robotango.Tests.Cases.Complex
                 .Is( As.Thinking.Believing( belief ) );
 
             Assert.That( hasBelief );
-            
         }
 
-
-        [Test]
-        public void Alice_Do_Believe_she_has_a_hat()
+        [Ignore, Test]
+        public void Alice_Do_Believe_she_is_in_A()
         {
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
-            var sheHasHat = new Belief( reality => reality.Agent( alice ).As< IVirtual >().Has< Hat >() );
+            var a = new Location( "A" );
 
-            //alice.Do( As.Thinking.Believe( In.. ) );
-
+            //alice.Do( As.Thinking.Believe( That.Agent( alice ).Set( Its.Virtual.Location, a ) ) ) );
         }
 
         [Ignore, Test]
         public void Alice_Do_Think() {}
+    }
+
+    public class That
+    {
+        public static IExecutor< IAgent > Agent( IAgent agent )
+        {
+            throw new NotImplementedException();
+        }
     }
 }
