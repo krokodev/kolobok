@@ -4,7 +4,7 @@ using Robotango.Core.Types.Agency;
 
 namespace Robotango.Core.Expressions
 {
-    public interface IVirtualExecutor {
+    public interface IVirtualAction {
         Action< IAgent > Position( Location location );
     }
 }

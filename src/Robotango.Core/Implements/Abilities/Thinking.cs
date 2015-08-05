@@ -39,7 +39,7 @@ namespace Robotango.Core.Implements.Abilities
 
         #region IComponent
 
-        void IComponent.Init( IComposite composite )
+        void IComponent.InitReferences( IComposite composite )
         {
             _composite = composite;
             _presentImage = new Reality( ( IAgent ) _composite, Settings.Agents.Thinking.InnerReality.Name );

@@ -11,7 +11,7 @@ namespace Robotango.Core.Implements.Abilities
     {
         #region IComponent
 
-        void IComponent.Init( IComposite composite ) {}
+        void IComponent.InitReferences( IComposite composite ) {}
 
         IComponent IComponent.Clone()
         {

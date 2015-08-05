@@ -7,6 +7,6 @@ namespace Robotango.Common.Domain.Types.Compositions
     public interface IComponent
     {
         IComponent Clone();
-        void Init( IComposite composition );
+        void InitReferences( IComposite composition );
     }
 }

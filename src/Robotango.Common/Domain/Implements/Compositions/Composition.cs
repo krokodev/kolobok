@@ -41,7 +41,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         protected void InitComponents()
         {
-            Components.ForEach( c => c.Init( this ) );
+            Components.ForEach( c => c.InitReferences( this ) );
         }
 
         protected List< IComponent > CloneComponents()

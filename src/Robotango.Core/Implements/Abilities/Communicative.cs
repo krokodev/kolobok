@@ -15,7 +15,7 @@ namespace Robotango.Core.Implements.Abilities
     {
         #region IComponent
 
-        void IComponent.Init( IComposite composition )
+        void IComponent.InitReferences( IComposite composition )
         {
             Thinking = composition.GetComponent< IThinking >();
         }

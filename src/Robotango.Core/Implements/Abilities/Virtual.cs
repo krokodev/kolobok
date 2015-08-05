@@ -17,7 +17,7 @@ namespace Robotango.Core.Implements.Abilities
     {
         #region IComponent
 
-        void IComponent.Init( IComposite composite ) {}
+        void IComponent.InitReferences( IComposite composite ) {}
 
         IComponent IComponent.Clone()
         {
@@ -52,8 +52,13 @@ namespace Robotango.Core.Implements.Abilities
 
         T IAttributeHolder.Get<T>()
         {
-            Debug.Assert.That( _attributes.OfType< T >().Any(), "Attribute '{0}' is not found", typeof( T ).Name );
+            Debug.Assert.That( IAttributeHolder.Has<T>(), "Attribute '{0}' is not found", typeof( T ).Name );
             return _attributes.OfType< T >().First();
+        }
+
+        bool IAttributeHolder.Has<T>()
+        {
+            return _attributes.OfType< T >().Any();
         }
 
         #endregion

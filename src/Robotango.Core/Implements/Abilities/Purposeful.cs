@@ -25,7 +25,7 @@ namespace Robotango.Core.Implements.Abilities
             return new Purposeful();
         }
 
-        void IComponent.Init( IComposite composition )
+        void IComponent.InitReferences( IComposite composition )
         {
             _agent = ( IAgent ) composition;
             _thinking = composition.GetComponent< IThinking >();
