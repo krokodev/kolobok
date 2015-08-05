@@ -10,13 +10,13 @@ using Robotango.Core.Types.Agency;
 
 namespace Robotango.Core.Expressions
 {
-    public class VirtualSetter : ExpressionHelper< IAgent, IVirtual >, IVirtualSetter
+    public class VirtualSetter : AgentAccessor< IAgent, IVirtual >, IVirtualSetter
     {
-        #region VirtualExecutor
+        #region IVirtualSetter
 
         Action< IAgent > IVirtualSetter.Position( ILocation location )
         {
-            return agent => ToExpressionType( agent )
+            return agent => Convert( agent )
                 .Set< Position, ILocation >( ( p, l ) => p.IPosition.Location = l, location );
         }
 

@@ -7,7 +7,7 @@ using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Types.Agency
 {
-    public interface IAgent : IIdentifiable, IResearchable, IActionExecuter< IAgent >
+    public interface IAgent : IIdentifiable, IResearchable, IExecutor< IAgent >
     {
         T As<T>() where T : IAbility;
         bool Is<T>() where T : IAbility;

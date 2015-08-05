@@ -3,13 +3,14 @@
 // IVirtualGetter.cs
 
 using System;
+using Robotango.Common.Domain.Implements.Expressions;
 using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Virtual;
 
 namespace Robotango.Core.Expressions
 {
-    public interface IVirtualGetter
+    public interface IVirtualAccessor
     {
-        Func< IAgent, IPosition > Position { get; }
+        Common.Domain.Implements.Expressions.PropertyAccessor< IAgent, IPosition > Position { get; }
     }
 }

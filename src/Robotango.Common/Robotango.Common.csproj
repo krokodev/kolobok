@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Implements\Compositions\Composition.cs" />
-    <Compile Include="Domain\Types\Expressions\IActionExecuter.cs" />
+    <Compile Include="Domain\Types\Expressions\IPropertyAccessor.cs" />
+    <Compile Include="Domain\Types\Expressions\IExecutor.cs" />
+    <Compile Include="Domain\Implements\Expressions\PropertyAccessor.cs" />
     <Compile Include="Domain\Types\Properties\ILocation.cs" />
     <Compile Include="Domain\Types\Properties\INamed.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownComponentException.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Domain\Types\Properties\IResearchable.cs" />
     <Compile Include="Domain\Types\Properties\IVerifiable.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

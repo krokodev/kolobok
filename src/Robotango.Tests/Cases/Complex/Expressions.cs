@@ -40,7 +40,7 @@ namespace Robotango.Tests.Cases.Complex
             Assert.That( pos.Location, Is.EqualTo( a ) );
         }
 
-        [Test]
+        [Ignore,Test]
         public void Alice_set_position()
         {
             var world = Factory.CreateWorld();

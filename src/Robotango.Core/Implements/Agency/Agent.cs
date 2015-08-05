@@ -89,16 +89,17 @@ namespace Robotango.Core.Implements.Agency
 
         #region IActionExecuter
 
-        IActionExecuter< IAgent > IActionExecuter< IAgent >.Do( Action< IAgent > action )
+        IExecutor< IAgent > IExecutor< IAgent >.Do( Action< IAgent > action )
         {
             action( this );
             return this;
         }
 
-        T IActionExecuter< IAgent >.Get<T>( Func< IAgent, T > getter )
+        TV IExecutor< IAgent >.Get<TV>( IPropertyAccessor< IAgent, TV > propertyAccessor )
         {
-            return getter( this );
+            return propertyAccessor.Get( this );
         }
+
 
         #endregion
 
