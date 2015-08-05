@@ -3,11 +3,9 @@
 // Purposes.cs
 
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Implements.Elements.Virtual;
 using Robotango.Core.Types.Abilities;
-using Robotango.Core.Types.Agency;
 using Robotango.Core.Types.Elements.Virtual;
 using Robotango.Tests.Utils.Bases;
 
@@ -142,8 +140,6 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IVirtual >().Add( new Position( a ) );
             alice.As< IThinking >().Imagination.Introduce( alice );
-//            alice.Do( As.Virtual.Set.Position(a) ).Then( As.Thinking.Introduce( alice ) );
-
 
             var intention = alice.As< IPurposeful >().Intends(
                 reality => {
@@ -151,21 +147,9 @@ namespace Robotango.Tests.Cases.Abilities
                     self.Get< IPosition >().Location = b;
                     return self.Get< IPosition >().Location == b;
                 } );
-            ConstraintExpression  qq;
 
             Assert.That( intention.IsSatisfied() );
             Assert.That( world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location, Is.Not.EqualTo( b ) );
-        }
-    }
-
-    public static class As {
-        public static ThinkingProxy Thinking { get; set; }
-    }
-
-    public class ThinkingProxy {
-        public object Introduce( IAgent alice )
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
+using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
@@ -81,6 +82,17 @@ namespace Robotango.Core.Implements.Agency
         bool IAgent.HasName()
         {
             return _name != null;
+        }
+
+        #endregion
+
+
+        #region IActionExecuter
+
+        IActionExecuter< IAgent > IActionExecuter< IAgent >.Do( Action< IAgent > action )
+        {
+            action( this );
+            return this;
         }
 
         #endregion

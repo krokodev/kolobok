@@ -2,11 +2,12 @@
 // Robotango.Core
 // IAgent.cs
 
+using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Types.Agency
 {
-    public interface IAgent : IIdentifiable, IResearchable
+    public interface IAgent : IIdentifiable, IResearchable, IActionExecuter< IAgent >
     {
         T As<T>() where T : IAbility;
         bool Is<T>() where T : IAbility;
