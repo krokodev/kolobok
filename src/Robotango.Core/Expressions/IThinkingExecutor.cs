@@ -10,5 +10,6 @@ namespace Robotango.Core.Expressions
     public interface IThinkingExecutor
     {
         Action< IAgent > Introduce( IAgent agent );
+        Action< IAgent > Introduce( Func< IAgent, IAgent > agentSelector );
     }
 }

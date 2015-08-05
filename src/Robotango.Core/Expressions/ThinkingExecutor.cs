@@ -17,6 +17,11 @@ namespace Robotango.Core.Expressions
             return agent => Convert( agent ).Imagination.Introduce( other );
         }
 
+        public Action< IAgent > Introduce( Func< IAgent, IAgent > agentSelector )
+        {
+            return agent => Convert( agent ).Imagination.Introduce( agentSelector( agent ) );
+        }
+
         #endregion
 
 
