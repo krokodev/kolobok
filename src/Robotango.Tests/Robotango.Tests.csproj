@@ -54,7 +54,7 @@
     <Compile Include="Cases\Agency\Worlds.cs" />
     <Compile Include="Cases\Complex\Activities.cs" />
     <Compile Include="Cases\Complex\Puzzles.cs" />
-    <Compile Include="Cases\Complex\Extensions.cs" />
+    <Compile Include="Cases\Complex\Expressions.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
     <Compile Include="Domain\Hat.cs" />

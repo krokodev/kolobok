@@ -95,6 +95,11 @@ namespace Robotango.Core.Implements.Agency
             return this;
         }
 
+        T IActionExecuter< IAgent >.Get<T>( Func< IAgent, T > getter )
+        {
+            return getter( this );
+        }
+
         #endregion
 
 

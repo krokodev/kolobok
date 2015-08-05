@@ -42,6 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expressions\Convert.cs" />
+    <Compile Include="Expressions\ExpressionHelper.cs" />
+    <Compile Include="Expressions\Its.cs" />
+    <Compile Include="Expressions\IVirtualExecutor.cs" />
+    <Compile Include="Expressions\IVirtualGetter.cs" />
+    <Compile Include="Expressions\Set.cs" />
+    <Compile Include="Expressions\VirtualExecutor.cs" />
+    <Compile Include="Expressions\VirtualGetter.cs" />
     <Compile Include="Implements\Elements\Purposeful\Intention.cs" />
     <Compile Include="Implements\Abilities\Purposeful.cs" />
     <Compile Include="Types\Elements\Purposful\IIntention.cs" />
@@ -90,9 +98,7 @@
       <Name>Robotango.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Expreessions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
