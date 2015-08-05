@@ -6,9 +6,9 @@ namespace Robotango.Core.Expressions
 {
     public class Set
     {
-        public static IVirtualAction Virtual
+        public static IVirtualSetter Virtual
         {
-            get { return new VirtualAction( Convert.Agent.To.Virtual ); }
+            get { return new VirtualSetter( Convert.Agent.To.Virtual ); }
         }
     }
 }
