@@ -30,7 +30,7 @@ namespace Robotango.Core.Expressions
 
         public Action< IAgent > Believe( IBelief belief )
         {
-            return self => Convert( self ).AddBelief( belief.Essence );
+            return self => Convert( self ).AddBelief( belief );
         }
 
 

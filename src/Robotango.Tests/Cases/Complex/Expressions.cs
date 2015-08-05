@@ -166,7 +166,7 @@ namespace Robotango.Tests.Cases.Complex
         }
 
 
-        [Ignore,Test]
+        [Test]
         public void Alice_Do_Believe_she_has_a_hat()
         {
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
@@ -179,7 +179,7 @@ namespace Robotango.Tests.Cases.Complex
         }
 
 
-        [Test]
+        [Ignore,Test]
         public void Alice_Do_Think()
         {
         }

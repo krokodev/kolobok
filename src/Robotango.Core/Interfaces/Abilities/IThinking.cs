@@ -13,6 +13,7 @@ namespace Robotango.Core.Interfaces.Abilities
     {
         void Think();
         void AddBelief( Action< IReality > realityAction );
+        void AddBelief( IBelief belief );
         IReality Imagination { get; }
         bool HasBelief( IBelief belief );
     }

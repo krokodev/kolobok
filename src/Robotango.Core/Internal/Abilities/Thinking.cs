@@ -20,14 +20,9 @@ namespace Robotango.Core.Internal.Abilities
     {
         #region IThinking
 
-        void IThinking.Think()
+        private IThinking IThinking
         {
-            _beliefs.ForEach( belief => belief.Invoke( _presentImage ) );
-        }
-
-        void IThinking.AddBelief( Action< IReality > realityAction )
-        {
-            _beliefs.Add( realityAction );
+            get { return this; }
         }
 
         IReality IThinking.Imagination
@@ -35,9 +30,24 @@ namespace Robotango.Core.Internal.Abilities
             get { return _presentImage; }
         }
 
+        void IThinking.Think()
+        {
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _presentImage ) );
+        }
+
+        void IThinking.AddBelief( IBelief belief )
+        {
+            _beliefs.Add( belief );
+        }
+
+        void IThinking.AddBelief( Action< IReality > realityAction )
+        {
+            IThinking.AddBelief( new Belief( realityAction ) );
+        }
+
         bool IThinking.HasBelief( IBelief belief )
         {
-            throw new NotImplementedException();
+            return _beliefs.Contains( belief );
         }
 
         #endregion
@@ -87,7 +97,7 @@ namespace Robotango.Core.Internal.Abilities
 
         #region Fields
 
-        private List< Action< IReality > > _beliefs = new List< Action< IReality > >();
+        private List< IBelief > _beliefs = new List< IBelief >();
         private IReality _presentImage;
         private IComposite _composite;
 
