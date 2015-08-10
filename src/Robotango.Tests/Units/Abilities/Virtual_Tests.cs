@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Virtuals.cs
+// Virtual_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
@@ -11,10 +11,10 @@ using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Abilities
+namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Virtuals : BaseTests
+    public class Virtual_Tests : BaseTests
     {
         [Test, ExpectedException( typeof( AssertException ) )]
         public void Entety_cant_have_others_attribute()

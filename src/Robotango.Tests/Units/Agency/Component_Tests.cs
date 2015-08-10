@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Components.cs
+// Component_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Compositions;
@@ -9,10 +9,10 @@ using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Helpers;
 
-namespace Robotango.Tests.Cases.Agency
+namespace Robotango.Tests.Units.Agency
 {
     [TestFixture]
-    public class Components : BaseTests
+    public class Component_Tests : BaseTests
     {
         [Test]
         public void Thinking_is_a_component()

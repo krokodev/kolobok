@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Actives.cs
+// Active_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
@@ -11,10 +11,10 @@ using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Abilities
+namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Actives : BaseTests
+    public class Active_Tests : BaseTests
     {
         [Test]
         public void Activities_Operations_and_Intentions_work_properly()
@@ -38,7 +38,18 @@ namespace Robotango.Tests.Cases.Abilities
         }
 
         [Test]
-        public void Alice_has_intention_and_execute_it()
+        public void Active_is_dumped()
+        {
+            var world = Factory.CreateWorld();
+            world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" ) );
+
+            var dump = Log( world.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+        }
+
+        [Test]
+        public void Alice_has_intention_and_it_has_been_executed()
         {
             var world = Factory.CreateWorld();
             var alice = world.Reality.AddAgent(
@@ -51,19 +62,13 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
-
             var intention = alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
-            alice.As< IPurposeful >().AddIntention( operation );
-            
+
             intention.Execute( world.Reality );
 
-            var dump = Log( world.Dump() );
+            Log( world.Dump() );
 
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
-            Assert.That( dump, Is.StringContaining( "Intentions" ) );
-            Assert.That( dump, Is.StringContaining( "Move Alice to B" ) );
-            Assert.That( dump, Is.StringContaining( "Some Intention" ) );
         }
     }
 }

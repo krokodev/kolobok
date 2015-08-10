@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Realities.cs
+// Reality_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
@@ -8,10 +8,10 @@ using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.System;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Agency
+namespace Robotango.Tests.Units.Agency
 {
     [TestFixture]
-    public class Realities : BaseTests
+    public class Reality_Tests : BaseTests
     {
         [Test]
         public void Agent_projections_are_not_the_same()

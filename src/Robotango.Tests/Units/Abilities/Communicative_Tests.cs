@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Communications.cs
+// Communicative_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
@@ -8,10 +8,10 @@ using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Abilities
+namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Communications : BaseTests
+    public class Communicative_Tests : BaseTests
     {
         [Test]
         public void Social_can_query_question()

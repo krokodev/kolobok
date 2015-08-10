@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Rationals.cs
+// Thinking_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
@@ -9,10 +9,10 @@ using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
 using Robotango.Tests.Utils.Helpers;
 
-namespace Robotango.Tests.Cases.Abilities
+namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Thinkings : BaseTests
+    public class Thinking_Tests : BaseTests
     {
         [Test]
         public void Thinking_can_think()

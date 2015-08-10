@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Expressions.cs
+// Expression_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Core.Elements.Thinking;
@@ -9,11 +9,11 @@ using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Complex
+namespace Robotango.Tests.Units.Complex
 
 {
     [TestFixture]
-    public class Expressions : BaseTests
+    public class Expression_Tests : BaseTests
     {
         [Test]
         public void Set_agent_position()

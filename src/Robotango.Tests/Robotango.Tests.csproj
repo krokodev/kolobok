@@ -50,27 +50,27 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Cases\Abilities\Actives.cs" />
-    <Compile Include="Cases\Abilities\Purposes.cs" />
-    <Compile Include="Cases\Agency\Projections.cs" />
-    <Compile Include="Cases\Agency\Worlds.cs" />
-    <Compile Include="Cases\Complex\Activities.cs" />
-    <Compile Include="Cases\Complex\Puzzles.cs" />
-    <Compile Include="Cases\Complex\Expressions.cs" />
+    <Compile Include="Units\Abilities\Active_Tests.cs" />
+    <Compile Include="Units\Abilities\Purposeful_Tests.cs" />
+    <Compile Include="Units\Agency\Projection_Tests.cs" />
+    <Compile Include="Units\Agency\World_Tests.cs" />
+    <Compile Include="Units\Complex\Behavioural_Tests.cs" />
+    <Compile Include="Units\Complex\Puzzle_Tests.cs" />
+    <Compile Include="Units\Complex\Expression_Tests.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
     <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
     <Compile Include="Domain\Hat.cs" />
     <Compile Include="Domain\IHat.cs" />
-    <Compile Include="Cases\Agency\Dumps.cs" />
-    <Compile Include="Cases\Abilities\Virtuals.cs" />
-    <Compile Include="Cases\Agency\Agents.cs" />
-    <Compile Include="Cases\Abilities\Depths.cs" />
-    <Compile Include="Cases\Agency\Realities.cs" />
-    <Compile Include="Cases\Abilities\Reflectives.cs" />
-    <Compile Include="Cases\Abilities\Rationals.cs" />
-    <Compile Include="Cases\Abilities\Communications.cs" />
+    <Compile Include="Units\Agency\Dump_Tests.cs" />
+    <Compile Include="Units\Abilities\Virtual_Tests.cs" />
+    <Compile Include="Units\Agency\Agent_Tests.cs" />
+    <Compile Include="Units\Abilities\Depth_Tests.cs" />
+    <Compile Include="Units\Agency\Reality_Tests.cs" />
+    <Compile Include="Units\Abilities\Reflective_Tests.cs" />
+    <Compile Include="Units\Abilities\Thinking_Tests.cs" />
+    <Compile Include="Units\Abilities\Communicative_Tests.cs" />
     <Compile Include="Utils\Bases\BaseTests.cs" />
-    <Compile Include="Cases\Agency\Components.cs" />
+    <Compile Include="Units\Agency\Component_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

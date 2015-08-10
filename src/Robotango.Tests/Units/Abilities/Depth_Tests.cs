@@ -1,16 +1,16 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Depths.cs
+// Depth_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.System;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Abilities
+namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Depths : BaseTests
+    public class Depth_Tests : BaseTests
     {
         [Test]
         public void World_has_default_name()

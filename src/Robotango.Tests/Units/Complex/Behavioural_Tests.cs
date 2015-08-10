@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Activities.cs
+// Behavioural_Tests.cs
 
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -9,10 +9,10 @@ using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Complex
+namespace Robotango.Tests.Units.Complex
 {
     [TestFixture]
-    public class Activities : BaseTests
+    public class Behavioural_Tests : BaseTests
     {
         [Test]
         public void Alice_can_move_in_her_outer_world()

@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Agents.cs
+// Agent_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
@@ -9,10 +9,10 @@ using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Agency
+namespace Robotango.Tests.Units.Agency
 {
     [TestFixture]
-    public class Agents : BaseTests
+    public class Agent_Tests : BaseTests
     {
         [Test]
         public void Agent_has_default_name()

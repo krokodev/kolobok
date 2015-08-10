@@ -1,15 +1,15 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Projections.cs
+// Projection_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Utils.Bases;
 
-namespace Robotango.Tests.Cases.Agency
+namespace Robotango.Tests.Units.Agency
 {
     [TestFixture]
-    public class Projections : BaseTests
+    public class Projection_Tests : BaseTests
     {
         [Test]
         public void World_has_agents_projections()
