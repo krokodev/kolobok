@@ -50,11 +50,11 @@
     <Compile Include="Expressions\IVirtualAccessor.cs" />
     <Compile Include="Expressions\ThinkingExecutor.cs" />
     <Compile Include="Expressions\VirtualAccessor.cs" />
-    <Compile Include="Elements\Purposeful\Intention.cs" />
+    <Compile Include="Elements\Purposeful\Desire.cs" />
     <Compile Include="Internal\Abilities\Purposeful.cs" />
     <Compile Include="Elements\Thinking\Belief.cs" />
     <Compile Include="Elements\Thinking\IBelief.cs" />
-    <Compile Include="Elements\Purposeful\IIntention.cs" />
+    <Compile Include="Elements\Purposeful\IDesire.cs" />
     <Compile Include="Internal\Abilities\Reflective.cs" />
     <Compile Include="Elements\Virtual\Attribute.cs" />
     <Compile Include="Internal\Agency\World.cs" />

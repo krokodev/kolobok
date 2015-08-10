@@ -41,11 +41,11 @@ namespace Robotango.Core.System
             }
         }
 
-        public static class Intentions
+        public static class Desires
         {
             public static class Names
             {
-                public const string Default = "Some Intention";
+                public const string Default = "Some Desire";
             }
         }
 

@@ -174,7 +174,7 @@ namespace Robotango.Tests.Cases.Complex
             Assert.That( alice.As< IThinking >().HasBelief( belief ) );
         }
 
-        [Ignore, Test]
+        [Test]
         public void Alice_Is_Believing()
         {
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
@@ -187,24 +187,6 @@ namespace Robotango.Tests.Cases.Complex
             Assert.That( hasBelief );
         }
 
-        [Ignore, Test]
-        public void Alice_Do_Believe_she_is_in_A()
-        {
-            var alice = Factory.CreateAgent< IThinking >( "Alice" );
-            var a = new Location( "A" );
-
-            //alice.Do( As.Thinking.Believe( That.Agent( alice ).Set( Its.Virtual.Location, a ) ) ) );
-        }
-
-        [Ignore, Test]
-        public void Alice_Do_Think() {}
     }
 
-    public class That
-    {
-        public static IExecutor< IAgent > Agent( IAgent agent )
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

@@ -36,11 +36,11 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IPurposeful
 
-        IIntention IPurposeful.Intends( Func< IReality, bool > predicate, string name )
+        IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
         {
-            var intention = new Intention( _thinking.Imagination, _agent, predicate, name );
-            _intentions.Add( intention );
-            return intention;
+            var desire = new Desire( _thinking.Imagination, _agent, predicate, name );
+            _desires.Add( desire );
+            return desire;
         }
 
         #endregion
@@ -52,7 +52,9 @@ namespace Robotango.Core.Internal.Abilities
         {
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Purposeful ).Name );
-            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+            wr.Level ++;
+            wr.Line( "Desires" );
+            _desires.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
 
@@ -63,7 +65,7 @@ namespace Robotango.Core.Internal.Abilities
 
         private IThinking _thinking;
         private IAgent _agent;
-        private readonly List< IIntention > _intentions = new List< IIntention >();
+        private readonly List< IDesire > _desires = new List< IDesire >();
 
         #endregion
     }

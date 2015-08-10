@@ -4,9 +4,8 @@ Todo list
 
 Todo
 ~~~~
-> test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
-- dump beliefs
-- IReflective -- see later
+- ren Intention to Desires
+- Test: Alice_desires_to_be_in_B_gecides_to_move_and_moves_and_satisfied
 
 
 Done
@@ -32,6 +31,8 @@ Done
 
 Later
 ~~~~~
+- test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
+- dump beliefs
 - IBelief.TrustRate
 - Arch: remove cycking in ISkills-Agents and so on http://screencast.com/t/cWaOhl3PlaS
 - IReflective -- is able to make think its agents in its subworlds

@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Intention.cs
+// Desire.cs
 
 using System;
 using Robotango.Common.Domain.Types.Properties;
@@ -10,21 +10,21 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Elements.Purposeful
 {
-    internal class Intention : IIntention
+    internal class Desire : IDesire
     {
-        #region IIntention
+        #region IDesire
 
-        IReality IIntention.Context
+        IReality IDesire.Context
         {
             get { return _context; }
         }
 
-        bool IIntention.IsSatisfied()
+        bool IDesire.IsSatisfied()
         {
             return _predicate( _context );
         }
 
-        IAgent IIntention.Holder
+        IAgent IDesire.Holder
         {
             get { return _holder; }
         }
@@ -39,7 +39,7 @@ namespace Robotango.Core.Elements.Purposeful
             return OutlineWriter.Line( level,
                 "'{0}' <{1}>",
                 _name,
-                typeof( Intention ).Name
+                typeof( Desire ).Name
                 );
         }
 
@@ -48,12 +48,12 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region Ctor
 
-        public Intention( IReality context, IAgent holder, Func< IReality, bool > predicate, string name )
+        public Desire( IReality context, IAgent holder, Func< IReality, bool > predicate, string name )
         {
             _context = context;
             _holder = holder;
             _predicate = predicate;
-            _name = name ?? Settings.Intentions.Names.Default;
+            _name = name ?? Settings.Desires.Names.Default;
         }
 
         #endregion
