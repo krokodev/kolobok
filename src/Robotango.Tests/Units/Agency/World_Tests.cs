@@ -48,7 +48,7 @@ namespace Robotango.Tests.Units.Agency
 
             Log( "Thinking...\n" );
 
-            world.Thinking.Think();
+            world.Thinking.ImplementBeliefs();
 
             Log( world.Dump() );
 

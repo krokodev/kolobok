@@ -154,7 +154,7 @@ namespace Robotango.Tests.Units.Agency
             var charly = Factory.CreateAgent< IThinking >( "Charly" );
 
             bob.As< IThinking >().AddBelief( iworld => iworld.AddAgent( charly.Clone() ) );
-            bob.As< IThinking >().Think();
+            bob.As< IThinking >().ImplementBeliefs();
 
             var bcharly = bob.As< IThinking >().InnerReality.GetAgent( charly );
             bcharly.Name = "bCharly";

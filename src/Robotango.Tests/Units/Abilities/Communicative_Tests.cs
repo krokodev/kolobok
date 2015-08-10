@@ -78,7 +78,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IVirtual >().GetAttribute< IHat >().Color = Colors.Red;
 
             bob.As< IThinking >().AddBelief( world => { world.AddAgent( alice ); } );
-            bob.As< IThinking >().Think();
+            bob.As< IThinking >().ImplementBeliefs();
 
             var question = alice.As< ICommunicative >()
                 .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
@@ -105,7 +105,7 @@ namespace Robotango.Tests.Units.Abilities
                 world.GetAgent( alice ).As< IVirtual >().AddAttribute( new Hat() );
                 world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color = Colors.Black;
             } );
-            bob.As< IThinking >().Think();
+            bob.As< IThinking >().ImplementBeliefs();
 
             var question = alice.As< ICommunicative >()
                 .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );

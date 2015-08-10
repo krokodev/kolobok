@@ -12,7 +12,7 @@ namespace Robotango.Tests.Utils.Helpers
         public static void Thinking_can_think( IAgent agent )
         {
             var r = agent.As< IThinking >();
-            r.Think();
+            r.ImplementBeliefs();
         }
     }
 }

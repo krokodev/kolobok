@@ -2,6 +2,7 @@
 // Robotango.Core
 // IReality.cs
 
+using System.Collections.Generic;
 using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Interfaces.Agency
@@ -19,5 +20,6 @@ namespace Robotango.Core.Interfaces.Agency
         string FamilyName { get; }
         IAgent Holder { get; }
         IReality Superior { get; }
+        IList< IAgent > Agents { get; }
     }
 }

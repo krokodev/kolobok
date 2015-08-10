@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
@@ -27,12 +28,12 @@ namespace Robotango.Core.Internal.Abilities
 
         IReality IThinking.InnerReality
         {
-            get { return _presentImage; }
+            get { return _innerReality; }
         }
 
-        void IThinking.Think()
+        void IThinking.ImplementBeliefs()
         {
-            _beliefs.ForEach( belief => belief.Essence.Invoke( _presentImage ) );
+            InitInnerReality();
         }
 
         void IThinking.AddBelief( IBelief belief )
@@ -58,14 +59,14 @@ namespace Robotango.Core.Internal.Abilities
         void IComponent.InitReferences( IComposite composite )
         {
             _composite = composite;
-            _presentImage = new Reality( ( IAgent ) _composite, Settings.Agents.Thinking.InnerReality.Name );
+            _innerReality = new Reality( ( IAgent ) _composite, Settings.Agents.Thinking.InnerReality.Name );
         }
 
         IComponent IComponent.Clone()
         {
             return new Thinking {
                 _beliefs = _beliefs.ToList(),
-                _presentImage = _presentImage.Clone()
+                _innerReality = _innerReality.Clone()
             };
         }
 
@@ -76,7 +77,7 @@ namespace Robotango.Core.Internal.Abilities
 
         void IVerifiable.Verify()
         {
-            _presentImage.Verify();
+            _innerReality.Verify();
         }
 
         #endregion
@@ -88,7 +89,7 @@ namespace Robotango.Core.Internal.Abilities
         {
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Thinking ).Name );
-            wr.Append( _presentImage.Dump( wr.Level + 1 ) );
+            wr.Append( _innerReality.Dump( wr.Level + 1 ) );
             return wr.ToString();
         }
 
@@ -98,8 +99,40 @@ namespace Robotango.Core.Internal.Abilities
         #region Fields
 
         private List< IBelief > _beliefs = new List< IBelief >();
-        private IReality _presentImage;
+        private IReality _innerReality;
         private IComposite _composite;
+
+        #endregion
+
+
+        #region IProceedable
+
+        void IProceedable.Proceed()
+        {
+            InitInnerReality();
+            MakePrediction();
+            MakeDecision();
+            UpdateInnerReality();
+        }
+
+        #endregion
+
+
+        #region Routines
+
+        private void InitInnerReality()
+        {
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+        }
+
+        private void MakePrediction()
+        {
+            _innerReality.Agents.ForEach( agent => agent.Proceed() );
+        }
+
+        private void MakeDecision() {}
+
+        private void UpdateInnerReality() {}
 
         #endregion
     }

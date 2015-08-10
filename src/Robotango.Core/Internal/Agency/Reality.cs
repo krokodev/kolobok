@@ -27,7 +27,7 @@ namespace Robotango.Core.Internal.Agency
         IAgent IReality.GetAgent( IAgent agent )
         {
             try {
-                return _projections.First( a => a.Id == agent.Id );
+                return _agents.First( a => a.Id == agent.Id );
             }
             catch( Exception exception ) {
                 Debug.Log( exception );
@@ -43,18 +43,18 @@ namespace Robotango.Core.Internal.Agency
         IReality IReality.Clone( IAgent holder )
         {
             return new Reality( holder, _name ) {
-                _projections = _projections.Select( a => a.Clone() ).ToList()
+                _agents = _agents.Select( a => a.Clone() ).ToList()
             };
         }
 
         bool IReality.Contains( IAgent agent )
         {
-            return _projections.Any( a => a.Id == agent.Id );
+            return _agents.Any( a => a.Id == agent.Id );
         }
 
         void IReality.Clear()
         {
-            _projections.Clear();
+            _agents.Clear();
         }
 
         string IReality.Name
@@ -102,6 +102,11 @@ namespace Robotango.Core.Internal.Agency
             get { return _holder == null ? null : _holder.Reality; }
         }
 
+        IList< IAgent > IReality.Agents
+        {
+            get { return _agents; }
+        }
+
         #endregion
 
 
@@ -121,7 +126,7 @@ namespace Robotango.Core.Internal.Agency
         {
             var wr = new OutlineWriter( level );
             wr.Line( "{0} <{1}>", IReality.Name, typeof( Reality ).Name );
-            _projections.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
+            _agents.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
 
@@ -132,7 +137,7 @@ namespace Robotango.Core.Internal.Agency
 
         void IVerifiable.Verify()
         {
-            Debug.Assert.That( _projections.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IReality.Id );
+            Debug.Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IReality.Id );
         }
 
         #endregion
@@ -166,7 +171,7 @@ namespace Robotango.Core.Internal.Agency
 
         #region Fields
 
-        private List< IAgent > _projections = new List< IAgent >();
+        private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
         private readonly IAgent _holder;
@@ -182,7 +187,7 @@ namespace Robotango.Core.Internal.Agency
 
             var projection = agent.Clone();
 
-            _projections.Add( projection );
+            _agents.Add( projection );
             projection.Reality = this;
             return projection;
         }

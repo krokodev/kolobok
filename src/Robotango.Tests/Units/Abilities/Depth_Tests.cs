@@ -96,7 +96,7 @@ namespace Robotango.Tests.Units.Abilities
             var charly = Factory.CreateAgent< IThinking >( "Charly" );
 
             bob.As< IThinking >().AddBelief( iworld => iworld.AddAgent( charly ) );
-            bob.As< IThinking >().Think();
+            bob.As< IThinking >().ImplementBeliefs();
 
             var bcharly = bob.As< IThinking >().InnerReality.GetAgent( charly );
             bcharly.Name = "bCharly";
@@ -124,9 +124,9 @@ namespace Robotango.Tests.Units.Abilities
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
             alice.As< IThinking >().AddBelief( iworld => iworld.AddAgent( bob ) );
-            alice.As< IThinking >().Think();
+            alice.As< IThinking >().ImplementBeliefs();
             alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
-            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().ImplementBeliefs();
 
             Log( universe
                 .GetAgent( alice ).FullName

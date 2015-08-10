@@ -87,6 +87,16 @@ namespace Robotango.Core.Internal.Agency
         #endregion
 
 
+        #region IProceedable
+
+        void IProceedable.Proceed()
+        {
+            Components.OfType< IProceedable >().ForEach( c => c.Proceed() );
+        }
+
+        #endregion
+
+
         #region IExecuter
 
         IExecutor< IAgent > IAgent.IExecutor
