@@ -7,7 +7,7 @@ using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Elements.Purposeful
 {
-    public interface IIntention: IResearchable
+    public interface IIntention : IResearchable
     {
         void Execute( IReality reality );
     }

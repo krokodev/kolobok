@@ -6,5 +6,5 @@ using Robotango.Common.Domain.Types.Compositions;
 
 namespace Robotango.Core.Interfaces.Agency
 {
-    public interface IAbility : IComponent{}
+    public interface IAbility : IComponent {}
 }

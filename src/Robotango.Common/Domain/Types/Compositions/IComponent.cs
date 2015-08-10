@@ -10,7 +10,7 @@ namespace Robotango.Common.Domain.Types.Compositions
     {
         IComponent Clone();
         void InitReferences( IComposite composition );
-        IList<IComponent> Dependences { get; }
+        IList< IComponent > Dependences { get; }
         IComposite Holder { get; }
     }
 }

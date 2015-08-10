@@ -21,7 +21,8 @@ namespace Robotango.Core.Elements.Purposeful
 
         #endregion
 
-                #region IResearchable
+
+        #region IResearchable
 
         string IResearchable.Dump( int level )
         {
@@ -37,7 +38,7 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region Ctor
 
-        public Intention( IOperation operation, string name = null)
+        public Intention( IOperation operation, string name = null )
         {
             _operation = operation;
             _name = name ?? Settings.Intentions.Names.Default;
@@ -52,8 +53,5 @@ namespace Robotango.Core.Elements.Purposeful
         private readonly string _name;
 
         #endregion
-
-
-
     }
 }

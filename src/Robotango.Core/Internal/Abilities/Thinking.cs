@@ -95,7 +95,7 @@ namespace Robotango.Core.Internal.Abilities
 
         protected override void MakeDependences()
         {
-            _innerReality.Holder = (IAgent) IComponent.Holder;
+            _innerReality.Holder = ( IAgent ) IComponent.Holder;
         }
 
         protected override IComponent Clone()

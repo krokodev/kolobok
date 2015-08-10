@@ -12,7 +12,10 @@ namespace Robotango.Common.Domain.Implements.Compositions
     {
         #region IComponent
 
-        protected IComponent IComponent { get { return this; } }
+        protected IComponent IComponent
+        {
+            get { return this; }
+        }
 
         IComponent IComponent.Clone()
         {

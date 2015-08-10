@@ -9,7 +9,6 @@ using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
-using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
@@ -19,7 +18,7 @@ namespace Robotango.Core.Internal.Abilities
 
         IOperation IActive.CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg )
         {
-            return new Operation< T >( (IAgent)IComponent.Holder, action, operand, arg );
+            return new Operation< T >( ( IAgent ) IComponent.Holder, action, operand, arg );
         }
 
         #endregion
