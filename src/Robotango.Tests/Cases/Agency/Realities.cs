@@ -71,8 +71,8 @@ namespace Robotango.Tests.Cases.Agency
             alice.As< IThinking >().AddBelief( world => world.AddAgent( alice.Clone() ) );
             alice.As< IThinking >().Think();
             Log( alice );
-            Log( alice.As< IThinking >().InnerReality.Agent( alice ) );
-            Assert.AreEqual( alice.Id, alice.As< IThinking >().InnerReality.Agent( alice ).Id );
+            Log( alice.As< IThinking >().InnerReality.GetAgent( alice ) );
+            Assert.AreEqual( alice.Id, alice.As< IThinking >().InnerReality.GetAgent( alice ).Id );
         }
 
         [Test]
@@ -83,9 +83,9 @@ namespace Robotango.Tests.Cases.Agency
             alice.As< IThinking >().AddBelief( world => world.AddAgent( alice.Clone() ) );
             alice.As< IThinking >().Think();
             Log( alice.Name );
-            Log( alice.As< IThinking >().InnerReality.Agent( alice ).Name );
+            Log( alice.As< IThinking >().InnerReality.GetAgent( alice ).Name );
             Assert.AreEqual( name, alice.Name );
-            Assert.AreEqual( alice.Name, alice.As< IThinking >().InnerReality.Agent( alice ).Name );
+            Assert.AreEqual( alice.Name, alice.As< IThinking >().InnerReality.GetAgent( alice ).Name );
         }
 
         [Test]
@@ -144,12 +144,12 @@ namespace Robotango.Tests.Cases.Agency
             var alice = universe.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
             var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
 
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
 
             Assert.IsNull( universe.Holder );
-            Assert.AreEqual( "Alice", universe.Agent( alice ).As< IThinking >().InnerReality.Holder.Name );
+            Assert.AreEqual( "Alice", universe.GetAgent( alice ).As< IThinking >().InnerReality.Holder.Name );
             Assert.AreEqual( "Bob",
-                universe.Agent( alice ).As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.Holder.Name );
+                universe.GetAgent( alice ).As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.Holder.Name );
         }
 
         [Test]
@@ -172,7 +172,7 @@ namespace Robotango.Tests.Cases.Agency
             alice.As< IThinking >().Think();
 
             Assert.NotNull( alice.As< IThinking >().InnerReality.Holder );
-            Assert.NotNull( alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.Holder );
+            Assert.NotNull( alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.Holder );
         }
 
         [Test]
@@ -181,15 +181,15 @@ namespace Robotango.Tests.Cases.Agency
             var universe = Factory.CreateReality( "Universe" );
             var alice = universe.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
             var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
-            var aPrj = alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
+            var aPrj = alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
 
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().Think();
 
             var uabaWorld = universe
-                .Agent( alice ).As< IThinking >().InnerReality
-                .Agent( bob ).As< IThinking >().InnerReality
-                .Agent( alice ).As< IThinking >().InnerReality
+                .GetAgent( alice ).As< IThinking >().InnerReality
+                .GetAgent( bob ).As< IThinking >().InnerReality
+                .GetAgent( alice ).As< IThinking >().InnerReality
                 ;
 
             Log( uabaWorld.FamilyName );
@@ -207,7 +207,7 @@ namespace Robotango.Tests.Cases.Agency
             var universe = Factory.CreateReality();
             var alice = universe.AddAgent( Factory.CreateAgent< IThinking >() );
             var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >() );
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.AddAgent( alice );
 
             var aimg = alice.As< IThinking >().InnerReality;
             var bimg = bob.As< IThinking >().InnerReality;
@@ -225,13 +225,13 @@ namespace Robotango.Tests.Cases.Agency
             var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
 
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().Think();
 
             var uabaWorld = universe
-                .Agent( alice ).As< IThinking >().InnerReality
-                .Agent( bob ).As< IThinking >().InnerReality
-                .Agent( alice ).As< IThinking >().InnerReality
+                .GetAgent( alice ).As< IThinking >().InnerReality
+                .GetAgent( bob ).As< IThinking >().InnerReality
+                .GetAgent( alice ).As< IThinking >().InnerReality
                 ;
 
             Log( uabaWorld.FullName );

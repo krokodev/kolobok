@@ -11,9 +11,9 @@ namespace Robotango.Core.Elements.Virtual
     {
         IList< T > All<T>();
         void AddAttribute( IAttribute attribute );
-        T Add<T>() where T : IAttribute, new();
+        T AddAttribute<T>() where T : IAttribute, new();
         T GetAttribute<T>() where T : IAttribute;
-        bool Has<T>() where T : IAttribute;
-        void Set<T, TF>( Action< T, TF > setter, TF fieldValue ) where T : IAttribute, new();
+        bool HasAttribute<T>() where T : IAttribute;
+        void SetAttributeTo<T, TF>( Action< T, TF > setter, TF fieldValue ) where T : IAttribute, new();
     }
 }

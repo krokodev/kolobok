@@ -17,7 +17,8 @@ namespace Robotango.Tests.Cases.Abilities
         public void Social_can_query_question()
         {
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
+            var question = alice.As< ICommunicative >()
+                .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
 
             Assert.AreEqual( alice.As< ICommunicative >(), question.Querist );
             Assert.NotNull( question.Querist );
@@ -28,7 +29,8 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IVirtual, ICommunicative >();
             var bob = Factory.CreateAgent< IVirtual, ICommunicative >();
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
+            var question = alice.As< ICommunicative >()
+                .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Assert.AreEqual( answer.Question, question );
@@ -44,7 +46,7 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< ICommunicative >();
             var bob = Factory.CreateAgent< ICommunicative >();
 
-            var question = alice.As< ICommunicative >().Ask< bool >( world => world.Agent( bob ) != null );
+            var question = alice.As< ICommunicative >().Ask< bool >( world => world.GetAgent( bob ) != null );
             var answer = bob.As< ICommunicative >().Reply< bool >( question );
 
             Log( answer.Result.Exception );
@@ -58,7 +60,7 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< ICommunicative >();
             var bob = Factory.CreateAgent< ICommunicative, IThinking >();
 
-            var question = alice.As< ICommunicative >().Ask< bool >( world => world.Agent( bob ) != null );
+            var question = alice.As< ICommunicative >().Ask< bool >( world => world.GetAgent( bob ) != null );
             var answer = bob.As< ICommunicative >().Reply< bool >( question );
 
             Log( answer.Result.Exception );
@@ -78,7 +80,8 @@ namespace Robotango.Tests.Cases.Abilities
             bob.As< IThinking >().AddBelief( world => { world.AddAgent( alice ); } );
             bob.As< IThinking >().Think();
 
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
+            var question = alice.As< ICommunicative >()
+                .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Log( answer.Result.Value );
@@ -99,12 +102,13 @@ namespace Robotango.Tests.Cases.Abilities
             bob.As< IThinking >().InnerReality.AddAgent( alice );
 
             bob.As< IThinking >().AddBelief( world => {
-                world.Agent( alice ).As< IVirtual >().AddAttribute( new Hat() );
-                world.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color = Colors.Black;
+                world.GetAgent( alice ).As< IVirtual >().AddAttribute( new Hat() );
+                world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color = Colors.Black;
             } );
             bob.As< IThinking >().Think();
 
-            var question = alice.As< ICommunicative >().Ask< Colors >( world => world.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
+            var question = alice.As< ICommunicative >()
+                .Ask< Colors >( world => world.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
             var answer = bob.As< ICommunicative >().Reply< Colors >( question );
 
             Log( answer.Result.Value );

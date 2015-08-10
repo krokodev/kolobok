@@ -11,10 +11,10 @@ namespace Robotango.Core.Expressions
     {
         public static IVirtualAccessor Virtual
         {
-            get { return new VirtualAccessor( Convert.Agent.To.Virtual ); }
+            get { return new VirtualAccessor(); }
         }
 
-        public static Func<IAgent,IAgent> Self
+        public static Func< IAgent, IAgent > Self
         {
             get { return agent => agent; }
         }

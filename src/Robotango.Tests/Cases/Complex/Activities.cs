@@ -30,25 +30,25 @@ namespace Robotango.Tests.Cases.Complex
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
 
             world.Thinking.AddBelief( reality => {
-                var alicePosition = reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >();
+                var alicePosition = reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );
 
             Log( world.Dump() );
             Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( b, world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.AreEqual( b, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( c, world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.AreEqual( c, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
 
             world.Thinking.Think();
             Log( world.Dump() );
-            Assert.AreEqual( a, world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.AreEqual( a, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace Robotango.Tests.Cases.Complex
             var c = new Location( "C" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b );
             bob.As< IVirtual >().AddAttribute( new Position( b ) );
 
             Log( world.Dump() );
@@ -106,7 +106,7 @@ namespace Robotango.Tests.Cases.Complex
             var b = new Location( "B" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire( reality => reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b );
+            alice.As< IPurposeful >().AddDesire( reality => reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b );
 
             Log( world.Dump() );
 

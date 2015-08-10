@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\Active\Activities.cs" />
+    <Compile Include="Elements\Active\Activity.cs" />
+    <Compile Include="Elements\Active\IActivity.cs" />
+    <Compile Include="Elements\Active\IOperation.cs" />
+    <Compile Include="Elements\Active\Operation.cs" />
+    <Compile Include="Elements\Purposeful\IIntention.cs" />
+    <Compile Include="Elements\Purposeful\Intention.cs" />
     <Compile Include="Expressions\As.cs" />
     <Compile Include="Expressions\Convert.cs" />
     <Compile Include="Expressions\AgentProxy.cs" />
@@ -51,6 +58,7 @@
     <Compile Include="Expressions\ThinkingExecutor.cs" />
     <Compile Include="Expressions\VirtualAccessor.cs" />
     <Compile Include="Elements\Purposeful\Desire.cs" />
+    <Compile Include="Interfaces\Abilities\IActive.cs" />
     <Compile Include="Internal\Abilities\Purposeful.cs" />
     <Compile Include="Elements\Thinking\Belief.cs" />
     <Compile Include="Elements\Thinking\IBelief.cs" />
@@ -63,6 +71,7 @@
     <Compile Include="Elements\Virtual\IPosition.cs" />
     <Compile Include="Elements\Virtual\Location.cs" />
     <Compile Include="Elements\Virtual\Position.cs" />
+    <Compile Include="Internal\Abilities\Active.cs" />
     <Compile Include="System\Settings.cs" />
     <Compile Include="Elements\Communicative\Answer.cs" />
     <Compile Include="Elements\Communicative\AnswerResult.cs" />

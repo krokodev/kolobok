@@ -82,9 +82,9 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.AreEqual( 2, bob.Depth );
             Assert.AreEqual( 3, charly.Depth );
 
-            Assert.AreEqual( 1, universe.As< IThinking >().InnerReality.Agent( alice ).Depth );
+            Assert.AreEqual( 1, universe.As< IThinking >().InnerReality.GetAgent( alice ).Depth );
             Assert.AreEqual( 2, alice.As< IThinking >().InnerReality.Depth );
-            Assert.AreEqual( 2, universe.As< IThinking >().InnerReality.Agent( alice ).As< IThinking >().InnerReality.Depth );
+            Assert.AreEqual( 2, universe.As< IThinking >().InnerReality.GetAgent( alice ).As< IThinking >().InnerReality.Depth );
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace Robotango.Tests.Cases.Abilities
             bob.As< IThinking >().AddBelief( iworld => iworld.AddAgent( charly ) );
             bob.As< IThinking >().Think();
 
-            var bcharly = bob.As< IThinking >().InnerReality.Agent( charly );
+            var bcharly = bob.As< IThinking >().InnerReality.GetAgent( charly );
             bcharly.Name = "bCharly";
 
             Log( universe.FullName );
@@ -125,36 +125,36 @@ namespace Robotango.Tests.Cases.Abilities
 
             alice.As< IThinking >().AddBelief( iworld => iworld.AddAgent( bob ) );
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().Think();
 
             Log( universe
-                .Agent( alice ).FullName
+                .GetAgent( alice ).FullName
                 );
             Log( universe
-                .Agent( alice ).As< IThinking >().InnerReality
-                .Agent( bob ).FullName
+                .GetAgent( alice ).As< IThinking >().InnerReality
+                .GetAgent( bob ).FullName
                 );
             Log( universe
-                .Agent( alice ).As< IThinking >().InnerReality
-                .Agent( bob ).As< IThinking >().InnerReality
-                .Agent( alice ).FullName
+                .GetAgent( alice ).As< IThinking >().InnerReality
+                .GetAgent( bob ).As< IThinking >().InnerReality
+                .GetAgent( alice ).FullName
                 );
 
             Assert.AreEqual( 0,
                 universe
-                    .Agent( alice ).Depth
+                    .GetAgent( alice ).Depth
                 );
             Assert.AreEqual( 1,
                 universe
-                    .Agent( alice ).As< IThinking >().InnerReality
-                    .Agent( bob ).Depth
+                    .GetAgent( alice ).As< IThinking >().InnerReality
+                    .GetAgent( bob ).Depth
                 );
             Assert.AreEqual( 2,
                 universe
-                    .Agent( alice ).As< IThinking >().InnerReality
-                    .Agent( bob ).As< IThinking >().InnerReality
-                    .Agent( alice ).Depth
+                    .GetAgent( alice ).As< IThinking >().InnerReality
+                    .GetAgent( bob ).As< IThinking >().InnerReality
+                    .GetAgent( alice ).Depth
                 );
         }
     }

@@ -17,7 +17,7 @@ namespace Robotango.Tests.Cases.Agency
         [Test]
         public void Thinking_is_a_component()
         {
-            var r = Factory.CreateComponent<IThinking>();
+            var r = Factory.CreateComponent< IThinking >();
             ComponentsAssertThat.Is_ability( r );
         }
 

@@ -24,7 +24,7 @@ namespace Robotango.Core.Internal.Agency
             get { return this; }
         }
 
-        IAgent IReality.Agent( IAgent agent )
+        IAgent IReality.GetAgent( IAgent agent )
         {
             try {
                 return _projections.First( a => a.Id == agent.Id );

@@ -31,7 +31,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Cloned_agent_has_the_same_attribute_value()
         {
             var alice = Factory.CreateAgent< IVirtual >();
-            alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
+            alice.As< IVirtual >().AddAttribute< Hat >().IHat.Color = Colors.Red;
             var clone = alice.Clone();
 
             IHat aHat = alice.As< IVirtual >().GetAttribute< Hat >();

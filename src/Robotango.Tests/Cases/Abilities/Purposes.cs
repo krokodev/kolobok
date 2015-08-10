@@ -67,7 +67,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality =>
-                    reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
+                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
                 );
 
             Log( world.Dump() );
@@ -96,7 +96,7 @@ namespace Robotango.Tests.Cases.Abilities
                 );
             agent.As< IPurposeful >().AddDesire(
                 reality =>
-                    reality.Agent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == a,
+                    reality.GetAgent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == a,
                 "Wants to be in A"
                 );
 
@@ -121,13 +121,13 @@ namespace Robotango.Tests.Cases.Abilities
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality => {
-                    var self = reality.Agent( alice ).As< IVirtual >();
+                    var self = reality.GetAgent( alice ).As< IVirtual >();
                     self.GetAttribute< IPosition >().Location = b;
                     return self.GetAttribute< IPosition >().Location == b;
                 } );
 
             Assert.That( desire.IsSatisfied() );
-            Assert.That( alice.As< IThinking >().InnerReality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.EqualTo( b ) );
+            Assert.That( alice.As< IThinking >().InnerReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.EqualTo( b ) );
         }
 
         [Test]
@@ -143,25 +143,13 @@ namespace Robotango.Tests.Cases.Abilities
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality => {
-                    var self = reality.Agent( alice ).As< IVirtual >();
+                    var self = reality.GetAgent( alice ).As< IVirtual >();
                     self.GetAttribute< IPosition >().Location = b;
                     return self.GetAttribute< IPosition >().Location == b;
                 } );
 
             Assert.That( desire.IsSatisfied() );
-            Assert.That( world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
-        }
-
-        [Test]
-        public void Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied()
-        {
-            var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
-            var a = new Location( "A" );
-            var b = new Location( "B" );
-            
-            alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IThinking >().InnerReality.AddAgent( alice );
+            Assert.That( world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
         }
     }
 }

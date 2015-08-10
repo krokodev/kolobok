@@ -154,6 +154,7 @@ namespace Robotango.Core.System
                 { typeof( IVirtual ), () => new Virtual() },
                 { typeof( IReflective ), () => new Reflective() },
                 { typeof( IPurposeful ), () => new Purposeful() },
+                { typeof( IActive ), () => new Active() },
             };
 
         #endregion

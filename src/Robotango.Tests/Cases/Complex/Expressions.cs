@@ -2,14 +2,11 @@
 // Robotango.Tests
 // Expressions.cs
 
-using System;
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Interfaces.Agency;
 using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Cases.Complex
@@ -186,7 +183,5 @@ namespace Robotango.Tests.Cases.Complex
 
             Assert.That( hasBelief );
         }
-
     }
-
 }

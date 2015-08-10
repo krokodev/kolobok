@@ -23,11 +23,11 @@ namespace Robotango.Tests.Cases.Agency
 
             alice.As< IThinking >().InnerReality.AddAgent( bob.Clone() );
             alice.As< IThinking >().InnerReality.AddAgent( charly.Clone() );
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( alice.Clone() );
-            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( bob.Clone() );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.AddAgent( alice.Clone() );
+            alice.As< IThinking >().InnerReality.GetAgent( bob ).As< IThinking >().InnerReality.AddAgent( bob.Clone() );
 
-            alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
-            bob.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Black;
+            alice.As< IVirtual >().AddAttribute< Hat >().IHat.Color = Colors.Red;
+            bob.As< IVirtual >().AddAttribute< Hat >().IHat.Color = Colors.Black;
 
             var dump = universe.Dump();
 

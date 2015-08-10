@@ -2,7 +2,6 @@
 // Robotango.Core
 // VirtualAccessor.cs
 
-using System;
 using Robotango.Common.Domain.Implements.Expressions;
 using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
@@ -31,8 +30,8 @@ namespace Robotango.Core.Expressions
 
         #region Ctor
 
-        public VirtualAccessor( Func< IAgent, IVirtual > convertor )
-            : base( convertor ) {}
+        public VirtualAccessor()
+            : base( Expressions.Convert.Agent.To.Virtual ) {}
 
         #endregion
 
@@ -56,7 +55,7 @@ namespace Robotango.Core.Expressions
 
         private void SetLocation( IAgent agent, ILocation location )
         {
-            Convert( agent ).Set< Position, ILocation >(
+            Convert( agent ).SetAttributeTo< Position, ILocation >(
                 ( p, l ) => SetLocation( p, l ),
                 location
                 );
