@@ -2,28 +2,29 @@
 // Robotango.Core
 // Operation.cs
 
+using System;
 using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Elements.Active
 {
-    public class Operation<T> : IOperation
+    public class Operation<TArg> : IOperation
     {
         private readonly IAgent _actor;
         private readonly IAgent _operand;
-        private readonly IActivity< T > _activity;
-        private readonly T _arg;
+        private readonly Action< IAgent, TArg > _action;
+        private readonly TArg _arg;
 
-        public Operation( IAgent actor, IActivity< T > activity, IAgent operand, T arg )
+        public Operation( IAgent actor, Action< IAgent, TArg > action, IAgent operand, TArg arg )
         {
             _actor = actor;
             _operand = operand;
-            _activity = activity;
+            _action = action;
             _arg = arg;
         }
 
         public void Execute( IReality reality )
         {
-            _activity.Run( reality.GetAgent( _operand ), _arg );
+            _action.Invoke( reality.GetAgent( _operand ), _arg );
         }
     }
 }

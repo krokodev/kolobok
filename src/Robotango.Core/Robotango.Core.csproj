@@ -43,8 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\Active\Activities.cs" />
-    <Compile Include="Elements\Active\Activity.cs" />
-    <Compile Include="Elements\Active\IActivity.cs" />
     <Compile Include="Elements\Active\IOperation.cs" />
     <Compile Include="Elements\Active\Operation.cs" />
     <Compile Include="Elements\Purposeful\IIntention.cs" />

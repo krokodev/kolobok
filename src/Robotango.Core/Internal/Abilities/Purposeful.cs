@@ -9,6 +9,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
@@ -43,6 +44,13 @@ namespace Robotango.Core.Internal.Abilities
             return desire;
         }
 
+        IIntention IPurposeful.AddIntention( IOperation operation, string name )
+        {
+            var intention = new Intention( operation, name );
+            _intentions.Add( intention );
+            return intention;
+        }
+
         #endregion
 
 
@@ -53,8 +61,13 @@ namespace Robotango.Core.Internal.Abilities
             var wr = new OutlineWriter( level );
             wr.Line( "<{0}>", typeof( Purposeful ).Name );
             wr.Level ++;
+
             wr.Line( "Desires" );
-            _desires.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+            _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
+
+            wr.Line( "Intentions" );
+            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+
             return wr.ToString();
         }
 
@@ -66,6 +79,7 @@ namespace Robotango.Core.Internal.Abilities
         private IThinking _thinking;
         private IAgent _agent;
         private readonly List< IDesire > _desires = new List< IDesire >();
+        private readonly List< IIntention > _intentions = new List< IIntention >();
 
         #endregion
     }
