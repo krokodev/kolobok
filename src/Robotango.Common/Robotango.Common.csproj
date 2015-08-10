@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Implements\Compositions\Component.cs" />
     <Compile Include="Domain\Implements\Compositions\Composition.cs" />
     <Compile Include="Domain\Types\Expressions\IPropertyAccessor.cs" />
     <Compile Include="Domain\Types\Expressions\IExecutor.cs" />

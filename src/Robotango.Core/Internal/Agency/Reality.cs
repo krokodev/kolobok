@@ -95,6 +95,7 @@ namespace Robotango.Core.Internal.Agency
         IAgent IReality.Holder
         {
             get { return _holder; }
+            set { _holder = value; }
         }
 
         IReality IReality.Superior
@@ -174,7 +175,7 @@ namespace Robotango.Core.Internal.Agency
         private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
-        private readonly IAgent _holder;
+        private IAgent _holder;
 
         #endregion
 

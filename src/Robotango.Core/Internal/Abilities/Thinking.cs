@@ -6,8 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
+using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Extensions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Interfaces.Abilities;
@@ -17,7 +19,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Thinking : IThinking
+    internal class Thinking : AgentAbility<Thinking>, IThinking
     {
         #region IThinking
 
@@ -33,7 +35,7 @@ namespace Robotango.Core.Internal.Abilities
 
         void IThinking.ImplementBeliefs()
         {
-            InitInnerReality();
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
         }
 
         void IThinking.AddBelief( IBelief belief )
@@ -49,25 +51,6 @@ namespace Robotango.Core.Internal.Abilities
         bool IThinking.HasBelief( IBelief belief )
         {
             return _beliefs.Contains( belief );
-        }
-
-        #endregion
-
-
-        #region IComponent
-
-        void IComponent.InitReferences( IComposite composite )
-        {
-            _composite = composite;
-            _innerReality = new Reality( ( IAgent ) _composite, Settings.Agents.Thinking.InnerReality.Name );
-        }
-
-        IComponent IComponent.Clone()
-        {
-            return new Thinking {
-                _beliefs = _beliefs.ToList(),
-                _innerReality = _innerReality.Clone()
-            };
         }
 
         #endregion
@@ -96,23 +79,33 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Fields
-
-        private List< IBelief > _beliefs = new List< IBelief >();
-        private IReality _innerReality;
-        private IComposite _composite;
-
-        #endregion
-
-
         #region IProceedable
 
         void IProceedable.Proceed()
         {
+
             InitInnerReality();
             MakePrediction();
             MakeDecision();
             UpdateInnerReality();
+        }
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override void MakeDependences()
+        {
+            _innerReality.Holder = Agent;
+        }
+
+        protected override IComponent Clone()
+        {
+            return new Thinking {
+                _beliefs = _beliefs.ToList(),
+                _innerReality = _innerReality.Clone()
+            };
         }
 
         #endregion
@@ -135,5 +128,15 @@ namespace Robotango.Core.Internal.Abilities
         private void UpdateInnerReality() {}
 
         #endregion
+
+
+        #region Fields
+
+        private List< IBelief > _beliefs = new List< IBelief >();
+        private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
+
+        #endregion
+
+
     }
 }

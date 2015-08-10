@@ -11,25 +11,12 @@ using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Virtual : IVirtual
+    internal class Virtual : AgentAbility< Thinking >, IVirtual
     {
-        #region IComponent
-
-        void IComponent.InitReferences( IComposite composite ) {}
-
-        IComponent IComponent.Clone()
-        {
-            return new Virtual {
-                _attributes = _attributes.Select( p => p.Clone() ).ToList()
-            };
-        }
-
-        #endregion
-
-
         #region IAttributeHolder
 
         private IAttributeHolder IAttributeHolder
@@ -91,6 +78,18 @@ namespace Robotango.Core.Internal.Abilities
             wr.Line( "<{0}>", typeof( Virtual ).Name );
             _attributes.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
+        }
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Virtual {
+                _attributes = _attributes.Select( p => p.Clone() ).ToList()
+            };
         }
 
         #endregion

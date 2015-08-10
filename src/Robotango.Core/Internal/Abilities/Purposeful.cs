@@ -4,42 +4,23 @@
 
 using System;
 using System.Collections.Generic;
-using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Common.Utils.Diagnostics.Debug;
-using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Purposeful : IPurposeful, IResearchable
+    internal class Purposeful : AgentAbility< Purposeful >, IPurposeful, IResearchable
     {
-        #region IComponent
-
-        IComponent IComponent.Clone()
-        {
-            return new Purposeful();
-        }
-
-        void IComponent.InitReferences( IComposite composition )
-        {
-            _agent = ( IAgent ) composition;
-            _thinking = composition.GetComponent< IThinking >();
-            Debug.Assert.That( _thinking != null, new MissedComponentException( typeof( IThinking ) ) );
-        }
-
-        #endregion
-
-
         #region IPurposeful
 
         IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
         {
-            var desire = new Desire( _thinking.InnerReality, _agent, predicate, name );
+            var desire = new Desire( _thinking.InnerReality, Agent, predicate, name );
             _desires.Add( desire );
             return desire;
         }
@@ -74,10 +55,19 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
+        #region Component
+
+        protected override void MakeDependences()
+        {
+            _thinking = MakeDependence< IThinking >();
+        }
+
+        #endregion
+
+
         #region Fields
 
         private IThinking _thinking;
-        private IAgent _agent;
         private readonly List< IDesire > _desires = new List< IDesire >();
         private readonly List< IIntention > _intentions = new List< IIntention >();
 

@@ -115,7 +115,7 @@ namespace Robotango.Tests.Units.Complex
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
 
-            world.Thinking.ImplementBeliefs();
+            world.Thinking.Proceed();
 
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );

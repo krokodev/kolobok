@@ -3,30 +3,15 @@
 // Communicative.cs
 
 using System;
-using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Elements.Communicative;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Communicative : ICommunicative
+    internal class Communicative : AgentAbility< Thinking >, ICommunicative
     {
-        #region IComponent
-
-        void IComponent.InitReferences( IComposite composition )
-        {
-            Thinking = composition.GetComponent< IThinking >();
-        }
-
-        IComponent IComponent.Clone()
-        {
-            return new Communicative();
-        }
-
-        #endregion
-
-
         #region IQuerist
 
         IQuestion< T > IQuerist.Ask<T>( Func< IReality, T > theme )
@@ -54,9 +39,12 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Fields
+        #region Component
 
-        private IThinking Thinking { get; set; }
+        protected override void MakeDependences()
+        {
+            _thinking = MakeDependenceIfAvailable< IThinking >();
+        }
 
         #endregion
 
@@ -80,8 +68,15 @@ namespace Robotango.Core.Internal.Abilities
 
         private IReality GetWorldForAnswer()
         {
-            return Thinking == null ? null : Thinking.InnerReality;
+            return _thinking == null ? null : _thinking.InnerReality;
         }
+
+        #endregion
+
+
+        #region Fields
+
+        private IThinking _thinking;
 
         #endregion
     }

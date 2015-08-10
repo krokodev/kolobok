@@ -18,7 +18,7 @@ namespace Robotango.Core.Interfaces.Agency
         string Name { get; }
         string FullName { get; }
         string FamilyName { get; }
-        IAgent Holder { get; }
+        IAgent Holder { get; set; }
         IReality Superior { get; }
         IList< IAgent > Agents { get; }
     }

@@ -22,7 +22,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         T IComposite.GetComponent<T>()
         {
             try {
-                return Components.OfType< T >().FirstOrDefault();
+                return Components.OfType< T >().First();
             }
             catch {
                 throw new MissedComponentException( typeof( T ) );
