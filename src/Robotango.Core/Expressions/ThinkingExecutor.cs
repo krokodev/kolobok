@@ -15,17 +15,17 @@ namespace Robotango.Core.Expressions
 
         Action< IAgent > IThinkingExecutor.Know( IAgent other )
         {
-            return self => Convert( self ).Imagination.Introduce( other );
+            return self => Convert( self ).InnerReality.AddAgent( other );
         }
 
         public Action< IAgent > Know( Func< IAgent, IAgent > selectOther )
         {
-            return self => Convert( self ).Imagination.Introduce( selectOther( self ) );
+            return self => Convert( self ).InnerReality.AddAgent( selectOther( self ) );
         }
 
         public Func< IAgent, bool > Knowing( IAgent other )
         {
-            return self => Convert( self ).Imagination.Contains( other );
+            return self => Convert( self ).InnerReality.Contains( other );
         }
 
         public Action< IAgent > Believe( IBelief belief )

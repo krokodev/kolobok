@@ -10,9 +10,9 @@ namespace Robotango.Core.Elements.Virtual
     public interface IAttributeHolder
     {
         IList< T > All<T>();
-        void Add( IAttribute attribute );
+        void AddAttribute( IAttribute attribute );
         T Add<T>() where T : IAttribute, new();
-        T Get<T>() where T : IAttribute;
+        T GetAttribute<T>() where T : IAttribute;
         bool Has<T>() where T : IAttribute;
         void Set<T, TF>( Action< T, TF > setter, TF fieldValue ) where T : IAttribute, new();
     }

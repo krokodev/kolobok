@@ -17,7 +17,7 @@ namespace Robotango.Tests.Cases.Agency
             var agent = Factory.CreateAgent< IVirtual >( "Alice" );
             var world = Factory.CreateWorld( "The World" );
 
-            world.Reality.Introduce( agent );
+            world.Reality.AddAgent( agent );
             world.Thinking.Think();
             Log( world.Dump() );
             Assert.That( world.Reality.Contains( agent ) );

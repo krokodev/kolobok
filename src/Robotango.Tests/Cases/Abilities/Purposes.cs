@@ -48,7 +48,7 @@ namespace Robotango.Tests.Cases.Abilities
 
             Assert.False( desire.IsSatisfied() );
 
-            agent.As< IThinking >().Imagination.Introduce( agent );
+            agent.As< IThinking >().InnerReality.AddAgent( agent );
 
             Assert.That( desire.IsSatisfied(), Is.True );
         }
@@ -57,26 +57,26 @@ namespace Robotango.Tests.Cases.Abilities
         public void Alice_intends_to_be_in_location_B_and_is_satisfied_by_suggestion_that_she_is()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
 
-            alice.As< IVirtual >().Add( new Position( a ) );
-            var herself = alice.As< IThinking >().Imagination.Introduce( alice );
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            var herself = alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality =>
-                    reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location == b
+                    reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
                 );
 
             Log( world.Dump() );
 
-            alice.As< IVirtual >().Get< IPosition >().Location = b;
+            alice.As< IVirtual >().GetAttribute< IPosition >().Location = b;
             Assert.False( desire.IsSatisfied() );
 
-            alice.As< IVirtual >().Get< IPosition >().Location = a;
-            herself.As< IVirtual >().Get< IPosition >().Location = b;
+            alice.As< IVirtual >().GetAttribute< IPosition >().Location = a;
+            herself.As< IVirtual >().GetAttribute< IPosition >().Location = b;
             Assert.True( desire.IsSatisfied() );
         }
 
@@ -96,7 +96,7 @@ namespace Robotango.Tests.Cases.Abilities
                 );
             agent.As< IPurposeful >().AddDesire(
                 reality =>
-                    reality.Agent( agent ).As< IVirtual >().Get< IPosition >().Location == a,
+                    reality.Agent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == a,
                 "Wants to be in A"
                 );
 
@@ -112,44 +112,56 @@ namespace Robotango.Tests.Cases.Abilities
         public void Alice_desires_evaluation_could_change_its_inner_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
-            alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IThinking >().Imagination.Introduce( alice );
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality => {
                     var self = reality.Agent( alice ).As< IVirtual >();
-                    self.Get< IPosition >().Location = b;
-                    return self.Get< IPosition >().Location == b;
+                    self.GetAttribute< IPosition >().Location = b;
+                    return self.GetAttribute< IPosition >().Location == b;
                 } );
 
             Assert.That( desire.IsSatisfied() );
-            Assert.That( alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().Get< IPosition >().Location, Is.EqualTo( b ) );
+            Assert.That( alice.As< IThinking >().InnerReality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.EqualTo( b ) );
         }
 
         [Test]
         public void Alice_desire_evaluation_should_not_change_the_outer_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
-            alice.As< IVirtual >().Add( new Position( a ) );
-            alice.As< IThinking >().Imagination.Introduce( alice );
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             var desire = alice.As< IPurposeful >().AddDesire(
                 reality => {
                     var self = reality.Agent( alice ).As< IVirtual >();
-                    self.Get< IPosition >().Location = b;
-                    return self.Get< IPosition >().Location == b;
+                    self.GetAttribute< IPosition >().Location = b;
+                    return self.GetAttribute< IPosition >().Location == b;
                 } );
 
             Assert.That( desire.IsSatisfied() );
-            Assert.That( world.Reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location, Is.Not.EqualTo( b ) );
+            Assert.That( world.Reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
+        }
+
+        [Test]
+        public void Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IThinking >().InnerReality.AddAgent( alice );
         }
     }
 }

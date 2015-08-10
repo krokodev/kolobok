@@ -17,14 +17,14 @@ namespace Robotango.Tests.Cases.Agency
         public void Dump_contains_info_about_agents_attributes()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce( Factory.CreateAgent< IThinking, IVirtual >( "Alice" ) );
-            var bob = universe.Introduce( Factory.CreateAgent< IThinking, IVirtual >( "Bob" ) );
-            var charly = universe.Introduce( Factory.CreateAgent< IThinking, IVirtual >( "Charly" ) );
+            var alice = universe.AddAgent( Factory.CreateAgent< IThinking, IVirtual >( "Alice" ) );
+            var bob = universe.AddAgent( Factory.CreateAgent< IThinking, IVirtual >( "Bob" ) );
+            var charly = universe.AddAgent( Factory.CreateAgent< IThinking, IVirtual >( "Charly" ) );
 
-            alice.As< IThinking >().Imagination.Introduce( bob.Clone() );
-            alice.As< IThinking >().Imagination.Introduce( charly.Clone() );
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Introduce( alice.Clone() );
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Introduce( bob.Clone() );
+            alice.As< IThinking >().InnerReality.AddAgent( bob.Clone() );
+            alice.As< IThinking >().InnerReality.AddAgent( charly.Clone() );
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( alice.Clone() );
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.AddAgent( bob.Clone() );
 
             alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             bob.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Black;

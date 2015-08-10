@@ -31,12 +31,12 @@ namespace Robotango.Tests.Cases.Abilities
         public void World_agents_have_the_same_depts()
         {
             var matrix = Factory.CreateAgent< IThinking >( "Matrix" );
-            var alice = matrix.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
-            var bob = matrix.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Bob" ) );
+            var alice = matrix.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
+            var bob = matrix.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
 
-            Assert.AreEqual( matrix.Depth + 1, matrix.As< IThinking >().Imagination.Depth );
-            Assert.AreEqual( matrix.As< IThinking >().Imagination.Depth, alice.Depth );
-            Assert.AreEqual( matrix.As< IThinking >().Imagination.Depth, bob.Depth );
+            Assert.AreEqual( matrix.Depth + 1, matrix.As< IThinking >().InnerReality.Depth );
+            Assert.AreEqual( matrix.As< IThinking >().InnerReality.Depth, alice.Depth );
+            Assert.AreEqual( matrix.As< IThinking >().InnerReality.Depth, bob.Depth );
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Agent_Imaginary_world_has_depth_plus_1()
         {
             var agent = Factory.CreateAgent< IThinking >();
-            var iworld = agent.As< IThinking >().Imagination;
+            var iworld = agent.As< IThinking >().InnerReality;
             Assert.AreEqual( agent.Depth + 1, iworld.Depth );
         }
 
@@ -58,7 +58,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Projcted_agent_has_basic_depth()
         {
             var matrix = Factory.CreateAgent< IThinking >( "Matrix" );
-            var agent = matrix.As< IThinking >().Imagination.Introduce( Factory.CreateAgent() );
+            var agent = matrix.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent() );
 
             Assert.AreEqual( 1, agent.Depth );
             Assert.AreEqual( Settings.Depth.Basic, agent.Clone().Depth );
@@ -68,9 +68,9 @@ namespace Robotango.Tests.Cases.Abilities
         public void Inserted_agents_have_proper_depth()
         {
             var universe = Factory.CreateAgent< IThinking >( "Universe" );
-            var alice = universe.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
-            var bob = alice.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Bob" ) );
-            var charly = bob.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Charly" ) );
+            var alice = universe.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
+            var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
+            var charly = bob.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Charly" ) );
 
             Log( universe.FullName );
             Log( alice.FullName );
@@ -82,23 +82,23 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.AreEqual( 2, bob.Depth );
             Assert.AreEqual( 3, charly.Depth );
 
-            Assert.AreEqual( 1, universe.As< IThinking >().Imagination.Agent( alice ).Depth );
-            Assert.AreEqual( 2, alice.As< IThinking >().Imagination.Depth );
-            Assert.AreEqual( 2, universe.As< IThinking >().Imagination.Agent( alice ).As< IThinking >().Imagination.Depth );
+            Assert.AreEqual( 1, universe.As< IThinking >().InnerReality.Agent( alice ).Depth );
+            Assert.AreEqual( 2, alice.As< IThinking >().InnerReality.Depth );
+            Assert.AreEqual( 2, universe.As< IThinking >().InnerReality.Agent( alice ).As< IThinking >().InnerReality.Depth );
         }
 
         [Test]
         public void Thinked_out_agent_has_proper_depth()
         {
             var universe = Factory.CreateAgent< IThinking >( "Universe" );
-            var alice = universe.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
-            var bob = alice.As< IThinking >().Imagination.Introduce( Factory.CreateAgent< IThinking >( "Bob" ) );
+            var alice = universe.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
+            var bob = alice.As< IThinking >().InnerReality.AddAgent( Factory.CreateAgent< IThinking >( "Bob" ) );
             var charly = Factory.CreateAgent< IThinking >( "Charly" );
 
-            bob.As< IThinking >().AddBelief( iworld => iworld.Introduce( charly ) );
+            bob.As< IThinking >().AddBelief( iworld => iworld.AddAgent( charly ) );
             bob.As< IThinking >().Think();
 
-            var bcharly = bob.As< IThinking >().Imagination.Agent( charly );
+            var bcharly = bob.As< IThinking >().InnerReality.Agent( charly );
             bcharly.Name = "bCharly";
 
             Log( universe.FullName );
@@ -106,8 +106,8 @@ namespace Robotango.Tests.Cases.Abilities
             Log( bob.FullName );
             Log( charly.FullName );
             Log( bcharly.FullName );
-            Log( bob.As< IThinking >().Imagination.FamilyName );
-            Log( bcharly.As< IThinking >().Imagination.FamilyName );
+            Log( bob.As< IThinking >().InnerReality.FamilyName );
+            Log( bcharly.As< IThinking >().InnerReality.FamilyName );
 
             Assert.AreEqual( 0, universe.Depth );
             Assert.AreEqual( 1, alice.Depth );
@@ -120,24 +120,24 @@ namespace Robotango.Tests.Cases.Abilities
         public void Deeply_thinked_out_agents_have_proper_depth()
         {
             var universe = Factory.CreateReality( "Universe" );
-            var alice = universe.Introduce( Factory.CreateAgent< IThinking >( "Alice" ) );
+            var alice = universe.AddAgent( Factory.CreateAgent< IThinking >( "Alice" ) );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IThinking >().AddBelief( iworld => iworld.Introduce( bob ) );
+            alice.As< IThinking >().AddBelief( iworld => iworld.AddAgent( bob ) );
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.Introduce( alice ) );
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().AddBelief( iworld => iworld.AddAgent( alice ) );
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().Think();
 
             Log( universe
                 .Agent( alice ).FullName
                 );
             Log( universe
-                .Agent( alice ).As< IThinking >().Imagination
+                .Agent( alice ).As< IThinking >().InnerReality
                 .Agent( bob ).FullName
                 );
             Log( universe
-                .Agent( alice ).As< IThinking >().Imagination
-                .Agent( bob ).As< IThinking >().Imagination
+                .Agent( alice ).As< IThinking >().InnerReality
+                .Agent( bob ).As< IThinking >().InnerReality
                 .Agent( alice ).FullName
                 );
 
@@ -147,13 +147,13 @@ namespace Robotango.Tests.Cases.Abilities
                 );
             Assert.AreEqual( 1,
                 universe
-                    .Agent( alice ).As< IThinking >().Imagination
+                    .Agent( alice ).As< IThinking >().InnerReality
                     .Agent( bob ).Depth
                 );
             Assert.AreEqual( 2,
                 universe
-                    .Agent( alice ).As< IThinking >().Imagination
-                    .Agent( bob ).As< IThinking >().Imagination
+                    .Agent( alice ).As< IThinking >().InnerReality
+                    .Agent( bob ).As< IThinking >().InnerReality
                     .Agent( alice ).Depth
                 );
         }

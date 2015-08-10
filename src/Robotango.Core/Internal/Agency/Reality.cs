@@ -35,7 +35,7 @@ namespace Robotango.Core.Internal.Agency
             }
         }
 
-        IAgent IReality.Introduce( IAgent agent )
+        IAgent IReality.AddAgent( IAgent agent )
         {
             return Project( agent );
         }

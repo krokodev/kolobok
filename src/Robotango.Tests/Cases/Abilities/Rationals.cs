@@ -27,10 +27,10 @@ namespace Robotango.Tests.Cases.Abilities
             var a = Factory.CreateAgent< IThinking >();
             var b = Factory.CreateAgent();
 
-            a.As< IThinking >().AddBelief( world => world.Introduce( b.Clone() ) );
+            a.As< IThinking >().AddBelief( world => world.AddAgent( b.Clone() ) );
             a.As< IThinking >().Think();
 
-            Assert.AreEqual( b.Id, a.As< IThinking >().Imagination.Agent( b ).Id );
+            Assert.AreEqual( b.Id, a.As< IThinking >().InnerReality.Agent( b ).Id );
         }
 
         [Test]
@@ -39,11 +39,11 @@ namespace Robotango.Tests.Cases.Abilities
             var agent = Factory.CreateAgent< IThinking >();
             var subj = Factory.CreateAgent();
 
-            agent.As< IThinking >().AddBelief( world => world.Introduce( subj.Clone() ) );
+            agent.As< IThinking >().AddBelief( world => world.AddAgent( subj.Clone() ) );
             agent.As< IThinking >().Think();
 
-            Assert.AreEqual( subj.Id, agent.As< IThinking >().Imagination.Agent( subj ).Id );
-            Assert.AreNotSame( subj, agent.As< IThinking >().Imagination.Agent( subj ) );
+            Assert.AreEqual( subj.Id, agent.As< IThinking >().InnerReality.Agent( subj ).Id );
+            Assert.AreNotSame( subj, agent.As< IThinking >().InnerReality.Agent( subj ) );
         }
 
         [Test]
@@ -51,16 +51,16 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var agent = Factory.CreateAgent< IThinking, IVirtual >();
 
-            var he = agent.As< IThinking >().Imagination.Introduce( agent );
+            var he = agent.As< IThinking >().InnerReality.AddAgent( agent );
 
             agent.As< IThinking >().AddBelief( world => {
-                he.As< IVirtual >().Add( new Hat() );
-                he.As< IVirtual >().Get< IHat >().Color = Colors.Red;
+                he.As< IVirtual >().AddAttribute( new Hat() );
+                he.As< IVirtual >().GetAttribute< IHat >().Color = Colors.Red;
             } );
 
             agent.As< IThinking >().Think();
 
-            Assert.AreEqual( Colors.Red, agent.As< IThinking >().Imagination.Agent( agent ).As< IVirtual >().Get< IHat >().Color );
+            Assert.AreEqual( Colors.Red, agent.As< IThinking >().InnerReality.Agent( agent ).As< IVirtual >().GetAttribute< IHat >().Color );
         }
 
         [Test]
@@ -76,11 +76,11 @@ namespace Robotango.Tests.Cases.Abilities
         {
             var alice = Factory.CreateAgent< IThinking, IVirtual >( "Alice" );
 
-            var herselve = alice.As< IThinking >().Imagination.Introduce( alice );
+            var herselve = alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             alice.As< IThinking >().AddBelief( world => {
-                herselve.As< IVirtual >().Add( new Hat() );
-                herselve.As< IVirtual >().Get< IHat >().Color = Colors.Red;
+                herselve.As< IVirtual >().AddAttribute( new Hat() );
+                herselve.As< IVirtual >().GetAttribute< IHat >().Color = Colors.Red;
             } );
 
             alice.As< IThinking >().Think();
@@ -88,11 +88,11 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IThinking >().Think();
             alice.As< IThinking >().Think();
 
-            Log( alice.As< IThinking >().Imagination.Dump() );
+            Log( alice.As< IThinking >().InnerReality.Dump() );
 
             alice.As< IThinking >().Verify();
 
-            Assert.AreEqual( Colors.Red, alice.As< IThinking >().Imagination.Agent( alice ).As< IVirtual >().Get< IHat >().Color );
+            Assert.AreEqual( Colors.Red, alice.As< IThinking >().InnerReality.Agent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
         }
 
         [Test]
@@ -101,10 +101,10 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IThinking >().AddBelief( world => world.Introduce( bob.Clone() ) );
+            alice.As< IThinking >().AddBelief( world => world.AddAgent( bob.Clone() ) );
             alice.As< IThinking >().Think();
 
-            Assert.That( alice.As< IThinking >().Imagination.Contains( bob ) );
+            Assert.That( alice.As< IThinking >().InnerReality.Contains( bob ) );
         }
 
         [Test]
@@ -113,12 +113,12 @@ namespace Robotango.Tests.Cases.Abilities
             var alice = Factory.CreateAgent< IThinking >( "Alice" );
             var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
-            alice.As< IThinking >().AddBelief( world => world.Introduce( bob.Clone() ) );
+            alice.As< IThinking >().AddBelief( world => world.AddAgent( bob.Clone() ) );
             alice.As< IThinking >().Think();
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().AddBelief( world => world.Introduce( alice.Clone() ) );
-            alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Think();
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().AddBelief( world => world.AddAgent( alice.Clone() ) );
+            alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().Think();
 
-            Assert.That( alice.As< IThinking >().Imagination.Agent( bob ).As< IThinking >().Imagination.Contains( alice ) );
+            Assert.That( alice.As< IThinking >().InnerReality.Agent( bob ).As< IThinking >().InnerReality.Contains( alice ) );
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Robotango.Core.Internal.Abilities
             get { return this; }
         }
 
-        IReality IThinking.Imagination
+        IReality IThinking.InnerReality
         {
             get { return _presentImage; }
         }

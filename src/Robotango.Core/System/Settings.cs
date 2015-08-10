@@ -22,7 +22,7 @@ namespace Robotango.Core.System
             {
                 public static class InnerReality
                 {
-                    public const string Name = "Imagination";
+                    public const string Name = "InnerReality";
                 }
             }
 

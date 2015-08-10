@@ -9,7 +9,7 @@ namespace Robotango.Core.Interfaces.Agency
     public interface IReality : IIdentifiable, IVerifiable, IResearchable
     {
         IAgent Agent( IAgent agent );
-        IAgent Introduce( IAgent agent );
+        IAgent AddAgent( IAgent agent );
         IReality Clone( IAgent holder = null );
         bool Contains( IAgent agent );
         void Clear();

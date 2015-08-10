@@ -38,7 +38,7 @@ namespace Robotango.Core.Internal.Abilities
 
         IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
         {
-            var desire = new Desire( _thinking.Imagination, _agent, predicate, name );
+            var desire = new Desire( _thinking.InnerReality, _agent, predicate, name );
             _desires.Add( desire );
             return desire;
         }

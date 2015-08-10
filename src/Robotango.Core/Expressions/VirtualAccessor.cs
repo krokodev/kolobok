@@ -41,17 +41,17 @@ namespace Robotango.Core.Expressions
 
         private void SetPosition( IAgent agent, IPosition position )
         {
-            Convert( agent ).Add( position );
+            Convert( agent ).AddAttribute( position );
         }
 
         private IPosition GetPosition( IAgent agent )
         {
-            return Convert( agent ).Get< IPosition >();
+            return Convert( agent ).GetAttribute< IPosition >();
         }
 
         private ILocation GetLocation( IAgent agent )
         {
-            return Convert( agent ).Get< IPosition >().Location;
+            return Convert( agent ).GetAttribute< IPosition >().Location;
         }
 
         private void SetLocation( IAgent agent, ILocation location )

@@ -22,20 +22,20 @@ namespace Robotango.Tests.Cases.Complex
         public void Set_agent_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var p = new Position( a );
 
             alice.Set( Its.Virtual.Position, p );
 
-            Assert.That( alice.As< IVirtual >().Get< IPosition >(), Is.EqualTo( p ) );
+            Assert.That( alice.As< IVirtual >().GetAttribute< IPosition >(), Is.EqualTo( p ) );
         }
 
         [Test]
         public void Get_agent_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var p = new Position( a );
             alice.Set( Its.Virtual.Position, p );
@@ -49,7 +49,7 @@ namespace Robotango.Tests.Cases.Complex
         public void Set_agent_location_directly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Location, a );
@@ -61,7 +61,7 @@ namespace Robotango.Tests.Cases.Complex
         public void Access_agent_location_via_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Position, new Position() );
@@ -74,7 +74,7 @@ namespace Robotango.Tests.Cases.Complex
         public void Access_agent_location_directly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Location, a );
@@ -86,7 +86,7 @@ namespace Robotango.Tests.Cases.Complex
         public void Change_agent_location_deirectly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
@@ -110,7 +110,7 @@ namespace Robotango.Tests.Cases.Complex
         public void Change_agent_location_via_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
@@ -137,7 +137,7 @@ namespace Robotango.Tests.Cases.Complex
 
             alice.Do( As.Thinking.Know( bob ) );
 
-            Assert.That( alice.As< IThinking >().Imagination.Contains( bob ) );
+            Assert.That( alice.As< IThinking >().InnerReality.Contains( bob ) );
         }
 
         [Test]
@@ -147,7 +147,7 @@ namespace Robotango.Tests.Cases.Complex
 
             alice.Do( As.Thinking.Know( Its.Self ) );
 
-            Assert.That( alice.As< IThinking >().Imagination.Contains( alice ) );
+            Assert.That( alice.As< IThinking >().InnerReality.Contains( alice ) );
         }
 
         [Test]

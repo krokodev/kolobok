@@ -42,7 +42,7 @@ namespace Robotango.Core.Internal.Abilities
             return _attributes.OfType< T >().ToList();
         }
 
-        void IAttributeHolder.Add( IAttribute attribute )
+        void IAttributeHolder.AddAttribute( IAttribute attribute )
         {
             Debug.Assert.That( attribute.Holder == null, "Attribute already belongs to other holder" );
             _attributes.Add( attribute );
@@ -52,11 +52,11 @@ namespace Robotango.Core.Internal.Abilities
         T IAttributeHolder.Add<T>()
         {
             var a = new T();
-            IAttributeHolder.Add( a );
+            IAttributeHolder.AddAttribute( a );
             return a;
         }
 
-        T IAttributeHolder.Get<T>()
+        T IAttributeHolder.GetAttribute<T>()
         {
             Debug.Assert.That( IAttributeHolder.Has< T >(), "Attribute '{0}' is not found", typeof( T ).Name );
             return _attributes.OfType< T >().First();
@@ -101,7 +101,7 @@ namespace Robotango.Core.Internal.Abilities
         private T GetOrAdd<T>() where T : IAttribute, new()
         {
             return IAttributeHolder.Has< T >()
-                ? IAttributeHolder.Get< T >()
+                ? IAttributeHolder.GetAttribute< T >()
                 : IAttributeHolder.Add< T >();
         }
 

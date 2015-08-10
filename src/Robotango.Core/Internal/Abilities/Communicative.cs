@@ -80,7 +80,7 @@ namespace Robotango.Core.Internal.Abilities
 
         private IReality GetWorldForAnswer()
         {
-            return Thinking == null ? null : Thinking.Imagination;
+            return Thinking == null ? null : Thinking.InnerReality;
         }
 
         #endregion

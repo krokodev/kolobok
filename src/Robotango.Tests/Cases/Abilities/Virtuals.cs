@@ -23,8 +23,8 @@ namespace Robotango.Tests.Cases.Abilities
             var bob = Factory.CreateAgent< IVirtual >().As< IVirtual >();
             var hat = new Hat();
 
-            alice.Add( hat );
-            bob.Add( hat );
+            alice.AddAttribute( hat );
+            bob.AddAttribute( hat );
         }
 
         [Test]
@@ -34,8 +34,8 @@ namespace Robotango.Tests.Cases.Abilities
             alice.As< IVirtual >().Add< Hat >().IHat.Color = Colors.Red;
             var clone = alice.Clone();
 
-            IHat aHat = alice.As< IVirtual >().Get< Hat >();
-            IHat cHat = clone.As< IVirtual >().Get< Hat >();
+            IHat aHat = alice.As< IVirtual >().GetAttribute< Hat >();
+            IHat cHat = clone.As< IVirtual >().GetAttribute< Hat >();
 
             Assert.AreEqual( aHat.Color, cHat.Color );
         }
@@ -44,10 +44,10 @@ namespace Robotango.Tests.Cases.Abilities
         public void Cloned_enteties_have_different_attributes()
         {
             var agent = Factory.CreateAgent< IVirtual >();
-            agent.As< IVirtual >().Add( new Hat() );
+            agent.As< IVirtual >().AddAttribute( new Hat() );
             var clone = agent.Clone();
-            var aHat = agent.As< IVirtual >().Get< Hat >();
-            var cHat = clone.As< IVirtual >().Get< Hat >();
+            var aHat = agent.As< IVirtual >().GetAttribute< Hat >();
+            var cHat = clone.As< IVirtual >().GetAttribute< Hat >();
             Assert.AreSame( aHat, aHat );
             Assert.AreSame( cHat, cHat );
             Assert.AreNotSame( aHat, cHat );
@@ -57,14 +57,14 @@ namespace Robotango.Tests.Cases.Abilities
         public void Alice_and_Bob_have_positions()
         {
             var house = Factory.CreateReality( "The House" );
-            var alice = house.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
-            var bob = house.Introduce( Factory.CreateAgent< IVirtual >( "Bob" ) );
+            var alice = house.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var bob = house.AddAgent( Factory.CreateAgent< IVirtual >( "Bob" ) );
 
             var initial = new Location( "Initial" );
             var destination = new Location( "Destination" );
 
-            alice.As< IVirtual >().Add( new Position( initial ) );
-            bob.As< IVirtual >().Add( new Position( destination ) );
+            alice.As< IVirtual >().AddAttribute( new Position( initial ) );
+            bob.As< IVirtual >().AddAttribute( new Position( destination ) );
 
             var dump = house.Dump();
 
@@ -75,8 +75,8 @@ namespace Robotango.Tests.Cases.Abilities
             Assert.That( dump.Contains( "Destination" ) );
             Assert.That( dump.Contains( "Initial" ) );
             Assert.AreEqual( "Destination", destination.ILocation.Name );
-            Assert.AreEqual( initial, alice.As< IVirtual >().Get< IPosition >().Location );
-            Assert.AreEqual( destination, bob.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( initial, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.AreEqual( destination, bob.As< IVirtual >().GetAttribute< IPosition >().Location );
         }
 
         [Test]
@@ -86,10 +86,10 @@ namespace Robotango.Tests.Cases.Abilities
 
             var a = new Location( "A" );
 
-            alice.As< IVirtual >().Add( new Position( a ) );
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
             var clone = alice.Clone();
 
-            Assert.AreEqual( "A", clone.As< IVirtual >().Get< IPosition >().Location.Name );
+            Assert.AreEqual( "A", clone.As< IVirtual >().GetAttribute< IPosition >().Location.Name );
 
             Log( clone.Dump() );
         }
@@ -98,7 +98,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Agent_has_only_one_position_after_changings_locations()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Location, new Location( "A" ) );
             alice.Set( Its.Virtual.Location, new Location( "B" ) );
@@ -115,7 +115,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Agent_has_many_positions_after_setting_new_positions()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
             alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );
@@ -131,7 +131,7 @@ namespace Robotango.Tests.Cases.Abilities
         public void Default_position_is_the_first_added()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
             alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );

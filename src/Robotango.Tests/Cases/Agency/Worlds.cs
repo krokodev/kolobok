@@ -17,14 +17,14 @@ namespace Robotango.Tests.Cases.Agency
         {
             var locA = new Location( "A" );
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
-            alice.As< IVirtual >().Add( new Position( locA ) );
+            alice.As< IVirtual >().AddAttribute( new Position( locA ) );
 
             Log( world.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
-            Assert.AreSame( world.Reality, world.Thinking.Imagination );
+            Assert.AreSame( world.Reality, world.Thinking.InnerReality );
             Assert.That( world.Reality.Contains( alice ) );
         }
 
@@ -34,17 +34,17 @@ namespace Robotango.Tests.Cases.Agency
             var locA = new Location( "A" );
             var locB = new Location( "B" );
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.Introduce( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
-            alice.As< IVirtual >().Add( new Position( locA ) );
-            world.Thinking.AddBelief( reality => { reality.Agent( alice ).As< IVirtual >().Get< IPosition >().Location = locB; } );
+            alice.As< IVirtual >().AddAttribute( new Position( locA ) );
+            world.Thinking.AddBelief( reality => { reality.Agent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location = locB; } );
 
             Log( world.Dump() );
             Log( alice.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
             Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( locA, alice.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( locA, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
 
             Log( "Thinking...\n" );
 
@@ -53,7 +53,7 @@ namespace Robotango.Tests.Cases.Agency
             Log( world.Dump() );
 
             Assert.That( world.Reality.Contains( alice ) );
-            Assert.AreEqual( locB, alice.As< IVirtual >().Get< IPosition >().Location );
+            Assert.AreEqual( locB, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
         }
     }
 }
