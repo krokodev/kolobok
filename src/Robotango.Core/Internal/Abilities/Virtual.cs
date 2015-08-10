@@ -5,17 +5,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Virtual : AgentAbility< Thinking >, IVirtual
+    internal class Virtual : Component< Thinking >, IVirtual
     {
         #region IAttributeHolder
 

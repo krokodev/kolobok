@@ -3,14 +3,14 @@
 // Communicative.cs
 
 using System;
+using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Core.Elements.Communicative;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
-using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Communicative : AgentAbility< Thinking >, ICommunicative
+    internal class Communicative : Component< Thinking >, ICommunicative
     {
         #region IQuerist
 

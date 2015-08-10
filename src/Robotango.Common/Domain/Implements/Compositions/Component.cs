@@ -21,7 +21,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         void IComponent.InitReferences( IComposite composition )
         {
-            _composition = composition;
+            _holder = composition;
             MakeDependences();
         }
 
@@ -30,9 +30,9 @@ namespace Robotango.Common.Domain.Implements.Compositions
             get { return _dependences; }
         }
 
-        IComposite IComponent.Composition
+        IComposite IComponent.Holder
         {
-            get { return _composition; }
+            get { return _holder; }
         }
 
         #endregion
@@ -54,7 +54,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         protected TC MakeDependenceIfAvailable<TC>() where TC : IComponent
         {
-            if( !IComponent.Composition.HasComponent< TC >() ) {
+            if( !IComponent.Holder.HasComponent< TC >() ) {
                 return default(TC);
             }
 
@@ -63,7 +63,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         protected TC MakeDependence<TC>() where TC : IComponent
         {
-            var component = IComponent.Composition.GetComponent< TC >();
+            var component = IComponent.Holder.GetComponent< TC >();
             _dependences.Add( component );
             return component;
         }
@@ -74,7 +74,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         #region Fields
 
         private readonly IList< IComponent > _dependences = new List< IComponent >();
-        private IComposite _composition;
+        private IComposite _holder;
 
         #endregion
     }

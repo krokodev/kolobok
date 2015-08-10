@@ -9,7 +9,6 @@ using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Common.Utils.Extensions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Interfaces.Abilities;
@@ -19,7 +18,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Thinking : AgentAbility<Thinking>, IThinking
+    internal class Thinking : Component< Thinking >, IThinking
     {
         #region IThinking
 
@@ -83,7 +82,6 @@ namespace Robotango.Core.Internal.Abilities
 
         void IProceedable.Proceed()
         {
-
             InitInnerReality();
             MakePrediction();
             MakeDecision();
@@ -97,7 +95,7 @@ namespace Robotango.Core.Internal.Abilities
 
         protected override void MakeDependences()
         {
-            _innerReality.Holder = Agent;
+            _innerReality.Holder = (IAgent) IComponent.Holder;
         }
 
         protected override IComponent Clone()
@@ -136,7 +134,5 @@ namespace Robotango.Core.Internal.Abilities
         private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
 
         #endregion
-
-
     }
 }

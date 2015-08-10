@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
@@ -14,13 +15,13 @@ using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Purposeful : AgentAbility< Purposeful >, IPurposeful, IResearchable
+    internal class Purposeful : Component< Purposeful >, IPurposeful, IResearchable
     {
         #region IPurposeful
 
         IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
         {
-            var desire = new Desire( _thinking.InnerReality, Agent, predicate, name );
+            var desire = new Desire( _thinking.InnerReality, _agent, predicate, name );
             _desires.Add( desire );
             return desire;
         }
@@ -60,6 +61,7 @@ namespace Robotango.Core.Internal.Abilities
         protected override void MakeDependences()
         {
             _thinking = MakeDependence< IThinking >();
+            _agent = (IAgent)IComponent.Holder;
         }
 
         #endregion
@@ -70,6 +72,7 @@ namespace Robotango.Core.Internal.Abilities
         private IThinking _thinking;
         private readonly List< IDesire > _desires = new List< IDesire >();
         private readonly List< IIntention > _intentions = new List< IIntention >();
+        private IAgent _agent;
 
         #endregion
     }
