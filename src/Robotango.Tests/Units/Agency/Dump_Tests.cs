@@ -103,7 +103,7 @@ namespace Robotango.Tests.Units.Agency
             Assert.That( dump, Is.StringContaining( "Movement" ) );
         }
 
-        [Ignore, Test]
+        [Test]
         public void Operations_are_dumped()
         {
             var a = new Location( "A" );
