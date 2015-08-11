@@ -180,7 +180,7 @@ namespace Robotango.Tests.Units.Abilities
             Assert.That( dump, Is.StringContaining( Activities.Virtual.Move.Name ) );
         }
 
-        [Test, ExpectedException(typeof(UnknownActivityException))]
+        [Test, ExpectedException( typeof( UnknownActivityException ) )]
         public void Alice_can_not_create_move_operation_because_she_has_not_such_activity()
         {
             var a = new Location( "A" );
@@ -189,23 +189,33 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, a );
         }
 
-        [Test, ExpectedException(typeof(UnknownActivityException))]
+        [Test, ExpectedException( typeof( UnknownActivityException ) )]
         public void Alice_can_not_proceed_move_operation_because_she_has_not_such_activity()
         {
             var a = new Location( "A" );
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" ));
-            
-            var operation= new Operation<ILocation>( Activities.Virtual.Move, alice, a );
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                );
+
+            var operation = new Operation< ILocation >( Activities.Virtual.Move, alice, a );
             alice.As< IPurposeful >().AddIntention( operation );
             world.Proceed();
         }
 
-        [Test, ExpectedException(typeof(ActivityArgumentException))]
+        [Test, ExpectedException( typeof( ActivityArgumentException ) )]
         public void Wrong_argument_type()
         {
-        }
+            var a = 42;
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                );
 
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
+            var operation = new Operation< int >( Activities.Virtual.Move, alice, a );
+            alice.As< IPurposeful >().AddIntention( operation );
+            world.Proceed();
+        }
     }
 }
