@@ -46,6 +46,15 @@ namespace Robotango.Core.Internal.Abilities
             _active = MakeDependenceIfAvailable< IActive >();
         }
 
+        protected override void DumpAbilityContent( OutlineWriter wr )
+        {
+            wr.Line( "Desires" );
+            _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
+
+            wr.Line( "Intentions" );
+            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+        }
+
         #endregion
 
 
@@ -67,25 +76,6 @@ namespace Robotango.Core.Internal.Abilities
 
         #endregion
 
-
-        #region IResearchable
-
-        string IResearchable.Dump( int level )
-        {
-            var wr = new OutlineWriter( level );
-            wr.Line( "<{0}>", typeof( Purposeful ).Name );
-            wr.Level ++;
-
-            wr.Line( "Desires" );
-            _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
-
-            wr.Line( "Intentions" );
-            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
-
-            return wr.ToString();
-        }
-
-        #endregion
 
 
         #region IProceedable

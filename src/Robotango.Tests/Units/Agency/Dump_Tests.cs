@@ -4,6 +4,9 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
+using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Elements.Active;
+using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Tests.Domain;
 using Robotango.Tests.Utils.Bases;
@@ -42,5 +45,65 @@ namespace Robotango.Tests.Units.Agency
             Assert.That( dump.Contains( "Red" ) );
             Assert.That( dump.Contains( "Black" ) );
         }
+
+
+        [Test]
+        public void Intentions_are_dumped()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
+                );
+            ILocation a = new Location( "A" );
+            ILocation b = new Location( "B" );
+
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IThinking >().InnerReality.AddAgent( alice );
+
+            var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
+
+            alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
+            alice.As< IPurposeful >().AddIntention( operation );
+
+            var dump = Log( world.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "Intentions" ) );
+            Assert.That( dump, Is.StringContaining( "Move Alice to B" ) );
+            Assert.That( dump, Is.StringContaining( "Some Intention" ) );
+        }
+
+        [Ignore,Test]
+        public void Operations_are_dumped()
+        {
+            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "Operations" ) );
+            Assert.That( dump, Is.StringContaining( "Some Operations" ) );
+        }
+
+        [Ignore,Test]
+        public void Activities_are_dumped()
+        {
+            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "Activities" ) );
+            Assert.That( dump, Is.StringContaining( "Movement" ) );
+        }
+
+        [Test]
+        public void Dependences_are_dumped()
+        {
+            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive, ICommunicative >( "Alice" );
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "Dependences: <Thinking> <Active>" ) );
+        }
+
+
     }
 }

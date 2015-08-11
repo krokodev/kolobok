@@ -51,15 +51,6 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region IResearchable
-
-        string IResearchable.Dump( int level )
-        {
-            return OutlineWriter.Line( level, "<{0}>", typeof( Active ).Name );
-        }
-
-        #endregion
-
 
         #region IProceedable
 

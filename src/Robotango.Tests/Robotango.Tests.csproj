@@ -54,6 +54,7 @@
     <Compile Include="Units\Abilities\Purposeful_Tests.cs" />
     <Compile Include="Units\Agency\Projection_Tests.cs" />
     <Compile Include="Units\Agency\World_Tests.cs" />
+    <Compile Include="Units\Agency\Proceed_Tests.cs" />
     <Compile Include="Units\Complex\Behavioural_Tests.cs" />
     <Compile Include="Units\Complex\Expression_Tests.cs" />
     <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />

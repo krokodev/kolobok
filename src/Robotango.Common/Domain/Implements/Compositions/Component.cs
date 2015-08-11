@@ -70,6 +70,11 @@ namespace Robotango.Common.Domain.Implements.Compositions
             get { return _holder; }
         }
 
+        IList< IComponent > IComponent.Dependences
+        {
+            get { return _dependences; }
+        }
+
         #endregion
     }
 }

@@ -45,17 +45,9 @@ namespace Robotango.Core.Internal.Abilities
             };
         }
 
-        #endregion
-
-
-        #region IResearchable
-
-        string IResearchable.Dump( int level )
+        protected override void DumpAbilityContent( OutlineWriter wr )
         {
-            var wr = new OutlineWriter( level );
-            wr.Line( "<{0}>", typeof( Virtual ).Name );
-            _attributes.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
-            return wr.ToString();
+            _attributes.ForEach( a => wr.Append( a.Dump( wr.Level ) ) );
         }
 
         #endregion

@@ -155,30 +155,5 @@ namespace Robotango.Tests.Units.Abilities
             Assert.That( world.IReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
         }
 
-        [Test]
-        public void Intentions_are_dumped()
-        {
-            var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
-                );
-            ILocation a = new Location( "A" );
-            ILocation b = new Location( "B" );
-
-            alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IThinking >().InnerReality.AddAgent( alice );
-
-            var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
-
-            alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
-            alice.As< IPurposeful >().AddIntention( operation );
-
-            var dump = Log( world.Dump() );
-
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
-            Assert.That( dump, Is.StringContaining( "Intentions" ) );
-            Assert.That( dump, Is.StringContaining( "Move Alice to B" ) );
-            Assert.That( dump, Is.StringContaining( "Some Intention" ) );
-        }
     }
 }

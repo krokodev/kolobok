@@ -13,44 +13,9 @@ namespace Robotango.Core.Internal.Abilities
 {
     internal class Communicative : Ability, ICommunicative
     {
-        #region IQuerist
+        #region Data
 
-        IQuestion< T > IQuerist.Ask<T>( Func< IReality, T > theme )
-        {
-            return new Question< T > {
-                Querist = this,
-                Essense = theme
-            };
-        }
-
-        #endregion
-
-
-        #region IRespondent
-
-        IAnswer< T > IRespondent.Reply<T>( IQuestion< T > question )
-        {
-            return new Answer< T > {
-                Question = question,
-                Respondent = this,
-                Result = ComputeAnswerResult( question )
-            };
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        protected override IComponent Clone()
-        {
-            return new Communicative();
-        }
-
-        protected override void onInitAsComponent()
-        {
-            _thinking = MakeDependenceIfAvailable< IThinking >();
-        }
+        private IThinking _thinking;
 
         #endregion
 
@@ -80,9 +45,44 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Data
+        #region Overrides
 
-        private IThinking _thinking;
+        protected override IComponent Clone()
+        {
+            return new Communicative();
+        }
+
+        protected override void onInitAsComponent()
+        {
+            _thinking = MakeDependenceIfAvailable< IThinking >();
+        }
+
+        #endregion
+
+
+        #region IQuerist
+
+        IQuestion< T > IQuerist.Ask<T>( Func< IReality, T > theme )
+        {
+            return new Question< T > {
+                Querist = this,
+                Essense = theme
+            };
+        }
+
+        #endregion
+
+
+        #region IRespondent
+
+        IAnswer< T > IRespondent.Reply<T>( IQuestion< T > question )
+        {
+            return new Answer< T > {
+                Question = question,
+                Respondent = this,
+                Result = ComputeAnswerResult( question )
+            };
+        }
 
         #endregion
     }
