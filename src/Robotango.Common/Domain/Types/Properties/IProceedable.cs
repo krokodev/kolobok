@@ -4,8 +4,8 @@
 
 namespace Robotango.Common.Domain.Types.Properties
 {
-    public interface IProceedable<T>
+    public interface IProceedable<in T>
     {
-        void Proceed( T context);
+        void Proceed( T context );
     }
 }

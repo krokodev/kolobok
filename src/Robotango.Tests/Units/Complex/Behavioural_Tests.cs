@@ -38,19 +38,19 @@ namespace Robotango.Tests.Units.Complex
 
             Log( world.Dump() );
             Assert.True( world.IReality.Contains( alice ) );
-            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( a ) );
+            Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( a ) );
 
             world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( b ) );
+            Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( b ) );
 
             world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( c ) );
+            Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( c ) );
 
             world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( a ) );
+            Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
         [Test]
@@ -101,9 +101,7 @@ namespace Robotango.Tests.Units.Complex
             Assert.Ignore();
         }
 
-
         // Todo:> Move to Proceed tests
- 
 
         [Test]
         public void World_thinks_that_Alice_goes_to_B()
@@ -128,6 +126,5 @@ namespace Robotango.Tests.Units.Complex
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
-
     }
 }

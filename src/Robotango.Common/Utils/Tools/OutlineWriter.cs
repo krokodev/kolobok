@@ -36,19 +36,9 @@ namespace Robotango.Common.Utils.Tools
             return _sb.ToString();
         }
 
-        public void Append( string template, params object[] args )
-        {
-            _sb.AppendFormat( template, args );
-        }
-
         public void Append( string str )
         {
             _sb.Append( str );
-        }
-
-        public void Append( object obj )
-        {
-            _sb.Append( obj );
         }
 
         public void Line( string template, params object[] args )
@@ -62,23 +52,6 @@ namespace Robotango.Common.Utils.Tools
         {
             _sb.Append( _indent );
             _sb.Append( str );
-            _sb.AppendLine();
-        }
-
-        public void Line( object obj )
-        {
-            _sb.Append( _indent );
-            _sb.Append( obj );
-            _sb.AppendLine();
-        }
-
-        public void Indent()
-        {
-            _sb.Append( _indent );
-        }
-
-        public void Line()
-        {
             _sb.AppendLine();
         }
 

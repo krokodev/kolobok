@@ -8,9 +8,9 @@ using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Elements.Communicative
 {
-    public interface IQuestion<T>
+    public interface IQuestion<out T>
     {
-        IQuerist Querist { get; set; }
-        Func< IReality, T > Essense { get; set; }
+        IQuerist Querist { get; }
+        Func< IReality, T > Essense { get; }
     }
 }

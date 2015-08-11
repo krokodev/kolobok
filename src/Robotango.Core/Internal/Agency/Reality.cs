@@ -23,12 +23,6 @@ namespace Robotango.Core.Internal.Agency
             _name = name;
         }
 
-        public Reality( IAgent holder = null, string name = null )
-            : this( name )
-        {
-            _holder = holder;
-        }
-
         #endregion
 
 
@@ -37,7 +31,6 @@ namespace Robotango.Core.Internal.Agency
         private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
-        private IAgent _holder;
 
         #endregion
 
@@ -52,14 +45,6 @@ namespace Robotango.Core.Internal.Agency
 
             _agents.Add( projection );
             return projection;
-        }
-
-        private string GetDefaultName()
-        {
-            if( _holder != null && _holder.HasName() ) {
-                return _holder.Name;
-            }
-            return Settings.Reality.Names.Default;
         }
 
         #endregion
@@ -98,9 +83,9 @@ namespace Robotango.Core.Internal.Agency
             return Project( agent );
         }
 
-        IReality IReality.Clone( IAgent holder )
+        IReality IReality.Clone()
         {
-            return new Reality( holder, _name ) {
+            return new Reality( _name ) {
                 _agents = _agents.Select( a => a.Clone() ).ToList()
             };
         }
@@ -110,14 +95,9 @@ namespace Robotango.Core.Internal.Agency
             return _agents.Any( a => a.Id == agent.Id );
         }
 
-        void IReality.Clear()
-        {
-            _agents.Clear();
-        }
-
         string IReality.Name
         {
-            get { return _name ?? GetDefaultName(); }
+            get { return _name ?? Settings.Reality.Names.Default; }
         }
 
         IList< IAgent > IReality.Agents

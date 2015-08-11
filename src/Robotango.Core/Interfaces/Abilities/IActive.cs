@@ -3,7 +3,6 @@
 // IActive.cs
 
 using System;
-using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Agency;
 

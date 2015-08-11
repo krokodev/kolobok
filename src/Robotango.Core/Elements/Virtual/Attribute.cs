@@ -26,16 +26,6 @@ namespace Robotango.Core.Elements.Virtual
 
         string IResearchable.Dump( int level )
         {
-            return Dump( level );
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        protected virtual string Dump( int level )
-        {
             return OutlineWriter.Line(
                 level,
                 "{0}=[{2}] <{1}>",
@@ -43,6 +33,11 @@ namespace Robotango.Core.Elements.Virtual
                 typeof( Attribute< T > ).Name,
                 GetDumpContent() );
         }
+
+        #endregion
+
+
+        #region Overrides
 
         protected virtual IAttribute Clone()
         {

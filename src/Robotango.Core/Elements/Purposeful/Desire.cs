@@ -14,19 +14,9 @@ namespace Robotango.Core.Elements.Purposeful
     {
         #region IDesire
 
-        IReality IDesire.Context
-        {
-            get { return _context; }
-        }
-
         bool IDesire.IsSatisfied()
         {
             return _predicate( _context );
-        }
-
-        IAgent IDesire.Holder
-        {
-            get { return _holder; }
         }
 
         #endregion
@@ -48,10 +38,9 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region Ctor
 
-        public Desire( IReality context, IAgent holder, Func< IReality, bool > predicate, string name )
+        public Desire( IReality context, Func< IReality, bool > predicate, string name )
         {
             _context = context;
-            _holder = holder;
             _predicate = predicate;
             _name = name ?? Settings.Desires.Names.Default;
         }
@@ -61,7 +50,6 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region Fields
 
-        private readonly IAgent _holder;
         private readonly Func< IReality, bool > _predicate;
         private readonly IReality _context;
         private readonly string _name;

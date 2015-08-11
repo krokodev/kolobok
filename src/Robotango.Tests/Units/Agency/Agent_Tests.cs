@@ -5,7 +5,6 @@
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
 using Robotango.Tests.Utils.Bases;
 
@@ -41,6 +40,18 @@ namespace Robotango.Tests.Units.Agency
             var a2 = a1.Clone();
             Log( "{0}\n{1}", a1.Name, a2.Name );
             Assert.AreEqual( a1.Name, a2.Name );
+        }
+
+        [Test, ExpectedException( typeof( AssertException ) )]
+        public void Agent_can_not_have_same_abilities()
+        {
+            Factory.CreateAgent< IThinking >();
+            Factory.CreateAgent< IThinking, IThinking >();
+            Factory.CreateAgent< IThinking, IThinking, IThinking >();
+            Factory.CreateAgent< IThinking, IThinking, IThinking, IThinking >();
+            Factory.CreateAgent< IThinking, IThinking, IThinking, IThinking, IThinking >();
+            Factory.CreateAgent< IThinking, IThinking, IThinking, IThinking, IThinking, IThinking >();
+            Factory.CreateAgent< IThinking, IThinking, IThinking, IThinking, IThinking, IThinking, IThinking >();
         }
     }
 }

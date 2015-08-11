@@ -48,12 +48,10 @@
     <Compile Include="Domain\Types\Properties\ILocation.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownComponentException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\MissedComponentException.cs" />
-    <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
     <Compile Include="Utils\Diagnostics\Debug\Debug.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\AssertException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\AbstractException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownAgentException.cs" />
-    <Compile Include="Utils\Diagnostics\Exceptions\VerificationException.cs" />
     <Compile Include="Utils\Extensions\CollectionExtensions.cs" />
     <Compile Include="Utils\Tools\OutlineWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

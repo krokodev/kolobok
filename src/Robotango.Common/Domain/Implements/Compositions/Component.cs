@@ -7,7 +7,7 @@ using Robotango.Common.Domain.Types.Compositions;
 
 namespace Robotango.Common.Domain.Implements.Compositions
 {
-    public abstract class Component: IComponent
+    public abstract class Component : IComponent
     {
         #region IComponent
 
@@ -24,12 +24,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         void IComponent.InitAsComponent( IComposite holder )
         {
             _holder = holder;
-            InitAsComponent( _holder );
-        }
-
-        IList< IComponent > IComponent.Dependences
-        {
-            get { return _dependences; }
+            InitAsComponent();
         }
 
         IComposite IComponent.Holder
@@ -44,7 +39,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         protected abstract IComponent Clone();
 
-        protected virtual void InitAsComponent( IComposite holder ) {}
+        protected virtual void InitAsComponent() {}
 
         #endregion
 

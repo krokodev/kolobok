@@ -14,7 +14,11 @@ namespace Robotango.Core.Internal.Agency
     {
         #region IWorld
 
-        IWorld IWorld { get { return this; } }
+        private IWorld IWorld
+        {
+            get { return this; }
+        }
+
         IReality IWorld.IReality
         {
             get { return _thinking.InnerReality; }
@@ -23,11 +27,6 @@ namespace Robotango.Core.Internal.Agency
         public IThinking IThinking
         {
             get { return _thinking; }
-        }
-
-        IAgent IWorld.IAgent
-        {
-            get { return _agent; }
         }
 
         void IWorld.Proceed()
@@ -43,7 +42,6 @@ namespace Robotango.Core.Internal.Agency
         string IWorld.Name
         {
             get { return _agent.Name; }
-            set { _agent.Name = value; }
         }
 
         #endregion
@@ -79,7 +77,5 @@ namespace Robotango.Core.Internal.Agency
         private readonly IThinking _thinking;
 
         #endregion
-
-
     }
 }

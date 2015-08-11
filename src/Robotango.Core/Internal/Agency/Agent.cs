@@ -23,6 +23,7 @@ namespace Robotango.Core.Internal.Agency
         #region Ctor
 
         public Agent( params IAbility[] abilities )
+
             // ReSharper disable once CoVariantArrayConversion
             : base( abilities ) {}
 
@@ -93,11 +94,6 @@ namespace Robotango.Core.Internal.Agency
             set { _name = value; }
         }
 
-        bool IAgent.HasName()
-        {
-            return _name != null;
-        }
-
         #endregion
 
 
@@ -112,11 +108,6 @@ namespace Robotango.Core.Internal.Agency
 
 
         #region IExecuter
-
-        IExecutor< IAgent > IAgent.IExecutor
-        {
-            get { return this; }
-        }
 
         IExecutor< IAgent > IExecutor< IAgent >.Do( Action< IAgent > action )
         {

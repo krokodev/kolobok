@@ -11,8 +11,7 @@ namespace Robotango.Core.Interfaces.Agency
     {
         IReality IReality { get; }
         IThinking IThinking { get; }
-        string Name { get; set; }
-        IAgent IAgent { get; }
+        string Name { get; }
         void Proceed();
         IAgent GetAgent( IAgent agent );
     }

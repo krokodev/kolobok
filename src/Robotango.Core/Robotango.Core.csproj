@@ -87,7 +87,6 @@
     <Compile Include="Interfaces\Abilities\IQuerist.cs" />
     <Compile Include="Elements\Communicative\IQuestion.cs" />
     <Compile Include="Interfaces\Abilities\IReflective.cs" />
-    <Compile Include="Interfaces\Abilities\ISentient.cs" />
     <Compile Include="Interfaces\Agency\IReality.cs" />
     <Compile Include="System\Factory.cs" />
     <Compile Include="Interfaces\Agency\IAgent.cs" />

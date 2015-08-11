@@ -8,7 +8,8 @@ using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Reflective : Ability, IReflective {
+    internal class Reflective : Ability, IReflective
+    {
         #region Overrides
 
         protected override IComponent Clone()

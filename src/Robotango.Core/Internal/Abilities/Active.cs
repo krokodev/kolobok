@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using MoreLinq;
-using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
@@ -49,11 +48,11 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IProceedable
 
-        void IProceedable<IReality>.Proceed( IReality reality )
+        void IProceedable< IReality >.Proceed( IReality reality )
         {
             // Code: Active.Proceed
 
-            OperateInOuterReality(reality);
+            OperateInOuterReality( reality );
         }
 
         #endregion

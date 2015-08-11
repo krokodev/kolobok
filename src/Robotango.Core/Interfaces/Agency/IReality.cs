@@ -8,13 +8,12 @@ using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Interfaces.Agency
 {
-    public interface IReality: IResearchable
+    public interface IReality : IResearchable
     {
         IAgent GetAgent( IAgent agent );
         IAgent AddAgent( IAgent agent );
-        IReality Clone( IAgent holder = null );
+        IReality Clone();
         bool Contains( IAgent agent );
-        void Clear();
         Guid Id { get; }
         string Name { get; }
         IList< IAgent > Agents { get; }

@@ -6,10 +6,10 @@ using System;
 
 namespace Robotango.Core.Elements.Communicative
 {
-    public interface IAnswerResult<T>
+    public interface IAnswerResult<out T>
     {
-        T Value { get; set; }
-        bool IsVaild { get; set; }
-        Exception Exception { get; set; }
+        T Value { get; }
+        bool IsVaild { get; }
+        Exception Exception { get; }
     }
 }

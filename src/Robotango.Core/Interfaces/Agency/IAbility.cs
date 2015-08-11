@@ -7,7 +7,5 @@ using Robotango.Common.Domain.Types.Properties;
 
 namespace Robotango.Core.Interfaces.Agency
 {
-    public interface IAbility : IComponent, IProceedable<IReality>, IResearchable
-    {
-    }
+    public interface IAbility : IComponent, IProceedable< IReality >, IResearchable {}
 }

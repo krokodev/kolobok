@@ -15,7 +15,6 @@ namespace Robotango.Core.Elements.Virtual
             get { return this; }
         }
 
-
         string ILocation.Name { get; set; }
 
         #endregion

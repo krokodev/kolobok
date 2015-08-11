@@ -6,10 +6,10 @@ using Robotango.Core.Interfaces.Abilities;
 
 namespace Robotango.Core.Elements.Communicative
 {
-    public interface IAnswer<T>
+    public interface IAnswer<out T>
     {
-        IQuestion< T > Question { get; set; }
-        IRespondent Respondent { get; set; }
-        IAnswerResult< T > Result { get; set; }
+        IQuestion< T > Question { get; }
+        IRespondent Respondent { get; }
+        IAnswerResult< T > Result { get; }
     }
 }

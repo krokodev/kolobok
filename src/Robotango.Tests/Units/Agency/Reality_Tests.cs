@@ -103,6 +103,5 @@ namespace Robotango.Tests.Units.Agency
             Log( world.Name );
             Assert.AreEqual( "Universe", world.Name );
         }
-
     }
 }

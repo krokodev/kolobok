@@ -3,7 +3,6 @@
 // Communicative.cs
 
 using System;
-using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Elements.Communicative;
 using Robotango.Core.Interfaces.Abilities;
@@ -48,7 +47,7 @@ namespace Robotango.Core.Internal.Abilities
             return new Communicative();
         }
 
-        protected override void InitAsComponent( IComposite holder )
+        protected override void InitAsComponent()
         {
             _thinking = MakeDependenceIfAvailable< IThinking >();
         }

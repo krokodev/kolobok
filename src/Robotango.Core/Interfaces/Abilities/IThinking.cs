@@ -3,7 +3,6 @@
 // IThinking.cs
 
 using System;
-using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Interfaces.Agency;
 

@@ -2,19 +2,16 @@
 // Robotango.Core
 // Ability.cs
 
-using System;
 using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
-using Robotango.Core.Internal.Abilities;
 
 // Here: Ability
 
-
 namespace Robotango.Core.Internal.Agency
 {
-    internal abstract class Ability: Component, IAbility
+    internal abstract class Ability : Component, IAbility
     {
         #region IProceedable
 
