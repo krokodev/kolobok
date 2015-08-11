@@ -21,10 +21,8 @@ namespace Robotango.Core.Internal.Agency
             if( IComponent.Dependences.Count == 0 ) {
                 return;
             }
-            wr.Indent();
-            wr.Append( "Dependences:", GetType().Name );
+            wr.Append( " need:");
             IComponent.Dependences.ForEach( d => wr.Append( " <{0}>", d.GetType().Name ) );
-            wr.Line();
         }
 
         #endregion
@@ -49,10 +47,12 @@ namespace Robotango.Core.Internal.Agency
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
-
-            wr.Line( "<{0}>", GetType().Name );
+            
+            wr.Indent();
+            wr.Append( "<{0}>", GetType().Name );
             wr.Level++;
             DumpDependences( wr );
+            wr.Line();
             DumpAbilityContent( wr );
             return wr.ToString();
         }

@@ -87,19 +87,10 @@ namespace Robotango.Tests.Units.Agency
             var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive, ICommunicative >( "Alice" );
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "Dependences: <Thinking> <Active>" ) );
+            Assert.That( dump, Is.StringContaining( "need: <Thinking> <Active>" ) );
         }
 
-        [Ignore, Test]
-        public void Activities_are_dumped()
-        {
-            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
-            var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
-            Assert.That( dump, Is.StringContaining( "Activities" ) );
-            Assert.That( dump, Is.StringContaining( "Movement" ) );
-        }
 
         [Test]
         public void Operations_are_dumped()
@@ -128,6 +119,20 @@ namespace Robotango.Tests.Units.Agency
             Assert.That( dump1, Is.StringContaining( "Operations" ) );
             Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B)" ) );
             Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B)" ) );
+        }
+
+        [Test]
+        public void Activities_are_dumped()
+        {
+            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
+
+            alice.As< IActive >().AddActivity< ILocation >( Activities.Virtual.Move );
+
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "Activities" ) );
+            Assert.That( dump, Is.StringContaining( "MoveTo(IAgent,ILocation)" ) );
         }
     }
 }

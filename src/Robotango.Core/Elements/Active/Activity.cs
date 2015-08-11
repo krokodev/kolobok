@@ -37,7 +37,7 @@ namespace Robotango.Core.Elements.Active
         {
             return OutlineWriter.Line(
                 level,
-                "{0} ( {1}, {2} ) <{3}>",
+                "{0}({1},{2}) <{3}>",
                 IActivity.Name,
                 typeof( IAgent ).Name,
                 typeof( T ).Name,
