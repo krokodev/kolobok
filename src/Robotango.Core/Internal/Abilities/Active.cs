@@ -53,11 +53,11 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IProceedable
 
-        void IProceedable< IReality >.Proceed( IReality reality )
+        void IProceedable< IReality >.Proceed( IReality outerReality )
         {
             // Code: Active.Proceed
 
-            _operations.ForEach( op => op.Execute( reality ) );
+            _operations.ForEach( outerReality.AddOperation );
             _operations.Clear();
         }
 

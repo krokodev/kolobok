@@ -101,28 +101,5 @@ namespace Robotango.Tests.Units.Complex
             Assert.Ignore();
         }
 
-        
-        [Test]
-        public void World_thinks_that_Alice_goes_to_B()
-        {
-            var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
-                );
-            var a = new Location( "A" );
-            var b = new Location( "B" );
-            var moveAliceToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
-
-            alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddIntention( moveAliceToB );
-
-            Log( world.Dump() );
-            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
-
-            world.Proceed();
-
-            Log( world.Dump() );
-            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
-        }
     }
 }

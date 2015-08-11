@@ -32,21 +32,11 @@ namespace Robotango.Tests.Units.Abilities
             IOperation aliceMoveAliceToB = new Operation< ILocation >( Activities.Virtual.Move, alice, b );
             IIntention intention = new Intention( aliceMoveAliceToB );
 
-            intention.Execute( world.IReality );
+            intention.Realize( world.IReality );
 
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
 
-        [Test]
-        public void Active_is_dumped()
-        {
-            var world = Factory.CreateWorld();
-            world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" ) );
-
-            var dump = Log( world.Dump() );
-
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
-        }
 
         [Test]
         public void Alice_has_intention_and_it_has_been_executed()
@@ -64,11 +54,58 @@ namespace Robotango.Tests.Units.Abilities
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             var intention = alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
 
-            intention.Execute( world.IReality );
+            intention.Realize( world.IReality );
 
             Log( world.Dump() );
 
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
+
+        [Test]
+        public void World_thinks_that_Alice_goes_to_B()
+        {
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
+                );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var moveAliceToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
+
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IPurposeful >().AddIntention( moveAliceToB );
+
+            Log( world.Dump() );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
+
+            world.Proceed();
+
+            Log( world.Dump() );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+        }
+
+        [Test]
+        public void Alice_thinks_that_she_goes_to_B_but_in_really_not()
+        {
+            var world = Factory.CreateWorld();
+            var alice0 = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var moveAliceToB = alice0.As< IActive >().CreateOperation( Activities.Virtual.Move, alice0, b );
+
+            alice0.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice0.As< IPurposeful >().AddIntention( moveAliceToB );
+            var alice1 = alice0.As< IThinking>().InnerReality.AddAgent( alice0 );
+            Log( world.Dump() );
+
+            alice0.Proceed(world.IReality);
+
+            Log( world.Dump() );
+            Assert.That( alice1.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+            Assert.That( alice0.Get( Its.Virtual.Location ), Is.Not.EqualTo( b ) );
+        }
+
     }
 }

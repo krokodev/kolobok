@@ -8,6 +8,6 @@ namespace Robotango.Core.Elements.Active
 {
     public interface IOperation
     {
-        void Execute( IReality reality );
+        void Realize( IReality reality );
     }
 }

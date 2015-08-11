@@ -33,9 +33,9 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region IIntention
 
-        void IIntention.Execute( IReality reality )
+        void IIntention.Realize( IReality reality )
         {
-            _operation.Execute( reality );
+            _operation.Realize( reality );
         }
 
         IOperation IIntention.Operation

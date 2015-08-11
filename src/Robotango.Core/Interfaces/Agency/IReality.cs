@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Elements.Active;
 
 namespace Robotango.Core.Interfaces.Agency
 {
@@ -17,5 +18,7 @@ namespace Robotango.Core.Interfaces.Agency
         Guid Id { get; }
         string Name { get; }
         IEnumerable< IAgent > Agents { get; }
+        void AddOperation( IOperation operation );
+        void Proceed();
     }
 }

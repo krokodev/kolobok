@@ -9,6 +9,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
 
@@ -29,6 +30,7 @@ namespace Robotango.Core.Internal.Agency
         #region Data
 
         private List< IAgent > _agents = new List< IAgent >();
+        private List< IOperation > _operations = new List< IOperation >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
 
@@ -103,6 +105,17 @@ namespace Robotango.Core.Internal.Agency
         IEnumerable< IAgent > IReality.Agents
         {
             get { return _agents; }
+        }
+
+        void IReality.AddOperation( IOperation operation )
+        {
+            _operations.Add( operation );
+        }
+
+        void IReality.Proceed()
+        {
+            _operations.ForEach( op=>op.Realize( this ) );
+            _operations.Clear();
         }
 
         Guid IReality.Id

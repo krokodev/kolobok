@@ -20,7 +20,7 @@ namespace Robotango.Core.Elements.Active
             _arg = arg;
         }
 
-        public void Execute( IReality reality )
+        public void Realize( IReality reality )
         {
             _action.Invoke( reality.GetAgent( _operand ), _arg );
         }

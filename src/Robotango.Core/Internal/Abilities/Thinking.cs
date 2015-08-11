@@ -29,21 +29,6 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Routines
-
-        private void InitInnerReality()
-        {
-            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
-        }
-
-        private void MakePrediction()
-        {
-            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
-        }
-
-
-        #endregion
-
 
         #region Overrides
 
@@ -103,8 +88,12 @@ namespace Robotango.Core.Internal.Abilities
 
         void IProceedable< IReality >.Proceed( IReality reality )
         {
-            InitInnerReality();
-            MakePrediction();
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+            
+            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
+
+            _innerReality.Proceed();
+
 
             //MakeDecision();
             //UpdateInnerReality();

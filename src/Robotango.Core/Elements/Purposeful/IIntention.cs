@@ -10,7 +10,7 @@ namespace Robotango.Core.Elements.Purposeful
 {
     public interface IIntention : IResearchable
     {
-        void Execute( IReality reality );
+        void Realize( IReality reality );
         IOperation Operation {get; }
     }
 }
