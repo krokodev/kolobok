@@ -157,5 +157,21 @@ namespace Robotango.Tests.Units.Abilities
             Assert.That( wBob.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
             Assert.That( bBob.Get( Its.Virtual.Location ), Is.Not.EqualTo( b ) );
         }
+
+        [Test]
+        public void Active_agent_contains_activities()
+        {
+            var alice = Factory.CreateAgent< IActive >( "Alice" );
+
+            var moveTo = new Activity< ILocation >( Activities.Virtual.Move, "Move to location" );
+
+            alice.As< IActive >().AddActivity< ILocation >( moveTo );
+
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "Activities" ) );
+            Assert.That( dump, Is.StringContaining( "Move to location" ) );
+        }
     }
 }

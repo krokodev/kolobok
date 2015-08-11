@@ -48,7 +48,7 @@ namespace Robotango.Core.Elements.Active
         {
             return OutlineWriter.Line(
                 level,
-                "{0} <{1}>",
+                "{0} ({1}{2}) <{3}>",
                 "Some Operation",
                 typeof( Operation< TArg > ).Name
                 );

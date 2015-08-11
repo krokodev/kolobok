@@ -12,5 +12,6 @@ namespace Robotango.Core.Interfaces.Abilities
     {
         IOperation CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg );
         void AddOperation( IOperation operation );
+        void AddActivity<T>( IActivity activity );
     }
 }

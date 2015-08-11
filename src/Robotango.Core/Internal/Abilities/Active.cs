@@ -23,6 +23,7 @@ namespace Robotango.Core.Internal.Abilities
         #region Data
 
         private readonly IList< IOperation > _operations = new List< IOperation >();
+        private readonly IList< IActivity > _activities = new List< IActivity >();
 
         #endregion
 
@@ -46,6 +47,16 @@ namespace Robotango.Core.Internal.Abilities
             _operations.ForEach( o => wr.Append( o.Dump( wr.Level ) ) );
             wr.Level--;
         }
+        private void DumpActivities( OutlineWriter wr )
+        {
+            if( !_activities.Any() ) {
+                return;
+            }
+            wr.Line( "Activities" );
+            wr.Level++;
+            _activities.ForEach( a => wr.Append( a.Dump( wr.Level ) ) );
+            wr.Level--;
+        }
 
         #endregion
 
@@ -60,6 +71,7 @@ namespace Robotango.Core.Internal.Abilities
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
             DumpOperations( wr );
+            DumpActivities( wr );
         }
 
         #endregion
@@ -73,9 +85,18 @@ namespace Robotango.Core.Internal.Abilities
             return new Operation< T >( action, operand, arg );
         }
 
-        public void AddOperation( IOperation operation )
+        void IActive.AddOperation( IOperation operation )
         {
             _operations.Add( operation );
+        }
+
+
+        void IActive.AddActivity<T>( IActivity activity )
+        {
+            if( _activities.Contains( activity ) ) {
+                return;
+            }
+            _activities.Add( activity );
         }
 
         #endregion

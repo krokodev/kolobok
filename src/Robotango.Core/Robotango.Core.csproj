@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\Active\Activities.cs" />
+    <Compile Include="Elements\Active\Activity.cs" />
     <Compile Include="Elements\Active\IOperation.cs" />
     <Compile Include="Elements\Active\Operation.cs" />
     <Compile Include="Elements\Purposeful\IIntention.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Expressions\VirtualAccessor.cs" />
     <Compile Include="Elements\Purposeful\Desire.cs" />
     <Compile Include="Interfaces\Abilities\IActive.cs" />
+    <Compile Include="Elements\Active\IActivity.cs" />
     <Compile Include="Internal\Agency\Ability.cs" />
     <Compile Include="Internal\Abilities\Purposeful.cs" />
     <Compile Include="Elements\Thinking\Belief.cs" />
