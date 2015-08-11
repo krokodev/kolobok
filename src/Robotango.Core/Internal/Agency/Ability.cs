@@ -21,7 +21,7 @@ namespace Robotango.Core.Internal.Agency
             if( IComponent.Dependences.Count == 0 ) {
                 return;
             }
-            wr.Append( " need:");
+            wr.Append( " need:" );
             IComponent.Dependences.ForEach( d => wr.Append( " <{0}>", d.GetType().Name ) );
         }
 
@@ -47,7 +47,7 @@ namespace Robotango.Core.Internal.Agency
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
-            
+
             wr.Indent();
             wr.Append( "<{0}>", GetType().Name );
             wr.Level++;

@@ -1,8 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Common
-// MissedComponentException.cs
-
-using System;
+// ActivityArgumentException.cs
 
 namespace Robotango.Common.Utils.Diagnostics.Exceptions
 {

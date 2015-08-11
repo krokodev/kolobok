@@ -90,8 +90,6 @@ namespace Robotango.Tests.Units.Agency
             Assert.That( dump, Is.StringContaining( "need: <Thinking> <Active>" ) );
         }
 
-
-
         [Test]
         public void Operations_are_dumped()
         {

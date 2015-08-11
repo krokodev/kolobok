@@ -3,7 +3,6 @@
 // Proceed_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;

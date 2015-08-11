@@ -8,6 +8,5 @@ namespace Robotango.Common.Utils.Diagnostics.Exceptions
     {
         public UnknownActivityException( string format, params object[] args )
             : base( format, args ) {}
-
     }
 }

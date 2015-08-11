@@ -9,6 +9,7 @@ Todo
 
 Done
 ~~~~
+12/08/2015
 + Test: Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied
 + ren Intention to Desires
 + form out beliefs in the class IBelief

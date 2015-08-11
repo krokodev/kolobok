@@ -27,7 +27,7 @@ namespace Robotango.Core.Elements.Active
             _operand = operand;
             _activity = activity;
             _arg = arg;
-            _name = string.Format( "{0}({1},{2})", activity.Name, operand.Name, arg);
+            _name = string.Format( "{0}({1},{2})", activity.Name, operand.Name, arg );
         }
 
         #endregion
@@ -40,7 +40,10 @@ namespace Robotango.Core.Elements.Active
             _activity.Execute( reality.GetAgent( _operand ), _arg );
         }
 
-        string IOperation.Name { get{return _name;} }
+        string IOperation.Name
+        {
+            get { return _name; }
+        }
 
         IActivity IOperation.Activity
         {
