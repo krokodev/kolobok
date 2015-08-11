@@ -75,8 +75,7 @@ namespace Robotango.Core.Internal.Abilities
         }
 
         #endregion
-
-
+        
 
         #region IProceedable
 
