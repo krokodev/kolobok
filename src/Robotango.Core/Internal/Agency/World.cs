@@ -14,14 +14,29 @@ namespace Robotango.Core.Internal.Agency
     {
         #region IWorld
 
-        IReality IWorld.Reality
+        IReality IWorld.IReality
         {
             get { return _thinking.InnerReality; }
         }
 
-        IThinking IWorld.Thinking
+        public IThinking IThinking
         {
             get { return _thinking; }
+        }
+
+        IAgent IWorld.IAgent
+        {
+            get { return _agent; }
+        }
+
+        public void Proceed()
+        {
+            _agent.Proceed();
+        }
+
+        IAgent IWorld.GetAgent( IAgent agent )
+        {
+            return _thinking.InnerReality.GetAgent( agent );
         }
 
         #endregion

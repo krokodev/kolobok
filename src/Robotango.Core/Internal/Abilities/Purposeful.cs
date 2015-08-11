@@ -5,17 +5,17 @@
 using System;
 using System.Collections.Generic;
 using Robotango.Common.Domain.Implements.Compositions;
+using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
-using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Purposeful : Component< Purposeful >, IPurposeful, IResearchable
+    internal class Purposeful : Component< Purposeful >, IPurposeful
     {
         #region IPurposeful
 
@@ -56,12 +56,19 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
+        #region IProceedable
+
+        void IProceedable.Proceed() {}
+
+        #endregion
+
+
         #region Component
 
-        protected override void MakeDependences()
+        protected override void InitAsComponent( IComposite holder )
         {
             _thinking = MakeDependence< IThinking >();
-            _agent = (IAgent)IComponent.Holder;
+            _agent = ( IAgent ) holder;
         }
 
         #endregion

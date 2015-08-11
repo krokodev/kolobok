@@ -100,7 +100,7 @@ namespace Robotango.Core.Internal.Agency
 
         IReality IReality.Superior
         {
-            get { return _holder == null ? null : _holder.Reality; }
+            get { return _holder == null ? null : _holder.OuterReality; }
         }
 
         IList< IAgent > IReality.Agents
@@ -189,7 +189,7 @@ namespace Robotango.Core.Internal.Agency
             var projection = agent.Clone();
 
             _agents.Add( projection );
-            projection.Reality = this;
+            projection.OuterReality = this;
             return projection;
         }
 

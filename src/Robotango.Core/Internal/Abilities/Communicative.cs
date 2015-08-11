@@ -4,6 +4,7 @@
 
 using System;
 using Robotango.Common.Domain.Implements.Compositions;
+using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Elements.Communicative;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
@@ -41,7 +42,7 @@ namespace Robotango.Core.Internal.Abilities
 
         #region Component
 
-        protected override void MakeDependences()
+        protected override void InitAsComponent( IComposite holder )
         {
             _thinking = MakeDependenceIfAvailable< IThinking >();
         }

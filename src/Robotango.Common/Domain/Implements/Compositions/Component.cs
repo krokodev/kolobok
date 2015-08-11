@@ -22,10 +22,10 @@ namespace Robotango.Common.Domain.Implements.Compositions
             return Clone();
         }
 
-        void IComponent.InitReferences( IComposite composition )
+        void IComponent.InitAsComponent( IComposite holder )
         {
-            _holder = composition;
-            MakeDependences();
+            _holder = holder;
+            InitAsComponent( _holder );
         }
 
         IList< IComponent > IComponent.Dependences
@@ -48,7 +48,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
             return new T();
         }
 
-        protected virtual void MakeDependences() {}
+        protected virtual void InitAsComponent( IComposite holder ) {}
 
         #endregion
 

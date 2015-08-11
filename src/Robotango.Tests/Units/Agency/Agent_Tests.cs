@@ -50,7 +50,7 @@ namespace Robotango.Tests.Units.Agency
             var world = Factory.CreateReality();
             var newWorld = Factory.CreateReality();
             world.AddAgent( agent );
-            agent.Reality = newWorld;
+            agent.OuterReality = newWorld;
         }
 
         [Test, ExpectedException( typeof( AssertException ) )]
@@ -58,7 +58,7 @@ namespace Robotango.Tests.Units.Agency
         {
             var agent = Factory.CreateAgent< IThinking >();
             var world = Factory.CreateReality();
-            agent.Reality = world;
+            agent.OuterReality = world;
         }
 
         [Test]
@@ -66,8 +66,8 @@ namespace Robotango.Tests.Units.Agency
         {
             var world = Factory.CreateReality();
             var agent = world.AddAgent( Factory.CreateAgent< IThinking >() );
-            Assert.AreEqual( world, agent.Reality );
-            Assert.AreEqual( null, agent.Clone().Reality );
+            Assert.AreEqual( world, agent.OuterReality );
+            Assert.AreEqual( null, agent.Clone().OuterReality );
         }
 
         [Test]

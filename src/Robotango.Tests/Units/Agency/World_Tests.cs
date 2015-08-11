@@ -17,15 +17,15 @@ namespace Robotango.Tests.Units.Agency
         {
             var locA = new Location( "A" );
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().AddAttribute( new Position( locA ) );
 
             Log( world.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
-            Assert.AreSame( world.Reality, world.Thinking.InnerReality );
-            Assert.That( world.Reality.Contains( alice ) );
+            Assert.AreSame( world.IReality, world.IThinking.InnerReality );
+            Assert.That( world.IReality.Contains( alice ) );
         }
 
         [Test]
@@ -34,25 +34,25 @@ namespace Robotango.Tests.Units.Agency
             var locA = new Location( "A" );
             var locB = new Location( "B" );
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().AddAttribute( new Position( locA ) );
-            world.Thinking.AddBelief( reality => { reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location = locB; } );
+            world.IThinking.AddBelief( reality => { reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location = locB; } );
 
             Log( world.Dump() );
             Log( alice.Dump() );
 
             Assert.AreEqual( "The World", world.Name );
-            Assert.True( world.Reality.Contains( alice ) );
+            Assert.True( world.IReality.Contains( alice ) );
             Assert.AreEqual( locA, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
 
             Log( "Thinking...\n" );
 
-            world.Thinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
 
             Log( world.Dump() );
 
-            Assert.That( world.Reality.Contains( alice ) );
+            Assert.That( world.IReality.Contains( alice ) );
             Assert.AreEqual( locB, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
         }
     }

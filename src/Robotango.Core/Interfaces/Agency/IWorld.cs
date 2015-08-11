@@ -9,7 +9,10 @@ namespace Robotango.Core.Interfaces.Agency
 {
     public interface IWorld : INamed, IResearchable
     {
-        IReality Reality { get; }
-        IThinking Thinking { get; }
+        IReality IReality { get; }
+        IThinking IThinking { get; }
+        IAgent IAgent { get; }
+        void Proceed();
+        IAgent GetAgent( IAgent agent );
     }
 }

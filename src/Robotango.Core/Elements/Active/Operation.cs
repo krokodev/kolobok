@@ -9,14 +9,12 @@ namespace Robotango.Core.Elements.Active
 {
     public class Operation<TArg> : IOperation
     {
-        private readonly IAgent _actor;
         private readonly IAgent _operand;
         private readonly Action< IAgent, TArg > _action;
         private readonly TArg _arg;
 
-        public Operation( IAgent actor, Action< IAgent, TArg > action, IAgent operand, TArg arg )
+        public Operation( Action< IAgent, TArg > action, IAgent operand, TArg arg )
         {
-            _actor = actor;
             _operand = operand;
             _action = action;
             _arg = arg;

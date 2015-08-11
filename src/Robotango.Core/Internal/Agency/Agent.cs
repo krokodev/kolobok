@@ -47,14 +47,14 @@ namespace Robotango.Core.Internal.Agency
             return clone;
         }
 
-        IReality IAgent.Reality
+        IReality IAgent.OuterReality
         {
-            get { return _reality; }
+            get { return _outerReality; }
             set
             {
-                Debug.Assert.That( _reality == null, "Agent '{0}' can not be moved to new reality '{1}'", this, value );
+                Debug.Assert.That( _outerReality == null, "Agent '{0}' can not be moved to new reality '{1}'", this, value );
                 Debug.Assert.That( value.Contains( this ), "Reality '{0}' should contain agent '{1}'", value, this );
-                _reality = value;
+                _outerReality = value;
             }
         }
 
@@ -66,16 +66,16 @@ namespace Robotango.Core.Internal.Agency
 
         uint IAgent.Depth
         {
-            get { return _reality == null ? Settings.Depth.Basic : _reality.Depth; }
+            get { return _outerReality == null ? Settings.Depth.Basic : _outerReality.Depth; }
         }
 
         string IAgent.FullName
         {
             get
             {
-                return _reality == null
+                return _outerReality == null
                     ? IAgent.Name
-                    : string.Format( Settings.Agents.Names.FullTemplate, _reality.FullName, IAgent.Name );
+                    : string.Format( Settings.Agents.Names.FullTemplate, _outerReality.FullName, IAgent.Name );
             }
         }
 
@@ -178,7 +178,7 @@ namespace Robotango.Core.Internal.Agency
         #region Fields
 
         private Guid _id = Guid.NewGuid();
-        private IReality _reality;
+        private IReality _outerReality;
         private string _name;
 
         #endregion

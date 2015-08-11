@@ -20,7 +20,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Activities_Operations_and_Intentions_work_properly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent(
+            var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
                 );
             var a = new Location( "A" );
@@ -29,10 +29,10 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            IOperation aliceMoveAliceToB = new Operation< ILocation >( alice, Activities.Virtual.Move, alice, b );
+            IOperation aliceMoveAliceToB = new Operation< ILocation >( Activities.Virtual.Move, alice, b );
             IIntention intention = new Intention( aliceMoveAliceToB );
 
-            intention.Execute( world.Reality );
+            intention.Execute( world.IReality );
 
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
@@ -41,7 +41,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Active_is_dumped()
         {
             var world = Factory.CreateWorld();
-            world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" ) );
+            world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" ) );
 
             var dump = Log( world.Dump() );
 
@@ -52,7 +52,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_has_intention_and_it_has_been_executed()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent(
+            var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
                 );
             ILocation a = new Location( "A" );
@@ -64,7 +64,7 @@ namespace Robotango.Tests.Units.Abilities
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             var intention = alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
 
-            intention.Execute( world.Reality );
+            intention.Execute( world.IReality );
 
             Log( world.Dump() );
 

@@ -93,7 +93,7 @@ namespace Robotango.Core.Internal.Abilities
 
         #region Overrides
 
-        protected override void MakeDependences()
+        protected override void InitAsComponent( IComposite holder )
         {
             _innerReality.Holder = ( IAgent ) IComponent.Holder;
         }

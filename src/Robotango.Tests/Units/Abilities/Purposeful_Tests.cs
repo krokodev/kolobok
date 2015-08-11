@@ -59,7 +59,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_intends_to_be_in_location_B_and_is_satisfied_by_suggestion_that_she_is()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
@@ -114,7 +114,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desires_evaluation_could_change_its_inner_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
@@ -136,7 +136,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desire_evaluation_should_not_change_the_outer_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
@@ -151,14 +151,14 @@ namespace Robotango.Tests.Units.Abilities
                 } );
 
             Assert.That( desire.IsSatisfied() );
-            Assert.That( world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
+            Assert.That( world.IReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
         }
 
         [Test]
         public void Intentions_are_dumped()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent(
+            var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
                 );
             ILocation a = new Location( "A" );

@@ -12,7 +12,7 @@ namespace Robotango.Core.Interfaces.Agency
         T As<T>() where T : IAbility;
         bool Is<T>() where T : IAbility;
         IAgent Clone();
-        IReality Reality { get; set; }
+        IReality OuterReality { get; set; }
         string Name { get; set; }
         uint Depth { get; }
         string FullName { get; }

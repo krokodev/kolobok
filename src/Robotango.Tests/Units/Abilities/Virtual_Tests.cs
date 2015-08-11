@@ -98,7 +98,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Agent_has_only_one_position_after_changings_locations()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Location, new Location( "A" ) );
             alice.Set( Its.Virtual.Location, new Location( "B" ) );
@@ -115,7 +115,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Agent_has_many_positions_after_setting_new_positions()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
             alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );
@@ -131,7 +131,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Default_position_is_the_first_added()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.Set( Its.Virtual.Position, new Position( new Location( "A" ) ) );
             alice.Set( Its.Virtual.Position, new Position( new Location( "B" ) ) );

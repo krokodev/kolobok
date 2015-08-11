@@ -19,7 +19,7 @@ namespace Robotango.Tests.Units.Complex
         public void Set_agent_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var p = new Position( a );
 
@@ -32,7 +32,7 @@ namespace Robotango.Tests.Units.Complex
         public void Get_agent_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var p = new Position( a );
             alice.Set( Its.Virtual.Position, p );
@@ -46,7 +46,7 @@ namespace Robotango.Tests.Units.Complex
         public void Set_agent_location_directly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Location, a );
@@ -58,7 +58,7 @@ namespace Robotango.Tests.Units.Complex
         public void Access_agent_location_via_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Position, new Position() );
@@ -71,7 +71,7 @@ namespace Robotango.Tests.Units.Complex
         public void Access_agent_location_directly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
 
             alice.Set( Its.Virtual.Location, a );
@@ -83,7 +83,7 @@ namespace Robotango.Tests.Units.Complex
         public void Change_agent_location_deirectly()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
@@ -107,7 +107,7 @@ namespace Robotango.Tests.Units.Complex
         public void Change_agent_location_via_position()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );

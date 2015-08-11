@@ -20,7 +20,7 @@ namespace Robotango.Tests.Units.Complex
         public void Alice_can_move_in_her_outer_world()
         {
             var world = Factory.CreateWorld( "The World" );
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
@@ -31,26 +31,26 @@ namespace Robotango.Tests.Units.Complex
             };
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
 
-            world.Thinking.AddBelief( reality => {
+            world.IThinking.AddBelief( reality => {
                 var alicePosition = reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >();
                 alicePosition.Location = move[ alicePosition.Location ];
             } );
 
             Log( world.Dump() );
-            Assert.True( world.Reality.Contains( alice ) );
-            Assert.AreEqual( a, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.True( world.IReality.Contains( alice ) );
+            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( a ) );
 
-            world.Thinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.AreEqual( b, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( b ) );
 
-            world.Thinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.AreEqual( c, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( c ) );
 
-            world.Thinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.AreEqual( a, world.Reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location );
+            Assert.That( world.GetAgent(alice).Get( Its.Virtual.Location), Is.EqualTo( a ) );
         }
 
         [Test]
@@ -69,15 +69,18 @@ namespace Robotango.Tests.Units.Complex
         public void Alice_asks_Bob_to_pass_her_throw_door()
         {
             var world = Factory.CreateWorld( "The House" );
-            var alice = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
-            var bob = world.Reality.AddAgent( Factory.CreateAgent< IVirtual >( "Bob" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
+            var bob = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Bob" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
             var c = new Location( "C" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire( reality => reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b );
+            alice.As< IPurposeful >().AddDesire(
+                reality =>
+                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
+                );
             bob.As< IVirtual >().AddAttribute( new Position( b ) );
 
             Log( world.Dump() );
@@ -85,10 +88,10 @@ namespace Robotango.Tests.Units.Complex
             Assert.AreEqual( a, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
             Assert.AreEqual( b, bob.As< IVirtual >().GetAttribute< IPosition >().Location );
 
-            world.Thinking.ImplementBeliefs();
-            world.Thinking.ImplementBeliefs();
-            world.Thinking.ImplementBeliefs();
-            world.Thinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
+            world.IThinking.ImplementBeliefs();
 
             Log( world.Dump() );
 
@@ -98,11 +101,15 @@ namespace Robotango.Tests.Units.Complex
             Assert.Ignore();
         }
 
+
+        // Move to Proceed tests
+ 
+
         [Test]
         public void World_thinks_that_Alice_goes_to_B()
         {
             var world = Factory.CreateWorld();
-            var alice = world.Reality.AddAgent(
+            var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
                 );
             var a = new Location( "A" );
@@ -115,10 +122,11 @@ namespace Robotango.Tests.Units.Complex
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
 
-            world.Thinking.Proceed();
+            world.Proceed();
 
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
+
     }
 }

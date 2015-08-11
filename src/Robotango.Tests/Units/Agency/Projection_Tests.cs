@@ -17,10 +17,10 @@ namespace Robotango.Tests.Units.Agency
             var agent = Factory.CreateAgent< IVirtual >( "Alice" );
             var world = Factory.CreateWorld( "The World" );
 
-            world.Reality.AddAgent( agent );
-            world.Thinking.ImplementBeliefs();
+            world.IReality.AddAgent( agent );
+            world.IThinking.ImplementBeliefs();
             Log( world.Dump() );
-            Assert.That( world.Reality.Contains( agent ) );
+            Assert.That( world.IReality.Contains( agent ) );
         }
 
         [Test]
