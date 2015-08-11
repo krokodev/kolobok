@@ -14,6 +14,7 @@ namespace Robotango.Core.Internal.Agency
     {
         #region IWorld
 
+        IWorld IWorld { get { return this; } }
         IReality IWorld.IReality
         {
             get { return _thinking.InnerReality; }
@@ -29,9 +30,9 @@ namespace Robotango.Core.Internal.Agency
             get { return _agent; }
         }
 
-        public void Proceed()
+        void IWorld.Proceed()
         {
-            _agent.Proceed();
+            _agent.Proceed( null );
         }
 
         IAgent IWorld.GetAgent( IAgent agent )
@@ -39,17 +40,7 @@ namespace Robotango.Core.Internal.Agency
             return _thinking.InnerReality.GetAgent( agent );
         }
 
-        #endregion
-
-
-        #region INamed
-
-        private INamed INamed
-        {
-            get { return this; }
-        }
-
-        string INamed.Name
+        string IWorld.Name
         {
             get { return _agent.Name; }
             set { _agent.Name = value; }
@@ -63,7 +54,7 @@ namespace Robotango.Core.Internal.Agency
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
-            wr.Line( "{0} <{1}>", INamed.Name, typeof( World ).Name );
+            wr.Line( "{0} <{1}>", IWorld.Name, typeof( World ).Name );
             wr.Append( _agent.Dump( wr.Level + 1 ) );
             return wr.ToString();
         }
@@ -77,7 +68,6 @@ namespace Robotango.Core.Internal.Agency
         {
             _agent = factory.CreateAgent< IThinking >( name ?? Settings.Worlds.Names.Default );
             _thinking = _agent.As< IThinking >();
-            ;
         }
 
         #endregion
@@ -89,5 +79,7 @@ namespace Robotango.Core.Internal.Agency
         private readonly IThinking _thinking;
 
         #endregion
+
+
     }
 }

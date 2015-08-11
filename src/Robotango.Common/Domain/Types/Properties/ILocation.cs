@@ -4,5 +4,8 @@
 
 namespace Robotango.Common.Domain.Types.Properties
 {
-    public interface ILocation : INamed {}
+    public interface ILocation
+    {
+        string Name { get; set; }
+    }
 }

@@ -9,7 +9,7 @@ using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Interfaces.Abilities
 {
-    public interface IActive : IAbility, IResearchable, IProceedable
+    public interface IActive : IAbility
     {
         IOperation CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg );
     }

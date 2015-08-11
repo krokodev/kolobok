@@ -8,5 +8,5 @@ using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Interfaces.Abilities
 {
-    public interface IVirtual : IAbility, IAttributeHolder, IResearchable {}
+    public interface IVirtual : IAbility, IAttributeHolder {}
 }

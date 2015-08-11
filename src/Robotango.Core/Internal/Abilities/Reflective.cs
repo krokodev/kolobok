@@ -2,10 +2,10 @@
 // Robotango.Core
 // Reflective.cs
 
-using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Reflective : Component< Reflective >, IReflective {}
+    internal class Reflective : Ability< Reflective >, IReflective {}
 }

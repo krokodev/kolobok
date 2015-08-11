@@ -44,9 +44,8 @@
     <Compile Include="Domain\Types\Expressions\IPropertyAccessor.cs" />
     <Compile Include="Domain\Types\Expressions\IExecutor.cs" />
     <Compile Include="Domain\Implements\Expressions\PropertyAccessor.cs" />
-    <Compile Include="Domain\Types\Properties\ILocation.cs" />
-    <Compile Include="Domain\Types\Properties\INamed.cs" />
     <Compile Include="Domain\Types\Properties\IProceedable.cs" />
+    <Compile Include="Domain\Types\Properties\ILocation.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownComponentException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\MissedComponentException.cs" />
     <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
@@ -62,9 +61,7 @@
     <Compile Include="Domain\Types\Compositions\IComposite.cs" />
     <Compile Include="Domain\Types\Enums\Colors.cs" />
     <Compile Include="Domain\Types\Properties\IColored.cs" />
-    <Compile Include="Domain\Types\Properties\IIdentifiable.cs" />
     <Compile Include="Domain\Types\Properties\IResearchable.cs" />
-    <Compile Include="Domain\Types\Properties\IVerifiable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

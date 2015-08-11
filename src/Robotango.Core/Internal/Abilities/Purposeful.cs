@@ -13,6 +13,8 @@ using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
 
+// Here: Purposeful
+
 namespace Robotango.Core.Internal.Abilities
 {
     internal class Purposeful : Component< Purposeful >, IPurposeful
@@ -58,7 +60,7 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IProceedable
 
-        void IProceedable.Proceed() {}
+        void IProceedable<IReality>.Proceed( IReality reality ) {}
 
         #endregion
 

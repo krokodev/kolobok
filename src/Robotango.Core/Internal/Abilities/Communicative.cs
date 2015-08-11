@@ -8,10 +8,11 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Elements.Communicative;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Communicative : Component< Thinking >, ICommunicative
+    internal class Communicative : Ability< Thinking >, ICommunicative
     {
         #region IQuerist
 

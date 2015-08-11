@@ -12,10 +12,11 @@ using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Virtual : Component< Thinking >, IVirtual
+    internal class Virtual : Ability< Thinking >, IVirtual
     {
         #region IAttributeHolder
 

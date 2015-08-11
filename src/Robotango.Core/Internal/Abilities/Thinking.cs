@@ -16,9 +16,11 @@ using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.Internal.Agency;
 using Robotango.Core.System;
 
+// Here: Thinking 
+
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Thinking : Component< Thinking >, IThinking
+    internal class Thinking : Ability< Thinking >, IThinking
     {
         #region IThinking
 
@@ -55,16 +57,6 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region IVerifiable
-
-        void IVerifiable.Verify()
-        {
-            _innerReality.Verify();
-        }
-
-        #endregion
-
-
         #region IResearchable
 
         string IResearchable.Dump( int level )
@@ -80,7 +72,7 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IProceedable
 
-        void IProceedable.Proceed()
+        void IProceedable<IReality>.Proceed( IReality reality )
         {
             InitInnerReality();
             MakePrediction();
@@ -113,7 +105,7 @@ namespace Robotango.Core.Internal.Abilities
 
         private void MakePrediction()
         {
-            _innerReality.Agents.ForEach( agent => agent.Proceed() );
+            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
         }
 
         private void MakeDecision() {}

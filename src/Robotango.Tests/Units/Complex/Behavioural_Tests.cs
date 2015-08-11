@@ -102,7 +102,7 @@ namespace Robotango.Tests.Units.Complex
         }
 
 
-        // Move to Proceed tests
+        // Todo:> Move to Proceed tests
  
 
         [Test]
@@ -122,6 +122,7 @@ namespace Robotango.Tests.Units.Complex
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
 
+            // Code: World_thinks_that_Alice_goes_to_B
             world.Proceed();
 
             Log( world.Dump() );

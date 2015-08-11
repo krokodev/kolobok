@@ -47,6 +47,10 @@ namespace Robotango.Core.Internal.Agency
             return clone;
         }
 
+        Guid IAgent.Id
+        {
+            get { return _id; }
+        }
         
         string IAgent.Name
         {
@@ -64,9 +68,9 @@ namespace Robotango.Core.Internal.Agency
 
         #region IProceedable
 
-        void IProceedable.Proceed()
+        void IProceedable<IReality>.Proceed( IReality reality )
         {
-            Components.OfType< IProceedable >().ForEach( c => c.Proceed() );
+            Components.OfType< IProceedable<IReality> >().ForEach( c => c.Proceed( reality ) );
         }
 
         #endregion
@@ -98,16 +102,6 @@ namespace Robotango.Core.Internal.Agency
         bool IExecutor< IAgent >.Is( Func< IAgent, bool > predicate )
         {
             return predicate( this );
-        }
-
-        #endregion
-
-
-        #region IIdentifiable
-
-        Guid IIdentifiable.Id
-        {
-            get { return _id; }
         }
 
         #endregion

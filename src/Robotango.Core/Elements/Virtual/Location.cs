@@ -15,12 +15,8 @@ namespace Robotango.Core.Elements.Virtual
             get { return this; }
         }
 
-        #endregion
 
-
-        #region INamed
-
-        string INamed.Name { get; set; }
+        string ILocation.Name { get; set; }
 
         #endregion
 
@@ -35,9 +31,13 @@ namespace Robotango.Core.Elements.Virtual
         #endregion
 
 
+        #region Overrides
+
         public override string ToString()
         {
-            return ( ( INamed ) this ).Name;
+            return ILocation.Name;
         }
+
+        #endregion
     }
 }

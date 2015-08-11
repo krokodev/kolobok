@@ -8,7 +8,6 @@ using System.Linq;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Common.Utils.Extensions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
@@ -17,7 +16,66 @@ namespace Robotango.Core.Internal.Agency
 {
     internal class Reality : IReality
     {
-        #region IWorld
+        #region Ctor
+
+        public Reality( string name = null )
+        {
+            _name = name;
+        }
+
+        public Reality( IAgent holder = null, string name = null )
+            : this( name )
+        {
+            _holder = holder;
+        }
+
+        #endregion
+
+
+        #region Fields
+
+        private List< IAgent > _agents = new List< IAgent >();
+        private readonly Guid _id = Guid.NewGuid();
+        private readonly string _name;
+        private IAgent _holder;
+
+        #endregion
+
+
+        #region Routines
+
+        private IAgent Project( IAgent agent )
+        {
+            Debug.Assert.That( !IReality.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IReality );
+
+            var projection = agent.Clone();
+
+            _agents.Add( projection );
+            return projection;
+        }
+
+        private string GetDefaultName()
+        {
+            if( _holder != null && _holder.HasName() ) {
+                return _holder.Name;
+            }
+            return Settings.Reality.Names.Default;
+        }
+
+        #endregion
+
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format( "'{0}' {{{1}}}", IReality.Name, IReality.Id );
+        }
+
+        #endregion
+
+
+        #region IReality
 
         private IReality IReality
         {
@@ -67,12 +125,7 @@ namespace Robotango.Core.Internal.Agency
             get { return _agents; }
         }
 
-        #endregion
-
-
-        #region IIdentifiable
-
-        Guid IIdentifiable.Id
+        Guid IReality.Id
         {
             get { return _id; }
         }
@@ -88,75 +141,6 @@ namespace Robotango.Core.Internal.Agency
             wr.Line( "{0} <{1}>", IReality.Name, typeof( Reality ).Name );
             _agents.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
-        }
-
-        #endregion
-
-
-        #region IAspect
-
-        void IVerifiable.Verify()
-        {
-            Debug.Assert.That( _agents.AreUniqueBy( a => a.Id ), "World's {0} agents are not unique", IReality.Id );
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        public override string ToString()
-        {
-            return string.Format( "'{0}' {{{1}}}", IReality.Name, IReality.Id );
-        }
-
-        #endregion
-
-
-        #region Ctor
-
-        public Reality( string name = null )
-        {
-            _name = name;
-        }
-
-        public Reality( IAgent holder = null, string name = null )
-            : this( name )
-        {
-            _holder = holder;
-        }
-
-        #endregion
-
-
-        #region Fields
-
-        private List< IAgent > _agents = new List< IAgent >();
-        private readonly Guid _id = Guid.NewGuid();
-        private readonly string _name;
-        private IAgent _holder;
-
-        #endregion
-
-
-        #region Routines
-
-        private IAgent Project( IAgent agent )
-        {
-            Debug.Assert.That( !IReality.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IReality );
-
-            var projection = agent.Clone();
-
-            _agents.Add( projection );
-            return projection;
-        }
-
-        private string GetDefaultName()
-        {
-            if( _holder != null && _holder.HasName() ) {
-                return _holder.Name;
-            }
-            return Settings.Reality.Names.Default;
         }
 
         #endregion

@@ -64,14 +64,6 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Thinking_is_verifiable()
-        {
-            var agent = Factory.CreateAgent< IThinking >();
-
-            agent.As< IThinking >().Verify();
-        }
-
-        [Test]
         public void Alice_thinks_a_lot()
         {
             var alice = Factory.CreateAgent< IThinking, IVirtual >( "Alice" );
@@ -89,8 +81,6 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IThinking >().ImplementBeliefs();
 
             Log( alice.As< IThinking >().InnerReality.Dump() );
-
-            alice.As< IThinking >().Verify();
 
             Assert.AreEqual( Colors.Red, alice.As< IThinking >().InnerReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IHat >().Color );
         }

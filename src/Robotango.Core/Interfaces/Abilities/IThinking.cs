@@ -9,7 +9,7 @@ using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Interfaces.Abilities
 {
-    public interface IThinking : IAbility, IVerifiable, IResearchable, IProceedable
+    public interface IThinking : IAbility
     {
         void ImplementBeliefs();
         void AddBelief( Action< IReality > realityAction );

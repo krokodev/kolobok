@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
-using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+
+// Here: Active
 
 namespace Robotango.Core.Internal.Abilities
 {
@@ -19,8 +20,17 @@ namespace Robotango.Core.Internal.Abilities
     {
         #region Fields
 
-        private readonly IList<IOperation> _operations = new List< IOperation >();
-        private IAgent _agent;
+        private readonly IList< IOperation > _operations = new List< IOperation >();
+
+        #endregion
+
+
+        #region Routines
+
+        private void OperateInOuterReality( IReality reality )
+        {
+            _operations.ForEach( op => op.Execute( reality ) );
+        }
 
         #endregion
 
@@ -45,34 +55,15 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region
+        #region IProceedable
 
-        public void Proceed()
+        void IProceedable<IReality>.Proceed( IReality reality )
         {
-            OperateInOuterReality();
+            // Code: Active.Proceed
+
+            OperateInOuterReality(reality);
         }
 
         #endregion
-
-
-        #region Component
-
-        protected override void InitAsComponent( IComposite holder )
-        {
-            _agent = ( IAgent ) holder;
-        }
-
-        #endregion
-
-
-        #region Routines
-
-        private void OperateInOuterReality()
-        {
-//            _operations.ForEach( op=>op.Execute( _agent.OuterReality ) );
-        }
-
-        #endregion
-
     }
 }
