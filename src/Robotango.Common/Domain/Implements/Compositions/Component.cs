@@ -9,28 +9,10 @@ namespace Robotango.Common.Domain.Implements.Compositions
 {
     public abstract class Component : IComponent
     {
-        #region IComponent
+        #region Data
 
-        protected IComponent IComponent
-        {
-            get { return this; }
-        }
-
-        IComponent IComponent.Clone()
-        {
-            return Clone();
-        }
-
-        void IComponent.InitAsComponent( IComposite holder )
-        {
-            _holder = holder;
-            onInitAsComponent();
-        }
-
-        IComposite IComponent.Holder
-        {
-            get { return _holder; }
-        }
+        private readonly IList< IComponent > _dependences = new List< IComponent >();
+        private IComposite _holder;
 
         #endregion
 
@@ -65,10 +47,28 @@ namespace Robotango.Common.Domain.Implements.Compositions
         #endregion
 
 
-        #region Data
+        #region IComponent
 
-        private readonly IList< IComponent > _dependences = new List< IComponent >();
-        private IComposite _holder;
+        protected IComponent IComponent
+        {
+            get { return this; }
+        }
+
+        IComponent IComponent.Clone()
+        {
+            return Clone();
+        }
+
+        void IComponent.InitAsComponent( IComposite holder )
+        {
+            _holder = holder;
+            onInitAsComponent();
+        }
+
+        IComposite IComponent.Holder
+        {
+            get { return _holder; }
+        }
 
         #endregion
     }

@@ -100,7 +100,7 @@ namespace Robotango.Core.Internal.Agency
             get { return _name ?? Settings.Reality.Names.Default; }
         }
 
-        IList< IAgent > IReality.Agents
+        IEnumerable< IAgent > IReality.Agents
         {
             get { return _agents; }
         }
