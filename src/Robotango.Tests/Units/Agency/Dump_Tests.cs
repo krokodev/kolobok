@@ -61,15 +61,13 @@ namespace Robotango.Tests.Units.Agency
 
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
-            alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
             alice.As< IPurposeful >().AddIntention( operation );
 
             var dump = Log( world.Dump() );
 
             Assert.That( dump, Is.StringContaining( "<Active>" ) );
             Assert.That( dump, Is.StringContaining( "Intentions" ) );
-            Assert.That( dump, Is.StringContaining( "Move Alice to B" ) );
-            Assert.That( dump, Is.StringContaining( "Some Intention" ) );
+            Assert.That( dump, Is.StringContaining( "MoveTo(Alice,B)" ) );
         }
 
         [Test]
@@ -115,7 +113,7 @@ namespace Robotango.Tests.Units.Agency
             var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
+            alice.As< IPurposeful >().AddIntention( moveToB );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
             alice.As< IPurposeful >().Proceed( world.IReality );
@@ -128,8 +126,8 @@ namespace Robotango.Tests.Units.Agency
 
             Assert.That( dump1, Is.StringContaining( "<Active>" ) );
             Assert.That( dump1, Is.StringContaining( "Operations" ) );
-            Assert.That( dump1, Is.StringContaining( "Some Operation" ) );
-            Assert.That( dump2, Is.Not.StringContaining( "Some Operation" ) );
+            Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B)" ) );
+            Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B)" ) );
         }
     }
 }

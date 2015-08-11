@@ -4,6 +4,7 @@
 
 using System;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
 
@@ -13,7 +14,7 @@ namespace Robotango.Core.Elements.Active
     {
         #region Data
 
-        private Action< IAgent, T > _action;
+        private readonly Action< IAgent, T > _action;
         private readonly string _name;
 
         #endregion
@@ -21,10 +22,10 @@ namespace Robotango.Core.Elements.Active
 
         #region Ctor
 
-        public Activity( Action< IAgent, T > action, string name )
+        public Activity( string name, Action< IAgent, T > action )
         {
-            _action = action;
             _name = name;
+            _action = action;
         }
 
         #endregion
@@ -36,10 +37,11 @@ namespace Robotango.Core.Elements.Active
         {
             return OutlineWriter.Line(
                 level,
-                "{0} ( {1} ) <{2}>",
+                "{0} ( {1}, {2} ) <{3}>",
                 IActivity.Name,
-                typeof(T).Name,
-                typeof( Operation< T > ).Name
+                typeof( IAgent ).Name,
+                typeof( T ).Name,
+                typeof( Activity< T > ).Name
                 );
         }
 
@@ -48,8 +50,21 @@ namespace Robotango.Core.Elements.Active
 
         #region IActivity
 
-        IActivity IActivity { get { return this; } }
-        string IActivity.Name { get { return _name; }}
+        private IActivity IActivity
+        {
+            get { return this; }
+        }
+
+        string IActivity.Name
+        {
+            get { return _name; }
+        }
+
+        void IActivity.Execute( IAgent agent, object arg )
+        {
+            Debug.Assert.That( arg is T, "Argument must be {0}", typeof( T ).Name );
+            _action.Invoke( agent, ( T ) arg );
+        }
 
         #endregion
     }

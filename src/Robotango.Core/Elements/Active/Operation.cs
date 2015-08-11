@@ -2,31 +2,32 @@
 // Robotango.Core
 // Operation.cs
 
-using System;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Elements.Active
 {
-    public class Operation<TArg> : IOperation
+    public class Operation<T> : IOperation
     {
         #region Fields
 
         private readonly IAgent _operand;
-        private readonly Action< IAgent, TArg > _action;
-        private readonly TArg _arg;
+        private readonly IActivity _activity;
+        private readonly T _arg;
+        private readonly string _name;
 
         #endregion
 
 
         #region Ctor
 
-        public Operation( Action< IAgent, TArg > action, IAgent operand, TArg arg )
+        public Operation( IActivity activity, IAgent operand, T arg )
         {
             _operand = operand;
-            _action = action;
+            _activity = activity;
             _arg = arg;
+            _name = string.Format( "{0}({1},{2})", activity.Name, operand.Name, arg);
         }
 
         #endregion
@@ -36,8 +37,10 @@ namespace Robotango.Core.Elements.Active
 
         void IOperation.Realize( IReality reality )
         {
-            _action.Invoke( reality.GetAgent( _operand ), _arg );
+            _activity.Execute( reality.GetAgent( _operand ), _arg );
         }
+
+        public string Name { get{return _name;} }
 
         #endregion
 
@@ -48,11 +51,9 @@ namespace Robotango.Core.Elements.Active
         {
             return OutlineWriter.Line(
                 level,
-                "{0} ( {1}, {2} ) <{3}>",
-                "Some Operation", // Todo:> Use Activity Name
-                _operand.Name,
-                _arg,
-                typeof( Operation< TArg > ).Name
+                "{0} <{1}>",
+                _name,
+                typeof( Operation< T > ).Name
                 );
         }
 

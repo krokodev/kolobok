@@ -97,9 +97,9 @@ namespace Robotango.Core.Internal.Abilities
             return desire;
         }
 
-        IIntention IPurposeful.AddIntention( IOperation operation, string name )
+        IIntention IPurposeful.AddIntention( IOperation operation )
         {
-            var intention = new Intention( operation, name );
+            var intention = new Intention( operation );
             _intentions.Add( intention );
             return intention;
         }

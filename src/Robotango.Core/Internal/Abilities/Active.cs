@@ -2,7 +2,6 @@
 // Robotango.Core
 // Active.cs
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
@@ -32,7 +31,6 @@ namespace Robotango.Core.Internal.Abilities
 
         private void PassOperationsToReality( IReality reality )
         {
-            // Code: Active.Proceed
             _operations.ForEach( reality.AddOperation );
             _operations.Clear();
         }
@@ -79,10 +77,9 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IActive
 
-        IOperation IActive.CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg )
+        IOperation IActive.CreateOperation<T>( IActivity activity, IAgent operand, T arg )
         {
-            // Todo:> Use available Activities
-            return new Operation< T >( action, operand, arg );
+            return new Operation< T >( activity, operand, arg );
         }
 
         void IActive.AddOperation( IOperation operation )

@@ -10,5 +10,6 @@ namespace Robotango.Core.Elements.Active
     public interface IOperation : IResearchable
     {
         void Realize( IReality reality );
+        string Name { get; }
     }
 }

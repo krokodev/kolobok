@@ -34,6 +34,8 @@ namespace Robotango.Tests.Units.Abilities
 
             intention.Realize( world.IReality );
 
+            Log( world.Dump() );
+
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
 
@@ -51,7 +53,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
-            var intention = alice.As< IPurposeful >().AddIntention( operation, "Move Alice to B" );
+            var intention = alice.As< IPurposeful >().AddIntention( operation );
 
             intention.Realize( world.IReality );
 
@@ -116,7 +118,7 @@ namespace Robotango.Tests.Units.Abilities
             var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
 
-            alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
+            alice.As< IPurposeful >().AddIntention( moveToB );
 
             var wAlice = world.IReality.AddAgent( alice, "wAlice" );
             var aAlice = wAlice.As< IThinking >().InnerReality.AddAgent( wAlice, "aAlice" );
@@ -145,7 +147,7 @@ namespace Robotango.Tests.Units.Abilities
             var wBob = world.IReality.AddAgent( bob, "wBob" );
             var bBob = wBob.As< IThinking >().InnerReality.AddAgent( wBob, "bBob" );
 
-            wBob.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
+            wBob.As< IPurposeful >().AddIntention( moveToB );
 
             Log( world.Dump() );
             {
@@ -163,15 +165,13 @@ namespace Robotango.Tests.Units.Abilities
         {
             var alice = Factory.CreateAgent< IActive >( "Alice" );
 
-            var moveTo = new Activity< ILocation >( Activities.Virtual.Move, "Move to location" );
-
-            alice.As< IActive >().AddActivity< ILocation >( moveTo );
+            alice.As< IActive >().AddActivity< ILocation >( Activities.Virtual.Move );
 
             var dump = Log( alice.Dump() );
 
             Assert.That( dump, Is.StringContaining( "<Active>" ) );
             Assert.That( dump, Is.StringContaining( "Activities" ) );
-            Assert.That( dump, Is.StringContaining( "Move to location" ) );
+            Assert.That( dump, Is.StringContaining( "MoveTo" ) );
         }
     }
 }

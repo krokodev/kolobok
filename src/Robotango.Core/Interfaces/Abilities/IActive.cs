@@ -2,7 +2,6 @@
 // Robotango.Core
 // IActive.cs
 
-using System;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Agency;
 
@@ -10,7 +9,7 @@ namespace Robotango.Core.Interfaces.Abilities
 {
     public interface IActive : IAbility
     {
-        IOperation CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg );
+        IOperation CreateOperation<T>( IActivity activity, IAgent operand, T arg );
         void AddOperation( IOperation operation );
         void AddActivity<T>( IActivity activity );
     }

@@ -22,10 +22,10 @@ namespace Robotango.Core.Elements.Purposeful
 
         #region Ctor
 
-        public Intention( IOperation operation, string name = null )
+        public Intention( IOperation operation )
         {
             _operation = operation;
-            _name = name ?? Settings.Intentions.Names.Default;
+            _name = operation.Name;
         }
 
         #endregion
@@ -51,7 +51,7 @@ namespace Robotango.Core.Elements.Purposeful
         string IResearchable.Dump( int level )
         {
             return OutlineWriter.Line( level,
-                "'{0}' <{1}>",
+                "{0} <{1}>",
                 _name,
                 typeof( Intention ).Name
                 );
