@@ -12,12 +12,13 @@ using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Agency;
 
 // Here: Purposeful
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Purposeful : Component< Purposeful >, IPurposeful
+    internal class Purposeful : Ability, IPurposeful
     {
         #region IPurposeful
 
@@ -65,7 +66,12 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Component
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Purposeful();
+        }
 
         protected override void InitAsComponent( IComposite holder )
         {

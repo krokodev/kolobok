@@ -6,17 +6,19 @@ using System;
 using System.Collections.Generic;
 using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
+using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Agency;
 
 // Here: Active
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Active : Component< Active >, IActive
+    internal class Active : Ability, IActive
     {
         #region Fields
 
@@ -30,6 +32,28 @@ namespace Robotango.Core.Internal.Abilities
         private void OperateInOuterReality( IReality reality )
         {
             _operations.ForEach( op => op.Execute( reality ) );
+        }
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Active();
+        }
+
+        #endregion
+
+
+        #region IProceedable
+
+        void IProceedable<IReality>.Proceed( IReality reality )
+        {
+            // Code: Active.Proceed
+
+            OperateInOuterReality(reality);
         }
 
         #endregion
@@ -50,18 +74,6 @@ namespace Robotango.Core.Internal.Abilities
         string IResearchable.Dump( int level )
         {
             return OutlineWriter.Line( level, "<{0}>", typeof( Active ).Name );
-        }
-
-        #endregion
-
-
-        #region IProceedable
-
-        void IProceedable<IReality>.Proceed( IReality reality )
-        {
-            // Code: Active.Proceed
-
-            OperateInOuterReality(reality);
         }
 
         #endregion

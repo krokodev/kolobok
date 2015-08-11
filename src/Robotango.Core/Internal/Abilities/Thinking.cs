@@ -20,7 +20,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Thinking : Ability< Thinking >, IThinking
+    internal class Thinking : Ability, IThinking
     {
         #region IThinking
 

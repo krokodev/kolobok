@@ -14,10 +14,45 @@ using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
 using Robotango.Core.System;
 
+// Here: Agent
+
 namespace Robotango.Core.Internal.Agency
 {
     internal class Agent : Composition, IAgent
     {
+        #region Ctor
+
+        public Agent( params IAbility[] abilities )
+            // ReSharper disable once CoVariantArrayConversion
+            : base( abilities ) {}
+
+        public Agent( string name, params IAbility[] abilities )
+            : this( abilities )
+        {
+            IAgent.Name = name;
+        }
+
+        #endregion
+
+
+        #region Fields
+
+        private Guid _id = Guid.NewGuid();
+        private string _name;
+
+        #endregion
+
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return string.Format( "'{0}' {{{1}}}", IAgent.Name, IAgent.Id );
+        }
+
+        #endregion
+
+
         #region IAgent
 
         private IAgent IAgent
@@ -51,7 +86,7 @@ namespace Robotango.Core.Internal.Agency
         {
             get { return _id; }
         }
-        
+
         string IAgent.Name
         {
             get { return _name ?? Settings.Agents.Names.Default; }
@@ -68,9 +103,9 @@ namespace Robotango.Core.Internal.Agency
 
         #region IProceedable
 
-        void IProceedable<IReality>.Proceed( IReality reality )
+        void IProceedable< IReality >.Proceed( IReality reality )
         {
-            Components.OfType< IProceedable<IReality> >().ForEach( c => c.Proceed( reality ) );
+            Components.OfType< IProceedable< IReality > >().ForEach( c => c.Proceed( reality ) );
         }
 
         #endregion
@@ -116,39 +151,6 @@ namespace Robotango.Core.Internal.Agency
             Components.OfType< IResearchable >().ForEach( c => wr.Append( c.Dump( wr.Level + 1 ) ) );
             return wr.ToString();
         }
-
-        #endregion
-
-
-        #region Ctor
-
-        public Agent( params IAbility[] abilities )
-            : base( abilities ) {}
-
-        public Agent( string name, params IAbility[] abilities )
-            : this( abilities )
-        {
-            IAgent.Name = name;
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        public override string ToString()
-        {
-            return string.Format( "'{0}' {{{1}}}", IAgent.Name, IAgent.Id );
-        }
-
-        #endregion
-
-
-        #region Fields
-
-        private Guid _id = Guid.NewGuid();
-        private IReality _outerReality;
-        private string _name;
 
         #endregion
     }

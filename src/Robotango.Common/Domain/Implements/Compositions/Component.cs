@@ -7,8 +7,7 @@ using Robotango.Common.Domain.Types.Compositions;
 
 namespace Robotango.Common.Domain.Implements.Compositions
 {
-    public abstract class Component<T> : IComponent
-        where T : IComponent, new()
+    public abstract class Component: IComponent
     {
         #region IComponent
 
@@ -43,10 +42,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         #region Overrides
 
-        protected virtual IComponent Clone()
-        {
-            return new T();
-        }
+        protected abstract IComponent Clone();
 
         protected virtual void InitAsComponent( IComposite holder ) {}
 

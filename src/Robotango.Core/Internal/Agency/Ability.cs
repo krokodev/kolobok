@@ -5,21 +5,31 @@
 using System;
 using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Internal.Abilities;
+
+// Here: Ability
+
 
 namespace Robotango.Core.Internal.Agency
 {
-    internal abstract class Ability<T> : Component< T >, IAbility
-        where T : IAbility, new()
+    internal abstract class Ability: Component, IAbility
     {
-        void IProceedable< IReality >.Proceed( IReality context )
-        {
-            throw new NotImplementedException();
-        }
+        #region IProceedable
+
+        void IProceedable< IReality >.Proceed( IReality context ) {}
+
+        #endregion
+
+
+        #region IResearchable
 
         string IResearchable.Dump( int level )
         {
-            throw new NotImplementedException();
+            return OutlineWriter.Line( level, "<{0}>", typeof( Ability ).Name );
         }
+
+        #endregion
     }
 }

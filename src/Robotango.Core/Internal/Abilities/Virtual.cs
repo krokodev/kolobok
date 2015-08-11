@@ -16,8 +16,52 @@ using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Virtual : Ability< Thinking >, IVirtual
+    internal class Virtual : Ability, IVirtual
     {
+        #region Fields
+
+        private List< IAttribute > _attributes = new List< IAttribute >();
+
+        #endregion
+
+
+        #region Routines
+
+        private T GetOrAdd<T>() where T : IAttribute, new()
+        {
+            return IAttributeHolder.HasAttribute< T >()
+                ? IAttributeHolder.GetAttribute< T >()
+                : IAttributeHolder.AddAttribute< T >();
+        }
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Virtual {
+                _attributes = _attributes.Select( p => p.Clone() ).ToList()
+            };
+        }
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.Dump( int level )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line( "<{0}>", typeof( Virtual ).Name );
+            _attributes.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
+            return wr.ToString();
+        }
+
+        #endregion
+
+
         #region IAttributeHolder
 
         private IAttributeHolder IAttributeHolder
@@ -59,50 +103,6 @@ namespace Robotango.Core.Internal.Abilities
         {
             var attr = GetOrAdd< T >();
             setter( attr, value );
-        }
-
-        #endregion
-
-
-        #region Fields
-
-        private List< IAttribute > _attributes = new List< IAttribute >();
-
-        #endregion
-
-
-        #region IResearchable
-
-        string IResearchable.Dump( int level )
-        {
-            var wr = new OutlineWriter( level );
-            wr.Line( "<{0}>", typeof( Virtual ).Name );
-            _attributes.ForEach( a => wr.Append( a.Dump( wr.Level + 1 ) ) );
-            return wr.ToString();
-        }
-
-        #endregion
-
-
-        #region Overrides
-
-        protected override IComponent Clone()
-        {
-            return new Virtual {
-                _attributes = _attributes.Select( p => p.Clone() ).ToList()
-            };
-        }
-
-        #endregion
-
-
-        #region Routines
-
-        private T GetOrAdd<T>() where T : IAttribute, new()
-        {
-            return IAttributeHolder.HasAttribute< T >()
-                ? IAttributeHolder.GetAttribute< T >()
-                : IAttributeHolder.AddAttribute< T >();
         }
 
         #endregion

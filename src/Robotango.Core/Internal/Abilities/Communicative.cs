@@ -12,7 +12,7 @@ using Robotango.Core.Internal.Agency;
 
 namespace Robotango.Core.Internal.Abilities
 {
-    internal class Communicative : Ability< Thinking >, ICommunicative
+    internal class Communicative : Ability, ICommunicative
     {
         #region IQuerist
 
@@ -41,7 +41,12 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Component
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Communicative();
+        }
 
         protected override void InitAsComponent( IComposite holder )
         {

@@ -9,6 +9,5 @@ namespace Robotango.Core.Interfaces.Agency
 {
     public interface IAbility : IComponent, IProceedable<IReality>, IResearchable
     {
-        
     }
 }
