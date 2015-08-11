@@ -7,6 +7,8 @@ using System.Linq;
 using MoreLinq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Diagnostics.Debug;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Abilities;
@@ -45,6 +47,7 @@ namespace Robotango.Core.Internal.Abilities
             _operations.ForEach( o => wr.Append( o.Dump( wr.Level ) ) );
             wr.Level--;
         }
+
         private void DumpActivities( OutlineWriter wr )
         {
             if( !_activities.Any() ) {
@@ -79,14 +82,15 @@ namespace Robotango.Core.Internal.Abilities
 
         IOperation IActive.CreateOperation<T>( IActivity activity, IAgent operand, T arg )
         {
+            Debug.Assert.That( _activities.Contains( activity ), new UnknownActivityException( activity.Name ) );
             return new Operation< T >( activity, operand, arg );
         }
 
         void IActive.AddOperation( IOperation operation )
         {
+            Debug.Assert.That( _activities.Contains( operation.Activity ), new UnknownActivityException( operation.Activity.Name ) );
             _operations.Add( operation );
         }
-
 
         void IActive.AddActivity<T>( IActivity activity )
         {

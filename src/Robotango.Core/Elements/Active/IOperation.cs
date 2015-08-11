@@ -11,5 +11,6 @@ namespace Robotango.Core.Elements.Active
     {
         void Realize( IReality reality );
         string Name { get; }
+        IActivity Activity { get; }
     }
 }

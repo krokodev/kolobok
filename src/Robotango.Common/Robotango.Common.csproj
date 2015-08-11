@@ -46,6 +46,8 @@
     <Compile Include="Domain\Implements\Expressions\PropertyAccessor.cs" />
     <Compile Include="Domain\Types\Properties\IProceedable.cs" />
     <Compile Include="Domain\Types\Properties\ILocation.cs" />
+    <Compile Include="Utils\Diagnostics\Exceptions\ActivityArgumentException.cs" />
+    <Compile Include="Utils\Diagnostics\Exceptions\UnknownActivityException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownComponentException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\MissedComponentException.cs" />
     <Compile Include="Utils\Diagnostics\Debug\Debug.cs" />

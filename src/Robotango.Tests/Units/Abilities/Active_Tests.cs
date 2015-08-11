@@ -4,6 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Elements.Virtual;
@@ -171,7 +172,35 @@ namespace Robotango.Tests.Units.Abilities
 
             Assert.That( dump, Is.StringContaining( "<Active>" ) );
             Assert.That( dump, Is.StringContaining( "Activities" ) );
-            Assert.That( dump, Is.StringContaining( "MoveTo" ) );
+            Assert.That( dump, Is.StringContaining( Activities.Virtual.Move.Name ) );
         }
+
+        [Test, ExpectedException(typeof(UnknownActivityException))]
+        public void Alice_can_not_create_move_operation_because_she_has_not_such_activity()
+        {
+            var a = new Location( "A" );
+            var alice = Factory.CreateAgent< IActive >( "Alice" );
+
+            alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, a );
+        }
+
+        [Test, ExpectedException(typeof(UnknownActivityException))]
+        public void Alice_can_not_proceed_move_operation_because_she_has_not_such_activity()
+        {
+            var a = new Location( "A" );
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" ));
+            
+            var operation= new Operation<ILocation>( Activities.Virtual.Move, alice, a );
+            alice.As< IPurposeful >().AddIntention( operation );
+            world.Proceed();
+        }
+
+        [Test, ExpectedException(typeof(ActivityArgumentException))]
+        public void Wrong_argument_type()
+        {
+        }
+
     }
 }

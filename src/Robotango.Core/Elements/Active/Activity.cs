@@ -5,6 +5,7 @@
 using System;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
+using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Interfaces.Agency;
 
@@ -62,7 +63,7 @@ namespace Robotango.Core.Elements.Active
 
         void IActivity.Execute( IAgent agent, object arg )
         {
-            Debug.Assert.That( arg is T, "Argument must be {0}", typeof( T ).Name );
+            Debug.Assert.That( arg is T, new ActivityArgumentException( "Expected {0} but was {1}", typeof( T ).Name, arg.GetType().Name ) );
             _action.Invoke( agent, ( T ) arg );
         }
 

@@ -40,7 +40,12 @@ namespace Robotango.Core.Elements.Active
             _activity.Execute( reality.GetAgent( _operand ), _arg );
         }
 
-        public string Name { get{return _name;} }
+        string IOperation.Name { get{return _name;} }
+
+        IActivity IOperation.Activity
+        {
+            get { return _activity; }
+        }
 
         #endregion
 
