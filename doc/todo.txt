@@ -4,11 +4,12 @@ Todo list
 
 Todo
 ~~~~
-- Test: Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied
+> test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
 
 
 Done
 ~~~~
++ Test: Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied
 + ren Intention to Desires
 + form out beliefs in the class IBelief
 + IPurposful
@@ -31,7 +32,6 @@ Done
 
 Later
 ~~~~~
-- test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
 - dump beliefs
 - IBelief.TrustRate
 - Arch: remove cycking in ISkills-Agents and so on http://screencast.com/t/cWaOhl3PlaS

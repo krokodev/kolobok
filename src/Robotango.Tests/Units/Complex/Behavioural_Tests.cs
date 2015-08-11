@@ -89,10 +89,10 @@ namespace Robotango.Tests.Units.Complex
             Assert.AreEqual( a, alice.As< IVirtual >().GetAttribute< IPosition >().Location );
             Assert.AreEqual( b, bob.As< IVirtual >().GetAttribute< IPosition >().Location );
 
-            world.IThinking.ImplementBeliefs();
-            world.IThinking.ImplementBeliefs();
-            world.IThinking.ImplementBeliefs();
-            world.IThinking.ImplementBeliefs();
+            world.Proceed();
+            world.Proceed();
+            world.Proceed();
+            world.Proceed();
 
             Log( world.Dump() );
 
