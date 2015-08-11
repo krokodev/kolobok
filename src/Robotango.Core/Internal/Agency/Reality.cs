@@ -30,7 +30,7 @@ namespace Robotango.Core.Internal.Agency
         #region Data
 
         private List< IAgent > _agents = new List< IAgent >();
-        private List< IOperation > _operations = new List< IOperation >();
+        private readonly List< IOperation > _operations = new List< IOperation >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
 
@@ -39,11 +39,12 @@ namespace Robotango.Core.Internal.Agency
 
         #region Routines
 
-        private IAgent Project( IAgent agent )
+        private IAgent Project( IAgent agent, string name )
         {
             Debug.Assert.That( !IReality.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IReality );
 
             var projection = agent.Clone();
+            projection.Name = name;
 
             _agents.Add( projection );
             return projection;
@@ -80,9 +81,9 @@ namespace Robotango.Core.Internal.Agency
             }
         }
 
-        IAgent IReality.AddAgent( IAgent agent )
+        IAgent IReality.AddAgent( IAgent agent, string name )
         {
-            return Project( agent );
+            return Project( agent, name?? agent.Name );
         }
 
         IReality IReality.Clone()

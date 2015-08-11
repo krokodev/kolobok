@@ -12,7 +12,7 @@ namespace Robotango.Core.Interfaces.Agency
     public interface IReality : IResearchable
     {
         IAgent GetAgent( IAgent agent );
-        IAgent AddAgent( IAgent agent );
+        IAgent AddAgent( IAgent agent, string name = null );
         IReality Clone();
         bool Contains( IAgent agent );
         Guid Id { get; }

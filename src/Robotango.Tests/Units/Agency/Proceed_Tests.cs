@@ -38,5 +38,31 @@ namespace Robotango.Tests.Units.Agency
             Assert.That( alice.Get( Its.Virtual.Location ), Is.Not.EqualTo( b ) );
             Assert.That( bob.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
+
+        [Test]
+        public void No_intentions_after_proceed()
+        {
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                );
+            var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
+
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
+            alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
+
+            var dump1=Log( world.Dump() );
+            {
+                world.Proceed();
+            }
+            var dump2=Log( world.Dump() );
+
+            Assert.That( dump1, Is.StringContaining( "'moveToB' <Intention>" ));
+            Assert.That( dump2, Is.Not.StringContaining( "'moveToB' <Intention>" ));
+        }
+
     }
 }

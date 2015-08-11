@@ -39,6 +39,7 @@ namespace Robotango.Core.Internal.Abilities
 
         IOperation IActive.CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg )
         {
+            // Todo:> Use available Activities
             return new Operation< T >( action, operand, arg );
         }
 
