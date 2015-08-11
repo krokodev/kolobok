@@ -29,7 +29,6 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-
         #region Overrides
 
         protected override IComponent Clone()
@@ -83,17 +82,15 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-
         #region IProceedable
 
         void IProceedable< IReality >.Proceed( IReality reality )
         {
             _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
-            
+
             _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
 
             _innerReality.Proceed();
-
 
             //MakeDecision();
             //UpdateInnerReality();

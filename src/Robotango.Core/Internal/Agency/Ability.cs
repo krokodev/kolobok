@@ -53,7 +53,7 @@ namespace Robotango.Core.Internal.Agency
             wr.Line( "<{0}>", GetType().Name );
             wr.Level++;
             DumpDependences( wr );
-            DumpAbilityContent(wr);
+            DumpAbilityContent( wr );
             return wr.ToString();
         }
 

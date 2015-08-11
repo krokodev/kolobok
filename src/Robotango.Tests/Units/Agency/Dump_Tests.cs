@@ -106,12 +106,30 @@ namespace Robotango.Tests.Units.Agency
         [Ignore, Test]
         public void Operations_are_dumped()
         {
-            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
-            var dump = Log( alice.Dump() );
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var world = Factory.CreateWorld();
+            var alice = world.IReality.AddAgent(
+                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                );
+            var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
-            Assert.That( dump, Is.StringContaining( "Operations" ) );
-            Assert.That( dump, Is.StringContaining( "Some Operations" ) );
+            alice.As< IVirtual >().AddAttribute( new Position( a ) );
+            alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
+            alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
+
+            alice.As< IPurposeful >().Proceed( world.IReality );
+
+            var dump1 = Log( world.Dump() );
+            {
+                world.Proceed();
+            }
+            var dump2 = Log( world.Dump() );
+
+            Assert.That( dump1, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump1, Is.StringContaining( "Operations" ) );
+            Assert.That( dump1, Is.StringContaining( "Some Operation" ) );
+            Assert.That( dump2, Is.Not.StringContaining( "Some Operation" ) );
         }
     }
 }

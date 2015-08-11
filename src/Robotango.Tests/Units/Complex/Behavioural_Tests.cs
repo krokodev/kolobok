@@ -5,7 +5,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
 using Robotango.Core.Interfaces.Abilities;
@@ -53,6 +52,7 @@ namespace Robotango.Tests.Units.Complex
             Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
+        /*
         [Test]
         public void Agent_has_Alive_attribute()
         {
@@ -64,6 +64,7 @@ namespace Robotango.Tests.Units.Complex
         {
             Assert.Ignore();
         }
+*/
 
         [Ignore, Test]
         public void Alice_asks_Bob_to_pass_her_throw_door()
@@ -100,6 +101,5 @@ namespace Robotango.Tests.Units.Complex
 
             Assert.Ignore();
         }
-
     }
 }

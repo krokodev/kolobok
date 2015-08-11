@@ -11,6 +11,6 @@ namespace Robotango.Core.Elements.Purposeful
     public interface IIntention : IResearchable
     {
         void Realize( IReality reality );
-        IOperation Operation {get; }
+        IOperation Operation { get; }
     }
 }

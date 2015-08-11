@@ -83,7 +83,7 @@ namespace Robotango.Core.Internal.Agency
 
         IAgent IReality.AddAgent( IAgent agent, string name )
         {
-            return Project( agent, name?? agent.Name );
+            return Project( agent, name ?? agent.Name );
         }
 
         IReality IReality.Clone()
@@ -115,7 +115,7 @@ namespace Robotango.Core.Internal.Agency
 
         void IReality.Proceed()
         {
-            _operations.ForEach( op=>op.Realize( this ) );
+            _operations.ForEach( op => op.Realize( this ) );
             _operations.Clear();
         }
 

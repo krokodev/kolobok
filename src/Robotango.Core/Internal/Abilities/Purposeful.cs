@@ -30,6 +30,39 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
+        #region Routines
+
+        private void PassIntentionsToActiveComponent()
+        {
+            if( _active == null ) {
+                return;
+            }
+
+            _intentions.ForEach( i => _active.AddOperation( i.Operation ) );
+            _intentions.Clear();
+        }
+
+        private void DumpIntentions( OutlineWriter wr )
+        {
+            if( !_intentions.Any() ) {
+                return;
+            }
+            wr.Line( "Intentions" );
+            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+        }
+
+        private void DumpDesires( OutlineWriter wr )
+        {
+            if( !_desires.Any() ) {
+                return;
+            }
+            wr.Line( "Desires" );
+            _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
+        }
+
+        #endregion
+
+
         #region Overrides
 
         protected override IComponent Clone()
@@ -48,11 +81,8 @@ namespace Robotango.Core.Internal.Abilities
 
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
-            wr.Line( "Desires" );
-            _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
-
-            wr.Line( "Intentions" );
-            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+            DumpDesires( wr );
+            DumpIntentions( wr );
         }
 
         #endregion
@@ -75,14 +105,13 @@ namespace Robotango.Core.Internal.Abilities
         }
 
         #endregion
-        
+
 
         #region IProceedable
 
         void IProceedable< IReality >.Proceed( IReality reality )
         {
-            _intentions.ForEach(i=>_active.AddOperation(i.Operation));
-            _intentions.Clear();
+            PassIntentionsToActiveComponent();
         }
 
         #endregion

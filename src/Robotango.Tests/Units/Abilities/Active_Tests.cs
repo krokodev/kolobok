@@ -118,7 +118,7 @@ namespace Robotango.Tests.Units.Abilities
 
             alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
 
-            var wAlice = world.IReality.AddAgent( alice, "wAlice"  );
+            var wAlice = world.IReality.AddAgent( alice, "wAlice" );
             var aAlice = wAlice.As< IThinking >().InnerReality.AddAgent( wAlice, "aAlice" );
 
             Log( world.Dump() );
@@ -142,10 +142,10 @@ namespace Robotango.Tests.Units.Abilities
             var moveToB = bob.As< IActive >().CreateOperation( Activities.Virtual.Move, bob, b );
             bob.As< IVirtual >().AddAttribute( new Position( a ) );
 
-            var wBob = world.IReality.AddAgent( bob, "wBob"  );
+            var wBob = world.IReality.AddAgent( bob, "wBob" );
             var bBob = wBob.As< IThinking >().InnerReality.AddAgent( wBob, "bBob" );
 
-            wBob.As< IPurposeful >().AddIntention( moveToB,  "moveToB");
+            wBob.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
 
             Log( world.Dump() );
             {

@@ -53,10 +53,5 @@ namespace Robotango.Core.System
                 public const string Default = "Some Intention";
             }
         }
-
-        public static class Depth
-        {
-            public const uint Basic = 0;
-        }
     }
 }

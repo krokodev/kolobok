@@ -54,15 +54,14 @@ namespace Robotango.Tests.Units.Agency
             alice.As< IPurposeful >().AddIntention( moveToB, "moveToB" );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
-            var dump1=Log( world.Dump() );
+            var dump1 = Log( world.Dump() );
             {
                 world.Proceed();
             }
-            var dump2=Log( world.Dump() );
+            var dump2 = Log( world.Dump() );
 
-            Assert.That( dump1, Is.StringContaining( "'moveToB' <Intention>" ));
-            Assert.That( dump2, Is.Not.StringContaining( "'moveToB' <Intention>" ));
+            Assert.That( dump1, Is.StringContaining( "'moveToB' <Intention>" ) );
+            Assert.That( dump2, Is.Not.StringContaining( "'moveToB' <Intention>" ) );
         }
-
     }
 }

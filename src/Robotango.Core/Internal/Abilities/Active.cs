@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MoreLinq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Utils.Tools;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Interfaces.Abilities;
 using Robotango.Core.Interfaces.Agency;
@@ -25,11 +27,39 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
+        #region Routines
+
+        private void PassOperationsToReality( IReality reality )
+        {
+            // Code: Active.Proceed
+            _operations.ForEach( reality.AddOperation );
+            _operations.Clear();
+        }
+
+        private void DumpOperations( OutlineWriter wr )
+        {
+            if( !_operations.Any() ) {
+                return;
+            }
+            wr.Line( "Operations" );
+            wr.Level++;
+            _operations.ForEach( o => wr.Append( o.Dump( wr.Level ) ) );
+            wr.Level--;
+        }
+
+        #endregion
+
+
         #region Overrides
 
         protected override IComponent Clone()
         {
             return new Active();
+        }
+
+        protected override void DumpAbilityContent( OutlineWriter wr )
+        {
+            DumpOperations( wr );
         }
 
         #endregion
@@ -51,15 +81,11 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-
         #region IProceedable
 
-        void IProceedable< IReality >.Proceed( IReality outerReality )
+        void IProceedable< IReality >.Proceed( IReality reality )
         {
-            // Code: Active.Proceed
-
-            _operations.ForEach( outerReality.AddOperation );
-            _operations.Clear();
+            PassOperationsToReality( reality );
         }
 
         #endregion

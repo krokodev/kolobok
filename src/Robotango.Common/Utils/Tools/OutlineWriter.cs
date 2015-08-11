@@ -58,7 +58,7 @@ namespace Robotango.Common.Utils.Tools
             _sb.AppendLine();
         }
 
-        public void Line( string str="" )
+        public void Line( string str = "" )
         {
             _sb.Append( _indent );
             _sb.Append( str );
