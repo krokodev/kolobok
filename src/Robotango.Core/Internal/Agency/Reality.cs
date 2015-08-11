@@ -62,47 +62,6 @@ namespace Robotango.Core.Internal.Agency
             get { return _name ?? GetDefaultName(); }
         }
 
-        uint IReality.Depth
-        {
-            get { return _holder == null ? Settings.Depth.Basic : _holder.Depth + 1; }
-        }
-
-        string IReality.FullName
-        {
-            get
-            {
-                return _holder == null
-                    ? IReality.Name
-                    : string.Format( Settings.Reality.Names.FullTemplate, _holder.FullName, IReality.Name );
-            }
-        }
-
-        string IReality.FamilyName
-        {
-            get
-            {
-                if( _holder == null ) {
-                    return IReality.Name;
-                }
-                return string.Format(
-                    Settings.Reality.Names.FamilyTemplate,
-                    _holder.Name,
-                    _holder.Depth,
-                    IReality.Name );
-            }
-        }
-
-        IAgent IReality.Holder
-        {
-            get { return _holder; }
-            set { _holder = value; }
-        }
-
-        IReality IReality.Superior
-        {
-            get { return _holder == null ? null : _holder.OuterReality; }
-        }
-
         IList< IAgent > IReality.Agents
         {
             get { return _agents; }
@@ -189,7 +148,6 @@ namespace Robotango.Core.Internal.Agency
             var projection = agent.Clone();
 
             _agents.Add( projection );
-            projection.OuterReality = this;
             return projection;
         }
 

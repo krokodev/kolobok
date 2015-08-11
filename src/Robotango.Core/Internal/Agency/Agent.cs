@@ -47,36 +47,11 @@ namespace Robotango.Core.Internal.Agency
             return clone;
         }
 
-        IReality IAgent.OuterReality
-        {
-            get { return _outerReality; }
-            set
-            {
-                Debug.Assert.That( _outerReality == null, "Agent '{0}' can not be moved to new reality '{1}'", this, value );
-                Debug.Assert.That( value.Contains( this ), "Reality '{0}' should contain agent '{1}'", value, this );
-                _outerReality = value;
-            }
-        }
-
+        
         string IAgent.Name
         {
             get { return _name ?? Settings.Agents.Names.Default; }
             set { _name = value; }
-        }
-
-        uint IAgent.Depth
-        {
-            get { return _outerReality == null ? Settings.Depth.Basic : _outerReality.Depth; }
-        }
-
-        string IAgent.FullName
-        {
-            get
-            {
-                return _outerReality == null
-                    ? IAgent.Name
-                    : string.Format( Settings.Agents.Names.FullTemplate, _outerReality.FullName, IAgent.Name );
-            }
         }
 
         bool IAgent.HasName()

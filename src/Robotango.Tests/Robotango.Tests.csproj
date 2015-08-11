@@ -64,7 +64,6 @@
     <Compile Include="Units\Agency\Dump_Tests.cs" />
     <Compile Include="Units\Abilities\Virtual_Tests.cs" />
     <Compile Include="Units\Agency\Agent_Tests.cs" />
-    <Compile Include="Units\Abilities\Depth_Tests.cs" />
     <Compile Include="Units\Agency\Reality_Tests.cs" />
     <Compile Include="Units\Abilities\Reflective_Tests.cs" />
     <Compile Include="Units\Abilities\Thinking_Tests.cs" />

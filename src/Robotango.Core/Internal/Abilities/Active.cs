@@ -69,7 +69,7 @@ namespace Robotango.Core.Internal.Abilities
 
         private void OperateInOuterReality()
         {
-            _operations.ForEach( op=>op.Execute( _agent.OuterReality ) );
+//            _operations.ForEach( op=>op.Execute( _agent.OuterReality ) );
         }
 
         #endregion

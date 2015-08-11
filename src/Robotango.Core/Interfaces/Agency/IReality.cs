@@ -14,12 +14,7 @@ namespace Robotango.Core.Interfaces.Agency
         IReality Clone( IAgent holder = null );
         bool Contains( IAgent agent );
         void Clear();
-        uint Depth { get; }
         string Name { get; }
-        string FullName { get; }
-        string FamilyName { get; }
-        IAgent Holder { get; set; }
-        IReality Superior { get; }
         IList< IAgent > Agents { get; }
     }
 }
