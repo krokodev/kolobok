@@ -23,8 +23,8 @@ namespace Robotango.Core.Internal.Abilities
     {
         #region Data
 
-        private readonly IList< IOperation > _operations = new List< IOperation >();
-        private readonly IList< IActivity > _activities = new List< IActivity >();
+        private IList< IOperation > _operations = new List< IOperation >();
+        private IList< IActivity > _activities = new List< IActivity >();
 
         #endregion
 
@@ -66,7 +66,10 @@ namespace Robotango.Core.Internal.Abilities
 
         protected override IComponent Clone()
         {
-            return new Active();
+            return new Active {
+                _operations = _operations.ToList(),
+                _activities = _activities.ToList()
+            };
         }
 
         protected override void DumpAbilityContent( OutlineWriter wr )
@@ -92,7 +95,7 @@ namespace Robotango.Core.Internal.Abilities
             _operations.Add( operation );
         }
 
-        void IActive.AddActivity<T>( IActivity activity )
+        void IActive.AddActivity( IActivity activity )
         {
             if( _activities.Contains( activity ) ) {
                 return;

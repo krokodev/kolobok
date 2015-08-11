@@ -58,7 +58,7 @@ namespace Robotango.Tests.Units.Agency
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
-
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IPurposeful >().AddIntention( operation );
@@ -101,6 +101,7 @@ namespace Robotango.Tests.Units.Agency
             var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
                 );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
@@ -126,7 +127,7 @@ namespace Robotango.Tests.Units.Agency
         {
             var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
 
-            alice.As< IActive >().AddActivity< ILocation >( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
 
             var dump = Log( alice.Dump() );
 

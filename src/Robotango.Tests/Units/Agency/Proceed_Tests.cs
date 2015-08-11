@@ -3,6 +3,7 @@
 // Proceed_Tests.cs
 
 using NUnit.Framework;
+using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
@@ -23,10 +24,12 @@ namespace Robotango.Tests.Units.Agency
             var a = new Location( "A" );
             var b = new Location( "B" );
 
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveAliceToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IPurposeful >().AddIntention( moveAliceToB );
 
+            bob.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveBobToB = bob.As< IActive >().CreateOperation( Activities.Virtual.Move, bob, b );
             bob.As< IVirtual >().AddAttribute( new Position( a ) );
             bob.As< IPurposeful >().AddIntention( moveBobToB );
@@ -48,6 +51,7 @@ namespace Robotango.Tests.Units.Agency
             var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
                 );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );

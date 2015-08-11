@@ -50,6 +50,7 @@ namespace Robotango.Tests.Units.Abilities
             ILocation a = new Location( "A" );
             ILocation b = new Location( "B" );
 
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
@@ -72,6 +73,7 @@ namespace Robotango.Tests.Units.Abilities
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveAliceToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
@@ -95,6 +97,7 @@ namespace Robotango.Tests.Units.Abilities
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
+            alice0.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveAliceToB = alice0.As< IActive >().CreateOperation( Activities.Virtual.Move, alice0, b );
 
             alice0.As< IVirtual >().AddAttribute( new Position( a ) );
@@ -116,6 +119,7 @@ namespace Robotango.Tests.Units.Abilities
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var alice = Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
 
@@ -142,6 +146,7 @@ namespace Robotango.Tests.Units.Abilities
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var bob = Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Bob" );
+            bob.As< IActive >().AddActivity( Activities.Virtual.Move );
             var moveToB = bob.As< IActive >().CreateOperation( Activities.Virtual.Move, bob, b );
             bob.As< IVirtual >().AddAttribute( new Position( a ) );
 
@@ -166,7 +171,7 @@ namespace Robotango.Tests.Units.Abilities
         {
             var alice = Factory.CreateAgent< IActive >( "Alice" );
 
-            alice.As< IActive >().AddActivity< ILocation >( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
 
             var dump = Log( alice.Dump() );
 
