@@ -21,6 +21,43 @@ namespace Robotango.Core.Internal.Abilities
 {
     internal class Thinking : Ability, IThinking
     {
+        #region Data
+
+        private List< IBelief > _beliefs = new List< IBelief >();
+        private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
+
+        #endregion
+
+
+        #region Routines
+
+        private void InitInnerReality()
+        {
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+        }
+
+        private void MakePrediction()
+        {
+            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
+        }
+
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Thinking {
+                _beliefs = _beliefs.ToList(),
+                _innerReality = _innerReality.Clone()
+            };
+        }
+
+        #endregion
+
+
         #region IThinking
 
         private IThinking IThinking
@@ -75,49 +112,10 @@ namespace Robotango.Core.Internal.Abilities
         {
             InitInnerReality();
             MakePrediction();
-            MakeDecision();
-            UpdateInnerReality();
+
+            //MakeDecision();
+            //UpdateInnerReality();
         }
-
-        #endregion
-
-
-        #region Overrides
-
-        protected override IComponent Clone()
-        {
-            return new Thinking {
-                _beliefs = _beliefs.ToList(),
-                _innerReality = _innerReality.Clone()
-            };
-        }
-
-        #endregion
-
-
-        #region Routines
-
-        private void InitInnerReality()
-        {
-            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
-        }
-
-        private void MakePrediction()
-        {
-            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
-        }
-
-        private void MakeDecision() {}
-
-        private void UpdateInnerReality() {}
-
-        #endregion
-
-
-        #region Fields
-
-        private List< IBelief > _beliefs = new List< IBelief >();
-        private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
 
         #endregion
     }

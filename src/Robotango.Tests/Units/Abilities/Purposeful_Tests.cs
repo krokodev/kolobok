@@ -86,7 +86,6 @@ namespace Robotango.Tests.Units.Abilities
         public void Desire_can_be_named_and_names_are_dumped()
         {
             var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var a = new Location( "A" );
 
             agent.As< IPurposeful >().AddDesire(
                 reality => true
@@ -96,6 +95,8 @@ namespace Robotango.Tests.Units.Abilities
                     reality.Contains( agent ),
                 "Wants to be present"
                 );
+            var a = new Location( "A" );
+
             agent.As< IPurposeful >().AddDesire(
                 reality =>
                     reality.GetAgent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == a,

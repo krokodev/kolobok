@@ -36,7 +36,7 @@ namespace Robotango.Core.Internal.Agency
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private Guid _id = Guid.NewGuid();
         private string _name;

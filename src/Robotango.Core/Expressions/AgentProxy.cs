@@ -19,7 +19,7 @@ namespace Robotango.Core.Expressions
         #endregion
 
 
-        #region Fields
+        #region Data
 
         protected readonly Func< IAgent, T > Convert;
 

@@ -16,6 +16,6 @@ namespace Robotango.Core.Interfaces.Agency
         bool Contains( IAgent agent );
         Guid Id { get; }
         string Name { get; }
-        IList< IAgent > Agents { get; }
+        IEnumerable< IAgent > Agents { get; }
     }
 }

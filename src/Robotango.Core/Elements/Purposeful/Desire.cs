@@ -48,7 +48,7 @@ namespace Robotango.Core.Elements.Purposeful
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private readonly Func< IReality, bool > _predicate;
         private readonly IReality _context;

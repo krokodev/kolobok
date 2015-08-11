@@ -19,19 +19,9 @@ namespace Robotango.Core.Internal.Abilities
 {
     internal class Active : Ability, IActive
     {
-        #region Fields
+        #region Data
 
         private readonly IList< IOperation > _operations = new List< IOperation >();
-
-        #endregion
-
-
-        #region Routines
-
-        private void OperateInOuterReality( IReality reality )
-        {
-            _operations.ForEach( op => op.Execute( reality ) );
-        }
 
         #endregion
 
@@ -46,23 +36,16 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region IProceedable
-
-        void IProceedable< IReality >.Proceed( IReality reality )
-        {
-            // Code: Active.Proceed
-
-            OperateInOuterReality( reality );
-        }
-
-        #endregion
-
-
         #region IActive
 
         IOperation IActive.CreateOperation<T>( Action< IAgent, T > action, IAgent operand, T arg )
         {
             return new Operation< T >( action, operand, arg );
+        }
+
+        public void AddOperation( IOperation operation )
+        {
+            _operations.Add( operation );
         }
 
         #endregion
@@ -73,6 +56,19 @@ namespace Robotango.Core.Internal.Abilities
         string IResearchable.Dump( int level )
         {
             return OutlineWriter.Line( level, "<{0}>", typeof( Active ).Name );
+        }
+
+        #endregion
+
+
+        #region IProceedable
+
+        void IProceedable< IReality >.Proceed( IReality reality )
+        {
+            // Code: Active.Proceed
+
+            _operations.ForEach( op => op.Execute( reality ) );
+            _operations.Clear();
         }
 
         #endregion

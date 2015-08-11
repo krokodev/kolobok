@@ -17,7 +17,7 @@ namespace Robotango.Core.Internal.Abilities
 {
     internal class Virtual : Ability, IVirtual
     {
-        #region Fields
+        #region Data
 
         private List< IAttribute > _attributes = new List< IAttribute >();
 

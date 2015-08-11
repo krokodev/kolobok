@@ -71,7 +71,7 @@ namespace Robotango.Core.Internal.Agency
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private readonly IAgent _agent;
         private readonly IThinking _thinking;

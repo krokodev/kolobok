@@ -76,7 +76,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         #endregion
 
 
-        #region Fields
+        #region Data
 
         protected List< IComponent > Components;
 

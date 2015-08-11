@@ -26,7 +26,7 @@ namespace Robotango.Core.Internal.Agency
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private List< IAgent > _agents = new List< IAgent >();
         private readonly Guid _id = Guid.NewGuid();

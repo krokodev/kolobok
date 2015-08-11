@@ -35,7 +35,7 @@ namespace Robotango.Common.Domain.Implements.Expressions
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private readonly Func< T, TV > _getter;
         private readonly Action< T, TV > _setter;

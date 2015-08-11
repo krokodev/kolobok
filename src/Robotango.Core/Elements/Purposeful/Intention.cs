@@ -12,26 +12,10 @@ namespace Robotango.Core.Elements.Purposeful
 {
     public class Intention : IIntention
     {
-        #region IIntention
+        #region Data
 
-        void IIntention.Execute( IReality reality )
-        {
-            _operation.Execute( reality );
-        }
-
-        #endregion
-
-
-        #region IResearchable
-
-        string IResearchable.Dump( int level )
-        {
-            return OutlineWriter.Line( level,
-                "'{0}' <{1}>",
-                _name,
-                typeof( Intention ).Name
-                );
-        }
+        private readonly IOperation _operation;
+        private readonly string _name;
 
         #endregion
 
@@ -47,10 +31,31 @@ namespace Robotango.Core.Elements.Purposeful
         #endregion
 
 
-        #region Fields
+        #region IIntention
 
-        private readonly IOperation _operation;
-        private readonly string _name;
+        void IIntention.Execute( IReality reality )
+        {
+            _operation.Execute( reality );
+        }
+
+        IOperation IIntention.Operation
+        {
+            get { return _operation; }
+        }
+
+        #endregion
+
+
+        #region IResearchable
+
+        string IResearchable.Dump( int level )
+        {
+            return OutlineWriter.Line( level,
+                "'{0}' <{1}>",
+                _name,
+                typeof( Intention ).Name
+                );
+        }
 
         #endregion
     }

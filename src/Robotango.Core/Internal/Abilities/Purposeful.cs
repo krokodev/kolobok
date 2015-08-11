@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
@@ -19,6 +20,35 @@ namespace Robotango.Core.Internal.Abilities
 {
     internal class Purposeful : Ability, IPurposeful
     {
+        #region Data
+
+        private IThinking _thinking;
+        private IActive _active;
+        private List< IDesire > _desires = new List< IDesire >();
+        private List< IIntention > _intentions = new List< IIntention >();
+
+        #endregion
+
+
+        #region Overrides
+
+        protected override IComponent Clone()
+        {
+            return new Purposeful {
+                _desires = _desires.ToList(),
+                _intentions = _intentions.ToList()
+            };
+        }
+
+        protected override void onInitAsComponent()
+        {
+            _thinking = MakeDependence< IThinking >();
+            _active = MakeDependenceIfAvailable< IActive >();
+        }
+
+        #endregion
+
+
         #region IPurposeful
 
         IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
@@ -60,31 +90,11 @@ namespace Robotango.Core.Internal.Abilities
 
         #region IProceedable
 
-        void IProceedable< IReality >.Proceed( IReality reality ) {}
-
-        #endregion
-
-
-        #region Overrides
-
-        protected override IComponent Clone()
+        void IProceedable< IReality >.Proceed( IReality reality )
         {
-            return new Purposeful();
+            _intentions.ForEach(i=>_active.AddOperation(i.Operation));
+            _intentions.Clear();
         }
-
-        protected override void InitAsComponent()
-        {
-            _thinking = MakeDependence< IThinking >();
-        }
-
-        #endregion
-
-
-        #region Fields
-
-        private IThinking _thinking;
-        private readonly List< IDesire > _desires = new List< IDesire >();
-        private readonly List< IIntention > _intentions = new List< IIntention >();
 
         #endregion
     }

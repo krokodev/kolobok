@@ -24,7 +24,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         void IComponent.InitAsComponent( IComposite holder )
         {
             _holder = holder;
-            InitAsComponent();
+            onInitAsComponent();
         }
 
         IComposite IComponent.Holder
@@ -39,7 +39,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
 
         protected abstract IComponent Clone();
 
-        protected virtual void InitAsComponent() {}
+        protected virtual void onInitAsComponent() {}
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace Robotango.Common.Domain.Implements.Compositions
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private readonly IList< IComponent > _dependences = new List< IComponent >();
         private IComposite _holder;

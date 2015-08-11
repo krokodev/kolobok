@@ -33,7 +33,7 @@ namespace Robotango.Core.Internal.Abilities
             return new Answer< T > {
                 Question = question,
                 Respondent = this,
-                Result = ComputeAnswerResult( question ),
+                Result = ComputeAnswerResult( question )
             };
         }
 
@@ -47,7 +47,7 @@ namespace Robotango.Core.Internal.Abilities
             return new Communicative();
         }
 
-        protected override void InitAsComponent()
+        protected override void onInitAsComponent()
         {
             _thinking = MakeDependenceIfAvailable< IThinking >();
         }
@@ -80,7 +80,7 @@ namespace Robotango.Core.Internal.Abilities
         #endregion
 
 
-        #region Fields
+        #region Data
 
         private IThinking _thinking;
 
