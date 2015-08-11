@@ -48,8 +48,10 @@ namespace Robotango.Core.Elements.Active
         {
             return OutlineWriter.Line(
                 level,
-                "{0} ({1}{2}) <{3}>",
-                "Some Operation",
+                "{0} ( {1}, {2} ) <{3}>",
+                "Some Operation", // Todo:> Use Activity Name
+                _operand.Name,
+                _arg,
                 typeof( Operation< TArg > ).Name
                 );
         }
