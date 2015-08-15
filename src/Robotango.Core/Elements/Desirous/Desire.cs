@@ -2,21 +2,50 @@
 // Robotango.Core
 // Desire.cs
 
-using System;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
-using Robotango.Core.System;
 
 namespace Robotango.Core.Elements.Desirous
 {
-    internal class Desire : IDesire
+    public abstract class Desire<T> : IDesire
     {
+        #region Data
+
+        private readonly IDesireModel< T > _model;
+        private readonly IAgent _subject;
+        private readonly T _arg;
+
+        #endregion
+
+
+        #region Ctor
+
+        protected Desire( IDesireModel< T > model, IAgent subject = null, T arg = default(T) )
+        {
+            _model = model;
+            _subject = subject;
+            _arg = arg;
+        }
+
+        #endregion
+
+
         #region IDesire
 
         bool IDesire.IsSatisfiedIn( IReality reality )
         {
-            return _predicate( reality );
+            return _model.Predicate( reality, _subject, _arg );
+        }
+
+        IAgent IDesire.Subject
+        {
+            get { return _subject; }
+        }
+
+        object IDesire.Arg
+        {
+            get { return _arg; }
         }
 
         #endregion
@@ -27,30 +56,14 @@ namespace Robotango.Core.Elements.Desirous
         string IResearchable.Dump( int level )
         {
             return OutlineWriter.Line( level,
-                "'{0}' <{1}>",
-                _name,
-                typeof( Desire ).Name
+                "{0}({1},{2} {3}) <{4}>",
+                _model.Name,
+                _subject,
+                typeof( T ).Name,
+                _arg,
+                GetType().Name
                 );
         }
-
-        #endregion
-
-
-        #region Ctor
-
-        public Desire( Func< IReality, bool > predicate, string name )
-        {
-            _predicate = predicate;
-            _name = name ?? Settings.Desires.Names.Default;
-        }
-
-        #endregion
-
-
-        #region Data
-
-        private readonly Func< IReality, bool > _predicate;
-        private readonly string _name;
 
         #endregion
     }

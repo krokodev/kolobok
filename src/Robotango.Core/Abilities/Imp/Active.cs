@@ -12,6 +12,7 @@ using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
 using Robotango.Core.Elements.Active;
+using Robotango.Core.Elements.Reality;
 
 // Here: Active
 
@@ -29,9 +30,9 @@ namespace Robotango.Core.Abilities.Imp
 
         #region Routines
 
-        private void PassOperationsToReality( IReality reality )
+        private void PassInentionsToReality( IReality reality )
         {
-            _intentions.ForEach( reality.AddOperation );
+            _intentions.ForEach( i => reality.AddOperation( i.Activity, i.Operand, i.Arg ) );
             _intentions.Clear();
         }
 
@@ -76,7 +77,7 @@ namespace Robotango.Core.Abilities.Imp
 
         protected override void Proceed( IReality reality )
         {
-            PassOperationsToReality( reality );
+            PassInentionsToReality( reality );
         }
 
         #endregion
@@ -97,10 +98,15 @@ namespace Robotango.Core.Abilities.Imp
             return _intentions.Any( op => op.Activity == activity && op.Operand == operand && op.Arg.Equals( arg ) );
         }
 
-        public void AddIntention<T>( IActivity activity, IAgent operand, T arg )
+        void IActive.AddIntention<T>( IActivity activity, IAgent operand, T arg )
         {
             Debug.Assert.That( _activities.Contains( activity ), new UnknownActivityException( activity.Name ) );
             _intentions.Add( new Intention< T >( activity, operand, arg ) );
+        }
+
+        IList< IActivity > IActive.Activities
+        {
+            get { return _activities; }
         }
 
         #endregion

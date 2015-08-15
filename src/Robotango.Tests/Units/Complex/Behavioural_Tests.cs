@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
+using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Common.Bases;
@@ -78,10 +79,7 @@ namespace Robotango.Tests.Units.Complex
             var c = new Location( "C" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IDesirous >().AddDesire(
-                reality =>
-                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
-                );
+            alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ));
             bob.As< IVirtual >().AddAttribute( new Position( b ) );
 
             Log( world.Dump() );

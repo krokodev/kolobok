@@ -3,6 +3,7 @@
 // IDesirous.cs
 
 using System;
+using System.Collections.Generic;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Desirous;
 
@@ -10,6 +11,7 @@ namespace Robotango.Core.Abilities
 {
     public interface IDesirous : IAbility
     {
-        IDesire AddDesire( Func< IReality, bool > predicate, string name = null );
+        IList< IDesire > Desires { get; }
+        void AddDesire( IDesire desire );
     }
 }

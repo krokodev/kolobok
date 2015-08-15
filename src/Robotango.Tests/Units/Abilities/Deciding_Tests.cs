@@ -4,7 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
-using Robotango.Core.Elements.Active;
+using Robotango.Core.Common;
+using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Tests.Common.Bases;
 
@@ -21,8 +22,8 @@ namespace Robotango.Tests.Units.Abilities
             Assert.That( dump, Is.StringContaining( "<Deciding>" ) );
         }
 
-        // COde: Alice_has_intention_B_and_Decides_to_move_to_B
-        [Ignore, Test]
+        // Code: Alice_has_intention_B_and_Decides_to_move_to_B
+        [Test]
         public void Alice_has_intention_B_and_Decides_to_move_to_B()
         {
             var world = Factory.CreateWorld();
@@ -32,15 +33,13 @@ namespace Robotango.Tests.Units.Abilities
             var a = new Location( "A" );
             var b = new Location( "B" );
 
+            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IDesirous >().AddDesire(
-                reality =>
-                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b,
-                "Desire be in B"
-                );
+            alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
 
             Log( alice.Dump() );
 
+            alice.As< IDeciding >().MakeDecision( world.IReality );
             alice.As< IDeciding >().Proceed( world.IReality );
             Log( alice.Dump() );
 

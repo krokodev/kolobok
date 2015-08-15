@@ -2,8 +2,9 @@
 // Robotango.Core
 // IActive.cs
 
+using System.Collections.Generic;
 using Robotango.Core.Agency;
-using Robotango.Core.Elements.Active;
+using Robotango.Core.Elements.Reality;
 
 namespace Robotango.Core.Abilities
 {
@@ -12,5 +13,6 @@ namespace Robotango.Core.Abilities
         void AddActivity( IActivity activity );
         bool ContainsIntention<T>( IActivity activity, IAgent operand, T arg );
         void AddIntention<T>( IActivity activity, IAgent operand, T arg );
+        IList< IActivity > Activities { get; }
     }
 }

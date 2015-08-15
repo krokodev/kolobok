@@ -55,11 +55,14 @@ namespace Robotango.Core.Abilities.Imp
 
         #region IDesirous
 
-        IDesire IDesirous.AddDesire( Func< IReality, bool > predicate, string name )
+        IList< IDesire > IDesirous.Desires
         {
-            var desire = new Desire( predicate, name );
+            get { return _desires; }
+        }
+
+        void IDesirous.AddDesire( IDesire desire )
+        {
             _desires.Add( desire );
-            return desire;
         }
 
         #endregion

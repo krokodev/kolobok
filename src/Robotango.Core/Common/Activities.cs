@@ -4,9 +4,10 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
+using Robotango.Core.Elements.Reality;
 using Robotango.Core.Elements.Virtual;
 
-namespace Robotango.Core.Elements.Active
+namespace Robotango.Core.Common
 {
     public static class Activities
     {

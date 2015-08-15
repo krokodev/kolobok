@@ -2,16 +2,9 @@
 // Robotango.Core
 // IIntention.cs
 
-using Robotango.Common.Domain.Types.Properties;
-using Robotango.Core.Agency;
+using Robotango.Core.Elements.Reality;
 
 namespace Robotango.Core.Elements.Active
 {
-    public interface IIntention : IResearchable
-    {
-        void Realize( IReality reality );
-        IActivity Activity { get; }
-        IAgent Operand { get; }
-        object Arg { get; }
-    }
+    public interface IIntention : IOperation {}
 }

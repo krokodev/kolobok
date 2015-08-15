@@ -4,7 +4,8 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
-using Robotango.Core.Elements.Active;
+using Robotango.Core.Common;
+using Robotango.Core.Elements.Reality;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Common.Bases;

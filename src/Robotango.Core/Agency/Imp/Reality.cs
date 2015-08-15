@@ -9,13 +9,22 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Elements.Active;
+using Robotango.Core.Elements.Reality;
 using Robotango.Core.System;
 
 namespace Robotango.Core.Agency.Imp
 {
     internal class Reality : IReality
     {
+        #region Data
+
+        private List< IAgent > _agents = new List< IAgent >();
+        private readonly List< IOperation > _operations = new List< IOperation >();
+        private readonly Guid _id = Guid.NewGuid();
+        private readonly string _name;
+
+        #endregion
+
         #region Ctor
 
         public Reality( string name = null )
@@ -25,15 +34,6 @@ namespace Robotango.Core.Agency.Imp
 
         #endregion
 
-
-        #region Data
-
-        private List< IAgent > _agents = new List< IAgent >();
-        private readonly List< IIntention > _operations = new List< IIntention >();
-        private readonly Guid _id = Guid.NewGuid();
-        private readonly string _name;
-
-        #endregion
 
 
         #region Routines
@@ -107,9 +107,9 @@ namespace Robotango.Core.Agency.Imp
             get { return _agents; }
         }
 
-        void IReality.AddOperation( IIntention intention )
+        void IReality.AddOperation<T>(IActivity activity, IAgent operand, T arg )
         {
-            _operations.Add( intention );
+            _operations.Add( new Operation<T>(activity, operand, arg) );
         }
 
         void IReality.Proceed()

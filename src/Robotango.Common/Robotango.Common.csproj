@@ -39,6 +39,7 @@
     <Compile Include="Domain\Types\Expressions\IPropertyAccessor.cs" />
     <Compile Include="Domain\Types\Expressions\IExecutor.cs" />
     <Compile Include="Domain\Implements\Expressions\PropertyAccessor.cs" />
+    <Compile Include="Domain\Types\Properties\INothing.cs" />
     <Compile Include="Domain\Types\Properties\IProceedable.cs" />
     <Compile Include="Domain\Types\Properties\ILocation.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\ActivityArgumentException.cs" />

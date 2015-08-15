@@ -10,5 +10,7 @@ namespace Robotango.Core.Elements.Desirous
     public interface IDesire : IResearchable
     {
         bool IsSatisfiedIn( IReality reality );
+        IAgent Subject { get; }
+        object Arg { get; }
     }
 }
