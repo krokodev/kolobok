@@ -39,7 +39,6 @@
       <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -84,6 +83,10 @@
     <ProjectReference Include="..\Robotango.Core\Robotango.Core.csproj">
       <Project>{ecc82973-7e15-4b24-85c8-a1508be2aafa}</Project>
       <Name>Robotango.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robotango.Expressions\Robotango.Expressions.csproj">
+      <Project>{57F3EA67-B905-41D0-90C4-7B807D7DF0EE}</Project>
+      <Name>Robotango.Expressions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -35,28 +35,18 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities\IDeciding.cs" />
+    <Compile Include="Abilities\Imp\Deciding.cs" />
     <Compile Include="Elements\Active\Activities.cs" />
     <Compile Include="Elements\Active\Activity.cs" />
     <Compile Include="Elements\Active\IOperation.cs" />
     <Compile Include="Elements\Active\Operation.cs" />
     <Compile Include="Elements\Purposeful\IIntention.cs" />
     <Compile Include="Elements\Purposeful\Intention.cs" />
-    <Compile Include="Expressions\As.cs" />
-    <Compile Include="Expressions\Convert.cs" />
-    <Compile Include="Expressions\AgentProxy.cs" />
-    <Compile Include="Expressions\IThinkingExecutor.cs" />
-    <Compile Include="Expressions\Its.cs" />
-    <Compile Include="Expressions\IVirtualAccessor.cs" />
-    <Compile Include="Expressions\ThinkingExecutor.cs" />
-    <Compile Include="Expressions\VirtualAccessor.cs" />
     <Compile Include="Elements\Purposeful\Desire.cs" />
     <Compile Include="Abilities\IActive.cs" />
     <Compile Include="Elements\Active\IActivity.cs" />
