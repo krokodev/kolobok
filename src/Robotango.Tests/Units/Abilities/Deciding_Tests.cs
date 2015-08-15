@@ -24,7 +24,7 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Alice_has_desire_B_and_Decides_to_move_to_B()
+        public void Alice_desires_B_and_Decides_to_move_to_B()
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
@@ -47,7 +47,7 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Alice_has_intention_B_decides_move_to_B_and_moves_to_B()
+        public void Alice_desires_B_decides_move_to_B_and_moves_to_B()
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
