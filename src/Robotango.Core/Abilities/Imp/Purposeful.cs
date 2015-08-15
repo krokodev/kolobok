@@ -82,6 +82,12 @@ namespace Robotango.Core.Abilities.Imp
             DumpIntentions( wr );
         }
 
+        protected override void Proceed( IReality reality )
+        {
+            // Todo:> Keep intentions in Active from begining
+            PassIntentionsToActiveComponent();
+        }
+
         #endregion
 
 
@@ -99,16 +105,6 @@ namespace Robotango.Core.Abilities.Imp
             var intention = new Intention( operation );
             _intentions.Add( intention );
             return intention;
-        }
-
-        #endregion
-
-
-        #region IProceedable
-
-        void IProceedable< IReality >.Proceed( IReality reality )
-        {
-            PassIntentionsToActiveComponent();
         }
 
         #endregion

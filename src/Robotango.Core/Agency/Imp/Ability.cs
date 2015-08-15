@@ -20,7 +20,7 @@ namespace Robotango.Core.Agency.Imp
             if( IComponent.Dependences.Count == 0 ) {
                 return;
             }
-            wr.Append( " need:" );
+            wr.Append( " use:" );
             IComponent.Dependences.ForEach( d => wr.Append( " <{0}>", d.GetType().Name ) );
         }
 
@@ -30,13 +30,17 @@ namespace Robotango.Core.Agency.Imp
         #region Overrides
 
         protected virtual void DumpAbilityContent( OutlineWriter wr ) {}
+        protected virtual void Proceed( IReality reality  ) {}
 
         #endregion
 
 
         #region IProceedable
 
-        void IProceedable< IReality >.Proceed( IReality context ) {}
+        void IProceedable< IReality >.Proceed( IReality context )
+        {
+            Proceed( context );
+        }
 
         #endregion
 

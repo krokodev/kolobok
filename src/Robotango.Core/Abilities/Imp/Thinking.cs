@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
 using Robotango.Common.Domain.Types.Compositions;
-using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
@@ -43,6 +42,18 @@ namespace Robotango.Core.Abilities.Imp
             wr.Append( _innerReality.Dump( wr.Level ) );
         }
 
+        protected override void Proceed( IReality reality )
+        {
+            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+
+            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
+
+            _innerReality.Proceed();
+
+            //MakeDecision();
+            //UpdateInnerReality();
+        }
+
         #endregion
 
 
@@ -76,23 +87,6 @@ namespace Robotango.Core.Abilities.Imp
         bool IThinking.HasBelief( IBelief belief )
         {
             return _beliefs.Contains( belief );
-        }
-
-        #endregion
-
-
-        #region IProceedable
-
-        void IProceedable< IReality >.Proceed( IReality reality )
-        {
-            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
-
-            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
-
-            _innerReality.Proceed();
-
-            //MakeDecision();
-            //UpdateInnerReality();
         }
 
         #endregion

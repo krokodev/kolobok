@@ -4,6 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
+using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Tests.Common.Bases;
 
@@ -21,24 +22,34 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Alice_has_intention_B_and_Decides_to_move()
+        public void Alice_has_intention_B_and_Decides_to_move_to_B()
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IPurposeful, IActive, IDeciding >( "alice" )
+                Factory.CreateAgent< IVirtual, IPurposeful, IDeciding, IActive >( "alice" )
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            
-            var dump = Log( alice.Dump() );
-            
+            alice.As< IPurposeful >().AddDesire(
+                reality =>
+                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b,
+                "Desire be in B"
+                );
 
-//            Assert.That( dump, Is.StringContaining( "<Deciding>" ) );
+            Log( alice.Dump() );
+
+            alice.As< IDeciding >().Proceed( world.IReality );
+            Log( alice.Dump() );
+
+            Assert.That( alice.As< IActive >().ContainsOperation( Activities.Virtual.Move, alice, b ) );
         }
 
         [Ignore, Test]
-        public void Alice_think_and_decide_to_go_to_C() {}
+        public void Alice_has_intention_B_decides_move_to_B_and_moves_to_B() {}
+
+        [Ignore, Test]
+        public void Alice_think_and_decide_to_move_to_C() {}
     }
 }

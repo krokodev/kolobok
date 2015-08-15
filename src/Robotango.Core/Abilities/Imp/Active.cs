@@ -76,6 +76,10 @@ namespace Robotango.Core.Abilities.Imp
             DumpOperations( wr );
             DumpActivities( wr );
         }
+        protected override void Proceed( IReality reality )
+        {
+            PassOperationsToReality( reality );
+        }
 
         #endregion
 
@@ -102,16 +106,12 @@ namespace Robotango.Core.Abilities.Imp
             _activities.Add( activity );
         }
 
-        #endregion
-
-
-        #region IProceedable
-
-        void IProceedable< IReality >.Proceed( IReality reality )
+        bool IActive.ContainsOperation<T>( IActivity activity, IAgent operand, T arg )
         {
-            PassOperationsToReality( reality );
+            return _operations.Any(op=>op.Activity==activity && op.Operand == operand && op.Arg.Equals( arg ) );
         }
 
         #endregion
+
     }
 }

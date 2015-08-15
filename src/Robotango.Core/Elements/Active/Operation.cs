@@ -10,7 +10,7 @@ namespace Robotango.Core.Elements.Active
 {
     public class Operation<T> : IOperation
     {
-        #region Fields
+        #region Data
 
         private readonly IAgent _operand;
         private readonly IActivity _activity;
@@ -49,6 +49,9 @@ namespace Robotango.Core.Elements.Active
         {
             get { return _activity; }
         }
+
+        public IAgent Operand { get { return _operand; }}
+        public object Arg { get { return _arg; } }
 
         #endregion
 
