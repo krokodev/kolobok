@@ -9,7 +9,7 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
-using Robotango.Core.Elements.Purposeful;
+using Robotango.Core.Elements.Desirous;
 
 namespace Robotango.Core.Abilities.Imp
 {

@@ -1,5 +1,5 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Core
+// Robotango.Expressions
 // As.cs
 
 namespace Robotango.Expressions.Terms

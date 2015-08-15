@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="Units\Abilities\Deciding_Tests.cs" />
     <Compile Include="Units\Abilities\Active_Tests.cs" />
-    <Compile Include="Units\Abilities\Purposeful_Tests.cs" />
+    <Compile Include="Units\Abilities\Desirous_Tests.cs" />
     <Compile Include="Units\Agency\Projection_Tests.cs" />
     <Compile Include="Units\Agency\World_Tests.cs" />
     <Compile Include="Units\Agency\Proceed_Tests.cs" />

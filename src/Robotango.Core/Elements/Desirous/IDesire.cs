@@ -5,10 +5,10 @@
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Purposeful
+namespace Robotango.Core.Elements.Desirous
 {
     public interface IDesire : IResearchable
     {
-        bool IsSatisfiedIn( IReality reality);
+        bool IsSatisfiedIn( IReality reality );
     }
 }

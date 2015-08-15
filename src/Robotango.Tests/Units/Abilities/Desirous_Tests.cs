@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// Purposeful_Tests.cs
+// Desirous_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
@@ -10,22 +10,22 @@ using Robotango.Tests.Common.Bases;
 namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Purposeful_Tests : BaseTests
+    public class Desirous_Tests : BaseTests
     {
         [Test]
-        public void Agent_can_be_Purposeful()
+        public void Agent_can_be_Desirous()
         {
             Factory.CreateAgent< IDesirous, IThinking >();
         }
 
         [Test]
-        public void Purposeful_agent_may_be_not_Thinking()
+        public void Desirous_agent_may_be_not_Thinking()
         {
             Factory.CreateAgent< IDesirous >();
         }
 
         [Test]
-        public void Purposeful_dump_contains_desires()
+        public void Desirous_dump_contains_desires()
         {
             var agent = Factory.CreateAgent< IDesirous, IThinking >();
             agent.As< IDesirous >().AddDesire( reality => reality.Contains( agent ) == false );

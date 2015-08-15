@@ -51,7 +51,7 @@ namespace Robotango.Tests.Units.Agency
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IActive>().AddIntention( Activities.Virtual.Move, alice, b  );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
             var dump1 = Log( world.Dump() );

@@ -19,13 +19,8 @@ namespace Robotango.Core.Abilities.Imp
             return new Deciding();
         }
 
-        protected override void Proceed( IReality reality )
-        {
-            
-        }
+        protected override void Proceed( IReality reality ) {}
 
         #endregion
-
-
     }
 }

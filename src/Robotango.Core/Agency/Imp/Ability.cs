@@ -30,7 +30,7 @@ namespace Robotango.Core.Agency.Imp
         #region Overrides
 
         protected virtual void DumpAbilityContent( OutlineWriter wr ) {}
-        protected virtual void Proceed( IReality reality  ) {}
+        protected virtual void Proceed( IReality reality ) {}
 
         #endregion
 

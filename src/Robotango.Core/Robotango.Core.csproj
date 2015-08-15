@@ -45,14 +45,14 @@
     <Compile Include="Elements\Active\Activity.cs" />
     <Compile Include="Elements\Active\IIntention.cs" />
     <Compile Include="Elements\Active\Intention.cs" />
-    <Compile Include="Elements\Purposeful\Desire.cs" />
+    <Compile Include="Elements\Desirous\Desire.cs" />
     <Compile Include="Abilities\IActive.cs" />
     <Compile Include="Elements\Active\IActivity.cs" />
     <Compile Include="Agency\Imp\Ability.cs" />
     <Compile Include="Abilities\Imp\Desirous.cs" />
     <Compile Include="Elements\Thinking\Belief.cs" />
     <Compile Include="Elements\Thinking\IBelief.cs" />
-    <Compile Include="Elements\Purposeful\IDesire.cs" />
+    <Compile Include="Elements\Desirous\IDesire.cs" />
     <Compile Include="Abilities\Imp\Reflective.cs" />
     <Compile Include="Elements\Virtual\Attribute.cs" />
     <Compile Include="Agency\Imp\World.cs" />

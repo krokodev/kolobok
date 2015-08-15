@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Operation.cs
+// Intention.cs
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
@@ -45,8 +45,15 @@ namespace Robotango.Core.Elements.Active
             get { return _activity; }
         }
 
-        public IAgent Operand { get { return _operand; }}
-        public object Arg { get { return _arg; } }
+        public IAgent Operand
+        {
+            get { return _operand; }
+        }
+
+        public object Arg
+        {
+            get { return _arg; }
+        }
 
         #endregion
 

@@ -8,7 +8,7 @@ using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 using Robotango.Core.System;
 
-namespace Robotango.Core.Elements.Purposeful
+namespace Robotango.Core.Elements.Desirous
 {
     internal class Desire : IDesire
     {
@@ -16,7 +16,7 @@ namespace Robotango.Core.Elements.Purposeful
 
         bool IDesire.IsSatisfiedIn( IReality reality )
         {
-            return _predicate( reality  );
+            return _predicate( reality );
         }
 
         #endregion

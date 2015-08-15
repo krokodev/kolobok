@@ -4,7 +4,7 @@
 
 using System;
 using Robotango.Core.Agency;
-using Robotango.Core.Elements.Purposeful;
+using Robotango.Core.Elements.Desirous;
 
 namespace Robotango.Core.Abilities
 {

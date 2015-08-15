@@ -1,5 +1,5 @@
 // Robotango (c) 2015 Krokodev
-// Robotango.Core
+// Robotango.Expressions
 // VirtualAccessor.cs
 
 using Robotango.Common.Domain.Implements.Expressions;
