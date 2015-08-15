@@ -5,9 +5,9 @@
 using Robotango.Common.Domain.Implements.Expressions;
 using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Abilities;
+using Robotango.Core.Agency;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Interfaces.Agency;
 
 namespace Robotango.Core.Expressions
 {

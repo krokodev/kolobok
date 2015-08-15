@@ -5,12 +5,12 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
+using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Purposeful;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Expressions;
-using Robotango.Core.Interfaces.Abilities;
-using Robotango.Tests.Utils.Bases;
+using Robotango.Tests.Common.Bases;
 
 namespace Robotango.Tests.Units.Abilities
 {

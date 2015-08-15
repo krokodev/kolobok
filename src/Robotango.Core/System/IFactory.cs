@@ -2,7 +2,7 @@
 // Robotango.Core
 // IFactory.cs
 
-using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Agency;
 
 namespace Robotango.Core.System
 {

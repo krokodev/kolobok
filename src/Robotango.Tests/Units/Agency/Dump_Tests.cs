@@ -5,11 +5,11 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Interfaces.Abilities;
+using Robotango.Tests.Common.Bases;
 using Robotango.Tests.Domain;
-using Robotango.Tests.Utils.Bases;
 
 namespace Robotango.Tests.Units.Agency
 {

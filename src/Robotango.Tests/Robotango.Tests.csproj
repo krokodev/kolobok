@@ -50,6 +50,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Units\Abilities\Deciding_Tests.cs" />
     <Compile Include="Units\Abilities\Active_Tests.cs" />
     <Compile Include="Units\Abilities\Purposeful_Tests.cs" />
     <Compile Include="Units\Agency\Projection_Tests.cs" />
@@ -57,8 +58,8 @@
     <Compile Include="Units\Agency\Proceed_Tests.cs" />
     <Compile Include="Units\Complex\Behavioural_Tests.cs" />
     <Compile Include="Units\Complex\Expression_Tests.cs" />
-    <Compile Include="Utils\Helpers\RationalsAssertThat.cs" />
-    <Compile Include="Utils\Helpers\ComponentsAssertThat.cs" />
+    <Compile Include="Common\Helpers\RationalsAssertThat.cs" />
+    <Compile Include="Common\Helpers\ComponentsAssertThat.cs" />
     <Compile Include="Domain\Hat.cs" />
     <Compile Include="Domain\IHat.cs" />
     <Compile Include="Units\Agency\Dump_Tests.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Units\Abilities\Reflective_Tests.cs" />
     <Compile Include="Units\Abilities\Thinking_Tests.cs" />
     <Compile Include="Units\Abilities\Communicative_Tests.cs" />
-    <Compile Include="Utils\Bases\BaseTests.cs" />
+    <Compile Include="Common\Bases\BaseTests.cs" />
     <Compile Include="Units\Agency\Component_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

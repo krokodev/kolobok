@@ -3,8 +3,8 @@
 // IQuestion.cs
 
 using System;
-using Robotango.Core.Interfaces.Abilities;
-using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Abilities;
+using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Communicative
 {

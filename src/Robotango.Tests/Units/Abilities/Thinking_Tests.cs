@@ -4,10 +4,10 @@
 
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
-using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Abilities;
+using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Common.Helpers;
 using Robotango.Tests.Domain;
-using Robotango.Tests.Utils.Bases;
-using Robotango.Tests.Utils.Helpers;
 
 namespace Robotango.Tests.Units.Abilities
 {

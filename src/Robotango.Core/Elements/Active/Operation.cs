@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Active
 {

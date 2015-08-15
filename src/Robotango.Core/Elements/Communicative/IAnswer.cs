@@ -2,7 +2,7 @@
 // Robotango.Core
 // IAnswer.cs
 
-using Robotango.Core.Interfaces.Abilities;
+using Robotango.Core.Abilities;
 
 namespace Robotango.Core.Elements.Communicative
 {

@@ -3,7 +3,7 @@
 // Its.cs
 
 using System;
-using Robotango.Core.Interfaces.Agency;
+using Robotango.Core.Agency;
 
 namespace Robotango.Core.Expressions
 {

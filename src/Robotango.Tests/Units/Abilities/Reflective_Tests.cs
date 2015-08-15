@@ -3,8 +3,8 @@
 // Reflective_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Core.Interfaces.Abilities;
-using Robotango.Tests.Utils.Bases;
+using Robotango.Core.Abilities;
+using Robotango.Tests.Common.Bases;
 
 namespace Robotango.Tests.Units.Abilities
 {
