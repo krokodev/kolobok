@@ -21,7 +21,9 @@ namespace Robotango.Tests.Units.Abilities
             Assert.That( dump, Is.StringContaining( "<Deciding>" ) );
         }
 
-        [Test]
+
+        // COde: Alice_has_intention_B_and_Decides_to_move_to_B
+        [Ignore, Test]
         public void Alice_has_intention_B_and_Decides_to_move_to_B()
         {
             var world = Factory.CreateWorld();
