@@ -87,7 +87,7 @@ namespace Robotango.Tests.Units.Agency
             var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive, ICommunicative >( "Alice" );
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "need: <Thinking> <Active>" ) );
+            Assert.That( dump, Is.StringContaining( "need: <Active>" ) );
         }
 
         [Test]

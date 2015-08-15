@@ -21,7 +21,6 @@ namespace Robotango.Core.Abilities.Imp
     {
         #region Data
 
-        private IThinking _thinking;
         private IActive _active;
         private List< IDesire > _desires = new List< IDesire >();
         private List< IIntention > _intentions = new List< IIntention >();
@@ -74,7 +73,6 @@ namespace Robotango.Core.Abilities.Imp
 
         protected override void onInitAsComponent()
         {
-            _thinking = MakeDependence< IThinking >();
             _active = MakeDependenceIfAvailable< IActive >();
         }
 
@@ -91,7 +89,7 @@ namespace Robotango.Core.Abilities.Imp
 
         IDesire IPurposeful.AddDesire( Func< IReality, bool > predicate, string name )
         {
-            var desire = new Desire( _thinking.InnerReality, predicate, name );
+            var desire = new Desire( predicate, name );
             _desires.Add( desire );
             return desire;
         }

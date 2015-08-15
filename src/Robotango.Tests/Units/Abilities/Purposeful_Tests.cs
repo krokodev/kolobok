@@ -19,8 +19,8 @@ namespace Robotango.Tests.Units.Abilities
             Factory.CreateAgent< IPurposeful, IThinking >();
         }
 
-        [Test, ExpectedException( typeof( MissedComponentException ) )]
-        public void Purposeful_agent_must_be_Thinking()
+        [Test]
+        public void Purposeful_agent_may_be_not_Thinking()
         {
             Factory.CreateAgent< IPurposeful >();
         }
@@ -46,11 +46,11 @@ namespace Robotango.Tests.Units.Abilities
 
             Log( agent.Dump() );
 
-            Assert.False( desire.IsSatisfied() );
+            Assert.False( desire.IsSatisfiedIn(agent.As<IThinking>().InnerReality) );
 
             agent.As< IThinking >().InnerReality.AddAgent( agent );
 
-            Assert.That( desire.IsSatisfied(), Is.True );
+            Assert.That( desire.IsSatisfiedIn(agent.As< IThinking >().InnerReality), Is.True );
         }
 
         [Test]
@@ -73,11 +73,11 @@ namespace Robotango.Tests.Units.Abilities
             Log( world.Dump() );
 
             alice.As< IVirtual >().GetAttribute< IPosition >().Location = b;
-            Assert.False( desire.IsSatisfied() );
+            Assert.False( desire.IsSatisfiedIn(alice.As< IThinking >().InnerReality) );
 
             alice.As< IVirtual >().GetAttribute< IPosition >().Location = a;
             herself.As< IVirtual >().GetAttribute< IPosition >().Location = b;
-            Assert.True( desire.IsSatisfied() );
+            Assert.True( desire.IsSatisfiedIn(alice.As< IThinking >().InnerReality) );
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace Robotango.Tests.Units.Abilities
                     return self.GetAttribute< IPosition >().Location == b;
                 } );
 
-            Assert.That( desire.IsSatisfied() );
+            Assert.That( desire.IsSatisfiedIn(alice.As< IThinking >().InnerReality) );
             Assert.That( alice.As< IThinking >().InnerReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.EqualTo( b ) );
         }
 
@@ -149,7 +149,7 @@ namespace Robotango.Tests.Units.Abilities
                     return self.GetAttribute< IPosition >().Location == b;
                 } );
 
-            Assert.That( desire.IsSatisfied() );
+            Assert.That( desire.IsSatisfiedIn(alice.As< IThinking >().InnerReality) );
             Assert.That( world.IReality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location, Is.Not.EqualTo( b ) );
         }
     }

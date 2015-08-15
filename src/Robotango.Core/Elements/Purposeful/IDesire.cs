@@ -3,11 +3,12 @@
 // IDesire.cs
 
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Purposeful
 {
     public interface IDesire : IResearchable
     {
-        bool IsSatisfied();
+        bool IsSatisfiedIn( IReality reality);
     }
 }
