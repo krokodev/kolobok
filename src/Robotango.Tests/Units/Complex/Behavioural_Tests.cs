@@ -53,19 +53,6 @@ namespace Robotango.Tests.Units.Complex
             Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
-        /*
-        [Test]
-        public void Agent_has_Alive_attribute()
-        {
-            Assert.Ignore();
-        }
-
-        [Test]
-        public void Reality_can_kill_the_agent()
-        {
-            Assert.Ignore();
-        }
-*/
 
         [Ignore, Test]
         public void Alice_asks_Bob_to_pass_her_throw_door()

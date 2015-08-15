@@ -31,7 +31,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            IIntention intention = new Intention< ILocation >( Activities.Virtual.Move, alice, b );
+            IIntention intention = new Intention< ILocation >( Activities.Virtual.Movement, alice, b );
 
             intention.Realize( world.IReality );
 
@@ -50,11 +50,11 @@ namespace Robotango.Tests.Units.Abilities
             ILocation a = new Location( "A" );
             ILocation b = new Location( "B" );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            IIntention intention = new Intention< ILocation >( Activities.Virtual.Move, alice, b );
+            IIntention intention = new Intention< ILocation >( Activities.Virtual.Movement, alice, b );
 
             intention.Realize( world.IReality );
 
@@ -72,10 +72,10 @@ namespace Robotango.Tests.Units.Abilities
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
-            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, b );
 
             Log( world.Dump() );
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( a ) );
@@ -95,10 +95,10 @@ namespace Robotango.Tests.Units.Abilities
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
-            alice0.As< IActive >().AddActivity( Activities.Virtual.Move );
+            alice0.As< IActive >().AddActivity( Activities.Virtual.Movement );
 
             alice0.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice0.As< IActive >().AddIntention( Activities.Virtual.Move, alice0, b );
+            alice0.As< IActive >().AddIntention( Activities.Virtual.Movement, alice0, b );
             var alice1 = alice0.As< IThinking >().InnerReality.AddAgent( alice0 );
             Log( world.Dump() );
 
@@ -116,10 +116,10 @@ namespace Robotango.Tests.Units.Abilities
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var alice = Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" );
-            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
 
-            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, b );
 
             var wAlice = world.IReality.AddAgent( alice, "wAlice" );
             var aAlice = wAlice.As< IThinking >().InnerReality.AddAgent( wAlice, "aAlice" );
@@ -142,13 +142,13 @@ namespace Robotango.Tests.Units.Abilities
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var bob = Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Bob" );
-            bob.As< IActive >().AddActivity( Activities.Virtual.Move );
+            bob.As< IActive >().AddActivity( Activities.Virtual.Movement );
             bob.As< IVirtual >().AddAttribute( new Position( a ) );
 
             var wBob = world.IReality.AddAgent( bob, "wBob" );
             var bBob = wBob.As< IThinking >().InnerReality.AddAgent( wBob, "bBob" );
 
-            wBob.As< IActive >().AddIntention( Activities.Virtual.Move, bob, b );
+            wBob.As< IActive >().AddIntention( Activities.Virtual.Movement, bob, b );
 
             Log( world.Dump() );
             {
@@ -166,13 +166,13 @@ namespace Robotango.Tests.Units.Abilities
         {
             var alice = Factory.CreateAgent< IActive >( "Alice" );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
 
             var dump = Log( alice.Dump() );
 
             Assert.That( dump, Is.StringContaining( "<Active>" ) );
             Assert.That( dump, Is.StringContaining( "Activities" ) );
-            Assert.That( dump, Is.StringContaining( Activities.Virtual.Move.Name ) );
+            Assert.That( dump, Is.StringContaining( Activities.Virtual.Movement.Name ) );
         }
 
         [Test, ExpectedException( typeof( UnknownActivityException ) )]
@@ -181,7 +181,7 @@ namespace Robotango.Tests.Units.Abilities
             var a = new Location( "A" );
             var alice = Factory.CreateAgent< IActive >( "Alice" );
 
-            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, a );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, a );
         }
 
         [Test, ExpectedException( typeof( UnknownActivityException ) )]
@@ -193,7 +193,7 @@ namespace Robotango.Tests.Units.Abilities
                 Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" )
                 );
 
-            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, a );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, a );
             world.Proceed();
         }
 
@@ -206,8 +206,8 @@ namespace Robotango.Tests.Units.Abilities
                 Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" )
                 );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Move );
-            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, a );
+            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, a );
             world.Proceed();
         }
     }

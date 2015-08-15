@@ -13,7 +13,7 @@ namespace Robotango.Core.Common
     {
         public static class Virtual
         {
-            public static readonly IActivity Move = new Activity< ILocation >(
+            public static readonly IActivity Movement = new Activity< ILocation >(
                 "MoveTo",
                 ( agent, location ) => {
                     agent

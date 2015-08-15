@@ -20,9 +20,9 @@ namespace Robotango.Core.Abilities.Imp
     {
         #region Data
 
-        private IList< IIntention > _intentions;
         private IActive _active;
         private IDesirous _desirous;
+        private IList< IIntention > _intentions;
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace Robotango.Core.Abilities.Imp
                 return null;
             }
 
-            var intention = new Intention< ILocation >( Activities.Virtual.Move, desire.Subject, ( ILocation ) desire.Arg );
+            var intention = new Intention< ILocation >( Activities.Virtual.Movement, desire.Subject, ( ILocation ) desire.Arg );
 
             intentions.Add( intention );
             return intentions;
