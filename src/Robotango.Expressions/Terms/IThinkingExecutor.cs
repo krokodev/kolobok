@@ -6,7 +6,7 @@ using System;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Thinking;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public interface IThinkingExecutor
     {

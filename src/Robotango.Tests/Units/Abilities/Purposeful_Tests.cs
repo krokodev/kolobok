@@ -15,24 +15,24 @@ namespace Robotango.Tests.Units.Abilities
         [Test]
         public void Agent_can_be_Purposeful()
         {
-            Factory.CreateAgent< IPurposeful, IThinking >();
+            Factory.CreateAgent< IDesirous, IThinking >();
         }
 
         [Test]
         public void Purposeful_agent_may_be_not_Thinking()
         {
-            Factory.CreateAgent< IPurposeful >();
+            Factory.CreateAgent< IDesirous >();
         }
 
         [Test]
         public void Purposeful_dump_contains_desires()
         {
-            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            agent.As< IPurposeful >().AddDesire( reality => reality.Contains( agent ) == false );
+            var agent = Factory.CreateAgent< IDesirous, IThinking >();
+            agent.As< IDesirous >().AddDesire( reality => reality.Contains( agent ) == false );
 
             var dump = Log( agent.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Purposeful>" ) );
+            Assert.That( dump, Is.StringContaining( "<Desirous>" ) );
             Assert.That( dump, Is.StringContaining( "Desires" ) );
             Assert.That( dump, Is.StringContaining( "Some Desire" ) );
         }
@@ -40,8 +40,8 @@ namespace Robotango.Tests.Units.Abilities
         [Test]
         public void Desire_can_be_satisfied()
         {
-            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
-            var desire = agent.As< IPurposeful >().AddDesire( reality => reality.Contains( agent ) );
+            var agent = Factory.CreateAgent< IDesirous, IThinking >();
+            var desire = agent.As< IDesirous >().AddDesire( reality => reality.Contains( agent ) );
 
             Log( agent.Dump() );
 
@@ -56,7 +56,7 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desires_to_be_in_location_B_and_is_satisfied_by_suggestion_that_she_is()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IThinking >( "Alice" ) );
 
             var a = new Location( "A" );
             var b = new Location( "B" );
@@ -64,7 +64,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             var herself = alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            var desire = alice.As< IPurposeful >().AddDesire(
+            var desire = alice.As< IDesirous >().AddDesire(
                 reality =>
                     reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b
                 );
@@ -82,19 +82,19 @@ namespace Robotango.Tests.Units.Abilities
         [Test]
         public void Desire_can_be_named_and_names_are_dumped()
         {
-            var agent = Factory.CreateAgent< IPurposeful, IThinking >();
+            var agent = Factory.CreateAgent< IDesirous, IThinking >();
 
-            agent.As< IPurposeful >().AddDesire(
+            agent.As< IDesirous >().AddDesire(
                 reality => true
                 );
-            agent.As< IPurposeful >().AddDesire(
+            agent.As< IDesirous >().AddDesire(
                 reality =>
                     reality.Contains( agent ),
                 "Wants to be present"
                 );
             var a = new Location( "A" );
 
-            agent.As< IPurposeful >().AddDesire(
+            agent.As< IDesirous >().AddDesire(
                 reality =>
                     reality.GetAgent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == a,
                 "Wants to be in A"
@@ -112,14 +112,14 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desires_evaluation_could_change_its_inner_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            var desire = alice.As< IPurposeful >().AddDesire(
+            var desire = alice.As< IDesirous >().AddDesire(
                 reality => {
                     var self = reality.GetAgent( alice ).As< IVirtual >();
                     self.GetAttribute< IPosition >().Location = b;
@@ -134,14 +134,14 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desire_evaluation_should_not_change_the_outer_reality()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking >( "Alice" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IThinking >( "Alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
 
-            var desire = alice.As< IPurposeful >().AddDesire(
+            var desire = alice.As< IDesirous >().AddDesire(
                 reality => {
                     var self = reality.GetAgent( alice ).As< IVirtual >();
                     self.GetAttribute< IPosition >().Location = b;

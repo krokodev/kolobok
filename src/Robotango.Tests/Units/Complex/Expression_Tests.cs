@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Thinking;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Expressions;
+using Robotango.Expressions.Terms;
 using Robotango.Tests.Common.Bases;
 
 namespace Robotango.Tests.Units.Complex

@@ -5,7 +5,7 @@
 using System;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public class Its
     {

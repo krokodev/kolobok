@@ -7,10 +7,9 @@ using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Active
 {
-    public interface IOperation : IResearchable
+    public interface IIntention : IResearchable
     {
         void Realize( IReality reality );
-        string Name { get; }
         IActivity Activity { get; }
         IAgent Operand { get; }
         object Arg { get; }

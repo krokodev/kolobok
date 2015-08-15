@@ -7,7 +7,7 @@ using Robotango.Core.Abilities;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Thinking;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public class ThinkingExecutor : AgentProxy< IThinking >, IThinkingExecutor
     {

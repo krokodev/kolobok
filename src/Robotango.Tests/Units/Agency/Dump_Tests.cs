@@ -51,7 +51,7 @@ namespace Robotango.Tests.Units.Agency
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" )
+                Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive >( "Alice" )
                 );
             ILocation a = new Location( "A" );
             ILocation b = new Location( "B" );
@@ -59,9 +59,8 @@ namespace Robotango.Tests.Units.Agency
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
-            var operation = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
-            alice.As< IPurposeful >().AddIntention( operation );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
 
             var dump = Log( world.Dump() );
 
@@ -74,7 +73,7 @@ namespace Robotango.Tests.Units.Agency
         public void Active_is_dumped()
         {
             var world = Factory.CreateWorld();
-            world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" ) );
+            world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive >( "Alice" ) );
 
             var dump = Log( world.Dump() );
 
@@ -84,10 +83,10 @@ namespace Robotango.Tests.Units.Agency
         [Test]
         public void Dependences_are_dumped()
         {
-            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive, ICommunicative >( "Alice" );
+            var alice = Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive, ICommunicative >( "Alice" );
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "use: <Active>" ) );
+            Assert.That( dump, Is.StringContaining( "use: <Thinking>" ) );
         }
 
         [Test]
@@ -97,16 +96,15 @@ namespace Robotango.Tests.Units.Agency
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" )
                 );
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
-            var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddIntention( moveToB );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
-            alice.As< IPurposeful >().Proceed( world.IReality );
+            alice.As< IDesirous >().Proceed( world.IReality );
 
             var dump1 = Log( world.Dump() );
             {
@@ -115,7 +113,7 @@ namespace Robotango.Tests.Units.Agency
             var dump2 = Log( world.Dump() );
 
             Assert.That( dump1, Is.StringContaining( "<Active>" ) );
-            Assert.That( dump1, Is.StringContaining( "Operations" ) );
+            Assert.That( dump1, Is.StringContaining( "Intentions" ) );
             Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B)" ) );
             Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B)" ) );
         }
@@ -123,7 +121,7 @@ namespace Robotango.Tests.Units.Agency
         [Test]
         public void Activities_are_dumped()
         {
-            var alice = Factory.CreateAgent< IVirtual, IPurposeful, IThinking, IActive >( "Alice" );
+            var alice = Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive >( "Alice" );
 
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
 

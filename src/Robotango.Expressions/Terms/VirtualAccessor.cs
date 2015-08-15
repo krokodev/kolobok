@@ -9,7 +9,7 @@ using Robotango.Core.Abilities;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Virtual;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public class VirtualAccessor : AgentProxy< IVirtual >, IVirtualAccessor
     {
@@ -31,7 +31,7 @@ namespace Robotango.Core.Expressions
         #region Ctor
 
         public VirtualAccessor()
-            : base( Expressions.Convert.Agent.To.Virtual ) {}
+            : base( Terms.Convert.Agent.To.Virtual ) {}
 
         #endregion
 

@@ -7,7 +7,7 @@ using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Expressions;
+using Robotango.Expressions.Terms;
 using Robotango.Tests.Common.Bases;
 using Robotango.Tests.Domain;
 

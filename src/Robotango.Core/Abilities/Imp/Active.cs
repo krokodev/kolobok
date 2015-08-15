@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
 using Robotango.Common.Domain.Types.Compositions;
-using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
@@ -22,7 +21,7 @@ namespace Robotango.Core.Abilities.Imp
     {
         #region Data
 
-        private IList< IOperation > _operations = new List< IOperation >();
+        private IList< IIntention > _intentions = new List< IIntention >();
         private IList< IActivity > _activities = new List< IActivity >();
 
         #endregion
@@ -32,19 +31,8 @@ namespace Robotango.Core.Abilities.Imp
 
         private void PassOperationsToReality( IReality reality )
         {
-            _operations.ForEach( reality.AddOperation );
-            _operations.Clear();
-        }
-
-        private void DumpOperations( OutlineWriter wr )
-        {
-            if( !_operations.Any() ) {
-                return;
-            }
-            wr.Line( "Operations" );
-            wr.Level++;
-            _operations.ForEach( o => wr.Append( o.Dump( wr.Level ) ) );
-            wr.Level--;
+            _intentions.ForEach( reality.AddOperation );
+            _intentions.Clear();
         }
 
         private void DumpActivities( OutlineWriter wr )
@@ -58,6 +46,17 @@ namespace Robotango.Core.Abilities.Imp
             wr.Level--;
         }
 
+                private void DumpIntentions( OutlineWriter wr )
+        {
+            if( !_intentions.Any() ) {
+                return;
+            }
+            wr.Line( "Intentions" );
+            _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
+        }
+
+
+
         #endregion
 
 
@@ -66,15 +65,15 @@ namespace Robotango.Core.Abilities.Imp
         protected override IComponent Clone()
         {
             return new Active {
-                _operations = _operations.ToList(),
+                _intentions = _intentions.ToList(),
                 _activities = _activities.ToList()
             };
         }
 
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
-            DumpOperations( wr );
             DumpActivities( wr );
+            DumpIntentions( wr );
         }
         protected override void Proceed( IReality reality )
         {
@@ -86,17 +85,6 @@ namespace Robotango.Core.Abilities.Imp
 
         #region IActive
 
-        IOperation IActive.CreateOperation<T>( IActivity activity, IAgent operand, T arg )
-        {
-            Debug.Assert.That( _activities.Contains( activity ), new UnknownActivityException( activity.Name ) );
-            return new Operation< T >( activity, operand, arg );
-        }
-
-        void IActive.AddOperation( IOperation operation )
-        {
-            Debug.Assert.That( _activities.Contains( operation.Activity ), new UnknownActivityException( operation.Activity.Name ) );
-            _operations.Add( operation );
-        }
 
         void IActive.AddActivity( IActivity activity )
         {
@@ -106,9 +94,15 @@ namespace Robotango.Core.Abilities.Imp
             _activities.Add( activity );
         }
 
-        bool IActive.ContainsOperation<T>( IActivity activity, IAgent operand, T arg )
+        bool IActive.ContainsIntention<T>( IActivity activity, IAgent operand, T arg )
         {
-            return _operations.Any(op=>op.Activity==activity && op.Operand == operand && op.Arg.Equals( arg ) );
+            return _intentions.Any(op=>op.Activity==activity && op.Operand == operand && op.Arg.Equals( arg ) );
+        }
+
+        public void AddIntention<T>( IActivity activity, IAgent operand, T arg )
+        {
+            Debug.Assert.That( _activities.Contains( activity ), new UnknownActivityException( activity.Name ) );
+            _intentions.Add(new Intention< T >( activity, operand, arg ));
         }
 
         #endregion

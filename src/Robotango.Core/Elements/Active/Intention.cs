@@ -8,7 +8,7 @@ using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Active
 {
-    public class Operation<T> : IOperation
+    public class Intention<T> : IIntention
     {
         #region Data
 
@@ -22,7 +22,7 @@ namespace Robotango.Core.Elements.Active
 
         #region Ctor
 
-        public Operation( IActivity activity, IAgent operand, T arg )
+        public Intention( IActivity activity, IAgent operand, T arg )
         {
             _operand = operand;
             _activity = activity;
@@ -35,17 +35,12 @@ namespace Robotango.Core.Elements.Active
 
         #region IOperation
 
-        void IOperation.Realize( IReality reality )
+        void IIntention.Realize( IReality reality )
         {
             _activity.Execute( reality.GetAgent( _operand ), _arg );
         }
 
-        string IOperation.Name
-        {
-            get { return _name; }
-        }
-
-        IActivity IOperation.Activity
+        IActivity IIntention.Activity
         {
             get { return _activity; }
         }
@@ -64,7 +59,7 @@ namespace Robotango.Core.Elements.Active
                 level,
                 "{0} <{1}>",
                 _name,
-                typeof( Operation< T > ).Name
+                typeof( Intention< T > ).Name
                 );
         }
 

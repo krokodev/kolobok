@@ -6,7 +6,7 @@ using System;
 using Robotango.Core.Abilities;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public static class Convert
     {

@@ -29,7 +29,7 @@ namespace Robotango.Core.Agency.Imp
         #region Data
 
         private List< IAgent > _agents = new List< IAgent >();
-        private readonly List< IOperation > _operations = new List< IOperation >();
+        private readonly List< IIntention > _operations = new List< IIntention >();
         private readonly Guid _id = Guid.NewGuid();
         private readonly string _name;
 
@@ -107,9 +107,9 @@ namespace Robotango.Core.Agency.Imp
             get { return _agents; }
         }
 
-        void IReality.AddOperation( IOperation operation )
+        void IReality.AddOperation( IIntention intention )
         {
-            _operations.Add( operation );
+            _operations.Add( intention );
         }
 
         void IReality.Proceed()

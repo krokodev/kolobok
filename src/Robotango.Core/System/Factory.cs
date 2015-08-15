@@ -153,7 +153,7 @@ namespace Robotango.Core.System
                 { typeof( ICommunicative ), () => new Communicative() },
                 { typeof( IVirtual ), () => new Virtual() },
                 { typeof( IReflective ), () => new Reflective() },
-                { typeof( IPurposeful ), () => new Purposeful() },
+                { typeof( IDesirous ), () => new Desirous() },
                 { typeof( IActive ), () => new Active() },
                 { typeof( IDeciding ), () => new Deciding() }
             };

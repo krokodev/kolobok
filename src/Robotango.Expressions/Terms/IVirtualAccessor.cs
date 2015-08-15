@@ -7,7 +7,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Virtual;
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public interface IVirtualAccessor
     {

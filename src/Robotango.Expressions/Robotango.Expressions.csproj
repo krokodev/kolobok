@@ -34,14 +34,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Expressions\AgentProxy.cs" />
-    <Compile Include="Expressions\As.cs" />
-    <Compile Include="Expressions\Convert.cs" />
-    <Compile Include="Expressions\IThinkingExecutor.cs" />
-    <Compile Include="Expressions\Its.cs" />
-    <Compile Include="Expressions\IVirtualAccessor.cs" />
-    <Compile Include="Expressions\ThinkingExecutor.cs" />
-    <Compile Include="Expressions\VirtualAccessor.cs" />
+    <Compile Include="Terms\AgentProxy.cs" />
+    <Compile Include="Terms\As.cs" />
+    <Compile Include="Terms\Convert.cs" />
+    <Compile Include="Terms\IThinkingExecutor.cs" />
+    <Compile Include="Terms\Its.cs" />
+    <Compile Include="Terms\IVirtualAccessor.cs" />
+    <Compile Include="Terms\ThinkingExecutor.cs" />
+    <Compile Include="Terms\VirtualAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 // Robotango.Core
 // As.cs
 
-namespace Robotango.Core.Expressions
+namespace Robotango.Expressions.Terms
 {
     public static class As
     {

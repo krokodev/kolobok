@@ -28,13 +28,13 @@ namespace Robotango.Tests.Units.Abilities
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IPurposeful, IDeciding, IActive >( "alice" )
+                Factory.CreateAgent< IVirtual, IDesirous, IDeciding, IActive >( "alice" )
                 );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddDesire(
+            alice.As< IDesirous >().AddDesire(
                 reality =>
                     reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location == b,
                 "Desire be in B"
@@ -45,7 +45,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IDeciding >().Proceed( world.IReality );
             Log( alice.Dump() );
 
-            Assert.That( alice.As< IActive >().ContainsOperation( Activities.Virtual.Move, alice, b ) );
+            Assert.That( alice.As< IActive >().ContainsIntention( Activities.Virtual.Move, alice, b ) );
         }
 
         [Ignore, Test]

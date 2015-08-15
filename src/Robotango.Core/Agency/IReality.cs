@@ -18,7 +18,7 @@ namespace Robotango.Core.Agency
         Guid Id { get; }
         string Name { get; }
         IEnumerable< IAgent > Agents { get; }
-        void AddOperation( IOperation operation );
+        void AddOperation( IIntention intention );
         void Proceed();
     }
 }

@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Expressions;
+using Robotango.Expressions.Terms;
 using Robotango.Tests.Common.Bases;
 
 namespace Robotango.Tests.Units.Agency
@@ -15,29 +15,27 @@ namespace Robotango.Tests.Units.Agency
     public class Proceed_Tests : BaseTests
     {
         [Test]
-        public void Abilities_ordering_cause_on_the_proceed_success()
+        public void Abilities_ordering_does_not_cause_on_the_proceed_success()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent( Factory.CreateAgent< IActive, IVirtual, IPurposeful, IThinking >( "Alice" ) );
-            var bob = world.IReality.AddAgent( Factory.CreateAgent< IThinking, IVirtual, IPurposeful, IActive >( "Bob" ) );
+            var alice = world.IReality.AddAgent( Factory.CreateAgent< IActive, IVirtual, IDesirous, IThinking >( "Alice" ) );
+            var bob = world.IReality.AddAgent( Factory.CreateAgent< IThinking, IDesirous, IVirtual, IActive >( "Bob" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
-            var moveAliceToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddIntention( moveAliceToB );
+            alice.As< IActive >().AddIntention( Activities.Virtual.Move, alice, b );
 
             bob.As< IActive >().AddActivity( Activities.Virtual.Move );
-            var moveBobToB = bob.As< IActive >().CreateOperation( Activities.Virtual.Move, bob, b );
             bob.As< IVirtual >().AddAttribute( new Position( a ) );
-            bob.As< IPurposeful >().AddIntention( moveBobToB );
+            bob.As< IActive >().AddIntention( Activities.Virtual.Move, bob, b );
 
             world.Proceed();
 
             Log( world.Dump() );
 
-            Assert.That( alice.Get( Its.Virtual.Location ), Is.Not.EqualTo( b ) );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
             Assert.That( bob.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
         }
 
@@ -48,13 +46,12 @@ namespace Robotango.Tests.Units.Agency
             var b = new Location( "B" );
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IThinking, IPurposeful, IActive >( "Alice" )
+                Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" )
                 );
             alice.As< IActive >().AddActivity( Activities.Virtual.Move );
-            var moveToB = alice.As< IActive >().CreateOperation( Activities.Virtual.Move, alice, b );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IPurposeful >().AddIntention( moveToB );
+            alice.As< IActive>().AddIntention( Activities.Virtual.Move, alice, b  );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
             var dump1 = Log( world.Dump() );
@@ -63,8 +60,8 @@ namespace Robotango.Tests.Units.Agency
             }
             var dump2 = Log( world.Dump() );
 
-            Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B) <Intention>" ) );
-            Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B) <Intention>" ) );
+            Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B) <Intention`1>" ) );
+            Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B) <Intention`1>" ) );
         }
     }
 }
