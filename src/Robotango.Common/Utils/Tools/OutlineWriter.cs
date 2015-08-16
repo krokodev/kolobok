@@ -58,6 +58,13 @@ namespace Robotango.Common.Utils.Tools
             _sb.AppendLine();
         }
 
+        public void NewLine( string template, params object[] args )
+        {
+            _sb.AppendLine();
+            _sb.Append( _indent );
+            _sb.AppendFormat( template, args );
+        }
+
         public void Line( string str = "" )
         {
             _sb.Append( _indent );
@@ -71,5 +78,15 @@ namespace Robotango.Common.Utils.Tools
             wr.Line( template, args );
             return wr.ToString();
         }
+
+        public static string NewLine( int level, string template, params object[] args )
+        {
+            var wr = new OutlineWriter( level );
+            wr.Line();
+            wr.Indent();
+            wr.Append( template, args );
+            return wr.ToString();
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// ThinkingProcess.cs
+// AbstractProcess.cs
 
 using System.Collections.Generic;
 using MoreLinq;
@@ -12,7 +12,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 {
-    public abstract class ThinkingProcess : IThinkingProcess
+    public abstract class AbstractProcess : IThinkingProcess
     {
         #region Data
 
@@ -24,9 +24,23 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         #region Ctor
 
-        protected ThinkingProcess( IThinkingSchema schema )
+        protected AbstractProcess( IThinkingSchema schema )
         {
             _schema = schema;
+        }
+
+        #endregion
+
+
+        #region Routines
+
+        private void DumpRules( OutlineWriter wr )
+        {
+            if (_rules.Count == 0) { 
+                return;
+            }
+            wr.Line( "Rules" );
+            _rules.ForEach( r => wr.Append( r.Dump( wr.Level + 1 ) ) );
         }
 
         #endregion
@@ -45,9 +59,9 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
         {
             var wr = new OutlineWriter( level );
 
-            wr.Indent();
-            wr.Append( "<{0}>", GetType().Name );
+            wr.Line( "<{0}>", GetType().Name );
             wr.Level++;
+            DumpRules( wr );
             DumpProcessContent( wr );
             return wr.ToString();
         }
@@ -79,7 +93,7 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         public void ApplyRules( IReality reality )
         {
-            _rules.ForEach( r=>r.Apply( reality ) );
+            _rules.ForEach( r => r.Apply( reality ) );
         }
 
         #endregion

@@ -7,6 +7,7 @@ using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Abilities.Thinking.Processes.Imp;
 using Robotango.Core.Abilities.Thinking.Rules;
+using Robotango.Core.Abilities.Thinking.Rules.Imp;
 using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Thinking
@@ -91,7 +92,7 @@ namespace Robotango.Tests.Units.Thinking
             var dump = Log( alice.Dump() );
 
             Assert.That( dump, Is.StringContaining( "Rules" ) );
-            Assert.That( dump, Is.StringContaining( "<ExistingPrinciple>" ) );
+            Assert.That( dump, Is.StringContaining( "<ExistingRule>" ) );
 
             Assert.That( process.OutputReality.Contains( bob ) );
         }

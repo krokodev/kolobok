@@ -7,7 +7,7 @@ using Robotango.Core.Common;
 
 namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 {
-    public class RationalProcess : ThinkingProcess {
+    public class RationalProcess : AbstractProcess {
         #region Ctor
 
         public RationalProcess()

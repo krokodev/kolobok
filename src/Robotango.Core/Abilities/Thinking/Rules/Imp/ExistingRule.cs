@@ -1,13 +1,12 @@
 ﻿// Robotango (c) 2015 Krokodev
-// Robotango.Tests
-// ExistingPrinciple.cs
+// Robotango.Core
+// ExistingRule.cs
 
-using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.System;
 
-namespace Robotango.Core.Abilities.Thinking.Rules
+namespace Robotango.Core.Abilities.Thinking.Rules.Imp
 {
-    public class ExistingRule : IThinkingRule
+    public class ExistingRule : AbstractRule
     {
         #region Data
 
@@ -28,7 +27,7 @@ namespace Robotango.Core.Abilities.Thinking.Rules
 
         #region IThinkingProcessRule
 
-        void IThinkingRule.Apply( IReality reality )
+        protected override void Apply( IReality reality )
         {
             if( reality.Contains( _subject ) ) {
                 return;

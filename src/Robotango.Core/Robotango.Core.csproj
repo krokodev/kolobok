@@ -49,7 +49,8 @@
     <Compile Include="Abilities\Desirous\ILocationDesire.cs" />
     <Compile Include="Abilities\Desirous\Imp\LocationDesire.cs" />
     <Compile Include="Abilities\Thinking\Processes\IImaginationProcess.cs" />
-    <Compile Include="Abilities\Thinking\Rules\ExistingRule.cs" />
+    <Compile Include="Abilities\Thinking\Rules\Imp\AbstractRule.cs" />
+    <Compile Include="Abilities\Thinking\Rules\Imp\ExistingRule.cs" />
     <Compile Include="Abilities\Thinking\Processes\Imp\ImaginationProcess.cs" />
     <Compile Include="Abilities\Thinking\Rules\IThinkingRule.cs" />
     <Compile Include="Abilities\Thinking\Schemas\IThinkingSchema.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Abilities\Desirous\IDesire.cs" />
     <Compile Include="Abilities\Thinking\Processes\IThinkingProcess.cs" />
     <Compile Include="Abilities\Thinking\Processes\Imp\RationalProcess.cs" />
-    <Compile Include="Abilities\Thinking\Processes\Imp\ThinkingProcess.cs" />
+    <Compile Include="Abilities\Thinking\Processes\Imp\AbstractProcess.cs" />
     <Compile Include="Abilities\Virtual\Imp\Attribute.cs" />
     <Compile Include="System\Imp\World.cs" />
     <Compile Include="Abilities\Desirous\IDesirous.cs" />
