@@ -8,11 +8,13 @@ using System.Linq;
 using MoreLinq;
 using Robotango.Common.Types.Compositions;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.Abilities.Thinking.Beliefs;
+using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Common;
 using Robotango.Core.System;
 using Robotango.Core.System.Imp;
 
-namespace Robotango.Core.Abilities.Thinking.Imp
+namespace Robotango.Core.Abilities.Thinking
 {
     internal class ThinkingAbility : Ability, IThinking
     {
@@ -106,6 +108,11 @@ namespace Robotango.Core.Abilities.Thinking.Imp
         void IThinking.AddProcess( IThinkingProcess process )
         {
             _processes.Add( process );
+        }
+
+        public T GetProcess<T>() where T : IThinkingProcess
+        {
+            return _processes.OfType< T >().FirstOrDefault();
         }
 
         #endregion

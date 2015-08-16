@@ -3,6 +3,8 @@
 // IThinking.cs
 
 using System;
+using Robotango.Core.Abilities.Thinking.Beliefs;
+using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.System;
 
 namespace Robotango.Core.Abilities.Thinking
@@ -15,5 +17,6 @@ namespace Robotango.Core.Abilities.Thinking
         IReality InnerReality { get; }
         bool HasBelief( IBelief belief );
         void AddProcess( IThinkingProcess process );
+        T GetProcess<T>() where T : IThinkingProcess;
     }
 }

@@ -15,7 +15,6 @@ using Robotango.Core.Abilities.Communicative.Imp;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
 using Robotango.Core.Abilities.Thinking;
-using Robotango.Core.Abilities.Thinking.Imp;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.Abilities.Virtual.Imp;
 

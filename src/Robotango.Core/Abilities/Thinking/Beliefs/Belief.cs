@@ -5,7 +5,7 @@
 using System;
 using Robotango.Core.System;
 
-namespace Robotango.Core.Abilities.Thinking.Imp
+namespace Robotango.Core.Abilities.Thinking.Beliefs
 {
     public class Belief : IBelief
     {

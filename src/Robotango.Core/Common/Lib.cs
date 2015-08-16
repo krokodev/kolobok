@@ -1,10 +1,12 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Lib.Activities.cs
+// Lib.cs
 
 using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
+using Robotango.Core.Abilities.Thinking.Processes;
+using Robotango.Core.Abilities.Thinking.Processes.Imp;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.System;
 using Robotango.Core.System.Imp;
@@ -42,6 +44,18 @@ namespace Robotango.Core.Common
                 "Existing",
                 ( reality, agent, nothing ) => reality.Contains( agent )
                 );
+        }
+
+        public static class Thinking
+        {
+            public static class Processes
+            {
+                public static class Shemas
+                {
+                    public static readonly IThinkingProcessSchema Imagination = new ThinkingProcessSchema( "Imagination" );
+                    public static readonly IThinkingProcessSchema Rational = new ThinkingProcessSchema( "Rational" );
+                }
+            }
         }
     }
 }
