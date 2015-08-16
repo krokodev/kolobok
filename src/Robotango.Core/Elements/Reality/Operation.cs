@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Intention.cs
+// Operation.cs
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;

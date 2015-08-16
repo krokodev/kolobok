@@ -6,7 +6,8 @@ using Robotango.Core.Agency;
 
 namespace Robotango.Core.Abilities
 {
-    public interface IDeciding : IAbility {
+    public interface IDeciding : IAbility
+    {
         void MakeDecision( IReality reality );
     }
 }

@@ -58,7 +58,7 @@ namespace Robotango.Core.Elements.Desirous
             return OutlineWriter.Line( level,
                 "{0}({1},{2} {3}) <{4}>",
                 _model.Name,
-                _subject == null ? null:_subject.Name,
+                _subject == null ? null : _subject.Name,
                 typeof( T ).Name,
                 _arg,
                 GetType().Name

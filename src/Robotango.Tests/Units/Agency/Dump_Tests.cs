@@ -7,7 +7,6 @@ using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;
-using Robotango.Core.Elements.Reality;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Tests.Common.Bases;
 using Robotango.Tests.Domain;

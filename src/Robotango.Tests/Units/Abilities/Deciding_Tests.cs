@@ -59,17 +59,15 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
-            
+
             // Todo:> When should we call MakeDecision() ? 
             alice.As< IDeciding >().MakeDecision( world.IReality );
 
-
             world.Proceed();
-            
+
             Log( alice.Dump() );
 
-
-            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ));
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
             Assert.False( alice.As< IActive >().ContainsIntention( Activities.Virtual.Movement, alice, b ) );
         }
 

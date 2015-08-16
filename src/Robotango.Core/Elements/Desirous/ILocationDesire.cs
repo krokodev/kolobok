@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IMoveDesire.cs
+// ILocationDesire.cs
 
 namespace Robotango.Core.Elements.Desirous
 {

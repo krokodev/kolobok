@@ -27,6 +27,7 @@ namespace Robotango.Core.Common
                 ( reality, agent, nothing ) => true
                 );
         }
+
         public static class Reality
         {
             public static readonly IDesireModel< INothing > Existing = new DesireModel< INothing >(

@@ -2,7 +2,6 @@
 // Robotango.Core
 // IDesirous.cs
 
-using System;
 using System.Collections.Generic;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Desirous;

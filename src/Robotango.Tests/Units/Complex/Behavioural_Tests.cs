@@ -53,7 +53,6 @@ namespace Robotango.Tests.Units.Complex
             Assert.That( world.GetAgent( alice ).Get( Its.Virtual.Location ), Is.EqualTo( a ) );
         }
 
-
         [Ignore, Test]
         public void Alice_asks_Bob_to_pass_her_throw_door()
         {
@@ -66,7 +65,7 @@ namespace Robotango.Tests.Units.Complex
             var c = new Location( "C" );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ));
+            alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
             bob.As< IVirtual >().AddAttribute( new Position( b ) );
 
             Log( world.Dump() );

@@ -85,8 +85,8 @@ namespace Robotango.Tests.Units.Abilities
             var a = new Location( "A" );
             var agent = Factory.CreateAgent< IDesirous, IThinking >();
 
-            agent.As< IDesirous >().AddDesire( new EmptyDesire());
-            agent.As< IDesirous >().AddDesire( new ExistingDesire( agent ));
+            agent.As< IDesirous >().AddDesire( new EmptyDesire() );
+            agent.As< IDesirous >().AddDesire( new ExistingDesire( agent ) );
             agent.As< IDesirous >().AddDesire( new LocationDesire( agent, a ) );
 
             var dump = Log( agent.Dump() );

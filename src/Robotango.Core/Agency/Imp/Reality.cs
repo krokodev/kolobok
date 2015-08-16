@@ -25,6 +25,7 @@ namespace Robotango.Core.Agency.Imp
 
         #endregion
 
+
         #region Ctor
 
         public Reality( string name = null )
@@ -33,7 +34,6 @@ namespace Robotango.Core.Agency.Imp
         }
 
         #endregion
-
 
 
         #region Routines
@@ -107,9 +107,9 @@ namespace Robotango.Core.Agency.Imp
             get { return _agents; }
         }
 
-        void IReality.AddOperation<T>(IActivity activity, IAgent operand, T arg )
+        void IReality.AddOperation<T>( IActivity activity, IAgent operand, T arg )
         {
-            _operations.Add( new Operation<T>(activity, operand, arg) );
+            _operations.Add( new Operation< T >( activity, operand, arg ) );
         }
 
         void IReality.Proceed()
