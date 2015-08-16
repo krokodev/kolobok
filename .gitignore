@@ -27,6 +27,7 @@ TestResults/
 
 # Build results
 [Dd]ebug/
+!Diagnostics/Debug/
 [Rr]elease/
 bin/x64/
 bin/x86/
@@ -34,7 +35,7 @@ build/
 [Bb]in/
 [Bb]in/**/*
 [Oo]bj/
-!Debug/Debug.cs
+
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
