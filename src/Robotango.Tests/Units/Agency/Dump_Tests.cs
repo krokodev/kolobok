@@ -8,8 +8,9 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;
 using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Tests.Base;
-using Robotango.Tests.Domain;
+using Robotango.Tests.Stuff;
 
 namespace Robotango.Tests.Units.Agency
 {

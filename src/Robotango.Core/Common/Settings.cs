@@ -2,7 +2,7 @@
 // Robotango.Core
 // Settings.cs
 
-namespace Robotango.Core.System
+namespace Robotango.Core.Common
 {
     public static class Settings
     {

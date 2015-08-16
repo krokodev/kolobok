@@ -5,7 +5,7 @@
 using System;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Thinking
+namespace Robotango.Core.Elements.Thinking.Imp
 {
     public class Belief : IBelief
     {

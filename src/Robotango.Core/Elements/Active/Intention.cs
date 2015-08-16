@@ -4,6 +4,7 @@
 
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Reality;
+using Robotango.Core.Elements.Reality.Imp;
 
 namespace Robotango.Core.Elements.Active
 {

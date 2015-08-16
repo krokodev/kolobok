@@ -6,7 +6,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Reality
+namespace Robotango.Core.Elements.Reality.Imp
 {
     public class Operation<T> : IOperation
     {

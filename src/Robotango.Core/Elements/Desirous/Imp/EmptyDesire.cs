@@ -5,7 +5,7 @@
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Common;
 
-namespace Robotango.Core.Elements.Desirous
+namespace Robotango.Core.Elements.Desirous.Imp
 {
     public class EmptyDesire : Desire< INothing >
     {

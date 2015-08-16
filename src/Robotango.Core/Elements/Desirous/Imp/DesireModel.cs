@@ -5,7 +5,7 @@
 using System;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Desirous
+namespace Robotango.Core.Elements.Desirous.Imp
 {
     public class DesireModel<T> : IDesireModel< T >
     {

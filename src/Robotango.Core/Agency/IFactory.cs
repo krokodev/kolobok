@@ -2,9 +2,9 @@
 // Robotango.Core
 // IFactory.cs
 
-using Robotango.Core.Agency;
+using Robotango.Core.Abilities;
 
-namespace Robotango.Core.System
+namespace Robotango.Core.Agency
 {
     public interface IFactory
     {

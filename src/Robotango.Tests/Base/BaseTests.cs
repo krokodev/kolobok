@@ -4,7 +4,8 @@
 
 using System;
 using NUnit.Framework;
-using Robotango.Core.System;
+using Robotango.Core.Agency;
+using Robotango.Core.Agency.Imp;
 
 namespace Robotango.Tests.Base
 {

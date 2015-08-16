@@ -6,10 +6,11 @@ using MoreLinq;
 using Robotango.Common.Domain.Implements.Compositions;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
+using Robotango.Core.Agency;
 
 // Here: Ability
 
-namespace Robotango.Core.Agency.Imp
+namespace Robotango.Core.Abilities.Imp
 {
     internal abstract class Ability : Component, IAbility
     {

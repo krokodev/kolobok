@@ -9,7 +9,7 @@ using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Reality
+namespace Robotango.Core.Elements.Reality.Imp
 {
     public class Activity<T> : IActivity
     {

@@ -4,7 +4,7 @@
 
 using Robotango.Common.Domain.Types.Properties;
 
-namespace Robotango.Core.Elements.Virtual
+namespace Robotango.Core.Elements.Virtual.Imp
 {
     public class Position : Attribute< Position >, IPosition
     {

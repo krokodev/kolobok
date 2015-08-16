@@ -5,7 +5,7 @@
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Abilities;
-using Robotango.Core.System;
+using Robotango.Core.Common;
 
 namespace Robotango.Core.Agency.Imp
 {

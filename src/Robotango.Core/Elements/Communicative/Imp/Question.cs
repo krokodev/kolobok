@@ -6,7 +6,7 @@ using System;
 using Robotango.Core.Abilities;
 using Robotango.Core.Agency;
 
-namespace Robotango.Core.Elements.Communicative
+namespace Robotango.Core.Elements.Communicative.Imp
 {
     internal struct Question<T> : IQuestion< T >
     {

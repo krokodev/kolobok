@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Robotango.Core.Elements.Communicative
+namespace Robotango.Core.Elements.Communicative.Imp
 {
     internal class AnswerResult<T> : IAnswerResult< T >
     {

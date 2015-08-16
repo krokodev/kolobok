@@ -5,6 +5,7 @@
 using System;
 using Robotango.Common.Domain.Types.Expressions;
 using Robotango.Common.Domain.Types.Properties;
+using Robotango.Core.Abilities;
 
 namespace Robotango.Core.Agency
 {

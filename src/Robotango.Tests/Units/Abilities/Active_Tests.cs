@@ -9,6 +9,7 @@ using Robotango.Core.Abilities;
 using Robotango.Core.Common;
 using Robotango.Core.Elements.Active;
 using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Base;
 

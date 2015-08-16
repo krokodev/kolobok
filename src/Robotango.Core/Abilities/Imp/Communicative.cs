@@ -7,6 +7,7 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
 using Robotango.Core.Elements.Communicative;
+using Robotango.Core.Elements.Communicative.Imp;
 
 namespace Robotango.Core.Abilities.Imp
 {

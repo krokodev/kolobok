@@ -15,5 +15,6 @@ namespace Robotango.Core.Abilities
         void AddBelief( IBelief belief );
         IReality InnerReality { get; }
         bool HasBelief( IBelief belief );
+        void AddProcess( IThinkingProcess process );
     }
 }

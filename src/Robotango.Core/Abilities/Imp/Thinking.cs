@@ -10,10 +10,9 @@ using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
+using Robotango.Core.Common;
 using Robotango.Core.Elements.Thinking;
-using Robotango.Core.System;
-
-// Here: Thinking 
+using Robotango.Core.Elements.Thinking.Imp;
 
 namespace Robotango.Core.Abilities.Imp
 {
@@ -23,6 +22,16 @@ namespace Robotango.Core.Abilities.Imp
 
         private List< IBelief > _beliefs = new List< IBelief >();
         private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
+        private readonly List< IThinkingProcess> _processes = new List< IThinkingProcess >();
+
+        #endregion
+
+
+        #region Routines
+        private void DumpProcesses( OutlineWriter wr )
+        {
+            wr.Append( _innerReality.Dump( wr.Level ) );
+        }
 
         #endregion
 
@@ -40,6 +49,7 @@ namespace Robotango.Core.Abilities.Imp
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
             wr.Append( _innerReality.Dump( wr.Level ) );
+
         }
 
         protected override void Proceed( IReality reality )
@@ -87,6 +97,11 @@ namespace Robotango.Core.Abilities.Imp
         bool IThinking.HasBelief( IBelief belief )
         {
             return _beliefs.Contains( belief );
+        }
+
+        void IThinking.AddProcess( IThinkingProcess process )
+        {
+            _processes.Add( process );
         }
 
         #endregion

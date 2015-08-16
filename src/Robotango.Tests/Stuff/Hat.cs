@@ -5,8 +5,9 @@
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Elements.Virtual.Imp;
 
-namespace Robotango.Tests.Domain
+namespace Robotango.Tests.Stuff
 {
     public class Hat : Attribute< Hat >, IHat
     {

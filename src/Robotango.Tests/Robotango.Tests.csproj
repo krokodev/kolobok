@@ -58,8 +58,8 @@
     <Compile Include="Units\Agency\Proceed_Tests.cs" />
     <Compile Include="Units\Complex\Behavioural_Tests.cs" />
     <Compile Include="Units\Complex\Expression_Tests.cs" />
-    <Compile Include="Domain\Hat.cs" />
-    <Compile Include="Domain\IHat.cs" />
+    <Compile Include="Stuff\Hat.cs" />
+    <Compile Include="Stuff\IHat.cs" />
     <Compile Include="Units\Agency\Dump_Tests.cs" />
     <Compile Include="Units\Abilities\Virtual_Tests.cs" />
     <Compile Include="Units\Agency\Agent_Tests.cs" />

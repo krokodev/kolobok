@@ -4,7 +4,7 @@
 
 using Robotango.Core.Abilities;
 
-namespace Robotango.Core.Elements.Communicative
+namespace Robotango.Core.Elements.Communicative.Imp
 {
     internal struct Answer<T> : IAnswer< T >
     {

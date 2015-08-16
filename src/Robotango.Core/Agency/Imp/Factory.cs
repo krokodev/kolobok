@@ -9,10 +9,8 @@ using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Imp;
-using Robotango.Core.Agency;
-using Robotango.Core.Agency.Imp;
 
-namespace Robotango.Core.System
+namespace Robotango.Core.Agency.Imp
 {
     public class Factory : IFactory
     {

@@ -5,7 +5,7 @@
 using NUnit.Framework;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
-using Robotango.Core.System;
+using Robotango.Core.Common;
 using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Agency

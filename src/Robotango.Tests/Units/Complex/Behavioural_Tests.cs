@@ -7,7 +7,9 @@ using NUnit.Framework;
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Desirous;
+using Robotango.Core.Elements.Desirous.Imp;
 using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Base;
 
