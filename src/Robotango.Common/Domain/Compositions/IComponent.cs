@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace Robotango.Common.Domain.Types.Compositions
+namespace Robotango.Common.Domain.Compositions
 {
     public interface IComponent
     {

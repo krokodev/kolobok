@@ -3,7 +3,7 @@
 // Activity.cs
 
 using System;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;

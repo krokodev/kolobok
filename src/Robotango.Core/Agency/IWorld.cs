@@ -2,7 +2,7 @@
 // Robotango.Core
 // IWorld.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Abilities;
 
 namespace Robotango.Core.Agency

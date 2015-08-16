@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
-using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Compositions;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;

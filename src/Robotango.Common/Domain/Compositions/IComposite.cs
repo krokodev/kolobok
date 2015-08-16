@@ -2,7 +2,7 @@
 // Robotango.Common
 // IComposite.cs
 
-namespace Robotango.Common.Domain.Types.Compositions
+namespace Robotango.Common.Domain.Compositions
 {
     public interface IComposite
     {

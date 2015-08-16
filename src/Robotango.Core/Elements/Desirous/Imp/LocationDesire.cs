@@ -2,7 +2,7 @@
 // Robotango.Core
 // LocationDesire.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Agency;
 using Robotango.Core.Common;
 

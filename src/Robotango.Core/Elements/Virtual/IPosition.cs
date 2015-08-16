@@ -2,7 +2,7 @@
 // Robotango.Core
 // IPosition.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 
 namespace Robotango.Core.Elements.Virtual
 {

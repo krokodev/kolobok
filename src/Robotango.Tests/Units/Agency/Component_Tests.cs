@@ -3,7 +3,7 @@
 // Component_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Compositions;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Agency;

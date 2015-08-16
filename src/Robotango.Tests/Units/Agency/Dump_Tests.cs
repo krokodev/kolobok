@@ -3,8 +3,8 @@
 // Dump_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Enums;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Enums;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;
 using Robotango.Core.Elements.Virtual;

@@ -5,8 +5,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
-using Robotango.Common.Domain.Types.Compositions;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Compositions;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
 using Robotango.Core.Common;

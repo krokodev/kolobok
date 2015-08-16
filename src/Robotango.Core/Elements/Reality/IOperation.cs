@@ -2,7 +2,7 @@
 // Robotango.Core
 // IOperation.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Reality

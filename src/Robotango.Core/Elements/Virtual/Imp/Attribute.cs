@@ -2,7 +2,7 @@
 // Robotango.Core
 // Attribute.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Common.Utils.Tools;
 
 namespace Robotango.Core.Elements.Virtual.Imp

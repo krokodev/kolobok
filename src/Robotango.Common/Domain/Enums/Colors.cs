@@ -2,7 +2,7 @@
 // Robotango.Common
 // Colors.cs
 
-namespace Robotango.Common.Domain.Types.Enums
+namespace Robotango.Common.Domain.Enums
 {
     public enum Colors
     {

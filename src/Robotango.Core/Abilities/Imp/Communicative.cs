@@ -3,7 +3,7 @@
 // Communicative.cs
 
 using System;
-using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Compositions;
 using Robotango.Core.Agency;
 using Robotango.Core.Agency.Imp;
 using Robotango.Core.Elements.Communicative;

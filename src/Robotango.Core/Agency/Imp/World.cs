@@ -2,7 +2,7 @@
 // Robotango.Core
 // World.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;

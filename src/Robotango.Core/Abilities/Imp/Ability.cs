@@ -3,8 +3,8 @@
 // Ability.cs
 
 using MoreLinq;
-using Robotango.Common.Domain.Implements.Compositions;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Compositions.Imp;
+using Robotango.Common.Domain.Types;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 

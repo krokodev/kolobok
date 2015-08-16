@@ -3,7 +3,7 @@
 // Active_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Types;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;

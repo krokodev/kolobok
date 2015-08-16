@@ -2,9 +2,8 @@
 // Robotango.Expressions
 // VirtualAccessor.cs
 
-using Robotango.Common.Domain.Implements.Expressions;
-using Robotango.Common.Domain.Types.Expressions;
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Domain.Expressions;
+using Robotango.Common.Domain.Types;
 using Robotango.Core.Abilities;
 using Robotango.Core.Agency;
 using Robotango.Core.Elements.Virtual;

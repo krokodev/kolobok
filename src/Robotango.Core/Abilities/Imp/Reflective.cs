@@ -2,7 +2,7 @@
 // Robotango.Core
 // Reflective.cs
 
-using Robotango.Common.Domain.Types.Compositions;
+using Robotango.Common.Domain.Compositions;
 using Robotango.Core.Agency.Imp;
 
 namespace Robotango.Core.Abilities.Imp

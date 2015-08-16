@@ -2,7 +2,7 @@
 // Robotango.Common
 // IResearchable.cs
 
-namespace Robotango.Common.Domain.Types.Properties
+namespace Robotango.Common.Domain.Types
 {
     public interface IResearchable
     {

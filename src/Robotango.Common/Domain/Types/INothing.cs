@@ -2,7 +2,7 @@
 // Robotango.Common
 // INothing.cs
 
-namespace Robotango.Common.Domain.Types.Properties
+namespace Robotango.Common.Domain.Types
 {
     public interface INothing {}
 }
