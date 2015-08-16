@@ -35,7 +35,7 @@ namespace Robotango.Tests.Units.Abilities
 
             Assert.That( dump, Is.StringContaining( "<Desirous>" ) );
             Assert.That( dump, Is.StringContaining( "Desires" ) );
-            Assert.That( dump, Is.StringContaining( "Some Desire" ) );
+            Assert.That( dump, Is.StringContaining( "Nothing(,INothing )" ) );
         }
 
         [Test]
@@ -92,9 +92,9 @@ namespace Robotango.Tests.Units.Abilities
             var dump = Log( agent.Dump() );
 
             Assert.That( dump, Is.StringContaining( "Some Agent" ) );
-            Assert.That( dump, Is.StringContaining( "Some Desire" ) );
-            Assert.That( dump, Is.StringContaining( "Wants to be present" ) );
-            Assert.That( dump, Is.StringContaining( "Wants to be in A" ) );
+            Assert.That( dump, Is.StringContaining( "Nothing(,INothing )" ) );
+            Assert.That( dump, Is.StringContaining( "Existing(Some Agent,INothing )" ) );
+            Assert.That( dump, Is.StringContaining( "InLocation(Some Agent,ILocation A)" ) );
         }
     }
 }
