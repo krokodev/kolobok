@@ -24,7 +24,7 @@ namespace Robotango.Tests.Units.Thinking
 
             Assert.That( dump, Is.StringContaining( "<ThinkingAbility>" ) );
             Assert.That( dump, Is.StringContaining( "Processes" ) );
-            Assert.That( dump, Is.StringContaining( "Rational <ThinkingProcess>" ) );
+            Assert.That( dump, Is.StringContaining( "<RationalProcess>" ) );
         }
     }
 }

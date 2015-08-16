@@ -5,7 +5,6 @@
 using NUnit.Framework;
 using Robotango.Common.Types.Enums;
 using Robotango.Common.Types.Types;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Active;
 using Robotango.Core.Abilities.Communicative;
 using Robotango.Core.Abilities.Desirous;

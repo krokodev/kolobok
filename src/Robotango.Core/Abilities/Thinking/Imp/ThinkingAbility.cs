@@ -52,8 +52,8 @@ namespace Robotango.Core.Abilities.Thinking.Imp
 
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
+            DumpProcesses( wr );
             wr.Append( _innerReality.Dump( wr.Level ) );
-
         }
 
         protected override void Proceed( IReality reality )

@@ -5,7 +5,6 @@
 using NUnit.Framework;
 using Robotango.Common.Types.Types;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Active;
 using Robotango.Core.Abilities.Active.Imp;
 using Robotango.Core.Abilities.Desirous;

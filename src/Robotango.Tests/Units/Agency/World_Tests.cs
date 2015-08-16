@@ -3,7 +3,6 @@
 // World_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Tests.Base;

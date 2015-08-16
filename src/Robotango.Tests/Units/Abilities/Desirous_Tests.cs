@@ -3,7 +3,6 @@
 // Desirous_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
 using Robotango.Core.Abilities.Thinking;

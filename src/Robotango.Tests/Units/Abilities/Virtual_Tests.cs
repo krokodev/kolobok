@@ -5,7 +5,6 @@
 using NUnit.Framework;
 using Robotango.Common.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Expressions.Terms;

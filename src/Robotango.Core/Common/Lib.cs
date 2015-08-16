@@ -3,7 +3,6 @@
 // Lib.Activities.cs
 
 using Robotango.Common.Types.Types;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
 using Robotango.Core.Abilities.Virtual;

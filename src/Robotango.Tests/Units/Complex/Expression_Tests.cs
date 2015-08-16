@@ -3,7 +3,6 @@
 // Expression_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Core.Abilities;
 using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Thinking.Imp;
 using Robotango.Core.Abilities.Virtual;
