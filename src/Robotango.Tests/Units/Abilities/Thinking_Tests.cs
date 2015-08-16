@@ -3,7 +3,7 @@
 // Thinking_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Enums;
+using Robotango.Common.Types.Enums;
 using Robotango.Core.Abilities;
 using Robotango.Tests.Base;
 using Robotango.Tests.Stuff;

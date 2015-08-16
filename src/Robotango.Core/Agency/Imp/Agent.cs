@@ -5,9 +5,9 @@
 using System;
 using System.Linq;
 using MoreLinq;
-using Robotango.Common.Domain.Compositions.Imp;
-using Robotango.Common.Domain.Expressions;
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Compositions.Imp;
+using Robotango.Common.Types.Expressions;
+using Robotango.Common.Types.Types;
 using Robotango.Common.Utils.Diagnostics.Debug;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Tools;

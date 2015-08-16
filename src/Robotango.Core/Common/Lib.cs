@@ -2,11 +2,12 @@
 // Robotango.Core
 // Lib.Activities.cs
 
-using Robotango.Common.Domain.Types.Properties;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Desirous.Imp;
 using Robotango.Core.Elements.Reality;
+using Robotango.Core.Elements.Reality.Imp;
 using Robotango.Core.Elements.Virtual;
 
 namespace Robotango.Core.Common

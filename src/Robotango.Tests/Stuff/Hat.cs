@@ -2,8 +2,8 @@
 // Robotango.Tests
 // Hat.cs
 
-using Robotango.Common.Domain.Enums;
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Enums;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Core.Elements.Virtual.Imp;
 

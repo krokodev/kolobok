@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Robotango.Common.Domain.Expressions
+namespace Robotango.Common.Types.Expressions
 {
     public interface IPropertyAccessor<in T, TV>
     {

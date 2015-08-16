@@ -2,7 +2,7 @@
 // Robotango.Common
 // IProceedable.cs
 
-namespace Robotango.Common.Domain.Types
+namespace Robotango.Common.Types.Types
 {
     public interface IProceedable<in T>
     {

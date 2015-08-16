@@ -2,7 +2,7 @@
 // Robotango.Core
 // EmptyDesire.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Common;
 
 namespace Robotango.Core.Elements.Desirous.Imp

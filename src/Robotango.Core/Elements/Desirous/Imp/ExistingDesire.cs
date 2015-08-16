@@ -2,7 +2,7 @@
 // Robotango.Core
 // ExistingDesire.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Agency;
 using Robotango.Core.Common;
 

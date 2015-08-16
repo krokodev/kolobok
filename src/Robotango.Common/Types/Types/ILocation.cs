@@ -2,7 +2,7 @@
 // Robotango.Common
 // ILocation.cs
 
-namespace Robotango.Common.Domain.Types
+namespace Robotango.Common.Types.Types
 {
     public interface ILocation
     {

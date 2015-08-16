@@ -2,7 +2,7 @@
 // Robotango.Core
 // Position.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 
 namespace Robotango.Core.Elements.Virtual.Imp
 {

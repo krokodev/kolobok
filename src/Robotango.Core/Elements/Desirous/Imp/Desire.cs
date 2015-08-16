@@ -2,7 +2,7 @@
 // Robotango.Core
 // Desire.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Agency;
 

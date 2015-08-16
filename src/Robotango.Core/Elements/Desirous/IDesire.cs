@@ -2,7 +2,7 @@
 // Robotango.Core
 // IDesire.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Agency;
 
 namespace Robotango.Core.Elements.Desirous

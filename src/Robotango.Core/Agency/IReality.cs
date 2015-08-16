@@ -4,7 +4,7 @@
 
 using System;
 using System.Collections.Generic;
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Elements.Reality;
 
 namespace Robotango.Core.Agency

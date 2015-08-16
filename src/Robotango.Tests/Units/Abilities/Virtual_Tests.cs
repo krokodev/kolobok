@@ -3,7 +3,7 @@
 // Virtual_Tests.cs
 
 using NUnit.Framework;
-using Robotango.Common.Domain.Enums;
+using Robotango.Common.Types.Enums;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Virtual;

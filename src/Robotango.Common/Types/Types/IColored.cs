@@ -2,9 +2,9 @@
 // Robotango.Common
 // IColored.cs
 
-using Robotango.Common.Domain.Enums;
+using Robotango.Common.Types.Enums;
 
-namespace Robotango.Common.Domain.Types
+namespace Robotango.Common.Types.Types
 {
     public interface IColored
     {

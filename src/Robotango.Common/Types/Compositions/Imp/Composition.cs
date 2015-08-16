@@ -4,11 +4,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Common.Utils.Extensions;
 
-namespace Robotango.Common.Domain.Implements.Compositions
+namespace Robotango.Common.Types.Compositions.Imp
 {
     public abstract class Composition : IComposite
     {

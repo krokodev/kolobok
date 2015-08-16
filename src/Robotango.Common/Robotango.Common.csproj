@@ -34,14 +34,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Implements\Compositions\Component.cs" />
-    <Compile Include="Domain\Implements\Compositions\Composition.cs" />
-    <Compile Include="Domain\Types\Expressions\IPropertyAccessor.cs" />
-    <Compile Include="Domain\Types\Expressions\IExecutor.cs" />
-    <Compile Include="Domain\Implements\Expressions\PropertyAccessor.cs" />
-    <Compile Include="Domain\Types\Properties\INothing.cs" />
-    <Compile Include="Domain\Types\Properties\IProceedable.cs" />
-    <Compile Include="Domain\Types\Properties\ILocation.cs" />
+    <Compile Include="Types\Compositions\Imp\Component.cs" />
+    <Compile Include="Types\Compositions\Imp\Composition.cs" />
+    <Compile Include="Types\Expressions\IPropertyAccessor.cs" />
+    <Compile Include="Types\Expressions\IExecutor.cs" />
+    <Compile Include="Types\Expressions\PropertyAccessor.cs" />
+    <Compile Include="Types\Types\INothing.cs" />
+    <Compile Include="Types\Types\IProceedable.cs" />
+    <Compile Include="Types\Types\ILocation.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\ActivityArgumentException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownActivityException.cs" />
     <Compile Include="Utils\Diagnostics\Exceptions\UnknownComponentException.cs" />
@@ -53,11 +53,11 @@
     <Compile Include="Utils\Extensions\CollectionExtensions.cs" />
     <Compile Include="Utils\Tools\OutlineWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\Types\Compositions\IComponent.cs" />
-    <Compile Include="Domain\Types\Compositions\IComposite.cs" />
-    <Compile Include="Domain\Types\Enums\Colors.cs" />
-    <Compile Include="Domain\Types\Properties\IColored.cs" />
-    <Compile Include="Domain\Types\Properties\IResearchable.cs" />
+    <Compile Include="Types\Compositions\IComponent.cs" />
+    <Compile Include="Types\Compositions\IComposite.cs" />
+    <Compile Include="Types\Enums\Colors.cs" />
+    <Compile Include="Types\Types\IColored.cs" />
+    <Compile Include="Types\Types\IResearchable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

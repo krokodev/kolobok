@@ -2,7 +2,7 @@
 // Robotango.Tests
 // IHat.cs
 
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Elements.Virtual;
 
 namespace Robotango.Tests.Stuff

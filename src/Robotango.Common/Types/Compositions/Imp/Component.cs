@@ -3,9 +3,8 @@
 // Component.cs
 
 using System.Collections.Generic;
-using Robotango.Common.Domain.Types.Compositions;
 
-namespace Robotango.Common.Domain.Implements.Compositions
+namespace Robotango.Common.Types.Compositions.Imp
 {
     public abstract class Component : IComponent
     {

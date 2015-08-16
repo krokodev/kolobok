@@ -3,8 +3,8 @@
 // IAgent.cs
 
 using System;
-using Robotango.Common.Domain.Expressions;
-using Robotango.Common.Domain.Types;
+using Robotango.Common.Types.Expressions;
+using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities;
 
 namespace Robotango.Core.Agency
