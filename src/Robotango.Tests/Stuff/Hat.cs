@@ -4,8 +4,8 @@
 
 using Robotango.Common.Types.Enums;
 using Robotango.Common.Types.Types;
-using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Elements.Virtual.Imp;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.Abilities.Virtual.Imp;
 
 namespace Robotango.Tests.Stuff
 {

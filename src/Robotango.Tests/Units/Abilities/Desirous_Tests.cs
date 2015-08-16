@@ -4,10 +4,11 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
-using Robotango.Core.Elements.Desirous;
-using Robotango.Core.Elements.Desirous.Imp;
-using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Elements.Virtual.Imp;
+using Robotango.Core.Abilities.Desirous;
+using Robotango.Core.Abilities.Desirous.Imp;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Abilities
@@ -35,7 +36,7 @@ namespace Robotango.Tests.Units.Abilities
 
             var dump = Log( agent.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Desirous>" ) );
+            Assert.That( dump, Is.StringContaining( "<DesirousAbility>" ) );
             Assert.That( dump, Is.StringContaining( "Desires" ) );
             Assert.That( dump, Is.StringContaining( "Nothing(,INothing )" ) );
         }

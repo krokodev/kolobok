@@ -6,9 +6,13 @@ using NUnit.Framework;
 using Robotango.Common.Types.Enums;
 using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities;
+using Robotango.Core.Abilities.Active;
+using Robotango.Core.Abilities.Communicative;
+using Robotango.Core.Abilities.Desirous;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Core.Common;
-using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Tests.Base;
 using Robotango.Tests.Stuff;
 
@@ -65,7 +69,7 @@ namespace Robotango.Tests.Units.Agency
 
             var dump = Log( world.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "<ActiveAbility>" ) );
             Assert.That( dump, Is.StringContaining( "Intentions" ) );
             Assert.That( dump, Is.StringContaining( "MoveTo(Alice,B)" ) );
         }
@@ -78,7 +82,7 @@ namespace Robotango.Tests.Units.Agency
 
             var dump = Log( world.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "<ActiveAbility>" ) );
         }
 
         [Test]
@@ -87,7 +91,7 @@ namespace Robotango.Tests.Units.Agency
             var alice = Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive, ICommunicative >( "Alice" );
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "use: <Thinking>" ) );
+            Assert.That( dump, Is.StringContaining( "use: <ThinkingAbility>" ) );
         }
 
         [Test]
@@ -113,7 +117,7 @@ namespace Robotango.Tests.Units.Agency
             }
             var dump2 = Log( world.Dump() );
 
-            Assert.That( dump1, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump1, Is.StringContaining( "<ActiveAbility>" ) );
             Assert.That( dump1, Is.StringContaining( "Intentions" ) );
             Assert.That( dump1, Is.StringContaining( "MoveTo(Alice,B)" ) );
             Assert.That( dump2, Is.Not.StringContaining( "MoveTo(Alice,B)" ) );
@@ -128,7 +132,7 @@ namespace Robotango.Tests.Units.Agency
 
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "<ActiveAbility>" ) );
             Assert.That( dump, Is.StringContaining( "Activities" ) );
             Assert.That( dump, Is.StringContaining( "MoveTo(IAgent,ILocation)" ) );
         }

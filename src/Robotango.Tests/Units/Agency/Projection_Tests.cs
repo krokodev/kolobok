@@ -4,6 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
+using Robotango.Core.Abilities.Virtual;
 using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Agency

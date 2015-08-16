@@ -3,8 +3,8 @@
 // IThinkingExecutor.cs
 
 using System;
-using Robotango.Core.Agency;
-using Robotango.Core.Elements.Thinking;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.System;
 
 namespace Robotango.Expressions.Terms
 {

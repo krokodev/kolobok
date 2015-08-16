@@ -3,7 +3,7 @@
 // IHat.cs
 
 using Robotango.Common.Types.Types;
-using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Abilities.Virtual;
 
 namespace Robotango.Tests.Stuff
 {

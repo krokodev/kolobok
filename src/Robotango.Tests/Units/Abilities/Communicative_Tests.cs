@@ -5,6 +5,9 @@
 using NUnit.Framework;
 using Robotango.Common.Types.Enums;
 using Robotango.Core.Abilities;
+using Robotango.Core.Abilities.Communicative;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.Abilities.Virtual;
 using Robotango.Tests.Base;
 using Robotango.Tests.Stuff;
 

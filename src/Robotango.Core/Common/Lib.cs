@@ -4,11 +4,11 @@
 
 using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities;
-using Robotango.Core.Elements.Desirous;
-using Robotango.Core.Elements.Desirous.Imp;
-using Robotango.Core.Elements.Reality;
-using Robotango.Core.Elements.Reality.Imp;
-using Robotango.Core.Elements.Virtual;
+using Robotango.Core.Abilities.Desirous;
+using Robotango.Core.Abilities.Desirous.Imp;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.System;
+using Robotango.Core.System.Imp;
 
 namespace Robotango.Core.Common
 {

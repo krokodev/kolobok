@@ -4,7 +4,7 @@
 
 using Robotango.Common.Types.Compositions;
 using Robotango.Common.Types.Types;
-using Robotango.Core.Agency;
+using Robotango.Core.System;
 
 namespace Robotango.Core.Abilities
 {

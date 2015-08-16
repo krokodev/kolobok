@@ -49,7 +49,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Units\Abilities\ThinkingProcess_Tests.cs" />
+    <Compile Include="Units\Thinking\Processes_Tests.cs" />
     <Compile Include="Units\Abilities\Deciding_Tests.cs" />
     <Compile Include="Units\Abilities\Active_Tests.cs" />
     <Compile Include="Units\Abilities\Desirous_Tests.cs" />
@@ -64,7 +64,6 @@
     <Compile Include="Units\Abilities\Virtual_Tests.cs" />
     <Compile Include="Units\Agency\Agent_Tests.cs" />
     <Compile Include="Units\Agency\Reality_Tests.cs" />
-    <Compile Include="Units\Abilities\Reflective_Tests.cs" />
     <Compile Include="Units\Abilities\Thinking_Tests.cs" />
     <Compile Include="Units\Abilities\Communicative_Tests.cs" />
     <Compile Include="Base\BaseTests.cs" />

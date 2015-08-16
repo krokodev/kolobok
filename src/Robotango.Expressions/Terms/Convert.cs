@@ -4,7 +4,9 @@
 
 using System;
 using Robotango.Core.Abilities;
-using Robotango.Core.Agency;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.System;
 
 namespace Robotango.Expressions.Terms
 {

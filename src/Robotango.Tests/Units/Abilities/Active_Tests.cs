@@ -6,10 +6,13 @@ using NUnit.Framework;
 using Robotango.Common.Types.Types;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
+using Robotango.Core.Abilities.Active;
+using Robotango.Core.Abilities.Active.Imp;
+using Robotango.Core.Abilities.Desirous;
+using Robotango.Core.Abilities.Thinking;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Core.Common;
-using Robotango.Core.Elements.Active;
-using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Base;
 
@@ -170,7 +173,7 @@ namespace Robotango.Tests.Units.Abilities
 
             var dump = Log( alice.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "<Active>" ) );
+            Assert.That( dump, Is.StringContaining( "<ActiveAbility>" ) );
             Assert.That( dump, Is.StringContaining( "Activities" ) );
             Assert.That( dump, Is.StringContaining( Lib.Activities.Movement.Name ) );
         }

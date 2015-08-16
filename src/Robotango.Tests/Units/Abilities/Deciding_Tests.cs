@@ -4,11 +4,12 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
+using Robotango.Core.Abilities.Active;
+using Robotango.Core.Abilities.Desirous;
+using Robotango.Core.Abilities.Desirous.Imp;
+using Robotango.Core.Abilities.Virtual;
+using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Core.Common;
-using Robotango.Core.Elements.Desirous;
-using Robotango.Core.Elements.Desirous.Imp;
-using Robotango.Core.Elements.Virtual;
-using Robotango.Core.Elements.Virtual.Imp;
 using Robotango.Expressions.Terms;
 using Robotango.Tests.Base;
 
@@ -22,7 +23,7 @@ namespace Robotango.Tests.Units.Abilities
         {
             var agent = Factory.CreateAgent< IDeciding >();
             var dump = Log( agent.Dump() );
-            Assert.That( dump, Is.StringContaining( "<Deciding>" ) );
+            Assert.That( dump, Is.StringContaining( "<DecidingAbility>" ) );
         }
 
         [Test]
