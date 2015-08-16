@@ -6,7 +6,8 @@ Todo
 ~~~~
 - test: IDeciding: Alice_has_intention_and_Decides_to_move
 - test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
-
+- Proceed( IRealityContext )
+- replace ITinking.InnerReality with ImaginationProcess.Input/OutputReality
 
 Done
 ~~~~

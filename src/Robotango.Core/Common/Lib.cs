@@ -7,6 +7,7 @@ using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Abilities.Thinking.Processes.Imp;
+using Robotango.Core.Abilities.Thinking.Schemas;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.System;
 using Robotango.Core.System.Imp;
@@ -52,14 +53,22 @@ namespace Robotango.Core.Common
             {
                 public static class Shemas
                 {
-                    public static readonly IThinkingProcessSchema Imaginaton = new ThinkingProcessSchema(
+                    public static readonly IThinkingSchema Imaginaton = new ThinkingSchema(
                         name : "Imaginaton",
-                        inputRealitySelector : process => (( IImaginationProcess ) process).InnerReality
+                        inputRealitySelector : process => ( ( IImaginationProcess ) process ).InnerReality,
+                        outputRealitySelector : process => ( ( IImaginationProcess ) process ).InnerReality,
+                        proceed :
+                            process => {
+                                var reality = ( ( IImaginationProcess ) process ).InnerReality;
+                                process.ApplyRules( reality );
+                            }
                         );
 
-                    public static readonly IThinkingProcessSchema Rational = new ThinkingProcessSchema(
+                    public static readonly IThinkingSchema Rational = new ThinkingSchema(
                         name : "Rational",
-                        inputRealitySelector : process => null
+                        inputRealitySelector : process => null,
+                        outputRealitySelector : process => null,
+                        proceed : process => { }
                         );
                 }
             }

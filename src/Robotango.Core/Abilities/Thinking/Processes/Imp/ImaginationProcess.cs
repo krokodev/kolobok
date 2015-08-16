@@ -2,6 +2,7 @@
 // Robotango.Core
 // ImaginationProcess.cs
 
+using System.Collections.Generic;
 using Robotango.Common.Utils.Tools;
 using Robotango.Core.Common;
 using Robotango.Core.System;
@@ -13,7 +14,7 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
     {
         #region Data
 
-        private readonly IReality _innerReality = new Reality(Settings.Reality.Names.ImaginationProcess);
+        private readonly IReality _innerReality = new Reality( Settings.Reality.Names.ImaginationProcess );
 
         #endregion
 
@@ -23,7 +24,6 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
         public ImaginationProcess()
             : base( Lib.Thinking.Processes.Shemas.Imaginaton ) {}
 
-
         #endregion
 
 
@@ -31,7 +31,7 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         protected override void DumpProcessContent( OutlineWriter wr )
         {
-            wr.Line( );
+            wr.Line();
             wr.Append( _innerReality.Dump( wr.Level ) );
         }
 
@@ -46,6 +46,5 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
         }
 
         #endregion
-
     }
 }

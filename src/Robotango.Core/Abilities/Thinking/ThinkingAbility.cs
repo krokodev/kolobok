@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Thinking.cs
+// ThinkingAbility.cs
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using MoreLinq;
 using Robotango.Common.Types.Compositions;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Abilities.Thinking.Beliefs;
+using Robotango.Core.Abilities.Thinking.Beliefs_XXXX;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Common;
 using Robotango.Core.System;
@@ -22,12 +22,13 @@ namespace Robotango.Core.Abilities.Thinking
 
         private List< IBelief > _beliefs = new List< IBelief >();
         private IReality _innerReality = new Reality( Settings.Agents.Thinking.InnerReality.Name );
-        private readonly List< IThinkingProcess> _processes = new List< IThinkingProcess >();
+        private readonly List< IThinkingProcess > _processes = new List< IThinkingProcess >();
 
         #endregion
 
 
         #region Routines
+
         private void DumpProcesses( OutlineWriter wr )
         {
             if( !_processes.Any() ) {
@@ -36,7 +37,6 @@ namespace Robotango.Core.Abilities.Thinking
             wr.Line( "Processes" );
             _processes.ForEach( p => wr.Append( p.Dump( wr.Level + 1 ) ) );
         }
-
 
         #endregion
 
@@ -51,7 +51,6 @@ namespace Robotango.Core.Abilities.Thinking
             };
         }
 
-
         protected override void DumpAbilityContent( OutlineWriter wr )
         {
             DumpProcesses( wr );
@@ -60,11 +59,14 @@ namespace Robotango.Core.Abilities.Thinking
 
         protected override void Proceed( IReality reality )
         {
-            _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+            // Todo:> Remove this code
+            {
+                _beliefs.ForEach( belief => belief.Essence.Invoke( _innerReality ) );
+                _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
+                _innerReality.Proceed();
+            }
 
-            _innerReality.Agents.ForEach( agent => agent.Proceed( _innerReality ) );
-
-            _innerReality.Proceed();
+            _processes.ForEach( p => p.Proceed( null ) );
 
             //MakeDecision();
             //UpdateInnerReality();

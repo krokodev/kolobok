@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities.Thinking;
-using Robotango.Core.Abilities.Thinking.Beliefs;
+using Robotango.Core.Abilities.Thinking.Beliefs_XXXX;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Expressions.Terms;

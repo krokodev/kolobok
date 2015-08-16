@@ -4,7 +4,7 @@
 
 using System;
 using Robotango.Core.Abilities.Thinking;
-using Robotango.Core.Abilities.Thinking.Beliefs;
+using Robotango.Core.Abilities.Thinking.Beliefs_XXXX;
 using Robotango.Core.System;
 
 namespace Robotango.Expressions.Terms

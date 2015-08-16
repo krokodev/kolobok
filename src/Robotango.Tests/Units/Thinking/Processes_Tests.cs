@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Abilities.Thinking.Processes.Imp;
+using Robotango.Core.Abilities.Thinking.Rules;
 using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Thinking
@@ -48,6 +49,7 @@ namespace Robotango.Tests.Units.Thinking
             process.InputReality.AddAgent( bob );
 
             var dump = Log( alice.Dump() );
+
             Assert.That( dump, Is.StringContaining( "Alice" ) );
             Assert.That( dump, Is.StringContaining( "<ThinkingAbility>" ) );
             Assert.That( dump, Is.StringContaining( "ImaginationProcess" ) );
@@ -55,11 +57,44 @@ namespace Robotango.Tests.Units.Thinking
             Assert.That( dump, Is.StringContaining( "Bob" ) );
         }
 
-        [Ignore,Test]
-        public void Alice_imagines_that_Bob_must_exists()
+        [Test]
+        public void Alice_believes_that_Bob_always_presents_in_her_imagination()
         {
             var alice = Factory.CreateAgent< IThinking >("Alice");
             var bob = Factory.CreateAgent< IThinking >("Bob");
+
+            alice.As< IThinking >().AddProcess( new ImaginationProcess() );
+            var process = alice.As< IThinking >().GetProcess< IImaginationProcess >();
+
+            process.AddRule( new ExistingRule( bob ) );
+
+            alice.Proceed( null );
+
+            Log( alice.Dump() );
+
+            Assert.That( process.OutputReality.Contains( bob ) );
         }
+
+        [Test]
+        public void Process_dump_contains_rules()
+        {
+            var alice = Factory.CreateAgent< IThinking >("Alice");
+            var bob = Factory.CreateAgent< IThinking >("Bob");
+
+            alice.As< IThinking >().AddProcess( new ImaginationProcess() );
+            var process = alice.As< IThinking >().GetProcess< IImaginationProcess >();
+
+            process.AddRule( new ExistingRule( bob ) );
+
+            alice.Proceed( null );
+
+            var dump = Log( alice.Dump() );
+
+            Assert.That( dump, Is.StringContaining( "Rules" ) );
+            Assert.That( dump, Is.StringContaining( "<ExistingPrinciple>" ) );
+
+            Assert.That( process.OutputReality.Contains( bob ) );
+        }
+
     }
 }

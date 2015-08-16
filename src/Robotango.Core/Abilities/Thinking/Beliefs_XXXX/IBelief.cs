@@ -5,7 +5,7 @@
 using System;
 using Robotango.Core.System;
 
-namespace Robotango.Core.Abilities.Thinking.Beliefs
+namespace Robotango.Core.Abilities.Thinking.Beliefs_XXXX
 {
     public interface IBelief
     {

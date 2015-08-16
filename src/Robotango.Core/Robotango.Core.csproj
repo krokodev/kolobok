@@ -49,9 +49,11 @@
     <Compile Include="Abilities\Desirous\ILocationDesire.cs" />
     <Compile Include="Abilities\Desirous\Imp\LocationDesire.cs" />
     <Compile Include="Abilities\Thinking\Processes\IImaginationProcess.cs" />
+    <Compile Include="Abilities\Thinking\Rules\ExistingRule.cs" />
     <Compile Include="Abilities\Thinking\Processes\Imp\ImaginationProcess.cs" />
-    <Compile Include="Abilities\Thinking\Processes\IThinkingProcessSchema.cs" />
-    <Compile Include="Abilities\Thinking\Processes\Imp\ThinkingProcessSchema.cs" />
+    <Compile Include="Abilities\Thinking\Rules\IThinkingRule.cs" />
+    <Compile Include="Abilities\Thinking\Schemas\IThinkingSchema.cs" />
+    <Compile Include="Abilities\Thinking\Schemas\ThinkingSchema.cs" />
     <Compile Include="Common\Lib.cs" />
     <Compile Include="System\Imp\Activity.cs" />
     <Compile Include="Abilities\Active\IIntention.cs" />
@@ -63,8 +65,8 @@
     <Compile Include="Abilities\Desirous\Imp\DesirousAbility.cs" />
     <Compile Include="System\IOperation.cs" />
     <Compile Include="System\Imp\Operation.cs" />
-    <Compile Include="Abilities\Thinking\Beliefs\Belief.cs" />
-    <Compile Include="Abilities\Thinking\Beliefs\IBelief.cs" />
+    <Compile Include="Abilities\Thinking\Beliefs_XXXX\Belief.cs" />
+    <Compile Include="Abilities\Thinking\Beliefs_XXXX\IBelief.cs" />
     <Compile Include="Abilities\Desirous\IDesire.cs" />
     <Compile Include="Abilities\Thinking\Processes\IThinkingProcess.cs" />
     <Compile Include="Abilities\Thinking\Processes\Imp\RationalProcess.cs" />
