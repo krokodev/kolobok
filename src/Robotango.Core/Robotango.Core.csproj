@@ -66,8 +66,8 @@
     <Compile Include="Abilities\Desirous\Imp\DesirousAbility.cs" />
     <Compile Include="System\IOperation.cs" />
     <Compile Include="System\Imp\Operation.cs" />
-    <Compile Include="Abilities\Thinking\Beliefs_XXXX\Belief.cs" />
-    <Compile Include="Abilities\Thinking\Beliefs_XXXX\IBelief.cs" />
+    <Compile Include="Abilities\Thinking\Beliefs_XXX\Belief.cs" />
+    <Compile Include="Abilities\Thinking\Beliefs_XXX\IBelief.cs" />
     <Compile Include="Abilities\Desirous\IDesire.cs" />
     <Compile Include="Abilities\Thinking\Processes\IThinkingProcess.cs" />
     <Compile Include="Abilities\Thinking\Processes\Imp\RationalProcess.cs" />

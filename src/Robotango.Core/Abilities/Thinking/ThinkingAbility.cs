@@ -8,7 +8,7 @@ using System.Linq;
 using MoreLinq;
 using Robotango.Common.Types.Compositions;
 using Robotango.Common.Utils.Tools;
-using Robotango.Core.Abilities.Thinking.Beliefs_XXXX;
+using Robotango.Core.Abilities.Thinking.Beliefs_XXX;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Common;
 using Robotango.Core.System;
