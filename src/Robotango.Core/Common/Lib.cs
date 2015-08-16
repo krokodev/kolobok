@@ -18,8 +18,8 @@ namespace Robotango.Core.Common
         public static class Activities
         {
             public static readonly IActivity Movement = new Activity< ILocation >(
-                "MoveTo",
-                ( agent, location ) => {
+                name : "MoveTo",
+                action : ( agent, location ) => {
                     agent
                         .As< IVirtual >()
                         .GetAttribute< IPosition >()
@@ -30,19 +30,19 @@ namespace Robotango.Core.Common
         public static class Desires
         {
             public static readonly IDesireModel< ILocation > Location = new DesireModel< ILocation >(
-                "InLocation",
-                ( reality, agent, location ) =>
+                name : "InLocation",
+                predicate : ( reality, agent, location ) =>
                     reality.GetAgent( agent ).As< IVirtual >().GetAttribute< IPosition >().Location == location
                 );
 
             public static readonly IDesireModel< INothing > Nothing = new DesireModel< INothing >(
-                "Nothing",
-                ( reality, agent, nothing ) => true
+                name : "Nothing",
+                predicate : ( reality, agent, nothing ) => true
                 );
 
             public static readonly IDesireModel< INothing > Existing = new DesireModel< INothing >(
-                "Existing",
-                ( reality, agent, nothing ) => reality.Contains( agent )
+                name : "Existing",
+                predicate : ( reality, agent, nothing ) => reality.Contains( agent )
                 );
         }
 
@@ -52,8 +52,15 @@ namespace Robotango.Core.Common
             {
                 public static class Shemas
                 {
-                    public static readonly IThinkingProcessSchema Imagination = new ThinkingProcessSchema( "Imagination" );
-                    public static readonly IThinkingProcessSchema Rational = new ThinkingProcessSchema( "Rational" );
+                    public static readonly IThinkingProcessSchema Imaginaton = new ThinkingProcessSchema(
+                        name : "Imaginaton",
+                        inputRealitySelector : process => (( IImaginationProcess ) process).InnerReality
+                        );
+
+                    public static readonly IThinkingProcessSchema Rational = new ThinkingProcessSchema(
+                        name : "Rational",
+                        inputRealitySelector : process => null
+                        );
                 }
             }
         }

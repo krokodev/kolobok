@@ -36,8 +36,8 @@ namespace Robotango.Tests.Units.Thinking
             Assert.That( dump, Is.StringContaining( "<ImaginationProcess>" ) );
         }
 
-        [Ignore,Test]
-        public void Alice_imagine_Bob()
+        [Test]
+        public void Alice_imagines_Bob()
         {
             var alice = Factory.CreateAgent< IThinking >("Alice");
             var bob = Factory.CreateAgent< IThinking >("Bob");
@@ -50,10 +50,8 @@ namespace Robotango.Tests.Units.Thinking
             var dump = Log( alice.Dump() );
             Assert.That( dump, Is.StringContaining( "Alice" ) );
             Assert.That( dump, Is.StringContaining( "<ThinkingAbility>" ) );
-            Assert.That( dump, Is.StringContaining( "<ImaginationProcess>" ) );
-            Assert.That( dump, Is.StringContaining( "Imagination <IReality>" ) );
-            Assert.That( dump, Is.StringContaining( "Input" ) );
-            Assert.That( dump, Is.StringContaining( "Output" ) );
+            Assert.That( dump, Is.StringContaining( "ImaginationProcess" ) );
+            Assert.That( dump, Is.StringContaining( "InnerReality <Reality>" ) );
             Assert.That( dump, Is.StringContaining( "Bob" ) );
         }
 

@@ -10,5 +10,6 @@ namespace Robotango.Core.Abilities.Thinking.Processes
     public interface IThinkingProcessSchema
     {
         Func< IThinkingProcess, IReality > InputRealitySelector { get; }
+        string Name { get; }
     }
 }

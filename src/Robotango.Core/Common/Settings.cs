@@ -11,6 +11,7 @@ namespace Robotango.Core.Common
             public static class Names
             {
                 public const string Default = "SomeReality";
+                public const string ImaginationProcess = "InnerReality";
             }
         }
 

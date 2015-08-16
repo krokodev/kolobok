@@ -3,19 +3,43 @@
 // ThinkingProcessSchema.cs
 
 using System;
-using System.Runtime.InteropServices;
 using Robotango.Core.System;
 
 namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 {
-    internal class ThinkingProcessSchema : IThinkingProcessSchema {
-        private string _name;
+    internal class ThinkingProcessSchema : IThinkingProcessSchema
+    {
+        #region Data
 
-        public ThinkingProcessSchema( string name )
+        private readonly string _name;
+        private readonly Func< IThinkingProcess, IReality > _inputRealitySelector;
+
+        #endregion
+
+
+        #region Ctor
+
+        public ThinkingProcessSchema( string name, Func< IThinkingProcess, IReality > inputRealitySelector )
         {
             _name = name;
+            _inputRealitySelector = inputRealitySelector;
         }
 
-        public Func< IThinkingProcess, IReality > InputRealitySelector { get; private set; }
+        #endregion
+
+
+        #region IThinkingProcessSchema
+
+        Func< IThinkingProcess, IReality > IThinkingProcessSchema.InputRealitySelector
+        {
+            get { return _inputRealitySelector; }
+        }
+
+        string IThinkingProcessSchema.Name
+        {
+            get { return _name; }
+        }
+
+        #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
     {
         #region Data
 
-        private IThinkingProcessSchema _schema;
+        private readonly IThinkingProcessSchema _schema;
 
         #endregion
 
@@ -27,25 +27,32 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
         #endregion
 
 
-
         #region Routines
 
         private IReality GetInputReality()
         {
-            return _schema.InputRealitySelector(this);
+            return _schema.InputRealitySelector( this );
         }
 
         #endregion
 
 
+        #region Overrides
+        protected abstract void DumpProcessContent( OutlineWriter wr );
+
+        #endregion
+
         #region IResearchable
 
         string IResearchable.Dump( int level )
         {
-            return OutlineWriter.Line( level,
-                "<{0}>",
-                GetType().Name
-                );
+            var wr = new OutlineWriter( level );
+
+            wr.Indent();
+            wr.Append( "<{0}>", GetType().Name );
+            wr.Level++;
+            DumpProcessContent( wr );
+            return wr.ToString();
         }
 
         #endregion
