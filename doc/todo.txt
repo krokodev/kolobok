@@ -4,13 +4,13 @@ Todo list
 
 Todo
 ~~~~
-- test: IDeciding: Alice_has_intention_and_Decides_to_move
+- replace ITinking.InnerReality with ImaginationProcess.Input/OutputReality
 - test: take place occupated by other agent, use replice to him to let him know what I am going to do (A,B,C spots)
 - Proceed( IRealityContext )
-- replace ITinking.InnerReality with ImaginationProcess.Input/OutputReality
 
 Done
 ~~~~
++ test: IDeciding: Alice_has_intention_and_Decides_to_move
 12/08/2015
 + Test: Alice_intends_to_be_in_B_and_then_moves_and_desire_is_satisfied
 + ren Intention to Desires
