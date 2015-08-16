@@ -1,6 +1,6 @@
 #Krokodev
 
-!debug.cs
+!debug/debug.cs
 
 # Secret files
 login.*
