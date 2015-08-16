@@ -1,7 +1,5 @@
 #Krokodev
 
-!Debug/Debug.cs
-
 # Secret files
 login.*
 password.*
@@ -36,6 +34,7 @@ build/
 [Bb]in/
 [Bb]in/**/*
 [Oo]bj/
+!Debug/Debug.cs
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
