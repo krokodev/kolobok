@@ -15,7 +15,7 @@ using Robotango.Tests.Base;
 namespace Robotango.Tests.Units.Abilities
 {
     [TestFixture]
-    public class Active_Tests : BaseTests
+    public class ThinkingProcess_Tests : BaseTests
     {
         [Test]
         public void Activities_Operations_and_Intentions_work_properly()

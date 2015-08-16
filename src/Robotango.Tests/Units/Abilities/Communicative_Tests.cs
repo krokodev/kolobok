@@ -5,7 +5,7 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Core.Abilities;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 using Robotango.Tests.Domain;
 
 namespace Robotango.Tests.Units.Abilities

@@ -8,7 +8,7 @@ using Robotango.Core.Common;
 using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Expressions.Terms;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Abilities
 {
@@ -33,7 +33,7 @@ namespace Robotango.Tests.Units.Abilities
             var a = new Location( "A" );
             var b = new Location( "B" );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
 
@@ -43,7 +43,7 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IDeciding >().Proceed( world.IReality );
             Log( alice.Dump() );
 
-            Assert.That( alice.As< IActive >().ContainsIntention( Activities.Virtual.Movement, alice, b ) );
+            Assert.That( alice.As< IActive >().ContainsIntention( Lib.Activities.Movement, alice, b ) );
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Robotango.Tests.Units.Abilities
             var a = new Location( "A" );
             var b = new Location( "B" );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
 
@@ -68,7 +68,7 @@ namespace Robotango.Tests.Units.Abilities
             Log( alice.Dump() );
 
             Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
-            Assert.False( alice.As< IActive >().ContainsIntention( Activities.Virtual.Movement, alice, b ) );
+            Assert.False( alice.As< IActive >().ContainsIntention( Lib.Activities.Movement, alice, b ) );
         }
 
         [Ignore, Test]

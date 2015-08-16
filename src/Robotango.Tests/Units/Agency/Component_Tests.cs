@@ -6,8 +6,8 @@ using NUnit.Framework;
 using Robotango.Common.Domain.Types.Compositions;
 using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
-using Robotango.Tests.Common.Bases;
-using Robotango.Tests.Common.Helpers;
+using Robotango.Core.Agency;
+using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Agency
 {
@@ -17,8 +17,8 @@ namespace Robotango.Tests.Units.Agency
         [Test]
         public void Thinking_is_a_component()
         {
-            var r = Factory.CreateComponent< IThinking >();
-            ComponentsAssertThat.Is_ability( r );
+            var abiity = Factory.CreateComponent< IThinking >();
+            Assert.IsInstanceOf< IAbility >( abiity );
         }
 
         [Test]
@@ -27,14 +27,17 @@ namespace Robotango.Tests.Units.Agency
             var r = Factory.CreateComponent< IThinking >();
             var s = Factory.CreateComponent< ICommunicative >();
             var a = Factory.CreateAgent( r, s );
-            ComponentsAssertThat.Has_Thinking_and_social_components( a as IComposite );
+
+            Assert.That( ( ( IComposite ) a ).HasComponent< IThinking >() );
+            Assert.That( ( ( IComposite ) a ).HasComponent< ICommunicative >() );
         }
 
         [Test]
         public void Factory_conveniently_creates_composite_agent()
         {
             var a = Factory.CreateAgent< IThinking, ICommunicative >();
-            ComponentsAssertThat.Has_Thinking_and_social_components( a as IComposite );
+            Assert.That( ( ( IComposite ) a ).HasComponent< IThinking >() );
+            Assert.That( ( ( IComposite ) a ).HasComponent< ICommunicative >() );
         }
 
         [Test, ExpectedException( typeof( AssertException ) )]

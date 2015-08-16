@@ -5,8 +5,7 @@
 using NUnit.Framework;
 using Robotango.Common.Domain.Types.Enums;
 using Robotango.Core.Abilities;
-using Robotango.Tests.Common.Bases;
-using Robotango.Tests.Common.Helpers;
+using Robotango.Tests.Base;
 using Robotango.Tests.Domain;
 
 namespace Robotango.Tests.Units.Abilities
@@ -15,10 +14,10 @@ namespace Robotango.Tests.Units.Abilities
     public class Thinking_Tests : BaseTests
     {
         [Test]
-        public void Thinking_can_think()
+        public void Agent_can_think()
         {
-            var a = Factory.CreateAgent< IThinking >();
-            ThinkingsAssertThat.Thinking_can_think( a );
+            var agent = Factory.CreateAgent< IThinking >();
+            agent.As< IThinking >().ImplementBeliefs();
         }
 
         [Test]

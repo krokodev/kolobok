@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Activities.cs
+// Lib.Activities.cs
 
 using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
@@ -9,9 +9,9 @@ using Robotango.Core.Elements.Virtual;
 
 namespace Robotango.Core.Common
 {
-    public static class Activities
+    public static partial class Lib
     {
-        public static class Virtual
+        public static class Activities
         {
             public static readonly IActivity Movement = new Activity< ILocation >(
                 "MoveTo",

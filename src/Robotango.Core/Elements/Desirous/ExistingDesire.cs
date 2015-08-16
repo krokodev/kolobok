@@ -13,7 +13,7 @@ namespace Robotango.Core.Elements.Desirous
         #region Ctor
 
         public ExistingDesire( IAgent subject )
-            : base( Desires.Reality.Existing, subject ) {}
+            : base( Lib.Desires.Existing, subject ) {}
 
         #endregion
     }

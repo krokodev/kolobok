@@ -4,7 +4,7 @@
 
 using NUnit.Framework;
 using Robotango.Core.Abilities;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Abilities
 {

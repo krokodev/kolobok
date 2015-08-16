@@ -8,7 +8,7 @@ using Robotango.Common.Utils.Diagnostics.Exceptions;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Expressions.Terms;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 using Robotango.Tests.Domain;
 
 namespace Robotango.Tests.Units.Abilities

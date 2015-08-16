@@ -8,7 +8,7 @@ using Robotango.Common.Domain.Types.Properties;
 using Robotango.Core.Abilities;
 using Robotango.Core.Common;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 using Robotango.Tests.Domain;
 
 namespace Robotango.Tests.Units.Agency
@@ -58,9 +58,9 @@ namespace Robotango.Tests.Units.Agency
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IThinking >().InnerReality.AddAgent( alice );
-            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
 
-            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, b );
+            alice.As< IActive >().AddIntention( Lib.Activities.Movement, alice, b );
 
             var dump = Log( world.Dump() );
 
@@ -98,10 +98,10 @@ namespace Robotango.Tests.Units.Agency
             var alice = world.IReality.AddAgent(
                 Factory.CreateAgent< IVirtual, IThinking, IDesirous, IActive >( "Alice" )
                 );
-            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
 
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
-            alice.As< IActive >().AddIntention( Activities.Virtual.Movement, alice, b );
+            alice.As< IActive >().AddIntention( Lib.Activities.Movement, alice, b );
             alice.As< IThinking >().InnerReality.AddAgent( alice, "aAlice" );
 
             alice.As< IDesirous >().Proceed( world.IReality );
@@ -123,7 +123,7 @@ namespace Robotango.Tests.Units.Agency
         {
             var alice = Factory.CreateAgent< IVirtual, IDesirous, IThinking, IActive >( "Alice" );
 
-            alice.As< IActive >().AddActivity( Activities.Virtual.Movement );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
 
             var dump = Log( alice.Dump() );
 

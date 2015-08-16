@@ -10,7 +10,7 @@ namespace Robotango.Core.System
         {
             public static class Names
             {
-                public const string Default = "Some Reality";
+                public const string Default = "SomeReality";
             }
         }
 
@@ -26,7 +26,7 @@ namespace Robotango.Core.System
 
             public static class Names
             {
-                public const string Default = "Some Agent";
+                public const string Default = "SomeAgent";
             }
         }
 
@@ -34,15 +34,7 @@ namespace Robotango.Core.System
         {
             public static class Names
             {
-                public const string Default = "Some World";
-            }
-        }
-
-        public static class Desires
-        {
-            public static class Names
-            {
-                public const string Default = "Some Desire";
+                public const string Default = "SomeWorld";
             }
         }
     }

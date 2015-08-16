@@ -9,7 +9,7 @@ using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Virtual;
 using Robotango.Expressions.Terms;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Complex
 {

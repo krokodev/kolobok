@@ -65,7 +65,7 @@ namespace Robotango.Core.Abilities.Imp
                 return null;
             }
 
-            var intention = new Intention< ILocation >( Activities.Virtual.Movement, desire.Subject, ( ILocation ) desire.Arg );
+            var intention = new Intention< ILocation >( Lib.Activities.Movement, desire.Subject, ( ILocation ) desire.Arg );
 
             intentions.Add( intention );
             return intentions;

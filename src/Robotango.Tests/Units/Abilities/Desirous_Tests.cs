@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Abilities;
 using Robotango.Core.Elements.Desirous;
 using Robotango.Core.Elements.Virtual;
-using Robotango.Tests.Common.Bases;
+using Robotango.Tests.Base;
 
 namespace Robotango.Tests.Units.Abilities
 {
@@ -91,10 +91,10 @@ namespace Robotango.Tests.Units.Abilities
 
             var dump = Log( agent.Dump() );
 
-            Assert.That( dump, Is.StringContaining( "Some Agent" ) );
+            Assert.That( dump, Is.StringContaining( "SomeAgent" ) );
             Assert.That( dump, Is.StringContaining( "Nothing(,INothing )" ) );
-            Assert.That( dump, Is.StringContaining( "Existing(Some Agent,INothing )" ) );
-            Assert.That( dump, Is.StringContaining( "InLocation(Some Agent,ILocation A)" ) );
+            Assert.That( dump, Is.StringContaining( "Existing(SomeAgent,INothing )" ) );
+            Assert.That( dump, Is.StringContaining( "InLocation(SomeAgent,ILocation A)" ) );
         }
     }
 }

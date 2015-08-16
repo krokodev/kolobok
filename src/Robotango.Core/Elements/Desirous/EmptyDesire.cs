@@ -12,7 +12,7 @@ namespace Robotango.Core.Elements.Desirous
         #region Ctor
 
         public EmptyDesire()
-            : base( Desires.Empty.Nothing ) {}
+            : base( Lib.Desires.Nothing ) {}
 
         #endregion
     }

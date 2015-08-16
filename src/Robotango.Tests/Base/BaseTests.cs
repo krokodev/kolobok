@@ -6,7 +6,7 @@ using System;
 using NUnit.Framework;
 using Robotango.Core.System;
 
-namespace Robotango.Tests.Common.Bases
+namespace Robotango.Tests.Base
 {
     public abstract class BaseTests
     {
