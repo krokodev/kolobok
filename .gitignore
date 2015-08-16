@@ -27,7 +27,8 @@ TestResults/
 
 # Build results
 [Dd]ebug/
-!/Diagnostics/Debug/*
+!/Diagnostics/[Dd]ebug/*
+![Dd]ebug.cs
 [Rr]elease/
 bin/x64/
 bin/x86/
