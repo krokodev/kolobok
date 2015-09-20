@@ -38,13 +38,11 @@ namespace Robotango.Core.Abilities.Desirous.Imp
             return _model.Predicate( reality, _subject, _arg );
         }
 
-        IAgent IDesire.Subject
-        {
+        IAgent IDesire.Subject {
             get { return _subject; }
         }
 
-        object IDesire.Arg
-        {
+        object IDesire.Arg {
             get { return _arg; }
         }
 

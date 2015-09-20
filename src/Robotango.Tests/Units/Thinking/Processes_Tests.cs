@@ -1,12 +1,11 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Tests
-// ThinkingProcess_Tests.cs
+// Processes_Tests.cs
 
 using NUnit.Framework;
 using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Thinking.Processes;
 using Robotango.Core.Abilities.Thinking.Processes.Imp;
-using Robotango.Core.Abilities.Thinking.Rules;
 using Robotango.Core.Abilities.Thinking.Rules.Imp;
 using Robotango.Tests.Base;
 
@@ -32,7 +31,7 @@ namespace Robotango.Tests.Units.Thinking
         [Test]
         public void Alice_can_imagine()
         {
-            var alice = Factory.CreateAgent< IThinking >("Alice");
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
             alice.As< IThinking >().AddProcess( new ImaginationProcess() );
             var dump = Log( alice.Dump() );
             Assert.That( dump, Is.StringContaining( "<ImaginationProcess>" ) );
@@ -41,8 +40,8 @@ namespace Robotango.Tests.Units.Thinking
         [Test]
         public void Alice_imagines_Bob()
         {
-            var alice = Factory.CreateAgent< IThinking >("Alice");
-            var bob = Factory.CreateAgent< IThinking >("Bob");
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
             alice.As< IThinking >().AddProcess( new ImaginationProcess() );
             var process = alice.As< IThinking >().GetProcess< IImaginationProcess >();
@@ -61,8 +60,8 @@ namespace Robotango.Tests.Units.Thinking
         [Test]
         public void Alice_believes_that_Bob_always_presents_in_her_imagination()
         {
-            var alice = Factory.CreateAgent< IThinking >("Alice");
-            var bob = Factory.CreateAgent< IThinking >("Bob");
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
             alice.As< IThinking >().AddProcess( new ImaginationProcess() );
             var process = alice.As< IThinking >().GetProcess< IImaginationProcess >();
@@ -79,8 +78,8 @@ namespace Robotango.Tests.Units.Thinking
         [Test]
         public void Process_dump_contains_rules()
         {
-            var alice = Factory.CreateAgent< IThinking >("Alice");
-            var bob = Factory.CreateAgent< IThinking >("Bob");
+            var alice = Factory.CreateAgent< IThinking >( "Alice" );
+            var bob = Factory.CreateAgent< IThinking >( "Bob" );
 
             alice.As< IThinking >().AddProcess( new ImaginationProcess() );
             var process = alice.As< IThinking >().GetProcess< IImaginationProcess >();
@@ -96,6 +95,5 @@ namespace Robotango.Tests.Units.Thinking
 
             Assert.That( process.OutputReality.Contains( bob ) );
         }
-
     }
 }

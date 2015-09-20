@@ -39,18 +39,15 @@ namespace Robotango.Core.System.Imp
             _activity.Execute( reality.GetAgent( _operand ), _arg );
         }
 
-        IActivity IOperation.Activity
-        {
+        IActivity IOperation.Activity {
             get { return _activity; }
         }
 
-        IAgent IOperation.Operand
-        {
+        IAgent IOperation.Operand {
             get { return _operand; }
         }
 
-        object IOperation.Arg
-        {
+        object IOperation.Arg {
             get { return _arg; }
         }
 

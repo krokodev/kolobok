@@ -3,7 +3,6 @@
 // IThinkingExecutor.cs
 
 using System;
-using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Thinking.Beliefs_XXX;
 using Robotango.Core.System;
 

@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Virtual.cs
+// VirtualAbility.cs
 
 using System;
 using System.Collections.Generic;
@@ -51,8 +51,7 @@ namespace Robotango.Core.Abilities.Virtual.Imp
 
         #region IAttributeHolder
 
-        private IAttributeHolder IAttributeHolder
-        {
+        private IAttributeHolder IAttributeHolder {
             get { return this; }
         }
 
@@ -77,7 +76,9 @@ namespace Robotango.Core.Abilities.Virtual.Imp
 
         T IAttributeHolder.GetAttribute<T>()
         {
-            Debug.Assert.That( IAttributeHolder.HasAttribute< T >(), "Attribute '{0}' is not found", typeof( T ).Name );
+            Debug.Assert.That( IAttributeHolder.HasAttribute< T >(),
+                "Attribute '{0}' is not found",
+                typeof( T ).Name );
             return _attributes.OfType< T >().First();
         }
 

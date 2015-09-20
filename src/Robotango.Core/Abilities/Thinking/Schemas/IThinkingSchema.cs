@@ -1,6 +1,6 @@
 ﻿// Robotango (c) 2015 Krokodev
 // Robotango.Core
-// IThinkingProcessSchema.cs
+// IThinkingSchema.cs
 
 using System;
 using Robotango.Core.Abilities.Thinking.Processes;
@@ -13,6 +13,6 @@ namespace Robotango.Core.Abilities.Thinking.Schemas
         string Name { get; }
         Func< IThinkingProcess, IReality > InputRealitySelector { get; }
         Func< IThinkingProcess, IReality > OutputRealitySelector { get; }
-        Action< IThinkingProcess> Proceed { get; }
+        Action< IThinkingProcess > Proceed { get; }
     }
 }

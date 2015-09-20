@@ -13,8 +13,7 @@ namespace Robotango.Tests.Stuff
     {
         #region IHat
 
-        public IHat IHat
-        {
+        public IHat IHat {
             get { return this; }
         }
 

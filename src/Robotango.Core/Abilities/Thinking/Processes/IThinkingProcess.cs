@@ -8,7 +8,7 @@ using Robotango.Core.System;
 
 namespace Robotango.Core.Abilities.Thinking.Processes
 {
-    public interface IThinkingProcess : IResearchable, IProceedable<IReality>
+    public interface IThinkingProcess : IResearchable, IProceedable< IReality >
     {
         IReality InputReality { get; }
         IReality OutputReality { get; }

@@ -21,8 +21,10 @@ namespace Robotango.Tests.Units.Agency
         public void Abilities_ordering_does_not_cause_on_the_proceed_success()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent( Factory.CreateAgent< IActive, IVirtual, IDesirous, IThinking >( "Alice" ) );
-            var bob = world.IReality.AddAgent( Factory.CreateAgent< IThinking, IDesirous, IVirtual, IActive >( "Bob" ) );
+            var alice =
+                world.IReality.AddAgent( Factory.CreateAgent< IActive, IVirtual, IDesirous, IThinking >( "Alice" ) );
+            var bob =
+                world.IReality.AddAgent( Factory.CreateAgent< IThinking, IDesirous, IVirtual, IActive >( "Bob" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 

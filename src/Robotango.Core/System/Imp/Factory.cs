@@ -24,8 +24,7 @@ namespace Robotango.Core.System.Imp
     {
         #region IFactory
 
-        private IFactory IFactory
-        {
+        private IFactory IFactory {
             get { return this; }
         }
 
@@ -143,9 +142,8 @@ namespace Robotango.Core.System.Imp
 
         private static void AssertComponentIsRegisrtered( Type componentType )
         {
-            if( !ComponentConstructors.ContainsKey( componentType ) ) {
+            if( !ComponentConstructors.ContainsKey( componentType ) )
                 throw new UnknownComponentException( "Unexcpected type '{0}'", componentType.Name );
-            }
         }
 
         #endregion

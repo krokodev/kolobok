@@ -29,9 +29,8 @@ namespace Robotango.Common.Types.Compositions.Imp
 
         protected TC MakeDependenceIfAvailable<TC>() where TC : IComponent
         {
-            if( !IComponent.Holder.HasComponent< TC >() ) {
+            if( !IComponent.Holder.HasComponent< TC >() )
                 return default(TC);
-            }
 
             return MakeDependence< TC >();
         }
@@ -48,8 +47,7 @@ namespace Robotango.Common.Types.Compositions.Imp
 
         #region IComponent
 
-        protected IComponent IComponent
-        {
+        protected IComponent IComponent {
             get { return this; }
         }
 
@@ -64,13 +62,11 @@ namespace Robotango.Common.Types.Compositions.Imp
             onInitAsComponent();
         }
 
-        IComposite IComponent.Holder
-        {
+        IComposite IComponent.Holder {
             get { return _holder; }
         }
 
-        IList< IComponent > IComponent.Dependences
-        {
+        IList< IComponent > IComponent.Dependences {
             get { return _dependences; }
         }
 

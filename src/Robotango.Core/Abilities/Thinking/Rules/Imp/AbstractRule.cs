@@ -21,7 +21,7 @@ namespace Robotango.Core.Abilities.Thinking.Rules.Imp
 
         string IResearchable.Dump( int level )
         {
-            return OutlineWriter.Line(level, "<{0}>", GetType().Name );
+            return OutlineWriter.Line( level, "<{0}>", GetType().Name );
         }
 
         #endregion

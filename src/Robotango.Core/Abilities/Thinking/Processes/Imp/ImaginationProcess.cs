@@ -38,8 +38,7 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         #region IImaginationProcess
 
-        IReality IImaginationProcess.InnerReality
-        {
+        IReality IImaginationProcess.InnerReality {
             get { return _innerReality; }
         }
 

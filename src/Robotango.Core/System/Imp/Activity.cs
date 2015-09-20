@@ -50,19 +50,18 @@ namespace Robotango.Core.System.Imp
 
         #region IActivity
 
-        private IActivity IActivity
-        {
+        private IActivity IActivity {
             get { return this; }
         }
 
-        string IActivity.Name
-        {
+        string IActivity.Name {
             get { return _name; }
         }
 
         void IActivity.Execute( IAgent agent, object arg )
         {
-            Debug.Assert.That( arg is T, new ActivityArgumentException( "Expected {0} but was {1}", typeof( T ).Name, arg.GetType().Name ) );
+            Debug.Assert.That( arg is T,
+                new ActivityArgumentException( "Expected {0} but was {1}", typeof( T ).Name, arg.GetType().Name ) );
             _action.Invoke( agent, ( T ) arg );
         }
 

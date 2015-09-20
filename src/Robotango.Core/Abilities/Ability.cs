@@ -18,9 +18,8 @@ namespace Robotango.Core.Abilities
 
         protected void DumpDependences( OutlineWriter wr )
         {
-            if( IComponent.Dependences.Count == 0 ) {
+            if( IComponent.Dependences.Count == 0 )
                 return;
-            }
             wr.Append( " use:" );
             IComponent.Dependences.ForEach( d => wr.Append( " <{0}>", d.GetType().Name ) );
         }

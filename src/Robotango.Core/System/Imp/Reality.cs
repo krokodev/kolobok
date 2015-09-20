@@ -39,7 +39,10 @@ namespace Robotango.Core.System.Imp
 
         private IAgent Project( IAgent agent, string name )
         {
-            Debug.Assert.That( !IReality.Contains( agent ), "World [{1}] already contains the clone of [{0}]", agent, IReality );
+            Debug.Assert.That( !IReality.Contains( agent ),
+                "World [{1}] already contains the clone of [{0}]",
+                agent,
+                IReality );
 
             var projection = agent.Clone();
             projection.Name = name;
@@ -63,8 +66,7 @@ namespace Robotango.Core.System.Imp
 
         #region IReality
 
-        private IReality IReality
-        {
+        private IReality IReality {
             get { return this; }
         }
 
@@ -96,13 +98,11 @@ namespace Robotango.Core.System.Imp
             return _agents.Any( a => a.Id == agent.Id );
         }
 
-        string IReality.Name
-        {
+        string IReality.Name {
             get { return _name ?? Settings.Reality.Names.Default; }
         }
 
-        IEnumerable< IAgent > IReality.Agents
-        {
+        IEnumerable< IAgent > IReality.Agents {
             get { return _agents; }
         }
 
@@ -117,8 +117,7 @@ namespace Robotango.Core.System.Imp
             _operations.Clear();
         }
 
-        Guid IReality.Id
-        {
+        Guid IReality.Id {
             get { return _id; }
         }
 

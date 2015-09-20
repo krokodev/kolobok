@@ -29,9 +29,8 @@ namespace Robotango.Core.Abilities.Thinking.Rules.Imp
 
         protected override void Apply( IReality reality )
         {
-            if( reality.Contains( _subject ) ) {
+            if( reality.Contains( _subject ) )
                 return;
-            }
             reality.AddAgent( _subject );
         }
 

@@ -6,7 +6,6 @@ using Robotango.Common.Types.Types;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
 using Robotango.Core.Abilities.Thinking.Processes;
-using Robotango.Core.Abilities.Thinking.Processes.Imp;
 using Robotango.Core.Abilities.Thinking.Schemas;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.System;

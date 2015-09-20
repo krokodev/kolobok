@@ -6,8 +6,7 @@ namespace Robotango.Expressions.Terms
 {
     public static class As
     {
-        public static IThinkingExecutor Thinking
-        {
+        public static IThinkingExecutor Thinking {
             get { return new ThinkingExecutor( Convert.Agent.To.Thinking ); }
         }
     }

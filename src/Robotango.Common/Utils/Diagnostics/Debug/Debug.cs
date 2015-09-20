@@ -19,9 +19,8 @@ namespace Robotango.Common.Utils.Diagnostics.Debug
 
             public static void That( bool cond, Exception exception )
             {
-                if( cond ) {
+                if( cond )
                     return;
-                }
                 Log( exception );
                 throw exception;
             }

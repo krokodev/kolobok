@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Communicative.cs
+// CommunicativeAbility.cs
 
 using System;
 using Robotango.Common.Types.Compositions;

@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Desirous.cs
+// DesirousAbility.cs
 
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +22,8 @@ namespace Robotango.Core.Abilities.Desirous.Imp
 
         private void DumpDesires( OutlineWriter wr )
         {
-            if( !_desires.Any() ) {
+            if( !_desires.Any() )
                 return;
-            }
             wr.Line( "Desires" );
             _desires.ForEach( d => wr.Append( d.Dump( wr.Level + 1 ) ) );
         }
@@ -51,8 +50,7 @@ namespace Robotango.Core.Abilities.Desirous.Imp
 
         #region IDesirous
 
-        IList< IDesire > IDesirous.Desires
-        {
+        IList< IDesire > IDesirous.Desires {
             get { return _desires; }
         }
 

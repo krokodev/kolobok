@@ -10,8 +10,7 @@ namespace Robotango.Core.Abilities.Virtual.Imp
     {
         #region IPosition
 
-        public IPosition IPosition
-        {
+        public IPosition IPosition {
             get { return this; }
         }
 

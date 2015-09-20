@@ -13,8 +13,7 @@ namespace Robotango.Common.Types.Compositions.Imp
     {
         #region IComposition
 
-        protected IComposite IComposite
-        {
+        protected IComposite IComposite {
             get { return this; }
         }
 
@@ -67,9 +66,8 @@ namespace Robotango.Common.Types.Compositions.Imp
 
         private static void AssertComponentsAreUnique( IEnumerable< IComponent > components )
         {
-            if( !components.Select( c => c.GetType() ).AreUnique() ) {
+            if( !components.Select( c => c.GetType() ).AreUnique() )
                 throw new AssertException( "Components are not unique" );
-            }
         }
 
         #endregion

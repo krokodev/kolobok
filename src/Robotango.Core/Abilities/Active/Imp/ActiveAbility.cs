@@ -1,6 +1,6 @@
 // Robotango (c) 2015 Krokodev
 // Robotango.Core
-// Active.cs
+// ActiveAbility.cs
 
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +35,8 @@ namespace Robotango.Core.Abilities.Active.Imp
 
         private void DumpActivities( OutlineWriter wr )
         {
-            if( !_activities.Any() ) {
+            if( !_activities.Any() )
                 return;
-            }
             wr.Line( "Activities" );
             wr.Level++;
             _activities.ForEach( a => wr.Append( a.Dump( wr.Level ) ) );
@@ -46,9 +45,8 @@ namespace Robotango.Core.Abilities.Active.Imp
 
         private void DumpIntentions( OutlineWriter wr )
         {
-            if( !_intentions.Any() ) {
+            if( !_intentions.Any() )
                 return;
-            }
             wr.Line( "Intentions" );
             _intentions.ForEach( i => wr.Append( i.Dump( wr.Level + 1 ) ) );
         }
@@ -84,9 +82,8 @@ namespace Robotango.Core.Abilities.Active.Imp
 
         void IActive.AddActivity( IActivity activity )
         {
-            if( _activities.Contains( activity ) ) {
+            if( _activities.Contains( activity ) )
                 return;
-            }
             _activities.Add( activity );
         }
 
@@ -101,8 +98,7 @@ namespace Robotango.Core.Abilities.Active.Imp
             _intentions.Add( new Intention< T >( activity, operand, arg ) );
         }
 
-        IList< IActivity > IActive.Activities
-        {
+        IList< IActivity > IActive.Activities {
             get { return _activities; }
         }
 

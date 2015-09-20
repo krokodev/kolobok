@@ -19,11 +19,9 @@ namespace Robotango.Common.Utils.Tools
             Level = level;
         }
 
-        public int Level
-        {
+        public int Level {
             get { return _level; }
-            set
-            {
+            set {
                 _level = value;
                 _indent = new string( ' ', _level*Width );
             }
@@ -87,6 +85,5 @@ namespace Robotango.Common.Utils.Tools
             wr.Append( template, args );
             return wr.ToString();
         }
-
     }
 }

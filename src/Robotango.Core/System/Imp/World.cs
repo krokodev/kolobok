@@ -11,20 +11,31 @@ namespace Robotango.Core.System.Imp
 {
     internal class World : IWorld
     {
-        #region IWorld
+        #region Data
+        private readonly IAgent _agent;
+        private readonly IThinking _thinking;
+        #endregion
 
-        private IWorld IWorld
+
+        #region Ctor
+        public World( IFactory factory, string name )
         {
+            _agent = factory.CreateAgent< IThinking >( name ?? Settings.Worlds.Names.Default );
+            _thinking = _agent.As< IThinking >();
+        }
+        #endregion
+
+
+        #region IWorld
+        private IWorld IWorld {
             get { return this; }
         }
 
-        IReality IWorld.IReality
-        {
+        IReality IWorld.IReality {
             get { return _thinking.InnerReality; }
         }
 
-        public IThinking IThinking
-        {
+        public IThinking IThinking {
             get { return _thinking; }
         }
 
@@ -38,16 +49,13 @@ namespace Robotango.Core.System.Imp
             return _thinking.InnerReality.GetAgent( agent );
         }
 
-        string IWorld.Name
-        {
+        string IWorld.Name {
             get { return _agent.Name; }
         }
-
         #endregion
 
 
         #region IResearchable
-
         string IResearchable.Dump( int level )
         {
             var wr = new OutlineWriter( level );
@@ -55,26 +63,6 @@ namespace Robotango.Core.System.Imp
             wr.Append( _agent.Dump( wr.Level + 1 ) );
             return wr.ToString();
         }
-
-        #endregion
-
-
-        #region Ctor
-
-        public World( IFactory factory, string name )
-        {
-            _agent = factory.CreateAgent< IThinking >( name ?? Settings.Worlds.Names.Default );
-            _thinking = _agent.As< IThinking >();
-        }
-
-        #endregion
-
-
-        #region Data
-
-        private readonly IAgent _agent;
-        private readonly IThinking _thinking;
-
         #endregion
     }
 }

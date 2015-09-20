@@ -36,9 +36,8 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         private void DumpRules( OutlineWriter wr )
         {
-            if (_rules.Count == 0) { 
+            if( _rules.Count == 0 )
                 return;
-            }
             wr.Line( "Rules" );
             _rules.ForEach( r => wr.Append( r.Dump( wr.Level + 1 ) ) );
         }
@@ -71,18 +70,15 @@ namespace Robotango.Core.Abilities.Thinking.Processes.Imp
 
         #region IThinkingProcess
 
-        private IThinkingProcess IThinkingProcess
-        {
+        private IThinkingProcess IThinkingProcess {
             get { return this; }
         }
 
-        IReality IThinkingProcess.InputReality
-        {
+        IReality IThinkingProcess.InputReality {
             get { return _schema.InputRealitySelector( this ); }
         }
 
-        IReality IThinkingProcess.OutputReality
-        {
+        IReality IThinkingProcess.OutputReality {
             get { return _schema.OutputRealitySelector( this ); }
         }
 

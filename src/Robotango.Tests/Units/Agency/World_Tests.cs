@@ -37,7 +37,10 @@ namespace Robotango.Tests.Units.Agency
             var alice = world.IReality.AddAgent( Factory.CreateAgent< IVirtual >( "Alice" ) );
 
             alice.As< IVirtual >().AddAttribute( new Position( locA ) );
-            world.IThinking.AddBelief( reality => { reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location = locB; } );
+            world.IThinking.AddBelief(
+                reality => {
+                    reality.GetAgent( alice ).As< IVirtual >().GetAttribute< IPosition >().Location = locB;
+                } );
 
             Log( world.Dump() );
             Log( alice.Dump() );

@@ -31,9 +31,8 @@ namespace Robotango.Core.Abilities.Thinking
 
         private void DumpProcesses( OutlineWriter wr )
         {
-            if( !_processes.Any() ) {
+            if( !_processes.Any() )
                 return;
-            }
             wr.Line( "Processes" );
             _processes.ForEach( p => wr.Append( p.Dump( wr.Level + 1 ) ) );
         }
@@ -77,13 +76,11 @@ namespace Robotango.Core.Abilities.Thinking
 
         #region IThinking
 
-        private IThinking IThinking
-        {
+        private IThinking IThinking {
             get { return this; }
         }
 
-        IReality IThinking.InnerReality
-        {
+        IReality IThinking.InnerReality {
             get { return _innerReality; }
         }
 

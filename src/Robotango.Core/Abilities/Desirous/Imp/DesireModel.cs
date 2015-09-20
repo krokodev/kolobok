@@ -30,13 +30,11 @@ namespace Robotango.Core.Abilities.Desirous.Imp
 
         #region IDesireModel
 
-        Func< IReality, IAgent, T, bool > IDesireModel< T >.Predicate
-        {
+        Func< IReality, IAgent, T, bool > IDesireModel< T >.Predicate {
             get { return _predicate; }
         }
 
-        string IDesireModel< T >.Name
-        {
+        string IDesireModel< T >.Name {
             get { return _name; }
         }
 

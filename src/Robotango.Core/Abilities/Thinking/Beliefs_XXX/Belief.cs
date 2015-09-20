@@ -9,8 +9,7 @@ namespace Robotango.Core.Abilities.Thinking.Beliefs_XXX
 {
     public class Belief : IBelief
     {
-        Action< IReality > IBelief.Essence
-        {
+        Action< IReality > IBelief.Essence {
             get { return _essence; }
         }
 

@@ -10,13 +10,11 @@ namespace Robotango.Common.Types.Expressions
     {
         #region IPropertyAccessor
 
-        Func< T, TV > IPropertyAccessor< T, TV >.Get
-        {
+        Func< T, TV > IPropertyAccessor< T, TV >.Get {
             get { return _getter; }
         }
 
-        Action< T, TV > IPropertyAccessor< T, TV >.Set
-        {
+        Action< T, TV > IPropertyAccessor< T, TV >.Set {
             get { return _setter; }
         }
 

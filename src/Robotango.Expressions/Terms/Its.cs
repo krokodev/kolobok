@@ -9,13 +9,11 @@ namespace Robotango.Expressions.Terms
 {
     public class Its
     {
-        public static IVirtualAccessor Virtual
-        {
+        public static IVirtualAccessor Virtual {
             get { return new VirtualAccessor(); }
         }
 
-        public static Func< IAgent, IAgent > Self
-        {
+        public static Func< IAgent, IAgent > Self {
             get { return agent => agent; }
         }
     }

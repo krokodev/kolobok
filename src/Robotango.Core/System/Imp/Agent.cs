@@ -56,8 +56,7 @@ namespace Robotango.Core.System.Imp
 
         #region IAgent
 
-        private IAgent IAgent
-        {
+        private IAgent IAgent {
             get { return this; }
         }
 
@@ -83,13 +82,11 @@ namespace Robotango.Core.System.Imp
             return clone;
         }
 
-        Guid IAgent.Id
-        {
+        Guid IAgent.Id {
             get { return _id; }
         }
 
-        string IAgent.Name
-        {
+        string IAgent.Name {
             get { return _name ?? Settings.Agents.Names.Default; }
             set { _name = value; }
         }

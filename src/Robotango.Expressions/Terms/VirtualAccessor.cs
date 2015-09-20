@@ -14,13 +14,11 @@ namespace Robotango.Expressions.Terms
     {
         #region IVirtualAccessor
 
-        IPropertyAccessor< IAgent, IPosition > IVirtualAccessor.Position
-        {
+        IPropertyAccessor< IAgent, IPosition > IVirtualAccessor.Position {
             get { return new PropertyAccessor< IAgent, IPosition >( GetPosition, SetPosition ); }
         }
 
-        IPropertyAccessor< IAgent, ILocation > IVirtualAccessor.Location
-        {
+        IPropertyAccessor< IAgent, ILocation > IVirtualAccessor.Location {
             get { return new PropertyAccessor< IAgent, ILocation >( GetLocation, SetLocation ); }
         }
 
