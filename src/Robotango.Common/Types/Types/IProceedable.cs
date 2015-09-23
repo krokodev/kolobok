@@ -4,9 +4,9 @@
 
 namespace Robotango.Common.Types.Types
 {
-    // Todo:> Remove argument
     public interface IProceedable<in T>
     {
+    // Todo:> Remove context argument
         void Proceed( T context );
     }
 }

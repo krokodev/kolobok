@@ -56,6 +56,7 @@ namespace Robotango.Core.Abilities.Thinking
             wr.Append( _innerReality.Dump( wr.Level ) );
         }
 
+            // Todo:> Remove this Proceed context arg
         protected override void Proceed( IReality reality )
         {
             // Todo:> Remove this code
