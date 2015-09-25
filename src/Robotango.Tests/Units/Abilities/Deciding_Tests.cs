@@ -62,7 +62,8 @@ namespace Robotango.Tests.Units.Abilities
             alice.As< IVirtual >().AddAttribute( new Position( a ) );
             alice.As< IDesirous >().AddDesire( new LocationDesire( alice, b ) );
 
-            // Todo:> Call MakeDecision() within Proceed
+            Log( alice.Dump() );
+
             alice.As< IDeciding >().MakeDecision( world.IReality );
             world.Proceed();
 
