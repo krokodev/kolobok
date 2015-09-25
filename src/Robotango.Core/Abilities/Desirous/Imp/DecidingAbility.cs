@@ -83,7 +83,8 @@ namespace Robotango.Core.Abilities.Desirous.Imp
 
         protected override void Proceed( IReality reality )
         {
-            // Todo:> Call decision
+            ( ( IDeciding ) this ).MakeDecision( reality );
+
             PassIntentionsToActive();
         }
 
@@ -96,7 +97,7 @@ namespace Robotango.Core.Abilities.Desirous.Imp
 
 
         #region IDeciding
-        // Todo:> remove reality argument
+        // Todo:> remove reality argument, fetch them from some (given in parameters) thinking process
         void IDeciding.MakeDecision( IReality reality )
         {
             var desires = ObtainDesires();

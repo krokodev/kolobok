@@ -49,7 +49,7 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Alice_desires_B_decides_move_to_B_and_moves_to_B()
+        public void Alice_desires_been_in_B_then_decides_move_to_B_and_then_moves_to_B()
         {
             var world = Factory.CreateWorld();
             var alice = world.IReality.AddAgent(
