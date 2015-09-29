@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Robotango.Core.Abilities.Active;
 using Robotango.Core.Abilities.Desirous;
 using Robotango.Core.Abilities.Desirous.Imp;
+using Robotango.Core.Abilities.Thinking;
 using Robotango.Core.Abilities.Virtual;
 using Robotango.Core.Abilities.Virtual.Imp;
 using Robotango.Core.Common;
@@ -29,9 +30,8 @@ namespace Robotango.Tests.Units.Abilities
         public void Alice_desires_B_and_Decides_to_move_to_B()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IDesirous, IDeciding, IActive >( "alice" )
-                );
+            var alice =
+                world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IDeciding, IActive >( "alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
@@ -49,12 +49,11 @@ namespace Robotango.Tests.Units.Abilities
         }
 
         [Test]
-        public void Alice_desires_been_in_B_then_decides_move_to_B_and_then_moves_to_B()
+        public void Alice_desires_be_in_B_then_decides_move_to_B_and_then_moves_to_B()
         {
             var world = Factory.CreateWorld();
-            var alice = world.IReality.AddAgent(
-                Factory.CreateAgent< IVirtual, IDesirous, IDeciding, IActive >( "alice" )
-                );
+            var alice =
+                world.IReality.AddAgent( Factory.CreateAgent< IVirtual, IDesirous, IDeciding, IActive >( "alice" ) );
             var a = new Location( "A" );
             var b = new Location( "B" );
 
@@ -64,7 +63,6 @@ namespace Robotango.Tests.Units.Abilities
 
             Log( alice.Dump() );
 
-            alice.As< IDeciding >().MakeDecision( world.IReality );
             world.Proceed();
 
             Log( alice.Dump() );
@@ -73,7 +71,35 @@ namespace Robotango.Tests.Units.Abilities
             Assert.False( alice.As< IActive >().ContainsIntention( Lib.Activities.Movement, alice, b ) );
         }
 
-        [Ignore, Test]
-        public void Alice_think_and_decide_to_move_to_C() {}
+        [Test]
+        public void Alice_desires_meet_Bob_then_she_thinks_and_decides_to_move_to_B()
+        {
+            // todo:> let IThinking.InnerReality points to one of the ThinkingProcess's reality
+            var world = Factory.CreateWorld();
+            var a = new Location( "A" );
+            var b = new Location( "B" );
+            var c = new Location( "C" );
+            var alice =
+                world.IReality.AddAgent(
+                    Factory.CreateAgent< IVirtual, IDesirous, IThinking, IDeciding, IActive >( "alice" ) );
+            var bob =
+                alice.As< IThinking >()
+                    .InnerReality.AddAgent(
+                        Factory.CreateAgent< IVirtual, IDesirous, IThinking, IDeciding, IActive >( "bob" ) );
+            // todo:> use extentions to simify: bob.AddPosiotion(c), bob.AddLocationDesire(b)
+            bob.As< IVirtual >().AddAttribute( new Position( c ) );
+            bob.As< IActive >().AddActivity( Lib.Activities.Movement );
+            bob.As< IDesirous >().AddDesire( new LocationDesire( bob, b ) );
+
+            alice.As< IVirtual >().AddAttribute( new Position( c ) );
+            alice.As< IActive >().AddActivity( Lib.Activities.Movement );
+//            alice.As< IDesirous >().AddDesire( new MeetingDesire( bob ) );
+
+            world.Proceed();
+
+            Log( alice.Dump() );
+            Assert.That( alice.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+            Assert.That( bob.Get( Its.Virtual.Location ), Is.EqualTo( b ) );
+        }
     }
 }
